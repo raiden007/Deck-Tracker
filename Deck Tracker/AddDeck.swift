@@ -11,6 +11,9 @@ import UIKit
 class AddDeck: UIViewController {
 
     @IBOutlet var cancelButton: UIBarButtonItem!
+    @IBOutlet var deck1: UIButton!
+    
+    var selected = 0
 
     
     override func viewDidLoad() {
@@ -30,6 +33,20 @@ class AddDeck: UIViewController {
         self.dismissViewControllerAnimated(true, completion: {})
         println("Add Deck dismissed")
     }
+    
+    @IBAction func deck1Pressed(sender: UIButton) {
+        
+        if selected % 2 == 0 {
+            selected++
+            deck1.selected = true
+        } else {
+            deck1.selected = false
+            selected++
+        }
+        
+        
+    }
+    
     
     
     
