@@ -119,7 +119,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Add Deck" id="r2Y-Cp-mY5">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="EFi-C2-Du6"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="EFi-C2-Du6">
+                                            <connections>
+                                                <action selector="saveButtonPressed:" destination="3Yx-eb-t7J" id="eX5-cK-Ff3"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="hbR-6Q-zfM">
                                             <connections>
                                                 <action selector="cancelButtonPressed:" destination="3Yx-eb-t7J" id="45s-9g-Wk0"/>
@@ -269,11 +273,12 @@
                     <connections>
                         <outlet property="cancelButton" destination="hbR-6Q-zfM" id="tWl-1q-CXS"/>
                         <outlet property="deck1" destination="Co6-XH-ltJ" id="TkZ-ek-rqE"/>
+                        <outlet property="saveButton" destination="EFi-C2-Du6" id="BeW-tO-k4e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sc1-eo-qI1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1391" y="-320"/>
+            <point key="canvasLocation" x="1457" y="-320"/>
         </scene>
     </scenes>
     <resources>

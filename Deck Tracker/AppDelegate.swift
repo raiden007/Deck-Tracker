@@ -28,10 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         matches.append(match)
         
         
-        println(match.opponentDeck)
-        println(match.playerDeck)
+//        println(match.opponentDeck)
+//        println(match.playerDeck)
 //        println(match.win)
-        println(match.coin)
+//        println(match.coin)
+        
+        
         
 
         return true

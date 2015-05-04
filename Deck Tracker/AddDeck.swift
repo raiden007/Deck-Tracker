@@ -12,12 +12,17 @@ class AddDeck: UIViewController {
 
     @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet var deck1: UIButton!
+    @IBOutlet var saveButton: UIBarButtonItem!
     
     var selected = 0
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var countTest:String  = String (NSUserDefaults.standardUserDefaults().integerForKey("Matches Count"))
+        
+        println("Count Test: " + countTest)
 
         // Do any additional setup after loading the view.
     }
@@ -46,6 +51,24 @@ class AddDeck: UIViewController {
         
         
     }
+    
+    @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
+        
+        let now = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        let dateString = formatter.stringFromDate(now)
+ //       println(dateString)
+        
+        var matchesCount = NSUserDefaults.standardUserDefaults().integerForKey("Matches Count");
+        matchesCount++
+        NSUserDefaults.standardUserDefaults().setInteger(matchesCount, forKey: "Matches Count");
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        self.dismissViewControllerAnimated(true, completion: {})
+        
+    }
+    
     
     
     
