@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDeck: UIViewController {
+class AddDeck: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet var deck1: UIButton!
@@ -28,7 +28,7 @@ class AddDeck: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.deckNameTxtField.delegate = self
 //        var countTest:String  = String (NSUserDefaults.standardUserDefaults().integerForKey("Matches Count"))
  //       println("Count Test: " + countTest)
 
@@ -169,6 +169,18 @@ class AddDeck: UIViewController {
         } else {
             return ""
         }
+    }
+    
+    
+    // Hide keyboard on return
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    // Hide keyboard when taping outside of it
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
     }
     
 
