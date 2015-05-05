@@ -60,10 +60,29 @@ class AddDeck: UIViewController {
         let dateString = formatter.stringFromDate(now)
  //       println(dateString)
         
+        // Adding into the NSUserDedaults
+        
+        // Reading current value
         var matchesCount = NSUserDefaults.standardUserDefaults().integerForKey("Matches Count");
         matchesCount++
+        // Writing the new one
         NSUserDefaults.standardUserDefaults().setInteger(matchesCount, forKey: "Matches Count");
+        // Sync
         NSUserDefaults.standardUserDefaults().synchronize()
+        
+        // Adding a match into the array
+        var newGame = Game(idNumber: matchesCount, playerDeck: "123", opponentDeck: "321", coin: false, win: true)
+ //       println(newGame.toString())
+        
+        // Add to Data class file
+        Data.sharedInstance.addGame(newGame)
+        
+        
+//        var listOfGames:[Game] = []
+        
+ //       listOfGames.append(newGame)
+ //       println(listOfGames)
+        
         
         self.dismissViewControllerAnimated(true, completion: {})
         

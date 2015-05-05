@@ -16,25 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch
-        
-        var matches:[Match] = []
-        
-        var match = Match()
-        match.opponentDeck = "Opponent Deck"
-        match.playerDeck = "Player Deck"
-        match.coin = true
-//        match.win = false
-        
-        matches.append(match)
-        
-        
-//        println(match.opponentDeck)
-//        println(match.playerDeck)
-//        println(match.win)
-//        println(match.coin)
-        
-        
-        
+//        Data.sharedInstance.readData()
 
         return true
     }
