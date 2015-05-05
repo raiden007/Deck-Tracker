@@ -70,14 +70,16 @@ class AddDeck: UIViewController {
         NSUserDefaults.standardUserDefaults().setInteger(matchesCount, forKey: "Matches Count");
         // Sync
         NSUserDefaults.standardUserDefaults().synchronize()
+
         
         // Adding a match into the array
-        var newGame = Game(idNumber: matchesCount, playerDeck: "123", opponentDeck: "321", coin: false, win: true)
+        var newGame = Game(idNumber: matchesCount, playerDeck: "abc", opponentDeck: "asdhasdhaosuddas", coin: true, win: false)
         println(newGame.toString())
         
         // Add to Data class file
         Data.sharedInstance.addGame(newGame)
         
+//        println(Data.sharedInstance.generalWinRate())
         
 
         
