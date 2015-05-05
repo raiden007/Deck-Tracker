@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Game : NSCoder {
+class Game : NSObject, NSCoding {
     
     var id:Int
     var plDeck:String
@@ -24,6 +24,23 @@ class Game : NSCoder {
         self.didWin = win
         
         
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        id = aDecoder.decodeObjectForKey("id") as! Int
+        plDeck = aDecoder.decodeObjectForKey("plDeck") as! String
+        oDeck = aDecoder.decodeObjectForKey("oDeck") as! String
+        hasCoin = aDecoder.decodeObjectForKey("hasCoin") as! Bool
+        didWin = aDecoder.decodeObjectForKey("didWin") as! Bool
+    }
+    
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(id, forKey: "id")
+        aCoder.encodeObject(plDeck, forKey: "plDeck")
+        aCoder.encodeObject(oDeck, forKey: "oDeck")
+        aCoder.encodeObject(hasCoin, forKey: "hasCoin")
+        aCoder.encodeObject(didWin, forKey: "didWin")
     }
     
     

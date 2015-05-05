@@ -22,7 +22,7 @@ class AddDeck: UIViewController {
         
         var countTest:String  = String (NSUserDefaults.standardUserDefaults().integerForKey("Matches Count"))
         
-        println("Count Test: " + countTest)
+ //       println("Count Test: " + countTest)
 
         // Do any additional setup after loading the view.
     }
@@ -35,7 +35,8 @@ class AddDeck: UIViewController {
     
     
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: {})
+ //       self.dismissViewControllerAnimated(true, completion: {})
+        Data.sharedInstance.readData()
         println("Add Deck dismissed")
     }
     
@@ -72,16 +73,13 @@ class AddDeck: UIViewController {
         
         // Adding a match into the array
         var newGame = Game(idNumber: matchesCount, playerDeck: "123", opponentDeck: "321", coin: false, win: true)
- //       println(newGame.toString())
+        println(newGame.toString())
         
         // Add to Data class file
         Data.sharedInstance.addGame(newGame)
         
         
-//        var listOfGames:[Game] = []
-        
- //       listOfGames.append(newGame)
- //       println(listOfGames)
+
         
         
         self.dismissViewControllerAnimated(true, completion: {})

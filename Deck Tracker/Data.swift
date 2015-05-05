@@ -15,39 +15,37 @@ public class Data {
     
     var listOfGames:[Game] = []
     
-    
+    init() {
+        listOfGames += self.readData()!
+//        println(listOfGames)
+    }
     
     func addGame (newGame : Game) {
         
         println("Game added")
         listOfGames.append(newGame)
-        println(listOfGames)
+ //       println(listOfGames)
 
+        let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfGames as NSArray)
+        
         
         // Writing in NSUserDefaults
-//        NSUserDefaults.standardUserDefaults().setObject(listOfGames, forKey: "List of games")
+       NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "List of games")
         // Sync
-//        NSUserDefaults.standardUserDefaults().synchronize()
+        NSUserDefaults.standardUserDefaults().synchronize()
 
+        
 
     }
     
-    func readData () {
-        
+    
+    func readData() -> [Game]? {
         println("Data read")
-//        listOfGames = NSUserDefaults.standardUserDefaults().integerForKey("List of games");
-//        listOfGames = NSUserDefaults.standardUserDefaults().arrayForKey("List of games")
-
-        
+        if let unarchivedObject = NSUserDefaults.standardUserDefaults().objectForKey("List of games") as? NSData {
+            return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Game]
+        }
+        return nil
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 }
