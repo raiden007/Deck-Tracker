@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6D61AA431AF784E20013EB04 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D61AA421AF784E20013EB04 /* Game.swift */; };
 		6DD844CB1AF8A86F00CF9C80 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CA1AF8A86F00CF9C80 /* Data.swift */; };
+		6DD844CD1AF8EFB300CF9C80 /* Decks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Decks.swift */; };
 		6DDD44881AEF87B700A4B5D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD44871AEF87B700A4B5D2 /* AppDelegate.swift */; };
 		6DDD448A1AEF87B700A4B5D2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD44891AEF87B700A4B5D2 /* FirstViewController.swift */; };
 		6DDD448C1AEF87B700A4B5D2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD448B1AEF87B700A4B5D2 /* SecondViewController.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		6D61AA421AF784E20013EB04 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		6DD844CA1AF8A86F00CF9C80 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		6DD844CC1AF8EFB300CF9C80 /* Decks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decks.swift; sourceTree = "<group>"; };
 		6DDD44821AEF87B700A4B5D2 /* Deck Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deck Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DDD44861AEF87B700A4B5D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DDD44871AEF87B700A4B5D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			children = (
 				6DDD44871AEF87B700A4B5D2 /* AppDelegate.swift */,
 				6D61AA421AF784E20013EB04 /* Game.swift */,
+				6DD844CC1AF8EFB300CF9C80 /* Decks.swift */,
 				6DDD44891AEF87B700A4B5D2 /* FirstViewController.swift */,
 				6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */,
 				6DD844CA1AF8A86F00CF9C80 /* Data.swift */,
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DD844CD1AF8EFB300CF9C80 /* Decks.swift in Sources */,
 				6DDD44AA1AEFB1B300A4B5D2 /* AddDeck.swift in Sources */,
 				6DD844CB1AF8A86F00CF9C80 /* Data.swift in Sources */,
 				6DDD448C1AEF87B700A4B5D2 /* SecondViewController.swift in Sources */,

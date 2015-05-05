@@ -162,12 +162,22 @@
                                         <state key="normal" image="Hero Portrait small">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="Hero Portrait selected"/>
+                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <connections>
+                                            <action selector="deck2Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="Y8D-R5-dwf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xt4-2t-TWk" userLabel="Deck3">
                                         <rect key="frame" x="216" y="0.0" width="100" height="138"/>
                                         <state key="normal" image="Hero Portrait small">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="Hero Portrait selected"/>
+                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <connections>
+                                            <action selector="deck3Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="ul3-Ub-KB0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -190,18 +200,33 @@
                                         <state key="normal" image="Hero Portrait small">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="Hero Portrait selected"/>
+                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <connections>
+                                            <action selector="deck4Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="Iga-Mo-aL8"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikv-3V-8nN" userLabel="Deck5">
                                         <rect key="frame" x="108" y="0.0" width="100" height="138"/>
                                         <state key="normal" image="Hero Portrait small">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="Hero Portrait selected"/>
+                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <connections>
+                                            <action selector="deck5Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="DMa-HE-Z8a"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-z3-Kad" userLabel="Deck6">
                                         <rect key="frame" x="216" y="0.0" width="100" height="138"/>
                                         <state key="normal" image="Hero Portrait small">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="Hero Portrait selected"/>
+                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <connections>
+                                            <action selector="deck6Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="ant-XE-Tn1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -224,18 +249,33 @@
                                         <state key="normal" image="Hero Portrait small">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="Hero Portrait selected"/>
+                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <connections>
+                                            <action selector="deck7Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="6zX-5X-xZi"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T1-Td-dcw" userLabel="Deck8">
                                         <rect key="frame" x="108" y="0.0" width="100" height="138"/>
                                         <state key="normal" image="Hero Portrait small">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="Hero Portrait selected"/>
+                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <connections>
+                                            <action selector="deck8Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="iyF-gk-8We"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqM-Ct-2vN" userLabel="Deck9">
                                         <rect key="frame" x="216" y="0.0" width="100" height="138"/>
                                         <state key="normal" image="Hero Portrait small">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="Hero Portrait selected"/>
+                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <connections>
+                                            <action selector="deck9Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="yeD-O9-BhR"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -273,6 +313,15 @@
                     <connections>
                         <outlet property="cancelButton" destination="hbR-6Q-zfM" id="tWl-1q-CXS"/>
                         <outlet property="deck1" destination="Co6-XH-ltJ" id="TkZ-ek-rqE"/>
+                        <outlet property="deck2" destination="j7i-ge-HI9" id="aQ4-u9-E8a"/>
+                        <outlet property="deck3" destination="xt4-2t-TWk" id="5fx-aD-KiH"/>
+                        <outlet property="deck4" destination="Wez-eH-G08" id="HYE-nP-8f7"/>
+                        <outlet property="deck5" destination="ikv-3V-8nN" id="7NV-qa-df3"/>
+                        <outlet property="deck6" destination="ecH-z3-Kad" id="zMZ-qc-q7d"/>
+                        <outlet property="deck7" destination="LLI-Ze-ujl" id="qhe-9b-bFj"/>
+                        <outlet property="deck8" destination="5T1-Td-dcw" id="oEv-RW-orb"/>
+                        <outlet property="deck9" destination="eqM-Ct-2vN" id="9PX-jh-zdI"/>
+                        <outlet property="deckNameTxtField" destination="4eY-Rk-VYX" id="MFY-Ms-b4G"/>
                         <outlet property="saveButton" destination="EFi-C2-Du6" id="BeW-tO-k4e"/>
                     </connections>
                 </viewController>

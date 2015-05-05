@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch
         Data.init()
-        Data.sharedInstance.printData()
+        Data.sharedInstance.printGameData()
+        Data.sharedInstance.printDeckData()
 
         return true
     }
