@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController, UITableViewDelegate {
+class FirstViewController: UIViewController, UITableViewDelegate, UINavigationBarDelegate {
     
     @IBOutlet var decksTable: UITableView!
     
@@ -96,6 +96,14 @@ class FirstViewController: UIViewController, UITableViewDelegate {
         }
         
         
+    }
+    
+    // Have the nav bar show ok. 
+    // You need to crtl+drag the nav bar to the view controller in storyboard to create a delegate
+    // Then add "UINavigationBarDelegate" to the class on top
+    // And move the nav bar 20 points down
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition  {
+        return UIBarPosition.TopAttached
     }
 
 }

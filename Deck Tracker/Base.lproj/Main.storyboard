@@ -17,20 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SkM-54-h2F">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="fIF-0J-sV1">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="RAW-rK-1O6">
-                                            <connections>
-                                                <segue destination="3Yx-eb-t7J" kind="show" id="dRZ-kG-Qik"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BSa-1b-I34">
-                                <rect key="frame" x="0.0" y="44" width="600" height="506"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="30U-Yw-0gy" customClass="CustomCell" customModule="Deck_Tracker" customModuleProvider="target">
@@ -74,13 +62,28 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="FhZ-FP-X56"/>
                                 </connections>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SkM-54-h2F">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Decks" id="fIF-0J-sV1">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="RAW-rK-1O6">
+                                            <connections>
+                                                <segue destination="3Yx-eb-t7J" kind="show" id="dRZ-kG-Qik"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="1Uc-f7-XEX"/>
+                                </connections>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="BSa-1b-I34" secondAttribute="trailing" constant="-16" id="0VV-0w-EVE"/>
                             <constraint firstItem="BSa-1b-I34" firstAttribute="top" secondItem="SkM-54-h2F" secondAttribute="bottom" id="7J3-Ex-dMM"/>
                             <constraint firstAttribute="bottomMargin" secondItem="BSa-1b-I34" secondAttribute="bottom" constant="16" id="DVx-qw-5e4"/>
-                            <constraint firstItem="SkM-54-h2F" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" id="DlU-io-5kX"/>
+                            <constraint firstItem="SkM-54-h2F" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" constant="20" id="DlU-io-5kX"/>
                             <constraint firstItem="BSa-1b-I34" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="YFz-wx-BGi"/>
                             <constraint firstAttribute="bottomMargin" secondItem="BSa-1b-I34" secondAttribute="bottom" constant="50" id="YcJ-tX-bQW"/>
                             <constraint firstItem="SkM-54-h2F" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="dBh-mT-sHa"/>
@@ -173,7 +176,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YyE-nO-bIx">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Add Deck" id="r2Y-Cp-mY5">
                                         <barButtonItem key="leftBarButtonItem" systemItem="save" id="EFi-C2-Du6">
@@ -188,50 +191,53 @@
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="3Yx-eb-t7J" id="NZn-pI-CAI"/>
+                                </connections>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter deck name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4eY-Rk-VYX">
-                                <rect key="frame" x="16" y="74" width="568" height="30"/>
+                                <rect key="frame" x="16" y="94" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select class:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHb-zZ-K0P">
-                                <rect key="frame" x="252" y="112" width="97" height="21"/>
+                                <rect key="frame" x="252" y="132" width="97" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3j1-Yi-Phn" userLabel="Decks1-3">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3j1-Yi-Phn" userLabel="Decks1-3">
                                 <rect key="frame" x="142" y="141" width="316" height="138"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Co6-XH-ltJ" userLabel="Deck1">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Co6-XH-ltJ" userLabel="Deck1">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="138"/>
-                                        <state key="normal" image="Hero Portrait small">
+                                        <state key="normal" image="WarriorDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="Hero Portrait selected"/>
-                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <state key="selected" image="WarriorDeck Selected"/>
+                                        <state key="highlighted" image="WarriorDeck Selected"/>
                                         <connections>
                                             <action selector="deck1Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="rOY-bd-9yt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7i-ge-HI9" userLabel="Deck2">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7i-ge-HI9" userLabel="Deck2">
                                         <rect key="frame" x="108" y="0.0" width="100" height="138"/>
-                                        <state key="normal" image="Hero Portrait small">
+                                        <state key="normal" image="PaladinDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="Hero Portrait selected"/>
-                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <state key="selected" image="PaladinDeck Selected"/>
+                                        <state key="highlighted" image="PaladinDeck Selected"/>
                                         <connections>
                                             <action selector="deck2Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="Y8D-R5-dwf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xt4-2t-TWk" userLabel="Deck3">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xt4-2t-TWk" userLabel="Deck3">
                                         <rect key="frame" x="216" y="0.0" width="100" height="138"/>
-                                        <state key="normal" image="Hero Portrait small">
+                                        <state key="normal" image="ShamanDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="Hero Portrait selected"/>
-                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <state key="selected" image="ShamanDeck Selected"/>
+                                        <state key="highlighted" image="ShamanDeck Selected"/>
                                         <connections>
                                             <action selector="deck3Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="ul3-Ub-KB0"/>
                                         </connections>
@@ -249,38 +255,38 @@
                                     <constraint firstAttribute="trailing" secondItem="xt4-2t-TWk" secondAttribute="trailing" id="mSL-Cq-tvC"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Okm-0e-dbF" userLabel="Decks4-6">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Okm-0e-dbF" userLabel="Decks4-6">
                                 <rect key="frame" x="142" y="287" width="316" height="138"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wez-eH-G08" userLabel="Deck4">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wez-eH-G08" userLabel="Deck4">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="138"/>
-                                        <state key="normal" image="Hero Portrait small">
+                                        <state key="normal" image="HunterDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="Hero Portrait selected"/>
-                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <state key="selected" image="HunterDeck Selected"/>
+                                        <state key="highlighted" image="HunterDeck Selected"/>
                                         <connections>
                                             <action selector="deck4Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="Iga-Mo-aL8"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikv-3V-8nN" userLabel="Deck5">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikv-3V-8nN" userLabel="Deck5">
                                         <rect key="frame" x="108" y="0.0" width="100" height="138"/>
-                                        <state key="normal" image="Hero Portrait small">
+                                        <state key="normal" image="DruidDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="Hero Portrait selected"/>
-                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <state key="selected" image="DruidDeck Selected"/>
+                                        <state key="highlighted" image="DruidDeck Selected"/>
                                         <connections>
                                             <action selector="deck5Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="DMa-HE-Z8a"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-z3-Kad" userLabel="Deck6">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-z3-Kad" userLabel="Deck6">
                                         <rect key="frame" x="216" y="0.0" width="100" height="138"/>
-                                        <state key="normal" image="Hero Portrait small">
+                                        <state key="normal" image="RogueDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="Hero Portrait selected"/>
-                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <state key="selected" image="RogueDeck Selected"/>
+                                        <state key="highlighted" image="RogueDeck Selected"/>
                                         <connections>
                                             <action selector="deck6Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="ant-XE-Tn1"/>
                                         </connections>
@@ -298,38 +304,38 @@
                                     <constraint firstItem="ikv-3V-8nN" firstAttribute="top" secondItem="Okm-0e-dbF" secondAttribute="top" id="x2b-Mj-0P7"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zt-lT-XdG" userLabel="Decks7-9">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zt-lT-XdG" userLabel="Decks7-9">
                                 <rect key="frame" x="142" y="433" width="316" height="138"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLI-Ze-ujl" userLabel="Deck7">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLI-Ze-ujl" userLabel="Deck7">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="138"/>
-                                        <state key="normal" image="Hero Portrait small">
+                                        <state key="normal" image="MageDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="Hero Portrait selected"/>
-                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <state key="selected" image="MageDeck Selected"/>
+                                        <state key="highlighted" image="MageDeck Selected"/>
                                         <connections>
                                             <action selector="deck7Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="6zX-5X-xZi"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T1-Td-dcw" userLabel="Deck8">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T1-Td-dcw" userLabel="Deck8">
                                         <rect key="frame" x="108" y="0.0" width="100" height="138"/>
-                                        <state key="normal" image="Hero Portrait small">
+                                        <state key="normal" image="WarlockDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="Hero Portrait selected"/>
-                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <state key="selected" image="WarlockDeck Selected"/>
+                                        <state key="highlighted" image="WarlockDeck Selected"/>
                                         <connections>
                                             <action selector="deck8Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="iyF-gk-8We"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqM-Ct-2vN" userLabel="Deck9">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqM-Ct-2vN" userLabel="Deck9">
                                         <rect key="frame" x="216" y="0.0" width="100" height="138"/>
-                                        <state key="normal" image="Hero Portrait small">
+                                        <state key="normal" image="PriestDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="Hero Portrait selected"/>
-                                        <state key="highlighted" image="Hero Portrait selected"/>
+                                        <state key="selected" image="PriestDeck Selected"/>
+                                        <state key="highlighted" image="PriestDeck Selected"/>
                                         <connections>
                                             <action selector="deck9Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="yeD-O9-BhR"/>
                                         </connections>
@@ -350,7 +356,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YyE-nO-bIx" firstAttribute="top" secondItem="ayx-C0-w6I" secondAttribute="topMargin" id="5g1-KF-spJ"/>
+                            <constraint firstItem="YyE-nO-bIx" firstAttribute="top" secondItem="ayx-C0-w6I" secondAttribute="topMargin" constant="20" id="5g1-KF-spJ"/>
                             <constraint firstItem="Okm-0e-dbF" firstAttribute="leading" secondItem="3j1-Yi-Phn" secondAttribute="leading" id="AvP-vO-nL1"/>
                             <constraint firstItem="4eY-Rk-VYX" firstAttribute="trailing" secondItem="ayx-C0-w6I" secondAttribute="trailingMargin" id="CNY-r5-71S"/>
                             <constraint firstAttribute="centerX" secondItem="3j1-Yi-Phn" secondAttribute="centerX" id="ENI-vC-dJS"/>
@@ -388,9 +394,25 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DruidSmall" width="150" height="134"/>
-        <image name="Hero Portrait selected" width="100" height="138"/>
-        <image name="Hero Portrait small" width="100" height="138"/>
+        <image name="DruidDeck" width="95" height="50"/>
+        <image name="DruidDeck Selected" width="95" height="50"/>
+        <image name="DruidSmall" width="145" height="145"/>
+        <image name="HunterDeck" width="95" height="50"/>
+        <image name="HunterDeck Selected" width="95" height="50"/>
+        <image name="MageDeck" width="95" height="50"/>
+        <image name="MageDeck Selected" width="95" height="50"/>
+        <image name="PaladinDeck" width="95" height="50"/>
+        <image name="PaladinDeck Selected" width="95" height="50"/>
+        <image name="PriestDeck" width="95" height="50"/>
+        <image name="PriestDeck Selected" width="95" height="50"/>
+        <image name="RogueDeck" width="95" height="50"/>
+        <image name="RogueDeck Selected" width="95" height="50"/>
+        <image name="ShamanDeck" width="95" height="50"/>
+        <image name="ShamanDeck Selected" width="95" height="50"/>
+        <image name="WarlockDeck" width="95" height="50"/>
+        <image name="WarlockDeck Selected" width="95" height="50"/>
+        <image name="WarriorDeck" width="95" height="50"/>
+        <image name="WarriorDeck Selected" width="95" height="50"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>

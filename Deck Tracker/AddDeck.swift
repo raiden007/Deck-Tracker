@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDeck: UIViewController, UITextFieldDelegate {
+class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
 
     @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet var deck1: UIButton!
@@ -184,6 +184,17 @@ class AddDeck: UIViewController, UITextFieldDelegate {
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
+    
+    // Have the nav bar show ok.
+    // You need to crtl+drag the nav bar to the view controller in storyboard to create a delegate
+    // Then add "UINavigationBarDelegate" to the class on top
+    // And move the nav bar 20 points down
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition  {
+        return UIBarPosition.TopAttached
+    }
+    
+    //TODO: Add error when no name is entered
+    //TODO: Add error if no hero is selected
     
 
     /*
