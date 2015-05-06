@@ -17,6 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BSa-1b-I34">
+                                <rect key="frame" x="0.0" y="44" width="600" height="496"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="OPR-Gp-Y8w">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OPR-Gp-Y8w" id="G5V-Mf-F93">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="qf6-HX-Uw4"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="FhZ-FP-X56"/>
+                                </connections>
+                            </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SkM-54-h2F">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
@@ -33,12 +49,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="BSa-1b-I34" secondAttribute="trailing" constant="-16" id="0VV-0w-EVE"/>
+                            <constraint firstItem="BSa-1b-I34" firstAttribute="top" secondItem="SkM-54-h2F" secondAttribute="bottom" id="7J3-Ex-dMM"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="BSa-1b-I34" secondAttribute="bottom" constant="16" id="DVx-qw-5e4"/>
                             <constraint firstItem="SkM-54-h2F" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" id="DlU-io-5kX"/>
+                            <constraint firstItem="BSa-1b-I34" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="YFz-wx-BGi"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="BSa-1b-I34" secondAttribute="bottom" constant="60" id="YcJ-tX-bQW"/>
                             <constraint firstItem="SkM-54-h2F" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="dBh-mT-sHa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SkM-54-h2F" secondAttribute="trailing" constant="-16" id="l0i-2j-d5k"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="DVx-qw-5e4"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Decks" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="decksTable" destination="BSa-1b-I34" id="oQn-cp-Ij8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>

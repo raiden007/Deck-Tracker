@@ -61,9 +61,14 @@ public class Data {
         }
     }
     
-    // Adds a deck object to the array and save the array in NSUserDefaults
+    // Adds a deck object to the array
     func addDeck (newDeck: Deck) {
         listOfDecks.append(newDeck)
+        saveDeck()
+    }
+    
+    // Adds the decks list to NS User Defaults
+    func saveDeck () {
         let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfDecks as NSArray)
         NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "List of decks")
         NSUserDefaults.standardUserDefaults().synchronize()
@@ -82,6 +87,14 @@ public class Data {
         for (var i=0; i<listOfDecks.count; i++) {
             println(listOfDecks[i].toString())
         }
+    }
+    
+    // Deletes a deck from the array and updates the array
+    func deleteDeck(id:Int) {
+        listOfDecks.removeAtIndex(id)
+        saveDeck()
+        println("Deck deleted")
+        
     }
 
 

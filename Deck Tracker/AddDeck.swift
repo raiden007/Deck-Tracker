@@ -89,6 +89,7 @@ class AddDeck: UIViewController, UITextFieldDelegate {
         println(newDeck.toString())
         Data.sharedInstance.addDeck(newDeck)
 
+
         
         
         self.dismissViewControllerAnimated(true, completion: {})
