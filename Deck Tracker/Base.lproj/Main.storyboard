@@ -27,14 +27,14 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="30U-Yw-0gy" id="oA3-Kb-Dds">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiz-VB-6gG">
-                                                    <rect key="frame" x="66" y="0.0" width="526" height="43"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiz-VB-6gG">
+                                                    <rect key="frame" x="44" y="11" width="548" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="DruidSmall" translatesAutoresizingMaskIntoConstraints="NO" id="en7-U4-1BZ">
-                                                    <rect key="frame" x="8" y="0.0" width="50" height="43"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DruidSmall" translatesAutoresizingMaskIntoConstraints="NO" id="en7-U4-1BZ">
+                                                    <rect key="frame" x="-7" y="0.0" width="43" height="43"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="43" id="Fv3-ep-H9f"/>
                                                         <constraint firstAttribute="height" constant="43" id="dc5-Xt-pcN"/>
@@ -42,13 +42,11 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="hiz-VB-6gG" secondAttribute="bottom" constant="-8" id="21V-uX-OUz"/>
-                                                <constraint firstItem="en7-U4-1BZ" firstAttribute="top" secondItem="oA3-Kb-Dds" secondAttribute="topMargin" constant="-8" id="3ac-xG-MjN"/>
                                                 <constraint firstItem="hiz-VB-6gG" firstAttribute="leading" secondItem="en7-U4-1BZ" secondAttribute="trailing" constant="8" id="74x-J5-Go6"/>
-                                                <constraint firstItem="hiz-VB-6gG" firstAttribute="trailing" secondItem="oA3-Kb-Dds" secondAttribute="trailingMargin" id="TXu-37-qoI"/>
-                                                <constraint firstItem="hiz-VB-6gG" firstAttribute="top" secondItem="oA3-Kb-Dds" secondAttribute="topMargin" constant="-8" id="cqU-Qe-6VU"/>
-                                                <constraint firstItem="en7-U4-1BZ" firstAttribute="leading" secondItem="oA3-Kb-Dds" secondAttribute="leadingMargin" id="fIL-vI-NhN"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="en7-U4-1BZ" secondAttribute="bottom" constant="-8" id="h43-f5-Jhj"/>
+                                                <constraint firstAttribute="centerY" secondItem="hiz-VB-6gG" secondAttribute="centerY" id="Nfp-rM-0wh"/>
+                                                <constraint firstAttribute="centerY" secondItem="en7-U4-1BZ" secondAttribute="centerY" id="WUF-Ba-Yh4"/>
+                                                <constraint firstItem="en7-U4-1BZ" firstAttribute="leading" secondItem="oA3-Kb-Dds" secondAttribute="leadingMargin" constant="-15" id="nCs-vN-d2F"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hiz-VB-6gG" secondAttribute="trailing" id="vla-kW-Ef9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -198,7 +196,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter deck name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4eY-Rk-VYX">
                                 <rect key="frame" x="16" y="94" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select class:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHb-zZ-K0P">
                                 <rect key="frame" x="252" y="132" width="97" height="21"/>
@@ -206,11 +204,11 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3j1-Yi-Phn" userLabel="Decks1-3">
-                                <rect key="frame" x="142" y="141" width="316" height="138"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3j1-Yi-Phn" userLabel="Decks1-3">
+                                <rect key="frame" x="150" y="161" width="301" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Co6-XH-ltJ" userLabel="Deck1">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="138"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Co6-XH-ltJ" userLabel="Deck1">
+                                        <rect key="frame" x="0.0" y="0.0" width="95" height="50"/>
                                         <state key="normal" image="WarriorDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -220,8 +218,8 @@
                                             <action selector="deck1Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="rOY-bd-9yt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7i-ge-HI9" userLabel="Deck2">
-                                        <rect key="frame" x="108" y="0.0" width="100" height="138"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7i-ge-HI9" userLabel="Deck2">
+                                        <rect key="frame" x="103" y="0.0" width="95" height="50"/>
                                         <state key="normal" image="PaladinDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -231,8 +229,8 @@
                                             <action selector="deck2Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="Y8D-R5-dwf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xt4-2t-TWk" userLabel="Deck3">
-                                        <rect key="frame" x="216" y="0.0" width="100" height="138"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xt4-2t-TWk" userLabel="Deck3">
+                                        <rect key="frame" x="206" y="0.0" width="95" height="50"/>
                                         <state key="normal" image="ShamanDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -255,11 +253,11 @@
                                     <constraint firstAttribute="trailing" secondItem="xt4-2t-TWk" secondAttribute="trailing" id="mSL-Cq-tvC"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Okm-0e-dbF" userLabel="Decks4-6">
-                                <rect key="frame" x="142" y="287" width="316" height="138"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Okm-0e-dbF" userLabel="Decks4-6">
+                                <rect key="frame" x="150" y="219" width="301" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wez-eH-G08" userLabel="Deck4">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="138"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wez-eH-G08" userLabel="Deck4">
+                                        <rect key="frame" x="0.0" y="0.0" width="95" height="50"/>
                                         <state key="normal" image="HunterDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -269,8 +267,8 @@
                                             <action selector="deck4Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="Iga-Mo-aL8"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikv-3V-8nN" userLabel="Deck5">
-                                        <rect key="frame" x="108" y="0.0" width="100" height="138"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikv-3V-8nN" userLabel="Deck5">
+                                        <rect key="frame" x="103" y="0.0" width="95" height="50"/>
                                         <state key="normal" image="DruidDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -280,8 +278,8 @@
                                             <action selector="deck5Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="DMa-HE-Z8a"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-z3-Kad" userLabel="Deck6">
-                                        <rect key="frame" x="216" y="0.0" width="100" height="138"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-z3-Kad" userLabel="Deck6">
+                                        <rect key="frame" x="206" y="0.0" width="95" height="50"/>
                                         <state key="normal" image="RogueDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -304,11 +302,11 @@
                                     <constraint firstItem="ikv-3V-8nN" firstAttribute="top" secondItem="Okm-0e-dbF" secondAttribute="top" id="x2b-Mj-0P7"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zt-lT-XdG" userLabel="Decks7-9">
-                                <rect key="frame" x="142" y="433" width="316" height="138"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zt-lT-XdG" userLabel="Decks7-9">
+                                <rect key="frame" x="150" y="277" width="301" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLI-Ze-ujl" userLabel="Deck7">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="138"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLI-Ze-ujl" userLabel="Deck7">
+                                        <rect key="frame" x="0.0" y="0.0" width="95" height="50"/>
                                         <state key="normal" image="MageDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -318,8 +316,8 @@
                                             <action selector="deck7Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="6zX-5X-xZi"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T1-Td-dcw" userLabel="Deck8">
-                                        <rect key="frame" x="108" y="0.0" width="100" height="138"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T1-Td-dcw" userLabel="Deck8">
+                                        <rect key="frame" x="103" y="0.0" width="95" height="50"/>
                                         <state key="normal" image="WarlockDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -329,8 +327,8 @@
                                             <action selector="deck8Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="iyF-gk-8We"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqM-Ct-2vN" userLabel="Deck9">
-                                        <rect key="frame" x="216" y="0.0" width="100" height="138"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqM-Ct-2vN" userLabel="Deck9">
+                                        <rect key="frame" x="206" y="0.0" width="95" height="50"/>
                                         <state key="normal" image="PriestDeck">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
