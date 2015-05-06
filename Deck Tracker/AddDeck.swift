@@ -28,11 +28,8 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.deckNameTxtField.delegate = self
-//        var countTest:String  = String (NSUserDefaults.standardUserDefaults().integerForKey("Matches Count"))
- //       println("Count Test: " + countTest)
-
         // Do any additional setup after loading the view.
+        self.deckNameTxtField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,21 +75,45 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
 
         //MARK: Actual code
         // Get the atributes from the user
-        var deckName = deckNameTxtField.text
+        var deckName:String = deckNameTxtField.text
         var deckSelected = selectedDeck()
         var deckCount = NSUserDefaults.standardUserDefaults().integerForKey("Deck Count");
         deckCount++
         NSUserDefaults.standardUserDefaults().setInteger(deckCount, forKey: "Deck Count");
         NSUserDefaults.standardUserDefaults().synchronize()
         // Create a new Deck object and add it to the deck array
-        var newDeck = Deck(newDeckID: deckCount, newDeckName: deckName, newDeckClass: deckSelected)
-        println(newDeck.toString())
-        Data.sharedInstance.addDeck(newDeck)
+        if deckName != "" && deckSelected != "" {
+            var newDeck = Deck(newDeckID: deckCount, newDeckName: deckName, newDeckClass: deckSelected)
+            println(newDeck.toString())
+            Data.sharedInstance.addDeck(newDeck)
+            self.dismissViewControllerAnimated(true, completion: {})
+        } else {
+            if deckName == "" && deckSelected == "" {
+                let alert = UIAlertView()
+                alert.title = "Error"
+                alert.message = "Please enter a name and select a class"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            } else if deckSelected == "" {
+                let alert = UIAlertView()
+                alert.title = "Error"
+                alert.message = "No Deck Selected"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            } else if deckName == "" {
+                let alert = UIAlertView()
+                alert.title = "Error"
+                alert.message = "Please enter a name"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            }
+        }
+
 
 
         
         
-        self.dismissViewControllerAnimated(true, completion: {})
+        
         
     }
     

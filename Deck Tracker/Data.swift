@@ -28,8 +28,8 @@ public class Data {
         } else if (self.readDeckData() == nil){
             println("Decks database empty")
         } else {
-            listOfGames += self.readGameData()!
-            listOfDecks += self.readDeckData()!
+            listOfGames = self.readGameData()!
+            listOfDecks = self.readDeckData()!
         }
     }
     

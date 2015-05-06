@@ -18,7 +18,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UINavigationBa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        readData()
+        //readData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +55,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UINavigationBa
         if Data.sharedInstance.readDeckData() == nil {
             
         } else {
-            decksList = Data.sharedInstance.readDeckData()!
+            decksList = Data.sharedInstance.listOfDecks
         }
     }
     
@@ -65,7 +65,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UINavigationBa
             var index = indexPath.row
             Data.sharedInstance.deleteDeck(index)
             readData()
-            self.decksTable.reloadData()
+            self.decksTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             println("Deck deleted")
         }
     }
