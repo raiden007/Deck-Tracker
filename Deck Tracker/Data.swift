@@ -96,7 +96,7 @@ public class Data {
         println("Deck deleted")
         
     }
-
+    
 
     // Calculates the general win rate of the user (all games)
     func generalWinRate() -> Double {

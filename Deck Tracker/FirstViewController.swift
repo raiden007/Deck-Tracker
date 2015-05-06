@@ -33,8 +33,13 @@ class FirstViewController: UIViewController, UITableViewDelegate {
     
     // Populates the table with data
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = decksList[indexPath.row].toString()
+        //let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        let cell:CustomCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! CustomCell
+        //cell.textLabel?.text = decksList[indexPath.row].toString()
+        cell.customLabel.text = decksList[indexPath.row].getName()
+        var image = decksList[indexPath.row].getClass()
+        var imageName = getImage(image)
+        cell.customImage.image = UIImage(named: imageName)
         return cell
     }
     
@@ -60,9 +65,37 @@ class FirstViewController: UIViewController, UITableViewDelegate {
             var index = indexPath.row
             Data.sharedInstance.deleteDeck(index)
             readData()
-            println(decksList)
             self.decksTable.reloadData()
+            println("Deck deleted")
         }
+    }
+    
+    // Returns the image depeding on the deck class
+    func getImage (str:String) -> String {
+        
+        if str == "Warrior" {
+            return "WarriorSmall"
+        } else if str == "Paladin" {
+            return "PaladinSmall"
+        } else if str == "Shaman" {
+            return "ShamanSmall"
+        } else if str == "Druid" {
+            return "DruidSmall"
+        } else if str == "Rogue" {
+            return "RogueSmall"
+        } else if str == "Mage" {
+            return "MageSmall"
+        } else if str == "Warlock" {
+            return "WarlockSmall"
+        } else if str == "Priest" {
+            return "PriestSmall"
+        } else if str == "Hunter" {
+            return "HunterSmall"
+        } else {
+            return ""
+        }
+        
+        
     }
 
 }
