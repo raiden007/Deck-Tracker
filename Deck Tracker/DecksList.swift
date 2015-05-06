@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  Decks.swift
 //  Deck Tracker
 //
 //  Created by Andrei Joghiu on 28/4/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController, UITableViewDelegate, UINavigationBarDelegate {
+class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate {
     
     @IBOutlet var decksTable: UITableView!
     
