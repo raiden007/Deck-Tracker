@@ -69,7 +69,7 @@ class AddDeck: UIViewController, UITextFieldDelegate {
         NSUserDefaults.standardUserDefaults().synchronize()
 
         // Adding a match into the array
-        var newGame = Game(idNumber: matchesCount, newDate: dateString, playerDeck: "abc", opponentDeck: "asdhasdhaosuddas", coin: true, win: false)
+        var newGame = Game(newID: matchesCount, newDate: dateString, newPlayerDeck: "abc", newOpponentDeck: "asdhasdhaosuddas", newCoin: true, newWin: false)
         println(newGame.toString())
         
         // Add to Data class file
@@ -77,13 +77,14 @@ class AddDeck: UIViewController, UITextFieldDelegate {
         
 
         //MARK: Actual code
+        // Get the atributes from the user
         var deckName = deckNameTxtField.text
         var deckSelected = selectedDeck()
         var deckCount = NSUserDefaults.standardUserDefaults().integerForKey("Deck Count");
         deckCount++
         NSUserDefaults.standardUserDefaults().setInteger(deckCount, forKey: "Deck Count");
         NSUserDefaults.standardUserDefaults().synchronize()
-        
+        // Create a new Deck object and add it to the deck array
         var newDeck = Deck(newDeckID: deckCount, newDeckName: deckName, newDeckClass: deckSelected)
         println(newDeck.toString())
         Data.sharedInstance.addDeck(newDeck)
