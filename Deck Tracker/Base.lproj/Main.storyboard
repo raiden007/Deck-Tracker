@@ -194,12 +194,21 @@
                                     <outlet property="delegate" destination="fCr-0X-kz0" id="eEZ-Kq-KQl"/>
                                 </connections>
                             </navigationBar>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="pZ0-tR-p2L">
+                                <rect key="frame" x="0.0" y="64" width="600" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="452686642.296911">
+                                    <!--2015-05-07 10:17:22 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="pZ0-tR-p2L" secondAttribute="trailing" constant="-16" id="ENM-Gv-0of"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AA7-XV-3vF" secondAttribute="trailing" constant="-16" id="deo-gN-Pos"/>
+                            <constraint firstItem="pZ0-tR-p2L" firstAttribute="top" secondItem="AA7-XV-3vF" secondAttribute="bottom" id="gvj-Sv-4mL"/>
                             <constraint firstItem="AA7-XV-3vF" firstAttribute="leading" secondItem="mx3-Ke-qap" secondAttribute="leadingMargin" constant="-16" id="hNX-pg-hlY"/>
                             <constraint firstItem="AA7-XV-3vF" firstAttribute="top" secondItem="mx3-Ke-qap" secondAttribute="topMargin" constant="20" id="jrF-ms-19w"/>
+                            <constraint firstItem="pZ0-tR-p2L" firstAttribute="leading" secondItem="mx3-Ke-qap" secondAttribute="leadingMargin" constant="-16" id="rDh-Ep-kCw"/>
                         </constraints>
                     </view>
                     <connections>

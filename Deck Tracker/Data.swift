@@ -97,6 +97,10 @@ public class Data {
         
     }
     
+    
+
+    
+    
 
     // Calculates the general win rate of the user (all games)
     func generalWinRate() -> Double {

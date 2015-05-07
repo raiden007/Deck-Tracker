@@ -13,12 +13,20 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     @IBOutlet var decksTable: UITableView!
     
     var decksList:[Deck] = []
+    var indexOfSelectedDeck:Int = -1
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //readData()
+        readData()
+        var savedUserDefaults = readSelectedDeck()
+        for var i = 0; i < decksList.count; i++ {
+            if savedUserDefaults == decksList[i].getID() {
+                indexOfSelectedDeck = i
+                break
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,12 +43,48 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let cell:CustomCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! CustomCell
-        //cell.textLabel?.text = decksList[indexPath.row].toString()
         cell.customLabel.text = decksList[indexPath.row].getName()
         var image = decksList[indexPath.row].getClass()
         var imageName = getImage(image)
         cell.customImage.image = UIImage(named: imageName)
+        //cell.accessoryType = UITableViewCellAccessoryType.None
+        if indexPath.row == indexOfSelectedDeck {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
+        }
         return cell
+    }
+    
+    // Adds a checkmark to the selected row
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        var selectedDeck = decksList[indexPath.row]
+        saveSelectedDeck(selectedDeck)
+        readSelectedDeck()
+        indexOfSelectedDeck = indexPath.row
+        tableView.reloadData()
+    }
+    
+    // Saves the selected deck in NSUserDefaults
+    func saveSelectedDeck(deck : Deck) {
+        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setInteger(deck.getID(), forKey: "Selected Deck")
+        defaults.synchronize()
+    }
+    
+    // Reads the selected in NSUserDefaults
+    func readSelectedDeck() -> Int {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let id:Int = defaults.integerForKey("Selected Deck")
+        return id
+    }
+    
+    // Deselects the row if you select another
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.None
     }
     
     // Refreshes the view after adding a deck
