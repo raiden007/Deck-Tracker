@@ -205,11 +205,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3j1-Yi-Phn" userLabel="Decks1-3">
-                                <rect key="frame" x="150" y="161" width="301" height="50"/>
+                                <rect key="frame" x="16" y="161" width="568" height="72"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Co6-XH-ltJ" userLabel="Deck1">
-                                        <rect key="frame" x="0.0" y="0.0" width="95" height="50"/>
-                                        <state key="normal" image="WarriorDeck">
+                                        <rect key="frame" x="136" y="0.0" width="72" height="72"/>
+                                        <state key="normal" image="WarriorSmall">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="WarriorDeck Selected"/>
@@ -218,20 +218,9 @@
                                             <action selector="deck1Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="rOY-bd-9yt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7i-ge-HI9" userLabel="Deck2">
-                                        <rect key="frame" x="103" y="0.0" width="95" height="50"/>
-                                        <state key="normal" image="PaladinDeck">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="selected" image="PaladinDeck Selected"/>
-                                        <state key="highlighted" image="PaladinDeck Selected"/>
-                                        <connections>
-                                            <action selector="deck2Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="Y8D-R5-dwf"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xt4-2t-TWk" userLabel="Deck3">
-                                        <rect key="frame" x="206" y="0.0" width="95" height="50"/>
-                                        <state key="normal" image="ShamanDeck">
+                                        <rect key="frame" x="360" y="0.0" width="72" height="72"/>
+                                        <state key="normal" image="ShamanSmall">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="ShamanDeck Selected"/>
@@ -240,25 +229,61 @@
                                             <action selector="deck3Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="ul3-Ub-KB0"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7i-ge-HI9" userLabel="Deck2">
+                                        <rect key="frame" x="248" y="0.0" width="72" height="72"/>
+                                        <state key="normal" image="PaladinSmall">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="PaladinDeck Selected"/>
+                                        <state key="highlighted" image="PaladinDeck Selected"/>
+                                        <connections>
+                                            <action selector="deck2Pressed:" destination="3Yx-eb-t7J" eventType="touchUpInside" id="Y8D-R5-dwf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="j7i-ge-HI9" secondAttribute="centerX" id="0ea-H4-QLf"/>
+                                    <constraint firstAttribute="bottom" secondItem="j7i-ge-HI9" secondAttribute="bottom" id="1xT-jX-Cf7"/>
                                     <constraint firstItem="j7i-ge-HI9" firstAttribute="top" secondItem="Co6-XH-ltJ" secondAttribute="top" id="3PB-tu-gcy"/>
                                     <constraint firstItem="Co6-XH-ltJ" firstAttribute="leading" secondItem="3j1-Yi-Phn" secondAttribute="leading" id="5R5-qs-Iq3"/>
+                                    <constraint firstAttribute="trailing" secondItem="xt4-2t-TWk" secondAttribute="trailing" id="E7q-IV-sUq"/>
                                     <constraint firstItem="j7i-ge-HI9" firstAttribute="top" secondItem="3j1-Yi-Phn" secondAttribute="top" id="Fkj-Nk-reh"/>
                                     <constraint firstItem="j7i-ge-HI9" firstAttribute="top" secondItem="xt4-2t-TWk" secondAttribute="top" id="HSW-Cb-R1l"/>
+                                    <constraint firstItem="Co6-XH-ltJ" firstAttribute="leading" secondItem="3j1-Yi-Phn" secondAttribute="leading" id="Kvx-Tr-WIg"/>
+                                    <constraint firstItem="xt4-2t-TWk" firstAttribute="leading" secondItem="j7i-ge-HI9" secondAttribute="trailing" constant="40" id="LkE-vK-6ia"/>
+                                    <constraint firstItem="Co6-XH-ltJ" firstAttribute="top" secondItem="3j1-Yi-Phn" secondAttribute="top" id="NCU-NU-yEG"/>
                                     <constraint firstAttribute="bottom" secondItem="j7i-ge-HI9" secondAttribute="bottom" id="NjD-Nu-GYw"/>
+                                    <constraint firstAttribute="bottom" secondItem="xt4-2t-TWk" secondAttribute="bottom" id="PBJ-NM-N9K"/>
                                     <constraint firstItem="xt4-2t-TWk" firstAttribute="leading" secondItem="j7i-ge-HI9" secondAttribute="trailing" constant="8" symbolic="YES" id="XaC-Mx-Cfe"/>
+                                    <constraint firstItem="j7i-ge-HI9" firstAttribute="leading" secondItem="Co6-XH-ltJ" secondAttribute="trailing" constant="40" id="Y7J-PF-tbP"/>
+                                    <constraint firstItem="j7i-ge-HI9" firstAttribute="top" secondItem="3j1-Yi-Phn" secondAttribute="top" id="YCY-Q0-bd7"/>
                                     <constraint firstItem="j7i-ge-HI9" firstAttribute="leading" secondItem="Co6-XH-ltJ" secondAttribute="trailing" constant="8" symbolic="YES" id="cEk-cZ-Zod"/>
+                                    <constraint firstAttribute="bottom" secondItem="Co6-XH-ltJ" secondAttribute="bottom" id="lLC-QI-Ntf"/>
                                     <constraint firstAttribute="trailing" secondItem="xt4-2t-TWk" secondAttribute="trailing" id="mSL-Cq-tvC"/>
+                                    <constraint firstItem="xt4-2t-TWk" firstAttribute="top" secondItem="3j1-Yi-Phn" secondAttribute="top" id="uWQ-rH-lwm"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5R5-qs-Iq3"/>
+                                        <exclude reference="Kvx-Tr-WIg"/>
+                                        <exclude reference="3PB-tu-gcy"/>
+                                        <exclude reference="Fkj-Nk-reh"/>
+                                        <exclude reference="HSW-Cb-R1l"/>
+                                        <exclude reference="NjD-Nu-GYw"/>
+                                        <exclude reference="cEk-cZ-Zod"/>
+                                        <exclude reference="E7q-IV-sUq"/>
+                                        <exclude reference="XaC-Mx-Cfe"/>
+                                        <exclude reference="mSL-Cq-tvC"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Okm-0e-dbF" userLabel="Decks4-6">
-                                <rect key="frame" x="150" y="219" width="301" height="50"/>
+                                <rect key="frame" x="16" y="273" width="568" height="72"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wez-eH-G08" userLabel="Deck4">
-                                        <rect key="frame" x="0.0" y="0.0" width="95" height="50"/>
-                                        <state key="normal" image="HunterDeck">
+                                        <rect key="frame" x="136" y="0.0" width="72" height="72"/>
+                                        <state key="normal" image="HunterSmall">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="HunterDeck Selected"/>
@@ -268,8 +293,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikv-3V-8nN" userLabel="Deck5">
-                                        <rect key="frame" x="103" y="0.0" width="95" height="50"/>
-                                        <state key="normal" image="DruidDeck">
+                                        <rect key="frame" x="248" y="0.0" width="72" height="72"/>
+                                        <state key="normal" image="DruidSmall">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="DruidDeck Selected"/>
@@ -279,8 +304,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-z3-Kad" userLabel="Deck6">
-                                        <rect key="frame" x="206" y="0.0" width="95" height="50"/>
-                                        <state key="normal" image="RogueDeck">
+                                        <rect key="frame" x="360" y="0.0" width="72" height="72"/>
+                                        <state key="normal" image="RogueSmall">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="RogueDeck Selected"/>
@@ -292,22 +317,43 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="ecH-z3-Kad" firstAttribute="leading" secondItem="ikv-3V-8nN" secondAttribute="trailing" constant="40" id="8E5-Uc-UCA"/>
+                                    <constraint firstItem="ikv-3V-8nN" firstAttribute="leading" secondItem="Wez-eH-G08" secondAttribute="trailing" constant="40" id="H4b-om-psl"/>
                                     <constraint firstItem="Wez-eH-G08" firstAttribute="leading" secondItem="Okm-0e-dbF" secondAttribute="leading" id="JIh-U4-Fpl"/>
+                                    <constraint firstItem="ecH-z3-Kad" firstAttribute="top" secondItem="Okm-0e-dbF" secondAttribute="top" id="LLN-DW-V3Z"/>
                                     <constraint firstItem="ikv-3V-8nN" firstAttribute="top" secondItem="ecH-z3-Kad" secondAttribute="top" id="S5O-No-DWC"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wez-eH-G08" secondAttribute="bottom" id="VE2-Ej-hf4"/>
                                     <constraint firstItem="ecH-z3-Kad" firstAttribute="leading" secondItem="ikv-3V-8nN" secondAttribute="trailing" constant="8" symbolic="YES" id="Vqc-Sg-JGL"/>
+                                    <constraint firstAttribute="bottom" secondItem="ecH-z3-Kad" secondAttribute="bottom" id="Znb-0z-vjW"/>
+                                    <constraint firstAttribute="centerX" secondItem="ikv-3V-8nN" secondAttribute="centerX" id="aDr-6R-2uz"/>
                                     <constraint firstItem="ikv-3V-8nN" firstAttribute="top" secondItem="Wez-eH-G08" secondAttribute="top" id="jlv-oc-X4W"/>
+                                    <constraint firstAttribute="bottom" secondItem="ikv-3V-8nN" secondAttribute="bottom" id="lAW-Jd-2uo"/>
                                     <constraint firstAttribute="bottom" secondItem="ikv-3V-8nN" secondAttribute="bottom" id="nv4-Lp-Ddm"/>
+                                    <constraint firstItem="ikv-3V-8nN" firstAttribute="top" secondItem="Okm-0e-dbF" secondAttribute="top" id="oIL-S0-I85"/>
                                     <constraint firstItem="ikv-3V-8nN" firstAttribute="leading" secondItem="Wez-eH-G08" secondAttribute="trailing" constant="8" symbolic="YES" id="q3o-bk-2aq"/>
                                     <constraint firstAttribute="trailing" secondItem="ecH-z3-Kad" secondAttribute="trailing" id="tbe-ej-Ic6"/>
                                     <constraint firstItem="ikv-3V-8nN" firstAttribute="top" secondItem="Okm-0e-dbF" secondAttribute="top" id="x2b-Mj-0P7"/>
+                                    <constraint firstItem="Wez-eH-G08" firstAttribute="top" secondItem="Okm-0e-dbF" secondAttribute="top" id="y1U-ws-33g"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="JIh-U4-Fpl"/>
+                                        <exclude reference="S5O-No-DWC"/>
+                                        <exclude reference="jlv-oc-X4W"/>
+                                        <exclude reference="nv4-Lp-Ddm"/>
+                                        <exclude reference="q3o-bk-2aq"/>
+                                        <exclude reference="x2b-Mj-0P7"/>
+                                        <exclude reference="Vqc-Sg-JGL"/>
+                                        <exclude reference="tbe-ej-Ic6"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zt-lT-XdG" userLabel="Decks7-9">
-                                <rect key="frame" x="150" y="277" width="301" height="50"/>
+                                <rect key="frame" x="16" y="385" width="568" height="72"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLI-Ze-ujl" userLabel="Deck7">
-                                        <rect key="frame" x="0.0" y="0.0" width="95" height="50"/>
-                                        <state key="normal" image="MageDeck">
+                                        <rect key="frame" x="136" y="0.0" width="72" height="72"/>
+                                        <state key="normal" image="MageSmall">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="MageDeck Selected"/>
@@ -317,8 +363,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T1-Td-dcw" userLabel="Deck8">
-                                        <rect key="frame" x="103" y="0.0" width="95" height="50"/>
-                                        <state key="normal" image="WarlockDeck">
+                                        <rect key="frame" x="248" y="0.0" width="72" height="72"/>
+                                        <state key="normal" image="WarlockSmall">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="WarlockDeck Selected"/>
@@ -328,8 +374,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqM-Ct-2vN" userLabel="Deck9">
-                                        <rect key="frame" x="206" y="0.0" width="95" height="50"/>
-                                        <state key="normal" image="PriestDeck">
+                                        <rect key="frame" x="360" y="0.0" width="72" height="72"/>
+                                        <state key="normal" image="PriestSmall">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="PriestDeck Selected"/>
@@ -343,13 +389,34 @@
                                 <constraints>
                                     <constraint firstItem="5T1-Td-dcw" firstAttribute="top" secondItem="LLI-Ze-ujl" secondAttribute="top" id="2B9-nh-54G"/>
                                     <constraint firstAttribute="trailing" secondItem="eqM-Ct-2vN" secondAttribute="trailing" id="9lU-f7-IPe"/>
+                                    <constraint firstItem="eqM-Ct-2vN" firstAttribute="leading" secondItem="5T1-Td-dcw" secondAttribute="trailing" constant="40" id="9xe-Sg-ozt"/>
                                     <constraint firstItem="LLI-Ze-ujl" firstAttribute="leading" secondItem="6zt-lT-XdG" secondAttribute="leading" id="C0w-mM-Kf6"/>
+                                    <constraint firstAttribute="bottom" secondItem="LLI-Ze-ujl" secondAttribute="bottom" id="FqI-Xa-wME"/>
+                                    <constraint firstItem="LLI-Ze-ujl" firstAttribute="top" secondItem="6zt-lT-XdG" secondAttribute="top" id="ITG-1g-pgw"/>
                                     <constraint firstItem="5T1-Td-dcw" firstAttribute="top" secondItem="6zt-lT-XdG" secondAttribute="top" id="JtE-r1-9SI"/>
                                     <constraint firstItem="5T1-Td-dcw" firstAttribute="top" secondItem="eqM-Ct-2vN" secondAttribute="top" id="KSt-aR-6u9"/>
+                                    <constraint firstAttribute="bottom" secondItem="5T1-Td-dcw" secondAttribute="bottom" id="N08-oz-gAV"/>
+                                    <constraint firstItem="5T1-Td-dcw" firstAttribute="top" secondItem="6zt-lT-XdG" secondAttribute="top" id="SLU-N3-XYU"/>
                                     <constraint firstItem="5T1-Td-dcw" firstAttribute="leading" secondItem="LLI-Ze-ujl" secondAttribute="trailing" constant="8" symbolic="YES" id="Sf9-Yw-4Md"/>
                                     <constraint firstItem="eqM-Ct-2vN" firstAttribute="leading" secondItem="5T1-Td-dcw" secondAttribute="trailing" constant="8" symbolic="YES" id="U1J-la-VYY"/>
+                                    <constraint firstAttribute="centerX" secondItem="5T1-Td-dcw" secondAttribute="centerX" id="VV2-gR-cAR"/>
                                     <constraint firstAttribute="bottom" secondItem="5T1-Td-dcw" secondAttribute="bottom" id="ja2-Vk-FCn"/>
+                                    <constraint firstAttribute="bottom" secondItem="eqM-Ct-2vN" secondAttribute="bottom" id="jh2-Eo-8tw"/>
+                                    <constraint firstItem="5T1-Td-dcw" firstAttribute="leading" secondItem="LLI-Ze-ujl" secondAttribute="trailing" constant="40" id="jqq-5e-ffF"/>
+                                    <constraint firstItem="eqM-Ct-2vN" firstAttribute="top" secondItem="6zt-lT-XdG" secondAttribute="top" id="kiP-xz-NEu"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="C0w-mM-Kf6"/>
+                                        <exclude reference="2B9-nh-54G"/>
+                                        <exclude reference="JtE-r1-9SI"/>
+                                        <exclude reference="KSt-aR-6u9"/>
+                                        <exclude reference="Sf9-Yw-4Md"/>
+                                        <exclude reference="ja2-Vk-FCn"/>
+                                        <exclude reference="9lU-f7-IPe"/>
+                                        <exclude reference="U1J-la-VYY"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -359,16 +426,28 @@
                             <constraint firstItem="4eY-Rk-VYX" firstAttribute="trailing" secondItem="ayx-C0-w6I" secondAttribute="trailingMargin" id="CNY-r5-71S"/>
                             <constraint firstAttribute="centerX" secondItem="3j1-Yi-Phn" secondAttribute="centerX" id="ENI-vC-dJS"/>
                             <constraint firstItem="3j1-Yi-Phn" firstAttribute="top" secondItem="KHb-zZ-K0P" secondAttribute="bottom" constant="8" id="FK1-gt-crj"/>
-                            <constraint firstItem="6zt-lT-XdG" firstAttribute="top" secondItem="Okm-0e-dbF" secondAttribute="bottom" constant="8" symbolic="YES" id="G0L-UI-qVg"/>
+                            <constraint firstItem="6zt-lT-XdG" firstAttribute="top" secondItem="Okm-0e-dbF" secondAttribute="bottom" constant="40" id="G0L-UI-qVg"/>
+                            <constraint firstItem="6zt-lT-XdG" firstAttribute="leading" secondItem="ayx-C0-w6I" secondAttribute="leadingMargin" id="HuH-VH-hpy"/>
                             <constraint firstItem="4eY-Rk-VYX" firstAttribute="top" secondItem="YyE-nO-bIx" secondAttribute="bottom" constant="30" id="JAG-WH-QWD"/>
-                            <constraint firstItem="Okm-0e-dbF" firstAttribute="top" secondItem="3j1-Yi-Phn" secondAttribute="bottom" constant="8" symbolic="YES" id="SFz-TA-z4x"/>
+                            <constraint firstItem="6zt-lT-XdG" firstAttribute="trailing" secondItem="ayx-C0-w6I" secondAttribute="trailingMargin" id="Jpf-gQ-fMF"/>
+                            <constraint firstItem="Okm-0e-dbF" firstAttribute="leading" secondItem="ayx-C0-w6I" secondAttribute="leadingMargin" id="P7j-wr-dM4"/>
+                            <constraint firstItem="Okm-0e-dbF" firstAttribute="top" secondItem="3j1-Yi-Phn" secondAttribute="bottom" constant="40" id="SFz-TA-z4x"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YyE-nO-bIx" secondAttribute="trailing" constant="-16" id="Tjg-ax-rw9"/>
                             <constraint firstItem="6zt-lT-XdG" firstAttribute="leading" secondItem="Okm-0e-dbF" secondAttribute="leading" id="Yuh-kR-Xgg"/>
                             <constraint firstAttribute="centerX" secondItem="KHb-zZ-K0P" secondAttribute="centerX" id="b3K-K5-EeD"/>
+                            <constraint firstItem="3j1-Yi-Phn" firstAttribute="leading" secondItem="ayx-C0-w6I" secondAttribute="leadingMargin" id="jNd-WL-n3d"/>
                             <constraint firstItem="4eY-Rk-VYX" firstAttribute="leading" secondItem="ayx-C0-w6I" secondAttribute="leadingMargin" id="oCb-Yt-RFL"/>
                             <constraint firstItem="KHb-zZ-K0P" firstAttribute="top" secondItem="4eY-Rk-VYX" secondAttribute="bottom" constant="8" id="oeQ-3u-ag5"/>
+                            <constraint firstItem="3j1-Yi-Phn" firstAttribute="trailing" secondItem="ayx-C0-w6I" secondAttribute="trailingMargin" id="qWN-88-8Ne"/>
                             <constraint firstItem="YyE-nO-bIx" firstAttribute="leading" secondItem="ayx-C0-w6I" secondAttribute="leadingMargin" constant="-16" id="uSp-ye-6pc"/>
+                            <constraint firstItem="Okm-0e-dbF" firstAttribute="trailing" secondItem="ayx-C0-w6I" secondAttribute="trailingMargin" id="wCf-63-sub"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AvP-vO-nL1"/>
+                                <exclude reference="Yuh-kR-Xgg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="cIk-sg-7sU"/>
                     <connections>
@@ -392,25 +471,24 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DruidDeck" width="95" height="50"/>
         <image name="DruidDeck Selected" width="95" height="50"/>
-        <image name="DruidSmall" width="145" height="145"/>
-        <image name="HunterDeck" width="95" height="50"/>
+        <image name="DruidSmall" width="72" height="72"/>
         <image name="HunterDeck Selected" width="95" height="50"/>
-        <image name="MageDeck" width="95" height="50"/>
+        <image name="HunterSmall" width="72" height="72"/>
         <image name="MageDeck Selected" width="95" height="50"/>
-        <image name="PaladinDeck" width="95" height="50"/>
+        <image name="MageSmall" width="72" height="72"/>
         <image name="PaladinDeck Selected" width="95" height="50"/>
-        <image name="PriestDeck" width="95" height="50"/>
+        <image name="PaladinSmall" width="72" height="72"/>
         <image name="PriestDeck Selected" width="95" height="50"/>
-        <image name="RogueDeck" width="95" height="50"/>
+        <image name="PriestSmall" width="72" height="72"/>
         <image name="RogueDeck Selected" width="95" height="50"/>
-        <image name="ShamanDeck" width="95" height="50"/>
+        <image name="RogueSmall" width="72" height="72"/>
         <image name="ShamanDeck Selected" width="95" height="50"/>
-        <image name="WarlockDeck" width="95" height="50"/>
+        <image name="ShamanSmall" width="72" height="72"/>
         <image name="WarlockDeck Selected" width="95" height="50"/>
-        <image name="WarriorDeck" width="95" height="50"/>
+        <image name="WarlockSmall" width="72" height="72"/>
         <image name="WarriorDeck Selected" width="95" height="50"/>
+        <image name="WarriorSmall" width="72" height="72"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
