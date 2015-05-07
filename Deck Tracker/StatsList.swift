@@ -8,7 +8,10 @@
 
 import UIKit
 
-class StatsList: UIViewController, UINavigationBarDelegate {
+class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate {
+    
+    @IBOutlet var statsTable: UITableView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,17 @@ class StatsList: UIViewController, UINavigationBarDelegate {
     // And move the nav bar 20 points down
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition  {
         return UIBarPosition.TopAttached
+    }
+    
+    // Gets the number of rows to be displayed in the table
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    // Populates the table with data
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        return cell
     }
 
 }
