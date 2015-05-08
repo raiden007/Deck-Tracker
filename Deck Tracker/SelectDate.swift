@@ -27,7 +27,6 @@ class SelectDate: UIViewController {
     @IBAction func datePickerChanged(sender: UIDatePicker) {
         
         var newDate = datePicker.date
-        println(newDate)
         dateToString(newDate)
         saveDate(newDate)
         readDate()
@@ -37,7 +36,6 @@ class SelectDate: UIViewController {
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.ShortStyle
         let dateString = formatter.stringFromDate(date)
-        println(dateString)
         return dateString
     }
     
@@ -50,11 +48,11 @@ class SelectDate: UIViewController {
     func readDate() -> NSDate {
         let defaults = NSUserDefaults.standardUserDefaults()
         if let date:NSDate = defaults.objectForKey("Saved Date") as? NSDate {
-            println("Date retrieved")
+            //println("Date retrieved")
             return date
         }
         else {
-            println("Switched to today's date.")
+            //println("Switched to today's date.")
             return NSDate()
         }
     }

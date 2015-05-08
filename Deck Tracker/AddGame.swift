@@ -32,19 +32,65 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Puts today date on the date label
         var today = dateToday()
         dateCellLabel.text = "Date: " + today
+        putSelectedDeckNameOnLabel()
         
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        // Puts the selected date on the date label
         var x = SelectDate()
         var newDate = x.readDate()
         var newDateString = x.dateToString(newDate)
-        println(newDate)
         dateCellLabel.text = "Date: " + newDateString
+        putSelectedDeckNameOnLabel()
+        putSelectedOpponentClassOnLabel()
+    }
+    
+    // Reads the selected deck name from NSUserDefaults
+    func readSelectedDeckName() -> String {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let name = defaults.stringForKey("Selected Deck Name") as String!
+        if name == nil {
+            return ""
+        } else {
+            return name
+        }
+    }
+    
+    // Gets the selected deck from NSUserDefaults and puts it on the label
+    func putSelectedDeckNameOnLabel() {
+        var selectedDeck = readSelectedDeckName()
+        if selectedDeck == "" {
+            playerDeckLabel.text = "You need to select a deck first"
+        } else {
+            playerDeckLabel.text = "Your deck: " + selectedDeck
+        }
+    }
+    
+    // Puts opponent's class in NSUserDefaults
+    func putSelectedOpponentClassOnLabel() {
+        var selectedOpponentClass = readSelectedOpponentClass()
+        if selectedOpponentClass == "" {
+            opponentDeckLabel.text = "Select Opponent's Class"
+        } else {
+            opponentDeckLabel.text = "Opponent's class: " + selectedOpponentClass
+        }
+    }
+    
+    // Reads the selected opponent's class from NSUserDefaults
+    func readSelectedOpponentClass() -> String {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let name:String = defaults.stringForKey("Opponent Class") as String! {
+            return name
+        } else {
+            return ""
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,10 +106,11 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         return UIBarPosition.TopAttached
     }
     
-    // Remove the selected date from NSUserDefaults and dismissed the screen
+    // Remove the selected date and selected opponent class from NSUserDefaults and dismissed the screen
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey("Saved Date")
+        defaults.removeObjectForKey("Opponent Class")
         defaults.synchronize()
         self.dismissViewControllerAnimated(true, completion: {})
     }
@@ -77,10 +124,11 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         return dateString
     }
     
-    // Removes the selected date from NSUserDefaults and sends all the info to the Game List
+    // Removes the selected date and selected opponent class from NSUserDefaults and sends all the info to the Game List
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey("Saved Date")
+        defaults.removeObjectForKey("Opponent Class")
         defaults.synchronize()
     }
     

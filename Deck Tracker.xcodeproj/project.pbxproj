@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6D5960531AFCB2AD0039EE47 /* SelectDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5960521AFCB2AD0039EE47 /* SelectDate.swift */; };
+		6D5960551AFCD45E0039EE47 /* SelectDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5960541AFCD45E0039EE47 /* SelectDeck.swift */; };
+		6D5960571AFCD7880039EE47 /* SelectOpponentClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5960561AFCD7880039EE47 /* SelectOpponentClass.swift */; };
 		6D61AA431AF784E20013EB04 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D61AA421AF784E20013EB04 /* Game.swift */; };
 		6DD844CB1AF8A86F00CF9C80 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CA1AF8A86F00CF9C80 /* Data.swift */; };
 		6DD844CD1AF8EFB300CF9C80 /* Decks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Decks.swift */; };
@@ -35,6 +37,8 @@
 
 /* Begin PBXFileReference section */
 		6D5960521AFCB2AD0039EE47 /* SelectDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDate.swift; sourceTree = "<group>"; };
+		6D5960541AFCD45E0039EE47 /* SelectDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDeck.swift; sourceTree = "<group>"; };
+		6D5960561AFCD7880039EE47 /* SelectOpponentClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOpponentClass.swift; sourceTree = "<group>"; };
 		6D61AA421AF784E20013EB04 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		6DD844CA1AF8A86F00CF9C80 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		6DD844CC1AF8EFB300CF9C80 /* Decks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decks.swift; sourceTree = "<group>"; };
@@ -97,12 +101,14 @@
 				6D61AA421AF784E20013EB04 /* Game.swift */,
 				6DD844CC1AF8EFB300CF9C80 /* Decks.swift */,
 				6DD844CA1AF8A86F00CF9C80 /* Data.swift */,
-				6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */,
+				6DD844CE1AFA306500CF9C80 /* CustomCell.swift */,
 				6DDD44891AEF87B700A4B5D2 /* DecksList.swift */,
+				6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */,
 				6DDD448B1AEF87B700A4B5D2 /* StatsList.swift */,
 				6DF362FF1AFB702600A5B507 /* AddGame.swift */,
 				6D5960521AFCB2AD0039EE47 /* SelectDate.swift */,
-				6DD844CE1AFA306500CF9C80 /* CustomCell.swift */,
+				6D5960541AFCD45E0039EE47 /* SelectDeck.swift */,
+				6D5960561AFCD7880039EE47 /* SelectOpponentClass.swift */,
 				6DDD448D1AEF87B700A4B5D2 /* Main.storyboard */,
 				6DDD44901AEF87B700A4B5D2 /* Images.xcassets */,
 				6DDD44921AEF87B700A4B5D2 /* LaunchScreen.xib */,
@@ -241,6 +247,8 @@
 				6DD844CB1AF8A86F00CF9C80 /* Data.swift in Sources */,
 				6D5960531AFCB2AD0039EE47 /* SelectDate.swift in Sources */,
 				6DDD448C1AEF87B700A4B5D2 /* StatsList.swift in Sources */,
+				6D5960571AFCD7880039EE47 /* SelectOpponentClass.swift in Sources */,
+				6D5960551AFCD45E0039EE47 /* SelectDeck.swift in Sources */,
 				6DDD44881AEF87B700A4B5D2 /* AppDelegate.swift in Sources */,
 				6D61AA431AF784E20013EB04 /* Game.swift in Sources */,
 				6DD844CF1AFA306500CF9C80 /* CustomCell.swift in Sources */,
