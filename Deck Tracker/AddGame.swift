@@ -127,9 +127,71 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     // Removes the selected date and selected opponent class from NSUserDefaults and sends all the info to the Game List
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
+        
+        // Gets all the atributes for a new Game
+        var newGameID = newGameGetID()
+        var x = SelectDate()
+        var newGameDate = x.readDate()
+        var newGameDateString = x.dateToString(newGameDate)
+        var newGamePlayerDeck = defaults.stringForKey("Selected Deck Name") as String!
+        var newGameOpponentClass = defaults.stringForKey("Opponent Class") as String!
+        var newGameCoin = coinCellSwitch.on
+        var newGameWin = winCellSwitch.on
+        
+        if newGamePlayerDeck != "" && newGameOpponentClass != nil {
+            
+            println(newGameID)
+            println(newGameDateString)
+            println(newGamePlayerDeck)
+            println(newGameOpponentClass)
+            println(newGameCoin)
+            println(newGameWin)
+
+            
+            // Adds a new game
+            var newGame = Game(newID: newGameID, newDate: newGameDateString, newPlayerDeck: newGamePlayerDeck, newOpponentDeck: newGameOpponentClass, newCoin: newGameCoin, newWin: newGameWin)
+            // Add to Data class file
+            Data.sharedInstance.addGame(newGame)
+            self.dismissViewControllerAnimated(true, completion: {})
+        } else {
+            if newGamePlayerDeck == "" {
+                let alert = UIAlertView()
+                alert.title = "Missing Info"
+                alert.message = "You need to select a deck"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            } else if newGameOpponentClass == nil {
+                let alert = UIAlertView()
+                alert.title = "Missing Info"
+                alert.message = "You need to select your opponent's class"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            } else {
+                let alert = UIAlertView()
+                alert.title = "Missing Info"
+                alert.message = "You need to enter all required info"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            }
+
+        }
+        
+
+        
+        // Deletes the date and opponent class so the user needs to select again
         defaults.removeObjectForKey("Saved Date")
         defaults.removeObjectForKey("Opponent Class")
         defaults.synchronize()
+    }
+    
+    // Gets the ID for a new Game
+    func newGameGetID () -> Int{
+        var matchesCount = NSUserDefaults.standardUserDefaults().integerForKey("Matches Count");
+        matchesCount++
+        NSUserDefaults.standardUserDefaults().setInteger(matchesCount, forKey: "Matches Count");
+        NSUserDefaults.standardUserDefaults().synchronize()
+        return matchesCount
     }
     
     
