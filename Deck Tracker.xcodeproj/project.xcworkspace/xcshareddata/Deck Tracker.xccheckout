@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>8B8F2876-2ED5-402A-8CA5-E23026327F96</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Deck Tracker</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>E916A5CE14F2D25D10F98129D524B8152558A6CE</key>
 		<string>https://github.com/raiden007/Deck-Tracker.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Deck Tracker.xcodeproj</string>
+	<string>Deck Tracker.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>E916A5CE14F2D25D10F98129D524B8152558A6CE</key>

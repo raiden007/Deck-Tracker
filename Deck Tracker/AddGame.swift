@@ -8,16 +8,43 @@
 
 import UIKit
 
-class AddGame: UIViewController, UINavigationBarDelegate {
+class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelegate  {
     
+    @IBOutlet var addGameList: UITableView!
     @IBOutlet var saveButton: UIBarButtonItem!
     @IBOutlet var cancelButton: UIBarButtonItem!
+    @IBOutlet var dateCell: UITableViewCell!
+    @IBOutlet var dateCellLabel: UILabel!
+    @IBOutlet var playerDeckCell: UITableViewCell!
+    @IBOutlet var playerDeckLabel: UILabel!
+    @IBOutlet var opponentDeckCell: UITableViewCell!
+    @IBOutlet var opponentDeckLabel: UILabel!
+    @IBOutlet var coinCell: UITableViewCell!
+    @IBOutlet var coinCellLabel: UILabel!
+    @IBOutlet var coinCellSwitch: UISwitch!
+    @IBOutlet var winCell: UITableViewCell!
+    @IBOutlet var winCellLabel: UILabel!
+    @IBOutlet var winCellSwitch: UISwitch!
     
-
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        var today = dateToday()
+        dateCellLabel.text = "Date: " + today
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        var x = SelectDate()
+        var newDate = x.readDate()
+        var newDateString = x.dateToString(newDate)
+        println(newDate)
+        dateCellLabel.text = "Date: " + newDateString
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,9 +60,30 @@ class AddGame: UIViewController, UINavigationBarDelegate {
         return UIBarPosition.TopAttached
     }
     
+    // Remove the selected date from NSUserDefaults and dismissed the screen
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.removeObjectForKey("Saved Date")
+        defaults.synchronize()
         self.dismissViewControllerAnimated(true, completion: {})
     }
+    
+    // Get today's date
+    func dateToday() -> String {
+        let now = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        let dateString = formatter.stringFromDate(now)
+        return dateString
+    }
+    
+    // Removes the selected date from NSUserDefaults and sends all the info to the Game List
+    @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.removeObjectForKey("Saved Date")
+        defaults.synchronize()
+    }
+    
     
     
 
