@@ -12,10 +12,12 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     
     @IBOutlet var statsTable: UITableView!
     
+    var gamesList:[Game] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        readData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,13 +35,39 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     
     // Gets the number of rows to be displayed in the table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return gamesList.count
     }
     
     // Populates the table with data
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        cell.textLabel?.text = gamesList[indexPath.row].toString()
         return cell
+    }
+    
+    func readData() {
+        if Data.sharedInstance.readGameData() == nil {
+            
+        } else {
+            gamesList = Data.sharedInstance.listOfGames
+        }
+    }
+    
+    // Refreshes the view after adding a deck
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        readData()
+        statsTable.reloadData()
+    }
+    
+    // Deletes the row
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            var index = indexPath.row
+            Data.sharedInstance.deleteGame(index)
+            readData()
+            self.statsTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        }
     }
 
 }

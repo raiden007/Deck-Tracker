@@ -50,6 +50,7 @@ class SelectOpponentClass: UITableViewController, UITableViewDelegate {
         var selectedClass = classes[indexPath.row]
         saveSelectedOpponentClass(selectedClass)
         readSelectedOpponentClass()
+        navigationController?.popViewControllerAnimated(true)
     }
     
     // Deselects the row if you select another

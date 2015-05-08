@@ -134,28 +134,27 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         var x = SelectDate()
         var newGameDate = x.readDate()
         var newGameDateString = x.dateToString(newGameDate)
-        var newGamePlayerDeck = defaults.stringForKey("Selected Deck Name") as String!
-        var newGameOpponentClass = defaults.stringForKey("Opponent Class") as String!
+        var newGamePlayerDeck = defaults.stringForKey("Selected Deck Name") as String?
+        var newGameOpponentClass = defaults.stringForKey("Opponent Class") as String?
         var newGameCoin = coinCellSwitch.on
         var newGameWin = winCellSwitch.on
         
-        if newGamePlayerDeck != "" && newGameOpponentClass != nil {
-            
-            println(newGameID)
-            println(newGameDateString)
-            println(newGamePlayerDeck)
-            println(newGameOpponentClass)
-            println(newGameCoin)
-            println(newGameWin)
-
+        if newGamePlayerDeck != nil && newGameOpponentClass != nil {
             
             // Adds a new game
-            var newGame = Game(newID: newGameID, newDate: newGameDateString, newPlayerDeck: newGamePlayerDeck, newOpponentDeck: newGameOpponentClass, newCoin: newGameCoin, newWin: newGameWin)
+            var newGame = Game(newID: newGameID, newDate: newGameDateString, newPlayerDeck: newGamePlayerDeck!, newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin)
             // Add to Data class file
             Data.sharedInstance.addGame(newGame)
             self.dismissViewControllerAnimated(true, completion: {})
+            
         } else {
-            if newGamePlayerDeck == "" {
+            if newGamePlayerDeck == "" && newGameOpponentClass == nil {
+                let alert = UIAlertView()
+                alert.title = "Missing Info"
+                alert.message = "You need to enter all required info"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            } else if newGamePlayerDeck == "" {
                 let alert = UIAlertView()
                 alert.title = "Missing Info"
                 alert.message = "You need to select a deck"

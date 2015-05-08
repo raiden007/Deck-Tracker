@@ -35,12 +35,15 @@ public class Data {
     
     // Adds a game object to the array and save the array in NSUserDefaults
     func addGame (newGame : Game) {
-        
-        println("Game added")
         listOfGames.append(newGame)
+        saveGame()
+        println("Game added")
+    }
+    
+    func saveGame() {
         let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfGames as NSArray)
         // Writing in NSUserDefaults
-       NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "List of games")
+        NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "List of games")
         // Sync
         NSUserDefaults.standardUserDefaults().synchronize()
     }
@@ -96,6 +99,13 @@ public class Data {
         saveDeck()
         println("Deck deleted")
         
+    }
+    
+    // Deletes a game from the array and updates the array
+    func deleteGame(id:Int) {
+        listOfGames.removeAtIndex(id)
+        saveGame()
+        println("Game deleted")
     }
     
 
