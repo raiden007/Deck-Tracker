@@ -20,6 +20,8 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         readData()
+        
+        // If there is a deck selected get it's index
         var savedUserDefaults = readSelectedDeck()
         for var i = 0; i < decksList.count; i++ {
             if savedUserDefaults == decksList[i].getID() {
@@ -48,6 +50,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         var imageName = getImage(image)
         cell.customImage.image = UIImage(named: imageName)
         //cell.accessoryType = UITableViewCellAccessoryType.None
+        // If there is a selected deck put a checkmark on it
         if indexPath.row == indexOfSelectedDeck {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
@@ -56,7 +59,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         return cell
     }
     
-    // Adds a checkmark to the selected row
+    // Selects the row and saves the info so we can add a checkmark
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
@@ -110,7 +113,6 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
             Data.sharedInstance.deleteDeck(index)
             readData()
             self.decksTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-            println("Deck deleted")
         }
     }
     

@@ -36,7 +36,7 @@ public class Data {
     // Adds a game object to the array and save the array in NSUserDefaults
     func addGame (newGame : Game) {
         
-        //println("Game added")
+        println("Game added")
         listOfGames.append(newGame)
         let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfGames as NSArray)
         // Writing in NSUserDefaults
@@ -65,6 +65,7 @@ public class Data {
     func addDeck (newDeck: Deck) {
         listOfDecks.append(newDeck)
         saveDeck()
+        println("Deck added")
     }
     
     // Adds the decks list to NS User Defaults

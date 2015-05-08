@@ -66,7 +66,7 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
 
         // Adding a match into the array
         var newGame = Game(newID: matchesCount, newDate: dateString, newPlayerDeck: "abc", newOpponentDeck: "asdhasdhaosuddas", newCoin: true, newWin: false)
-        println(newGame.toString())
+        //println(newGame.toString())
         
         // Add to Data class file
         Data.sharedInstance.addGame(newGame)
@@ -83,7 +83,7 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
         // Create a new Deck object and add it to the deck array
         if deckName != "" && deckSelected != "" {
             var newDeck = Deck(newDeckID: deckCount, newDeckName: deckName, newDeckClass: deckSelected)
-            println(newDeck.toString())
+            //println("Added: " + newDeck.toString())
             Data.sharedInstance.addDeck(newDeck)
             self.dismissViewControllerAnimated(true, completion: {})
         } else {
