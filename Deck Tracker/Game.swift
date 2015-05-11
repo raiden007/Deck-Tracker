@@ -81,9 +81,9 @@ class Game : NSObject, NSCoding {
     
     func getWin() -> String {
         if win == true {
-            return "Match: Won"
+            return "WON"
         } else {
-            return "Match: Lost"
+            return "LOST"
         }
     }
     

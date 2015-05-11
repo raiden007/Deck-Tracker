@@ -46,12 +46,11 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         cell.dateLabel.text = gamesList[indexPath.row].getDate()
         var playerImage = gamesList[indexPath.row].getPlayerDeckClass()
         var playerImageName = getImage(playerImage)
-        println(playerImageName)
         cell.playerImage.image = UIImage(named: playerImageName)
         var opponentImage = gamesList[indexPath.row].getOpponentDeck()
         var opponentImageName = getImage(opponentImage)
         cell.opponentImage.image = UIImage(named: opponentImageName)
-        cell.coinLabel.text = gamesList[indexPath.row].getCoin()
+        //cell.coinLabel.text = gamesList[indexPath.row].getCoin()
         cell.winLabel.text = gamesList[indexPath.row].getWin()
         return cell
     }
