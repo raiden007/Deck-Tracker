@@ -50,26 +50,26 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         
-        //MARK: Below is the code for adding games in database
-        let now = NSDate()
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        let dateString = formatter.stringFromDate(now)
-        
-        // Reading current value
-        var matchesCount = NSUserDefaults.standardUserDefaults().integerForKey("Matches Count");
-        matchesCount++
-        // Writing the new one
-        NSUserDefaults.standardUserDefaults().setInteger(matchesCount, forKey: "Matches Count");
-        // Sync
-        NSUserDefaults.standardUserDefaults().synchronize()
-
-        // Adding a match into the array
-        var newGame = Game(newID: matchesCount, newDate: dateString, newPlayerDeck: "abc", newOpponentDeck: "asdhasdhaosuddas", newCoin: true, newWin: false)
-        //println(newGame.toString())
-        
-        // Add to Data class file
-        Data.sharedInstance.addGame(newGame)
+//        //MARK: Below is the code for adding games in database
+//        let now = NSDate()
+//        let formatter = NSDateFormatter()
+//        formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+//        let dateString = formatter.stringFromDate(now)
+//        
+//        // Reading current value
+//        var matchesCount = NSUserDefaults.standardUserDefaults().integerForKey("Matches Count");
+//        matchesCount++
+//        // Writing the new one
+//        NSUserDefaults.standardUserDefaults().setInteger(matchesCount, forKey: "Matches Count");
+//        // Sync
+//        NSUserDefaults.standardUserDefaults().synchronize()
+//
+//        // Adding a match into the array
+//        var newGame = Game(newID: matchesCount, newDate: dateString, newPlayerDeck: "abc", newOpponentDeck: "asdhasdhaosuddas", newCoin: true, newWin: false)
+//        //println(newGame.toString())
+//        
+//        // Add to Data class file
+//        Data.sharedInstance.addGame(newGame)
         
 
         //MARK: Actual code

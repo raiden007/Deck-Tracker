@@ -1,17 +1,21 @@
 //
-//  CustomCell.swift
+//  GamesCell.swift
 //  Deck Tracker
 //
-//  Created by Andrei Joghiu on 6/5/15.
+//  Created by Andrei Joghiu on 11/5/15.
 //  Copyright (c) 2015 Andrei Joghiu. All rights reserved.
 //
 
 import UIKit
 
-class CustomCell: UITableViewCell {
+class GamesCell: UITableViewCell {
     
-    @IBOutlet var customLabel: UILabel!
-    @IBOutlet var customImage: UIImageView!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var playerImage: UIImageView!
+    @IBOutlet var opponentImage: UIImageView!
+    @IBOutlet var coinLabel: UILabel!
+    @IBOutlet var winLabel: UILabel!
+    
     
     
 
@@ -24,11 +28,6 @@ class CustomCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    func setCell(labelText:String, imageName:String) {
-        self.customLabel.text = labelText
-        self.customImage.image = UIImage(named: imageName)
     }
 
 }

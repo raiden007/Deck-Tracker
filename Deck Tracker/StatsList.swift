@@ -40,10 +40,51 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     
     // Populates the table with data
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = gamesList[indexPath.row].toString()
+        //let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        //cell.textLabel?.text = gamesList[indexPath.row].toString()
+        let cell:GamesCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! GamesCell
+        cell.dateLabel.text = gamesList[indexPath.row].getDate()
+        var playerImage = gamesList[indexPath.row].getPlayerDeckClass()
+        var playerImageName = getImage(playerImage)
+        println(playerImageName)
+        cell.playerImage.image = UIImage(named: playerImageName)
+        var opponentImage = gamesList[indexPath.row].getOpponentDeck()
+        var opponentImageName = getImage(opponentImage)
+        cell.opponentImage.image = UIImage(named: opponentImageName)
+        cell.coinLabel.text = gamesList[indexPath.row].getCoin()
+        cell.winLabel.text = gamesList[indexPath.row].getWin()
         return cell
     }
+    
+    // Returns the image depeding on the deck class
+    func getImage (str:String) -> String {
+        
+        if str == "Warrior" {
+            return "WarriorSmall"
+        } else if str == "Paladin" {
+            return "PaladinSmall"
+        } else if str == "Shaman" {
+            return "ShamanSmall"
+        } else if str == "Druid" {
+            return "DruidSmall"
+        } else if str == "Rogue" {
+            return "RogueSmall"
+        } else if str == "Mage" {
+            return "MageSmall"
+        } else if str == "Warlock" {
+            return "WarlockSmall"
+        } else if str == "Priest" {
+            return "PriestSmall"
+        } else if str == "Hunter" {
+            return "HunterSmall"
+        } else {
+            return ""
+        }
+        
+        
+    }
+    
+    
     
     func readData() {
         if Data.sharedInstance.readGameData() == nil {

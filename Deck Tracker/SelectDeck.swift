@@ -68,6 +68,7 @@ class SelectDeck: UITableViewController {
         readSelectedDeckID()
         saveSelectedDeckName(selectedDeck)
         readSelectedDeckName()
+        saveSelectedDeckClass(selectedDeck)
         indexOfSelectedDeck = indexPath.row
         tableView.reloadData()
     }
@@ -101,7 +102,13 @@ class SelectDeck: UITableViewController {
         } else {
             return name
         }
-        
+    }
+    
+    // Saves the selected deck class
+    func saveSelectedDeckClass( deck: Deck) {
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(deck.getClass(), forKey: "Selected Deck Class")
+        defaults.synchronize()
     }
     
     // Deselects the row if you select another

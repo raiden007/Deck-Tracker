@@ -134,11 +134,78 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="jhH-jW-PvG">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="IDh-PY-VtT" customClass="GamesCell" customModule="Deck_Tracker" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jhH-jW-PvG" id="7gV-Mt-eoc">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IDh-PY-VtT" id="CcP-rI-PJf">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edG-am-aME">
+                                                    <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Noi-et-kkh">
+                                                    <rect key="frame" x="58" y="0.0" width="43" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="aCR-oc-qJR"/>
+                                                        <constraint firstAttribute="width" constant="43" id="oez-Kd-9Fk"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="vs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iqc-BE-DMh">
+                                                    <rect key="frame" x="109" y="11" width="25" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6r-7e-Ik2">
+                                                    <rect key="frame" x="142" y="0.0" width="43" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="aLc-Ol-v4g"/>
+                                                        <constraint firstAttribute="width" constant="43" id="yfI-wp-AQN"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eak-RW-Ld0">
+                                                    <rect key="frame" x="193" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eu9-cx-80g">
+                                                    <rect key="frame" x="243" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Noi-et-kkh" firstAttribute="top" secondItem="CcP-rI-PJf" secondAttribute="topMargin" constant="-8" id="1hG-K6-aDP"/>
+                                                <constraint firstItem="Eu9-cx-80g" firstAttribute="leading" secondItem="eak-RW-Ld0" secondAttribute="trailing" constant="8" id="6AX-q0-Ahe"/>
+                                                <constraint firstItem="edG-am-aME" firstAttribute="leading" secondItem="CcP-rI-PJf" secondAttribute="leadingMargin" id="Tfd-RY-9lW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="edG-am-aME" secondAttribute="bottom" constant="3" id="UwN-e3-ACw"/>
+                                                <constraint firstItem="y6r-7e-Ik2" firstAttribute="leading" secondItem="Iqc-BE-DMh" secondAttribute="trailing" constant="8" id="X2u-oF-AoS"/>
+                                                <constraint firstItem="edG-am-aME" firstAttribute="top" secondItem="CcP-rI-PJf" secondAttribute="topMargin" constant="3" id="Y4d-ce-rEA"/>
+                                                <constraint firstItem="Noi-et-kkh" firstAttribute="leading" secondItem="edG-am-aME" secondAttribute="trailing" constant="8" id="Yzt-oL-HX3"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="y6r-7e-Ik2" secondAttribute="bottom" constant="-8" id="bpk-hi-Hef"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Noi-et-kkh" secondAttribute="bottom" constant="-8" id="gjJ-8R-wPn"/>
+                                                <constraint firstItem="Eu9-cx-80g" firstAttribute="top" secondItem="CcP-rI-PJf" secondAttribute="topMargin" constant="3" id="iNH-lH-fsz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Eu9-cx-80g" secondAttribute="bottom" constant="3" id="itF-4g-GDa"/>
+                                                <constraint firstItem="eak-RW-Ld0" firstAttribute="top" secondItem="CcP-rI-PJf" secondAttribute="topMargin" constant="3" id="kDe-W7-pab"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Iqc-BE-DMh" secondAttribute="bottom" constant="3" id="mXP-rR-k61"/>
+                                                <constraint firstItem="eak-RW-Ld0" firstAttribute="leading" secondItem="y6r-7e-Ik2" secondAttribute="trailing" constant="8" id="onW-CB-BtK"/>
+                                                <constraint firstItem="y6r-7e-Ik2" firstAttribute="top" secondItem="CcP-rI-PJf" secondAttribute="topMargin" constant="-8" id="sAN-Xq-DFR"/>
+                                                <constraint firstItem="Iqc-BE-DMh" firstAttribute="top" secondItem="CcP-rI-PJf" secondAttribute="topMargin" constant="3" id="t7I-Ep-MWH"/>
+                                                <constraint firstItem="Iqc-BE-DMh" firstAttribute="leading" secondItem="Noi-et-kkh" secondAttribute="trailing" constant="8" id="vYt-s3-xfz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="eak-RW-Ld0" secondAttribute="bottom" constant="3" id="w19-5Z-3dH"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="coinLabel" destination="eak-RW-Ld0" id="Tnk-O9-d4U"/>
+                                            <outlet property="dateLabel" destination="edG-am-aME" id="TfT-IE-DR0"/>
+                                            <outlet property="opponentImage" destination="y6r-7e-Ik2" id="efB-tY-ZMn"/>
+                                            <outlet property="playerImage" destination="Noi-et-kkh" id="5IO-Tx-ANp"/>
+                                            <outlet property="winLabel" destination="Eu9-cx-80g" id="eNT-Ec-W8y"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

@@ -12,16 +12,18 @@ import Foundation
 class Game : NSObject, NSCoding {
     
     var id:Int
-    var playerDeck:String
+    var playerDeckName:String
+    var playerDeckClass:String
     var opponentDeck:String
     var coin:Bool
     var win:Bool
     var date:String
 
     // Initialize an Game object with the following arguments
-    init (newID:Int, newDate:String, newPlayerDeck:String, newOpponentDeck:String, newCoin:Bool, newWin:Bool) {
+    init (newID:Int, newDate:String, newPlayerDeckName:String, newPlayerDeckClass:String, newOpponentDeck:String, newCoin:Bool, newWin:Bool) {
         self.id = newID
-        self.playerDeck = newPlayerDeck
+        self.playerDeckName = newPlayerDeckName
+        self.playerDeckClass = newPlayerDeckClass
         self.opponentDeck = newOpponentDeck
         self.coin = newCoin
         self.win = newWin
@@ -32,7 +34,8 @@ class Game : NSObject, NSCoding {
     // Encode and decode the object so it can be stored in NSUserDefaults
     required init(coder aDecoder: NSCoder) {
         id = aDecoder.decodeObjectForKey("id") as! Int
-        playerDeck = aDecoder.decodeObjectForKey("playerDeck") as! String
+        playerDeckName = aDecoder.decodeObjectForKey("playerDeckName") as! String
+        playerDeckClass = aDecoder.decodeObjectForKey("playerDeckClass") as! String
         opponentDeck = aDecoder.decodeObjectForKey("opponentDeck") as! String
         coin = aDecoder.decodeObjectForKey("coin") as! Bool
         win = aDecoder.decodeObjectForKey("win") as! Bool
@@ -42,7 +45,8 @@ class Game : NSObject, NSCoding {
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(id, forKey: "id")
-        aCoder.encodeObject(playerDeck, forKey: "playerDeck")
+        aCoder.encodeObject(playerDeckName, forKey: "playerDeckName")
+        aCoder.encodeObject(playerDeckClass, forKey: "playerDeckClass")
         aCoder.encodeObject(opponentDeck, forKey: "opponentDeck")
         aCoder.encodeObject(coin, forKey: "coin")
         aCoder.encodeObject(win, forKey: "win")
@@ -50,13 +54,37 @@ class Game : NSObject, NSCoding {
     }
     
     
-    func getPlayerDeck() -> String {
-        return playerDeck
+    func getPlayerDeckName() -> String {
+        return playerDeckName
 
     }
     
     func getOpponentDeck() -> String {
         return opponentDeck
+    }
+    
+    func getDate() -> String {
+        return date
+    }
+    
+    func getPlayerDeckClass() -> String {
+        return playerDeckClass
+    }
+    
+    func getCoin() -> String {
+        if coin == true {
+            return "Coin: Yes"
+        } else {
+            return "Coin: No"
+        }
+    }
+    
+    func getWin() -> String {
+        if win == true {
+            return "Match: Won"
+        } else {
+            return "Match: Lost"
+        }
     }
     
     // Returns a string containing all the proprierties of the object
@@ -66,7 +94,7 @@ class Game : NSObject, NSCoding {
         var winString = String(stringInterpolationSegment: win)
         var idString = String(id)
         
-        return ("Game number: " + idString + ", date: " + date + ", Player Deck: " + playerDeck + ", Opponent Deck: " + opponentDeck + ", Coin: " + coinString + ", Win: " + winString)
+        return ("Game number: " + idString + ", date: " + date + ", Player Deck Name: " + playerDeckName + ", Opponent Deck: " + opponentDeck + ", Coin: " + coinString + ", Win: " + winString)
         
     }
     

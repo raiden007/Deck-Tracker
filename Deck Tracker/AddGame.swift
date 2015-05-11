@@ -134,27 +134,28 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         var x = SelectDate()
         var newGameDate = x.readDate()
         var newGameDateString = x.dateToString(newGameDate)
-        var newGamePlayerDeck = defaults.stringForKey("Selected Deck Name") as String?
+        var newGamePlayerDeckName = defaults.stringForKey("Selected Deck Name") as String?
+        var newGamePlayerDeckClass = defaults.stringForKey("Selected Deck Class") as String?
         var newGameOpponentClass = defaults.stringForKey("Opponent Class") as String?
         var newGameCoin = coinCellSwitch.on
         var newGameWin = winCellSwitch.on
         
-        if newGamePlayerDeck != nil && newGameOpponentClass != nil {
+        if newGamePlayerDeckName != nil && newGameOpponentClass != nil {
             
             // Adds a new game
-            var newGame = Game(newID: newGameID, newDate: newGameDateString, newPlayerDeck: newGamePlayerDeck!, newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin)
+            var newGame = Game(newID: newGameID, newDate: newGameDateString, newPlayerDeckName: newGamePlayerDeckName!, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin)
             // Add to Data class file
             Data.sharedInstance.addGame(newGame)
             self.dismissViewControllerAnimated(true, completion: {})
             
         } else {
-            if newGamePlayerDeck == "" && newGameOpponentClass == nil {
+            if newGamePlayerDeckName == "" && newGameOpponentClass == nil {
                 let alert = UIAlertView()
                 alert.title = "Missing Info"
                 alert.message = "You need to enter all required info"
                 alert.addButtonWithTitle("OK")
                 alert.show()
-            } else if newGamePlayerDeck == "" {
+            } else if newGamePlayerDeckName == "" {
                 let alert = UIAlertView()
                 alert.title = "Missing Info"
                 alert.message = "You need to select a deck"

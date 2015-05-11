@@ -68,6 +68,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         readSelectedDeckID()
         saveSelectedDeckName(selectedDeck)
         readSelectedDeckName()
+        saveSelectedDeckClass(selectedDeck)
         indexOfSelectedDeck = indexPath.row
         tableView.reloadData()
     }
@@ -90,6 +91,13 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     func saveSelectedDeckName(deck: Deck) {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(deck.getName(), forKey: "Selected Deck Name")
+        defaults.synchronize()
+    }
+    
+    // Saves the selected deck class
+    func saveSelectedDeckClass( deck: Deck) {
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(deck.getClass(), forKey: "Selected Deck Class")
         defaults.synchronize()
     }
     
