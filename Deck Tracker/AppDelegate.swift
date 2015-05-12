@@ -23,9 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Data.sharedInstance.printDeckData()
         
         // Show tab 2 at startup
-        if self.window!.rootViewController as? UITabBarController != nil {
-            var tababarController = self.window!.rootViewController as! UITabBarController
-            tababarController.selectedIndex = 1
+        if let tabBarController = self.window!.rootViewController as? UITabBarController {
+            tabBarController.selectedIndex = 1
         }
 
         return true
