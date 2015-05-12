@@ -609,7 +609,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="3H7-gQ-WjV" kind="show" id="tiK-2F-tYz"/>
+                                            <segue destination="9pv-A4-QxB" kind="show" id="TOQ-ST-0j3"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="opponentDeck" id="x2t-DH-5d7">
@@ -845,36 +845,6 @@
             <point key="canvasLocation" x="2929" y="1108"/>
         </scene>
         <!--Decks-->
-        <scene sceneID="8Ny-mj-lQS">
-            <objects>
-                <tableViewController id="3H7-gQ-WjV" customClass="SelectDeck" customModule="Deck_Tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5nf-GL-SaI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="ugl-OT-WV8">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ugl-OT-WV8" id="ddm-nW-jyG">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="3H7-gQ-WjV" id="a58-BJ-fLK"/>
-                            <outlet property="delegate" destination="3H7-gQ-WjV" id="7Jd-6f-kt9"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Decks" id="947-kk-yAz"/>
-                    <connections>
-                        <outlet property="decksTable" destination="5nf-GL-SaI" id="GpI-VW-WMa"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uqi-ro-N1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2929" y="378"/>
-        </scene>
-        <!--Decks-->
         <scene sceneID="Lw8-0L-UmG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ex9-fr-FVh" sceneMemberID="viewController">
@@ -916,4 +886,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="TOQ-ST-0j3"/>
+    </inferredMetricsTieBreakers>
 </document>
