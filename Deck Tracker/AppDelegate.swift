@@ -21,6 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Data.init()
         Data.sharedInstance.printGameData()
         Data.sharedInstance.printDeckData()
+        
+        // Show tab 2 at startup
+        if self.window!.rootViewController as? UITabBarController != nil {
+            var tababarController = self.window!.rootViewController as! UITabBarController
+            tababarController.selectedIndex = 1
+        }
 
         return true
     }
