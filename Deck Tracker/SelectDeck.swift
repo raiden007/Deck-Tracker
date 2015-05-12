@@ -71,6 +71,7 @@ class SelectDeck: UITableViewController {
         saveSelectedDeckClass(selectedDeck)
         indexOfSelectedDeck = indexPath.row
         tableView.reloadData()
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     
     // Saves the selected deck ID in NSUserDefaults

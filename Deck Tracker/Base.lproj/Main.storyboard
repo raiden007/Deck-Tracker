@@ -609,7 +609,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="V7b-UV-xYV" kind="show" id="fSc-Q2-vb2"/>
+                                            <segue destination="3H7-gQ-WjV" kind="show" id="tiK-2F-tYz"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="opponentDeck" id="x2t-DH-5d7">
@@ -872,23 +872,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uqi-ro-N1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3749" y="360"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="4jO-TG-sHM">
-            <objects>
-                <navigationController id="V7b-UV-xYV" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hVo-bY-HtX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="3H7-gQ-WjV" kind="relationship" relationship="rootViewController" id="YXo-dy-7T2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h2g-WC-s60" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2929" y="360"/>
+            <point key="canvasLocation" x="2929" y="378"/>
         </scene>
         <!--Decks-->
         <scene sceneID="Lw8-0L-UmG">
