@@ -106,7 +106,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         return UIBarPosition.TopAttached
     }
     
-    // Remove the selected date and selected opponent class from NSUserDefaults and dismissed the screen
+    // Remove the selected date and selected opponent class from NSUserDefaults and dismissed the screen    
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey("Saved Date")
@@ -114,6 +114,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         defaults.synchronize()
         self.dismissViewControllerAnimated(true, completion: {})
     }
+    
     
     // Get today's date
     func dateToday() -> String {

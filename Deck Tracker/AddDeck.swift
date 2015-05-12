@@ -38,11 +38,11 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     }
     
     
-    
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: {})
     }
     
+   
     @IBAction func deck1Pressed(sender: UIButton) {
         self.deselectAll()
         deck1.selected = true
