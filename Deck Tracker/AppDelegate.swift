@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch
         
+        // Crashlytics
+        Fabric.with([Crashlytics()])
+        
         // Initialize the data structure and print it to the console at app launch
         Data.init()
         Data.sharedInstance.printGameData()
@@ -26,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let tabBarController = self.window!.rootViewController as? UITabBarController {
             tabBarController.selectedIndex = 1
         }
-
+        
         return true
     }
 
