@@ -28,7 +28,6 @@ class Game : NSObject, NSCoding {
         self.coin = newCoin
         self.win = newWin
         self.date = newDate
-        
     }
     
     // Encode and decode the object so it can be stored in NSUserDefaults

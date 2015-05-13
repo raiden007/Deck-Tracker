@@ -23,10 +23,22 @@ public class Data {
     init() {
         
         // Check at first install if the game/deck database is empty
-        if (self.readGameData() == nil) {
+        if self.readGameData() == nil {
             println("Game database empty")
-        } else if (self.readDeckData() == nil){
+            if (self.readDeckData() == nil) {
+                println("Decks database empty")
+            } else {
+                listOfDecks = self.readDeckData()!
+            }
+        
+        } else if self.readDeckData() == nil {
             println("Decks database empty")
+            if (self.readGameData() == nil) {
+                println("Game database empty")
+            } else {
+                listOfGames = self.readGameData()!
+            }
+            
         } else {
             listOfGames = self.readGameData()!
             listOfDecks = self.readDeckData()!

@@ -873,6 +873,9 @@
                                                 <constraint firstItem="KSq-hs-tUn" firstAttribute="leading" secondItem="6Sp-5z-G0E" secondAttribute="leadingMargin" id="wld-yt-lRQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="WcB-bD-0iF" kind="show" id="xE4-on-xSO"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlayerDeck" id="NZU-Un-8vN">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1094,5 +1097,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TOQ-ST-0j3"/>
+        <segue reference="xE4-on-xSO"/>
     </inferredMetricsTieBreakers>
 </document>
