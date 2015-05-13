@@ -132,9 +132,9 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         
         // Gets all the atributes for a new Game
         var newGameID = newGameGetID()
-        var x = SelectDate()
-        var newGameDate = x.readDate()
-        var newGameDateString = x.dateToString(newGameDate)
+        //var x = SelectDate()
+        var newGameDate = SelectDate().readDate()
+        //var newGameDateString = x.dateToString(newGameDate)
         var newGamePlayerDeckName = defaults.stringForKey("Selected Deck Name") as String?
         var newGamePlayerDeckClass = defaults.stringForKey("Selected Deck Class") as String?
         var newGameOpponentClass = defaults.stringForKey("Opponent Class") as String?
@@ -144,7 +144,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         if newGamePlayerDeckName != nil && newGameOpponentClass != nil {
             
             // Adds a new game
-            var newGame = Game(newID: newGameID, newDate: newGameDateString, newPlayerDeckName: newGamePlayerDeckName!, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin)
+            var newGame = Game(newID: newGameID, newDate: newGameDate, newPlayerDeckName: newGamePlayerDeckName!, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin)
             // Add to Data class file
             Data.sharedInstance.addGame(newGame)
             self.dismissViewControllerAnimated(true, completion: {})

@@ -17,10 +17,10 @@ class Game : NSObject, NSCoding {
     var opponentDeck:String
     var coin:Bool
     var win:Bool
-    var date:String
+    var date:NSDate
 
     // Initialize an Game object with the following arguments
-    init (newID:Int, newDate:String, newPlayerDeckName:String, newPlayerDeckClass:String, newOpponentDeck:String, newCoin:Bool, newWin:Bool) {
+    init (newID:Int, newDate:NSDate, newPlayerDeckName:String, newPlayerDeckClass:String, newOpponentDeck:String, newCoin:Bool, newWin:Bool) {
         self.id = newID
         self.playerDeckName = newPlayerDeckName
         self.playerDeckClass = newPlayerDeckClass
@@ -39,7 +39,7 @@ class Game : NSObject, NSCoding {
         opponentDeck = aDecoder.decodeObjectForKey("opponentDeck") as! String
         coin = aDecoder.decodeObjectForKey("coin") as! Bool
         win = aDecoder.decodeObjectForKey("win") as! Bool
-        date = aDecoder.decodeObjectForKey("date") as! String
+        date = aDecoder.decodeObjectForKey("date") as! NSDate
     }
     
     
@@ -64,7 +64,10 @@ class Game : NSObject, NSCoding {
     }
     
     func getDate() -> String {
-        return date
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        let dateString = formatter.stringFromDate(date)
+        return dateString
     }
     
     func getPlayerDeckClass() -> String {
@@ -94,7 +97,7 @@ class Game : NSObject, NSCoding {
         var winString = String(stringInterpolationSegment: win)
         var idString = String(id)
         
-        return ("Game number: " + idString + ", date: " + date + ", Player Deck Name: " + playerDeckName + ", Opponent Deck: " + opponentDeck + ", Coin: " + coinString + ", Win: " + winString)
+        return ("Game number: " + idString + ", date: " + getDate() + ", Player Deck Name: " + playerDeckName + ", Opponent Deck: " + opponentDeck + ", Coin: " + coinString + ", Win: " + winString)
         
     }
     
