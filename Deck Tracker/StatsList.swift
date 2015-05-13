@@ -13,6 +13,7 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     @IBOutlet var statsTable: UITableView!
     
     var gamesList:[Game] = []
+    var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +52,83 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         var opponentImageName = getImage(opponentImage)
         cell.opponentImage.image = UIImage(named: opponentImageName)
         //cell.coinLabel.text = gamesList[indexPath.row].getCoin()
-        cell.winLabel.text = gamesList[indexPath.row].getWin()
+        cell.winLabel.text = gamesList[indexPath.row].getWinString()
         return cell
     }
+    
+    // Saves the selected Game so it can display it's info in the next screen
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var selectedGame = gamesList[indexPath.row]
+        saveSelectedGameID(selectedGame)
+        readSelectedGameID()
+        saveSelectedGamePlayerDeckName(selectedGame)
+        readSelectedGamePlayerDeckName()
+        saveSelectedGameOpponentClass(selectedGame)
+        readSelectedGameOpponentClass()
+        saveSelectedGameCoinStatus(selectedGame)
+        readSelectedGameCoinStatus()
+        saveSelectedGameWinStatus(selectedGame)
+        readSelectedGameWinStatus()
+        //saveSelectedGameDate(selectedGame)
+        //readSelectedGameDate()
+    }
+    
+    // Saves the selected game ID
+    func saveSelectedGameID(selectedGame:Game) {
+        defaults.setInteger(selectedGame.getID(), forKey: "Selected Game ID")
+        defaults.synchronize()
+
+    }
+    
+    // Reads the selected game ID
+    func readSelectedGameID() -> Int {
+        let id:Int = defaults.integerForKey("Selected Game ID")
+        return id
+    }
+    
+    func saveSelectedGamePlayerDeckName(selectedGame:Game) {
+        defaults.setObject(selectedGame.getPlayerDeckName(), forKey: "Selected Game Player Deck Name")
+        defaults.synchronize()
+    }
+    
+    func readSelectedGamePlayerDeckName() -> String {
+        let name:String! = defaults.stringForKey("Selected Game Player Deck Name")
+        return name
+    }
+    
+    func saveSelectedGameOpponentClass(selectedGame:Game) {
+        defaults.setObject(selectedGame.getOpponentDeck(), forKey: "Selected Game Opponent Class")
+        defaults.synchronize()
+    }
+    
+    func readSelectedGameOpponentClass() -> String {
+        let name:String! = defaults.stringForKey("Selected Game Opponent Class")
+        //println(name)
+        return name
+    }
+    
+    func saveSelectedGameCoinStatus(selectedGame:Game) {
+        defaults.setObject(selectedGame.getCoin(), forKey: "Selected Game Coin Status")
+        defaults.synchronize()
+    }
+    
+    func readSelectedGameCoinStatus() -> Bool {
+        let coin:Bool! = defaults.boolForKey("Selected Game Coin Status")
+        //println(coin)
+        return coin
+    }
+    
+    func saveSelectedGameWinStatus(selectedGame:Game) {
+        defaults.setObject(selectedGame.getWin(), forKey: "Selected Game Win Status")
+        defaults.synchronize()
+    }
+    
+    func readSelectedGameWinStatus() -> Bool {
+        let win:Bool! = defaults.boolForKey("Selected Game Win Status")
+        println(win)
+        return win
+    }
+    
     
     // Returns the image depeding on the deck class
     func getImage (str:String) -> String {

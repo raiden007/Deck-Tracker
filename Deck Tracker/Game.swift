@@ -74,20 +74,36 @@ class Game : NSObject, NSCoding {
         return playerDeckClass
     }
     
-    func getCoin() -> String {
+    func getCoin() -> Bool {
         if coin == true {
-            return "Coin: Yes"
+            return true
         } else {
-            return "Coin: No"
+            return false
         }
     }
     
-    func getWin() -> String {
+    func getWin() -> Bool {
+        if win == true {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func getWinString() -> String {
         if win == true {
             return "WON"
         } else {
             return "LOST"
         }
+    }
+    
+    func getNSDate() -> NSDate {
+        return date
+    }
+    
+    func getID() -> Int {
+        return id
     }
     
     // Returns a string containing all the proprierties of the object

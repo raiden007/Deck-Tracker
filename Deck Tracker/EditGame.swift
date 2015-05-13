@@ -35,26 +35,42 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
+    
+
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        // #warning Potentially incomplete method implementation.
+//        // Return the number of sections.
+//        return 0
+//    }
+//
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete method implementation.
+//        // Return the number of rows in the section.
+//        return 5
+//    }
+    
+    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
+        navigationController?.popViewControllerAnimated(true)
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+    
+    @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
+        navigationController?.popViewControllerAnimated(true)
     }
+    
+    
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
