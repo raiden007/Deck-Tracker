@@ -14,6 +14,9 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     
     var gamesList:[Game] = []
     var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    var selectedGameArray:[Game] = []
+    
+    static let sharedInstance = StatsList()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,76 +62,33 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     // Saves the selected Game so it can display it's info in the next screen
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedGame = gamesList[indexPath.row]
-        saveSelectedGameID(selectedGame)
-        readSelectedGameID()
-        saveSelectedGamePlayerDeckName(selectedGame)
-        readSelectedGamePlayerDeckName()
-        saveSelectedGameOpponentClass(selectedGame)
-        readSelectedGameOpponentClass()
-        saveSelectedGameCoinStatus(selectedGame)
-        readSelectedGameCoinStatus()
-        saveSelectedGameWinStatus(selectedGame)
-        readSelectedGameWinStatus()
-        //saveSelectedGameDate(selectedGame)
-        //readSelectedGameDate()
+        selectedGameArray.append(selectedGame)
+        saveSelectedGame()
+        readSelectedGame()
+        // Remove the selected game from Array so everytime there is only one Game in array
+        selectedGameArray.removeAll(keepCapacity: true)
     }
     
-    // Saves the selected game ID
-    func saveSelectedGameID(selectedGame:Game) {
-        defaults.setInteger(selectedGame.getID(), forKey: "Selected Game ID")
-        defaults.synchronize()
+    // Saves in NSUserDefaults
+    func saveSelectedGame() {
+        let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(selectedGameArray as NSArray)
+        // Writing in NSUserDefaults
+        NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "Selected Game")
+        // Sync
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
+    // Reads the game data and returns a Game object
+    func readSelectedGame() -> [Game]? {
+        //println("Data read")
+        if let unarchivedObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Game") as? NSData {
+            return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Game]
+        }
+        return nil
+    }
+    
+    
 
-    }
-    
-    // Reads the selected game ID
-    func readSelectedGameID() -> Int {
-        let id:Int = defaults.integerForKey("Selected Game ID")
-        return id
-    }
-    
-    func saveSelectedGamePlayerDeckName(selectedGame:Game) {
-        defaults.setObject(selectedGame.getPlayerDeckName(), forKey: "Selected Game Player Deck Name")
-        defaults.synchronize()
-    }
-    
-    func readSelectedGamePlayerDeckName() -> String {
-        let name:String! = defaults.stringForKey("Selected Game Player Deck Name")
-        return name
-    }
-    
-    func saveSelectedGameOpponentClass(selectedGame:Game) {
-        defaults.setObject(selectedGame.getOpponentDeck(), forKey: "Selected Game Opponent Class")
-        defaults.synchronize()
-    }
-    
-    func readSelectedGameOpponentClass() -> String {
-        let name:String! = defaults.stringForKey("Selected Game Opponent Class")
-        //println(name)
-        return name
-    }
-    
-    func saveSelectedGameCoinStatus(selectedGame:Game) {
-        defaults.setObject(selectedGame.getCoin(), forKey: "Selected Game Coin Status")
-        defaults.synchronize()
-    }
-    
-    func readSelectedGameCoinStatus() -> Bool {
-        let coin:Bool! = defaults.boolForKey("Selected Game Coin Status")
-        //println(coin)
-        return coin
-    }
-    
-    func saveSelectedGameWinStatus(selectedGame:Game) {
-        defaults.setObject(selectedGame.getWin(), forKey: "Selected Game Win Status")
-        defaults.synchronize()
-    }
-    
-    func readSelectedGameWinStatus() -> Bool {
-        let win:Bool! = defaults.boolForKey("Selected Game Win Status")
-        println(win)
-        return win
-    }
-    
     
     // Returns the image depeding on the deck class
     func getImage (str:String) -> String {

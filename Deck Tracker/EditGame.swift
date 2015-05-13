@@ -23,8 +23,9 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     @IBOutlet var winCell: UITableViewCell!
     @IBOutlet var winSwitch: UISwitch!
 
-    
-    
+    var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    var selectedGameArray:[Game] = []
+    var selectedGame:Game = Game(newID: 1, newDate: NSDate(), newPlayerDeckName: "1", newPlayerDeckClass: "1", newOpponentDeck: "1", newCoin: true, newWin: true)
     
 
     override func viewDidLoad() {
@@ -35,9 +36,53 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-
         
+        selectedGameArray = StatsList.sharedInstance.readSelectedGame() as [Game]!
+        selectedGame = selectedGameArray[0]
+
+        // Populates the screen with data
+        populateScreen()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        // Populates the screen with data
+        populateScreen()
+    }
+    
+    func populateScreen() {
+        putSavedDateOnLabel()
+        putSavedPlayerDeckOnLabel()
+        putSavedOpponentClassOnLabel()
+        putSavedCoinStatusOnSwitch()
+        putSavedWinStatusOnSwitch()
+    }
+    
+    func putSavedDateOnLabel() {
+        var savedDate = selectedGame.getDate()
+        dateLabel.text = "Date: " + savedDate
+    }
+    
+    func putSavedPlayerDeckOnLabel() {
+        var savedPlayedDeck = selectedGame.getPlayerDeckName()
+        playerDeckLabel.text = "Your deck: " + savedPlayedDeck
+    }
+    
+    func putSavedOpponentClassOnLabel() {
+        var savedOpponentDeck = selectedGame.getOpponentDeck()
+        opponentDeckLabel.text = "Opponent's Class: " + savedOpponentDeck
+    }
+    
+    func putSavedCoinStatusOnSwitch() {
+        var savedCoin = selectedGame.getCoin()
+        coinSwitch.setOn(savedCoin, animated: true)
+    }
+    
+    func putSavedWinStatusOnSwitch() {
+        var savedWin = selectedGame.getWin()
+        winSwitch.setOn(savedWin, animated: true)
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -63,10 +108,16 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
 //    }
     
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
+        
+        // Removes the object from the saved state
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
+        NSUserDefaults.standardUserDefaults().synchronize()
         navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
+        NSUserDefaults.standardUserDefaults().synchronize()
         navigationController?.popViewControllerAnimated(true)
     }
     
