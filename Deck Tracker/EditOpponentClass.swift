@@ -1,21 +1,19 @@
 //
-//  SelectOpponentClass.swift
+//  EditOpponentClass.swift
 //  Deck Tracker
 //
-//  Created by Andrei Joghiu on 8/5/15.
+//  Created by Andrei Joghiu on 14/5/15.
 //  Copyright (c) 2015 Andrei Joghiu. All rights reserved.
 //
 
 import UIKit
 
-class SelectOpponentClass: UITableViewController, UITableViewDelegate {
-    
-    @IBOutlet var opponentClasses: UITableView!
-    
+class EditOpponentClass: UITableViewController {
 
+    @IBOutlet var opponentClasses: UITableView!
     var classes = ["Warrior", "Paladin", "Shaman", "Hunter", "Druid", "Rogue", "Mage", "Warlock", "Priest"]
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,29 +28,32 @@ class SelectOpponentClass: UITableViewController, UITableViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // Gets the number of rows to be displayed in the table
+
+    // MARK: - Table view data source
+
+
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
         return classes.count
     }
+
     
-    // Populates the table with data
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = classes[indexPath.row]
         return cell
     }
-
-
+    
     // Selects the row and saves the info so we can add a checkmark
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         var selectedClass = classes[indexPath.row]
-        saveSelectedOpponentClass(selectedClass)
-        readSelectedOpponentClass()
+        saveEditedOpponentClass(selectedClass)
+        //readEditedOpponentClass()
         navigationController?.popViewControllerAnimated(true)
-        //navigationController?.popToRootViewControllerAnimated(true)
     }
     
     // Deselects the row if you select another
@@ -61,31 +62,20 @@ class SelectOpponentClass: UITableViewController, UITableViewDelegate {
         cell?.accessoryType = UITableViewCellAccessoryType.None
     }
     
-    // Saves the selected opponent class in NSUserDefaults
-    func saveSelectedOpponentClass(opponentClass: String) {
+    // Saves the edited opponent class in NSUserDefaults
+    func saveEditedOpponentClass(opponentClass: String) {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(opponentClass, forKey: "Opponent Class")
+        defaults.setObject(opponentClass, forKey: "Edited Opponent Class")
         defaults.synchronize()
     }
     
     // Reads the selected deck ID from NSUserDefaults
-    func readSelectedOpponentClass() -> String {
+    func readEditedOpponentClass() -> String {
         let defaults = NSUserDefaults.standardUserDefaults()
-        let name:String = defaults.stringForKey("Opponent Class") as String!
+        let name:String = defaults.stringForKey("Edited Opponent Class") as String!
         return name
     }
     
-
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
 
     /*
     // Override to support conditional editing of the table view.

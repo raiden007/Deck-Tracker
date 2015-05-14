@@ -197,7 +197,7 @@
                                             <outlet property="opponentImage" destination="y6r-7e-Ik2" id="efB-tY-ZMn"/>
                                             <outlet property="playerImage" destination="Noi-et-kkh" id="5IO-Tx-ANp"/>
                                             <outlet property="winLabel" destination="Eu9-cx-80g" id="eNT-Ec-W8y"/>
-                                            <segue destination="ndg-DG-C2P" kind="show" id="aEb-80-vJc"/>
+                                            <segue destination="ndg-DG-C2P" kind="presentation" id="aEb-80-vJc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -636,7 +636,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Lla-Ru-d7y" kind="show" id="dmH-pC-JLC"/>
+                                            <segue destination="qox-Th-m3R" kind="show" id="Fpw-el-sfk"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="coin" id="82d-qS-h4Z">
@@ -918,7 +918,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Cpo-nr-OnZ" kind="show" id="uu4-yC-bTD"/>
+                                            <segue destination="SGz-TG-90k" kind="show" id="mgp-wg-wqA"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Coin" id="oQe-JD-lii">
@@ -1076,7 +1076,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJL-Cu-sso" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4553" y="350"/>
+            <point key="canvasLocation" x="3749" y="376"/>
         </scene>
         <!--Decks-->
         <scene sceneID="Lw8-0L-UmG">
@@ -1128,7 +1128,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="uvJ-oL-HP2" customClass="ed">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="uvJ-oL-HP2" customClass="ed">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1192,13 +1192,13 @@
         <!--Edit Opponent Class-->
         <scene sceneID="5Ui-80-w1b">
             <objects>
-                <tableViewController id="SGz-TG-90k" sceneMemberID="viewController">
+                <tableViewController id="SGz-TG-90k" customClass="EditOpponentClass" customModule="Deck_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1NM-aG-hNS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="B0A-kv-Rpx">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="B0A-kv-Rpx">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B0A-kv-Rpx" id="XnU-HY-KcC">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1211,10 +1211,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Edit Opponent Class" id="0Ku-Rq-6F9"/>
+                    <connections>
+                        <outlet property="opponentClasses" destination="1NM-aG-hNS" id="yAL-95-Zqc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5P2-fM-YLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5521" y="2618"/>
+            <point key="canvasLocation" x="4714" y="2618"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="djL-Sx-giy">
@@ -1233,42 +1236,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGm-aS-4r0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3108" y="1207"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="hYU-EP-DEV">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lla-Ru-d7y" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hH7-Z0-wyW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="qox-Th-m3R" kind="relationship" relationship="rootViewController" id="AJx-VP-C26"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RJK-Ov-y9G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3741" y="350"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="P7v-sP-YCc">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cpo-nr-OnZ" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N2B-rO-Hag">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="SGz-TG-90k" kind="relationship" relationship="rootViewController" id="g95-Ah-e7y"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BMb-LC-30c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4709" y="2618"/>
         </scene>
     </scenes>
     <resources>

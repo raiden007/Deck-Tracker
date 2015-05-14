@@ -49,6 +49,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         // Populates the screen with data
         putSelectedDateOnLabel()
         putSelectedPlayerDeckOnLabel()
+        putSelectedOpponentClassOnLabel()
     }
     
     func populateScreen() {
@@ -109,6 +110,18 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         }
     }
     
+    func putSelectedOpponentClassOnLabel() {
+        var savedOpponentClass = selectedGame.getOpponentDeck()
+        println(savedOpponentClass)
+        var editedOpponentClass = defaults.stringForKey("Edited Opponent Class")
+        println(editedOpponentClass)
+        if editedOpponentClass == nil {
+            opponentDeckLabel.text = "Opponent's Class: " + savedOpponentClass
+        } else {
+            opponentDeckLabel.text = "Opponent's Class: " + editedOpponentClass!
+        }
+    }
+    
     
 
     override func didReceiveMemoryWarning() {
@@ -140,16 +153,18 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Saved Edited Date")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Name")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Opponent Class")
         NSUserDefaults.standardUserDefaults().synchronize()
-        navigationController?.popViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: {});
     }
     
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Saved Edited Date")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Name")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Opponent Class")
         NSUserDefaults.standardUserDefaults().synchronize()
-        navigationController?.popViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: {});
     }
     
     
