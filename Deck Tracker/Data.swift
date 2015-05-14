@@ -120,6 +120,21 @@ public class Data {
         println("Game deleted")
     }
     
+    // Replaces a game from the array
+    func editGame (id:Int, oldGame:Game, newGame:Game) {
+        for var i = 0; i < listOfGames.count; i++ {
+            if listOfGames[i].getID() == id {
+                //printGameData()
+                listOfGames.removeAtIndex(i)
+                //printGameData()
+                listOfGames.insert(newGame, atIndex: i)
+                //printGameData()
+                saveGame()
+            }
+        }
+        println("Game Edited")
+    }
+    
 
 
 

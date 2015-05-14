@@ -112,9 +112,9 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     
     func putSelectedOpponentClassOnLabel() {
         var savedOpponentClass = selectedGame.getOpponentDeck()
-        println(savedOpponentClass)
+        //println(savedOpponentClass)
         var editedOpponentClass = defaults.stringForKey("Edited Opponent Class")
-        println(editedOpponentClass)
+        //println(editedOpponentClass)
         if editedOpponentClass == nil {
             opponentDeckLabel.text = "Opponent's Class: " + savedOpponentClass
         } else {
@@ -149,7 +149,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
         
-        // Removes the object from the saved state
+        // Remove all edited stats
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Saved Edited Date")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Name")
@@ -159,6 +159,39 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     }
     
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
+        
+        // Get required atributes to create a new Game
+        let editedID = selectedGame.getID()
+        
+        var editedDate = EditDate.sharedInstance.readDate()
+        if editedDate == nil {
+            editedDate = selectedGame.getNSDate()
+        }
+        
+        var editedPlayerDeckName = defaults.stringForKey("Edited Deck Name")
+        if editedPlayerDeckName == nil {
+            editedPlayerDeckName = selectedGame.getPlayerDeckName()
+        }
+        
+        var editedPlayerDeckClass = defaults.stringForKey("Edited Deck Class") as String?
+        
+        var editedOpponentClass = defaults.stringForKey("Edited Opponent Class")
+        if editedOpponentClass == nil {
+            editedOpponentClass = selectedGame.getOpponentDeck()
+        }
+        
+        var editedCoin = coinSwitch.on
+        
+        var editedWin = winSwitch.on
+        
+       
+        // Create a new Game object
+        var editedGame = Game(newID: editedID, newDate: editedDate!, newPlayerDeckName: editedPlayerDeckName!, newPlayerDeckClass: editedPlayerDeckClass!, newOpponentDeck: editedOpponentClass!, newCoin: editedCoin, newWin: editedWin)
+        
+        Data.sharedInstance.editGame(editedID, oldGame: selectedGame, newGame: editedGame)
+        
+        
+        // Remove all edited stats
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Saved Edited Date")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Name")
