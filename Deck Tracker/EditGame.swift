@@ -48,6 +48,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     override func viewDidAppear(animated: Bool) {
         // Populates the screen with data
         putSelectedDateOnLabel()
+        putSelectedPlayerDeckOnLabel()
     }
     
     func populateScreen() {
@@ -98,6 +99,16 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         }
     }
     
+    func putSelectedPlayerDeckOnLabel() {
+        var savedDeck = selectedGame.getPlayerDeckName()
+        var editedDeck = defaults.stringForKey("Edited Deck Name")
+        if editedDeck == nil {
+            playerDeckLabel.text = "Your deck: " + savedDeck
+        } else {
+            playerDeckLabel.text = "Your deck: " + editedDeck!
+        }
+    }
+    
     
 
     override func didReceiveMemoryWarning() {
@@ -128,6 +139,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         // Removes the object from the saved state
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Saved Edited Date")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Name")
         NSUserDefaults.standardUserDefaults().synchronize()
         navigationController?.popViewControllerAnimated(true)
     }
@@ -135,6 +147,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Saved Edited Date")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Name")
         NSUserDefaults.standardUserDefaults().synchronize()
         navigationController?.popViewControllerAnimated(true)
     }
