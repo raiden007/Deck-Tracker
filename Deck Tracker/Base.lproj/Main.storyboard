@@ -829,6 +829,7 @@
         <!--Navigation Controller-->
         <scene sceneID="U4u-ai-sqa">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bXZ-sc-Ibi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3dm-Gz-5lB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jci-gQ-TKc">
@@ -840,7 +841,6 @@
                         <segue destination="ydo-7B-D84" kind="relationship" relationship="rootViewController" id="eDm-Jd-RwB"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bXZ-sc-Ibi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2234" y="360"/>
         </scene>
@@ -874,7 +874,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="WcB-bD-0iF" kind="show" id="xE4-on-xSO"/>
+                                            <segue destination="7Sf-u2-b2i" kind="show" id="w5U-qQ-BvU"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlayerDeck" id="NZU-Un-8vN">
@@ -895,6 +895,9 @@
                                                 <constraint firstItem="1Vg-Av-gP7" firstAttribute="leading" secondItem="3zG-Dz-FGS" secondAttribute="leadingMargin" id="q0a-uv-cAD"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="9pv-A4-QxB" kind="show" id="UPZ-Gz-O32"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OpponentDeck" id="ejV-W8-maV">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1004,6 +1007,43 @@
             </objects>
             <point key="canvasLocation" x="2316" y="1223"/>
         </scene>
+        <!--Select Date-->
+        <scene sceneID="kaF-fr-Xxq">
+            <objects>
+                <viewController id="TJD-eK-ClG" customClass="EditDate" customModule="Deck_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6DH-BE-bNh"/>
+                        <viewControllerLayoutGuide type="bottom" id="4bt-e1-khD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XsG-Yb-LGi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2U8-gh-nYo">
+                                <rect key="frame" x="140" y="219" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="453280663.91412503">
+                                    <!--2015-05-14 07:17:43 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="dateChanged:" destination="TJD-eK-ClG" eventType="valueChanged" id="L3g-g4-XcS"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="2U8-gh-nYo" secondAttribute="centerX" id="Tdd-tH-Jvu"/>
+                            <constraint firstAttribute="centerY" secondItem="2U8-gh-nYo" secondAttribute="centerY" id="nEc-Qq-XXz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select Date" id="EHr-UY-paJ"/>
+                    <connections>
+                        <outlet property="datePicker" destination="2U8-gh-nYo" id="Gwf-jJ-Ktx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vjw-5p-p3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3741" y="1216"/>
+        </scene>
         <!--Select Opponent Class-->
         <scene sceneID="dLF-l1-pJk">
             <objects>
@@ -1072,6 +1112,24 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jFc-W4-tqL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Sf-u2-b2i" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Rx-1o-7ks">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TJD-eK-ClG" kind="relationship" relationship="rootViewController" id="x1r-Zj-u6A"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2KI-xi-oOt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3017" y="1223"/>
+        </scene>
     </scenes>
     <resources>
         <image name="DruidDeck Selected" width="62" height="62"/>
@@ -1096,7 +1154,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TOQ-ST-0j3"/>
-        <segue reference="xE4-on-xSO"/>
+        <segue reference="UPZ-Gz-O32"/>
     </inferredMetricsTieBreakers>
 </document>

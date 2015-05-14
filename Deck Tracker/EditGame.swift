@@ -26,6 +26,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var selectedGameArray:[Game] = []
     var selectedGame:Game = Game(newID: 1, newDate: NSDate(), newPlayerDeckName: "1", newPlayerDeckClass: "1", newOpponentDeck: "1", newCoin: true, newWin: true)
+    static let sharedInstance = EditGame()
     
 
     override func viewDidLoad() {
@@ -46,7 +47,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     
     override func viewDidAppear(animated: Bool) {
         // Populates the screen with data
-        populateScreen()
+        putSelectedDateOnLabel()
     }
     
     func populateScreen() {
@@ -82,6 +83,21 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         winSwitch.setOn(savedWin, animated: true)
     }
     
+    // Puts the selected date on the date label
+    func putSelectedDateOnLabel() {
+        var editedDate = EditDate.sharedInstance.readDate()
+        var savedDate = selectedGame.getNSDate()
+        //println("Saved Date:")
+        //println(savedDate)
+        //println("Edited Date:")
+        //println(editedDate)
+        if editedDate != nil {
+            dateLabel.text = "Date: " + EditDate.sharedInstance.dateToString(editedDate!)
+        } else {
+            dateLabel.text = "Date: " + selectedGame.getDate()
+        }
+    }
+    
     
 
     override func didReceiveMemoryWarning() {
@@ -111,12 +127,14 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         
         // Removes the object from the saved state
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Saved Edited Date")
         NSUserDefaults.standardUserDefaults().synchronize()
         navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Saved Edited Date")
         NSUserDefaults.standardUserDefaults().synchronize()
         navigationController?.popViewControllerAnimated(true)
     }

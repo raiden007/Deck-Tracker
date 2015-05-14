@@ -42,13 +42,18 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+
+        putSelectedDateOnLabel()
+        putSelectedDeckNameOnLabel()
+        putSelectedOpponentClassOnLabel()
+    }
+    
+    func putSelectedDateOnLabel() {
         // Puts the selected date on the date label
         var x = SelectDate()
         var newDate = x.readDate()
         var newDateString = x.dateToString(newDate)
         dateCellLabel.text = "Date: " + newDateString
-        putSelectedDeckNameOnLabel()
-        putSelectedOpponentClassOnLabel()
     }
     
     // Reads the selected deck name from NSUserDefaults

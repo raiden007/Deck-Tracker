@@ -71,7 +71,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         saveSelectedDeckClass(selectedDeck)
         indexOfSelectedDeck = indexPath.row
         tableView.reloadData()
-        navigationController?.popToRootViewControllerAnimated(true)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     // Saves the selected deck ID in NSUserDefaults
