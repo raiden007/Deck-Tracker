@@ -48,6 +48,7 @@ public class Data {
     // Adds a game object to the array and save the array in NSUserDefaults
     func addGame (newGame : Game) {
         listOfGames.append(newGame)
+        listOfGames.sort({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
         saveGame()
         println("Game added")
     }
@@ -129,6 +130,7 @@ public class Data {
                 //printGameData()
                 listOfGames.insert(newGame, atIndex: i)
                 //printGameData()
+                listOfGames.sort({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
                 saveGame()
             }
         }

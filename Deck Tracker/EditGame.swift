@@ -153,6 +153,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Saved Edited Date")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Name")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Class")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Opponent Class")
         NSUserDefaults.standardUserDefaults().synchronize()
         self.dismissViewControllerAnimated(true, completion: {});
@@ -174,6 +175,9 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         }
         
         var editedPlayerDeckClass = defaults.stringForKey("Edited Deck Class") as String?
+        if editedPlayerDeckClass == nil {
+            editedPlayerDeckClass = selectedGame.getPlayerDeckClass()
+        }
         
         var editedOpponentClass = defaults.stringForKey("Edited Opponent Class")
         if editedOpponentClass == nil {
@@ -195,6 +199,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Saved Edited Date")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Name")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Class")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Opponent Class")
         NSUserDefaults.standardUserDefaults().synchronize()
         self.dismissViewControllerAnimated(true, completion: {});

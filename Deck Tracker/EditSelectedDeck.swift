@@ -98,7 +98,7 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
     }
     
     // Saves the selected deck class
-    func saveEditedDeckClass( deck: Deck) {
+    func saveEditedDeckClass(deck: Deck) {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(deck.getClass(), forKey: "Edited Deck Class")
         defaults.synchronize()
