@@ -10,34 +10,33 @@ import UIKit
 
 class Graphs: UIViewController, PiechartDelegate {
 
-    var total: CGFloat = 20
+    var total: CGFloat = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         var views: [String: UIView] = [:]
         
-        var error = Piechart.Slice()
-        error.value = 4 / total
-        error.color = UIColor.magentaColor()
-        error.text = "Error"
+        var winRate:CGFloat = CGFloat(Data.sharedInstance.generalWinRate())
+        var loseRate:CGFloat = 100 - winRate
         
-        var zero = Piechart.Slice()
-        zero.value = 6 / total
-        zero.color = UIColor.blueColor()
-        zero.text = "Zero"
+        var winSlice = Piechart.Slice()
+        winSlice.value = winRate / total
+        winSlice.color = UIColor.greenColor()
+        winSlice.text = "Win"
         
-        var win = Piechart.Slice()
-        win.value = 10 / total
-        win.color = UIColor.orangeColor()
-        win.text = "Winner"
+        var loseSlice = Piechart.Slice()
+        loseSlice.value = loseRate / total
+        loseSlice.color = UIColor.redColor()
+        loseSlice.text = "Loss"
+        
         
         var piechart = Piechart()
         piechart.delegate = self
-        piechart.title = "Service"
-        piechart.activeSlice = 2
+        piechart.title = "% Win"
+        piechart.activeSlice = 0
         piechart.layer.borderWidth = 1
-        piechart.slices = [error, zero, win]
+        piechart.slices = [winSlice, loseSlice]
         
         piechart.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(piechart)
@@ -56,6 +55,7 @@ class Graphs: UIViewController, PiechartDelegate {
     }
     
     func setInfo(slice: Piechart.Slice) -> String {
-        return "\(Int(slice.value * total))/\(Int(total))"
+        //return "\(Int(slice.value * total))/\(Int(total))"
+        return ""
     }
 }
