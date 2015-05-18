@@ -46,6 +46,8 @@ class Graphs: UIViewController, PiechartDelegate {
         
     }
     
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
