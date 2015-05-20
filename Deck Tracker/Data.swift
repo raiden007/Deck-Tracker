@@ -140,20 +140,62 @@ public class Data {
 
 
 
-    
-    
 
     // Calculates the general win rate of the user (all games)
-    func generalWinRate() -> Double {
-        var totalGames = listOfGames.count
-        var gamesWon = 0.0
-        for (var i=0; i<listOfGames.count; i++) {
-            if (listOfGames[i].win == true) {
+    func generalWinRate(date:Int, deckName:String) -> Double {
+        
+        var gamesWon = 0
+        var dateWinRateArray:[Game] = []
+        var generalWinRateArray:[Game] = []
+        
+        // If date is last 7 days
+        if date == 1 {
+            for var i = 0; i < listOfGames.count; i++ {
+                let today = NSDate()
+                let lastWeek = today.dateByAddingTimeInterval(-24 * 60 * 60 * 7)
+                if listOfGames[i].getNSDate().compare(lastWeek) == NSComparisonResult.OrderedDescending {
+                    dateWinRateArray.append(listOfGames[i])
+                    
+                }
+                
+            }
+        println("Elements for the last 7 days: ")
+        println(dateWinRateArray.count)
+        // If date is last month
+        } else if date == 2 {
+            
+        // If date is all
+        } else if date == 3 {
+            
+        } else {
+            println("ERROR!!! Date selection is wrong")
+        }
+        
+        let selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        
+        // If current deck is selected
+        if deckName == selectedDeckName {
+            for var i = 0; i < dateWinRateArray.count; i++ {
+                if deckName == dateWinRateArray[i].getPlayerDeckName() {
+                    generalWinRateArray.append(dateWinRateArray[i])
+                }
+            }
+        println("Elements after filtering the selected Deck: ")
+        println(generalWinRateArray.count)
+        // If all decks are selected
+        } else {
+            println("")
+        }
+        
+        
+        for (var i=0; i<generalWinRateArray.count ; i++) {
+            if (generalWinRateArray[i].win == true) {
                 gamesWon++
             }
         }
         
-        var winRate =  gamesWon / Double(totalGames) * 100.0
+        var totalGames = generalWinRateArray.count
+        var winRate =  Double(gamesWon) / Double(totalGames) * 100.0
         println("Total Games: " + String(totalGames))
         println("Games Won: " + gamesWon.description)
         println("Win Rate: " + winRate.description)

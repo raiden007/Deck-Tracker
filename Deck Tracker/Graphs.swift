@@ -9,15 +9,46 @@
 import UIKit
 
 class Graphs: UIViewController, PiechartDelegate {
+    
+    @IBOutlet var dateSegment: UISegmentedControl!
+    @IBOutlet var deckSegment: UISegmentedControl!
+    
 
     var total: CGFloat = 100
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var views: [String: UIView] = [:]
+        //createPlayedHeroesPieChart()
+        //createOpponentClassesPieChart()
         
-        var winRate:CGFloat = CGFloat(Data.sharedInstance.generalWinRate())
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        createWinRatePieChart()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func setSubtitle(slice: Piechart.Slice) -> String {
+        return "\(Int(slice.value * 100))% \(slice.text)"
+    }
+    
+    func setInfo(slice: Piechart.Slice) -> String {
+        //return "\(Int(slice.value * total))/\(Int(total))"
+        return ""
+    }
+    
+    func createWinRatePieChart() {
+        
+        var views: [String: UIView] = [:]
+        let selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        
+        var winRate:CGFloat = CGFloat(Data.sharedInstance.generalWinRate(1, deckName: selectedDeckName))
         var loseRate:CGFloat = 100 - winRate
         
         var winSlice = Piechart.Slice()
@@ -42,22 +73,11 @@ class Graphs: UIViewController, PiechartDelegate {
         view.addSubview(piechart)
         views["piechart"] = piechart
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[piechart]-|", options: nil, metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-200-[piechart(==200)]", options: nil, metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-150-[piechart(==200)]", options: nil, metrics: nil, views: views))
         
     }
+
     
+
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    func setSubtitle(slice: Piechart.Slice) -> String {
-        return "\(Int(slice.value * 100))% \(slice.text)"
-    }
-    
-    func setInfo(slice: Piechart.Slice) -> String {
-        //return "\(Int(slice.value * total))/\(Int(total))"
-        return ""
-    }
 }
