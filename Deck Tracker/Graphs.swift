@@ -28,6 +28,14 @@ class Graphs: UIViewController, PiechartDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         createWinRatePieChart()
+        //TODO: create variables based on the buttons
+        //TODO: create win rate graph
+        //TODO: create Heroes Playes graph (and not take in consideration selected deck obviously)
+        //TODO: create Opponents played graph (to take in consideration)
+        //TODO: create withCoin graph
+        //TODO: create without coin graph
+        //TODO: settings screen where you can customize this
+        //TODO: add about in settings screen
     }
     
     override func didReceiveMemoryWarning() {
