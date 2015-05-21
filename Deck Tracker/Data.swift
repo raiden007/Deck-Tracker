@@ -208,12 +208,19 @@ public class Data {
         }
         
         var totalGames = generalWinRateArray.count
-        var winRate =  Double(gamesWon) / Double(totalGames) * 100.0
-        println("Total Games: " + String(totalGames))
-        println("Games Won: " + gamesWon.description)
-        println("Win Rate: " + winRate.description)
-        return winRate
+        var winRate = 0.0
+        if totalGames == 0 {
+            println("Total Games: " + String(totalGames))
+            println("Games Won: " + gamesWon.description)
+            println("Win Rate: " + winRate.description)
+            return winRate
+        } else {
+            winRate =  Double(gamesWon) / Double(totalGames) * 100
+            println("Total Games: " + String(totalGames))
+            println("Games Won: " + gamesWon.description)
+            println("Win Rate: " + winRate.description)
+            return winRate
+        }
+
     }
-    
-    
 }

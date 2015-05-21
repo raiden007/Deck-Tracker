@@ -30,11 +30,6 @@ class Graphs: UIViewController, PiechartDelegate {
         } else {
             deckName = "All"
         }
-        //println(dateIndex)
-        //println(deckIndex)
-        //createPlayedHeroesPieChart()
-        //createOpponentClassesPieChart()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -46,7 +41,9 @@ class Graphs: UIViewController, PiechartDelegate {
         } else {
             deckName = "All"
         }
-        createWinRatePieChart()
+        drawPieCharts()
+        
+        
         //TODO: create Heroes Playes graph (and not take in consideration selected deck obviously)
         //TODO: create Opponents played graph (to take in consideration)
         //TODO: create withCoin graph
@@ -73,6 +70,7 @@ class Graphs: UIViewController, PiechartDelegate {
         default:
             break
         }
+        drawPieCharts()
     }
     
     @IBAction func deckChanged(sender: UISegmentedControl) {
@@ -86,6 +84,7 @@ class Graphs: UIViewController, PiechartDelegate {
         default:
             break
         }
+        drawPieCharts()
         
     }
     
@@ -133,6 +132,10 @@ class Graphs: UIViewController, PiechartDelegate {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[piechart]-|", options: nil, metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-150-[piechart(==200)]", options: nil, metrics: nil, views: views))
         
+    }
+    
+    func drawPieCharts() {
+        createWinRatePieChart()
     }
 
     
