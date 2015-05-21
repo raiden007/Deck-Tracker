@@ -190,8 +190,7 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
         return UIBarPosition.TopAttached
     }
     
-    //TODO: Add error when no name is entered
-    //TODO: Add error if no hero is selected
+
     
 
     /*

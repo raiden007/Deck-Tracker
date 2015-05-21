@@ -149,7 +149,7 @@ public class Data {
         var generalWinRateArray:[Game] = []
         
         // If date is last 7 days
-        if date == 1 {
+        if date == 0 {
             for var i = 0; i < listOfGames.count; i++ {
                 let today = NSDate()
                 let lastWeek = today.dateByAddingTimeInterval(-24 * 60 * 60 * 7)
@@ -159,14 +159,25 @@ public class Data {
                 }
                 
             }
-        println("Elements for the last 7 days: ")
-        println(dateWinRateArray.count)
+            println("Count for the last 7 days: ")
+            println(dateWinRateArray.count)
         // If date is last month
-        } else if date == 2 {
-            
+        } else if date == 1 {
+            for var i = 0; i < listOfGames.count; i++ {
+                let today = NSDate()
+                let lastMonth = today.dateByAddingTimeInterval(-24 * 60 * 60 * 30)
+                if listOfGames[i].getNSDate().compare(lastMonth) == NSComparisonResult.OrderedDescending {
+                    dateWinRateArray.append(listOfGames[i])
+                }
+                
+            }
+            println("Count for the last month: ")
+            println(dateWinRateArray.count)
         // If date is all
-        } else if date == 3 {
-            
+        } else if date == 2 {
+            dateWinRateArray = listOfGames
+            println("Count for all dates: ")
+            println(dateWinRateArray.count)
         } else {
             println("ERROR!!! Date selection is wrong")
         }
@@ -180,11 +191,13 @@ public class Data {
                     generalWinRateArray.append(dateWinRateArray[i])
                 }
             }
-        println("Elements after filtering the selected Deck: ")
-        println(generalWinRateArray.count)
+            println("Count for selected Deck: ")
+            println(generalWinRateArray.count)
         // If all decks are selected
         } else {
-            println("")
+            generalWinRateArray = dateWinRateArray
+            println("Count for all decks")
+            println(generalWinRateArray.count)
         }
         
         

@@ -15,11 +15,23 @@ class Graphs: UIViewController, PiechartDelegate {
     
 
     var total: CGFloat = 100
+    var dateIndex = -1
+    var deckIndex = -1
+    var deckName = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        dateIndex = dateSegment.selectedSegmentIndex
+        deckIndex = deckSegment.selectedSegmentIndex
+        if deckIndex == 0 {
+            deckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        } else {
+            deckName = "All"
+        }
+        //println(dateIndex)
+        //println(deckIndex)
         //createPlayedHeroesPieChart()
         //createOpponentClassesPieChart()
         
@@ -27,9 +39,14 @@ class Graphs: UIViewController, PiechartDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        dateIndex = dateSegment.selectedSegmentIndex
+        deckIndex = deckSegment.selectedSegmentIndex
+        if deckIndex == 0 {
+            deckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        } else {
+            deckName = "All"
+        }
         createWinRatePieChart()
-        //TODO: create variables based on the buttons
-        //TODO: create win rate graph
         //TODO: create Heroes Playes graph (and not take in consideration selected deck obviously)
         //TODO: create Opponents played graph (to take in consideration)
         //TODO: create withCoin graph
@@ -41,6 +58,38 @@ class Graphs: UIViewController, PiechartDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func dateChanged(sender: UISegmentedControl) {
+        switch dateSegment.selectedSegmentIndex {
+        case 0:
+            dateIndex = 0
+            //println("Last 7 days")
+        case 1:
+            dateIndex = 1
+            //println("Last Month")
+        case 2:
+            dateIndex = 2
+            //println("All games")
+        default:
+            break
+        }
+    }
+    
+    @IBAction func deckChanged(sender: UISegmentedControl) {
+        switch deckSegment.selectedSegmentIndex {
+        case 0:
+            deckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+            //println("Selected Deck")
+        case 1:
+            deckName = "All"
+            //println("All decks")
+        default:
+            break
+        }
+        
+    }
+    
+    
     
     func setSubtitle(slice: Piechart.Slice) -> String {
         return "\(Int(slice.value * 100))% \(slice.text)"
@@ -54,9 +103,10 @@ class Graphs: UIViewController, PiechartDelegate {
     func createWinRatePieChart() {
         
         var views: [String: UIView] = [:]
-        let selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
         
-        var winRate:CGFloat = CGFloat(Data.sharedInstance.generalWinRate(1, deckName: selectedDeckName))
+        var winRate:CGFloat = CGFloat(Data.sharedInstance.generalWinRate(dateIndex, deckName: deckName))
+        //println("winRate")
+        //println(winRate)
         var loseRate:CGFloat = 100 - winRate
         
         var winSlice = Piechart.Slice()

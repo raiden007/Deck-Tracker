@@ -787,6 +787,9 @@
                                     <segment title="Last Month"/>
                                     <segment title="All Games"/>
                                 </segments>
+                                <connections>
+                                    <action selector="dateChanged:" destination="Hyd-dH-te2" eventType="valueChanged" id="CRF-JQ-cdR"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6K2-uo-HRb">
                                 <rect key="frame" x="16" y="108" width="568" height="29"/>
@@ -794,6 +797,9 @@
                                     <segment title="Current Deck"/>
                                     <segment title="All Decks"/>
                                 </segments>
+                                <connections>
+                                    <action selector="deckChanged:" destination="Hyd-dH-te2" eventType="valueChanged" id="5mW-Uh-h9k"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
