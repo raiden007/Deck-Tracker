@@ -23,24 +23,14 @@ class Graphs: UIViewController, PiechartDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dateIndex = dateSegment.selectedSegmentIndex
-        deckIndex = deckSegment.selectedSegmentIndex
-        if deckIndex == 0 {
-            deckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
-        } else {
-            deckName = "All"
-        }
+        getInitialStatus()
+        drawPieCharts()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        dateIndex = dateSegment.selectedSegmentIndex
-        deckIndex = deckSegment.selectedSegmentIndex
-        if deckIndex == 0 {
-            deckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
-        } else {
-            deckName = "All"
-        }
+
+        getInitialStatus()
         drawPieCharts()
         
         
@@ -54,6 +44,16 @@ class Graphs: UIViewController, PiechartDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func getInitialStatus() {
+        dateIndex = dateSegment.selectedSegmentIndex
+        deckIndex = deckSegment.selectedSegmentIndex
+        if deckIndex == 0 {
+            deckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        } else {
+            deckName = "All"
+        }
     }
     
     @IBAction func dateChanged(sender: UISegmentedControl) {
