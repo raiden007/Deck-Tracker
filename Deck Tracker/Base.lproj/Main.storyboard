@@ -801,9 +801,6 @@
                                     <action selector="deckChanged:" destination="Hyd-dH-te2" eventType="valueChanged" id="5mW-Uh-h9k"/>
                                 </connections>
                             </segmentedControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8vw-j6-AbU">
-                                <rect key="frame" x="16" y="144" width="404" height="220"/>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -824,7 +821,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Xu-F1-y3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1578" y="1246"/>
+            <point key="canvasLocation" x="1570" y="1558"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="PE0-Or-xsT">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="x1k-Dd-I3e" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uS7-RR-ZzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2318" y="1156"/>
+        </scene>
+        <!--Graphs View Controller-->
+        <scene sceneID="OeL-lu-59H">
+            <objects>
+                <viewController storyboardIdentifier="ContentViewController" id="0lB-4Q-QRd" customClass="GraphsViewController" customModule="Deck_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fMh-MK-aFV"/>
+                        <viewControllerLayoutGuide type="bottom" id="6bl-1I-Or9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ACx-Hp-b2q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5T-KN-QjC">
+                                <rect key="frame" x="279" y="20" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a5T-KN-QjC" firstAttribute="top" secondItem="fMh-MK-aFV" secondAttribute="bottom" id="iJ9-Bh-Tom"/>
+                            <constraint firstAttribute="centerX" secondItem="a5T-KN-QjC" secondAttribute="centerX" id="uii-iF-KgK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="a5T-KN-QjC" id="ot5-ej-cOR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WtF-Cw-27C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2318" y="1900"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U4u-ai-sqa">
@@ -1254,7 +1292,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFj-Ms-enh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="1246"/>
+            <point key="canvasLocation" x="760" y="1558"/>
         </scene>
     </scenes>
     <resources>

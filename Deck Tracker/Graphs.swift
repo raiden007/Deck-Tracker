@@ -8,12 +8,14 @@
 
 import UIKit
 
-class Graphs: UIViewController, PiechartDelegate {
+class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate  {
     
     @IBOutlet var dateSegment: UISegmentedControl!
     @IBOutlet var deckSegment: UISegmentedControl!
     
-
+    var pageViewController: UIPageViewController!
+    var pageTitles:NSArray!
+    
     var total: CGFloat = 100
     var dateIndex = -1
     var deckIndex = -1
@@ -24,7 +26,25 @@ class Graphs: UIViewController, PiechartDelegate {
         super.viewDidLoad()
         
         getInitialStatus()
-        drawPieCharts()
+        //drawPieCharts()
+        
+        self.pageTitles = NSArray(objects: "Explore", "Today")
+        self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
+        self.pageViewController.dataSource = self
+        
+        var startVC = self.viewControllerAtIndex(0) as GraphsViewController
+        //startVC.view.backgroundColor = UIColor.orangeColor()
+        var viewControllers = [startVC]
+        
+        self.pageViewController.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: nil)
+        self.pageViewController.view.frame = CGRectMake(0, 150, self.view.frame.width, self.view.frame.size.height - 200)
+        self.addChildViewController(self.pageViewController)
+        self.view.addSubview(self.pageViewController.view)
+        
+        //constraints pe H si V
+        
+        self.pageViewController.didMoveToParentViewController(self)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -110,8 +130,8 @@ class Graphs: UIViewController, PiechartDelegate {
     
     func drawPieCharts() {
         createWinRatePieChart()
-        createHeroesPlayedPieChart()
-        createOpponentsPlayedPieChart()
+        //createHeroesPlayedPieChart()
+        //createOpponentsPlayedPieChart()
     }
     
     func createWinRatePieChart() {
@@ -292,8 +312,58 @@ class Graphs: UIViewController, PiechartDelegate {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-450-[piechart(==200)]", options: nil, metrics: nil, views: views))
     }
     
+    func viewControllerAtIndex(index: Int) -> GraphsViewController {
+        if (self.pageTitles.count == 0) || (index >= self.pageTitles.count) {
+            return GraphsViewController()
+        }
+        
+        var vc: GraphsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as! GraphsViewController
+        vc.titleText = self.pageTitles[index] as! String
+        vc.pageIndex = index
+        
+        return vc
+        
+    }
     
-
+    // Page View Controller data source
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+        
+        var vc = viewController as! GraphsViewController
+        var index = vc.pageIndex as Int
+        
+        if (index == 0 || index == NSNotFound) {
+            return nil
+        }
+        
+        index--
+        return self.viewControllerAtIndex(index)
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        
+        var vc = viewController as! GraphsViewController
+        var index = vc.pageIndex as Int
+        
+        if index == NSNotFound {
+            return nil
+        }
+        
+        index++
+        
+        if index == self.pageTitles.count {
+            return nil
+        }
+        
+        return self.viewControllerAtIndex(index)
+    }
+    
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return self.pageTitles.count
+    }
+    
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return 0
+    }
 
     
 

@@ -27,10 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Data.sharedInstance.printGameData()
         Data.sharedInstance.printDeckData()
         
+        var pageControl = UIPageControl.appearance()
+        pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+        pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
+        pageControl.backgroundColor = UIColor.whiteColor()
+        
         // Show tab 2 at startup
         if let tabBarController = self.window!.rootViewController as? UITabBarController {
             tabBarController.selectedIndex = 1
         }
+        
+
         
         return true
     }
