@@ -145,42 +145,10 @@ public class Data {
     func generalWinRate(date:Int, deckName:String) -> Double {
         
         var gamesWon = 0
-        var dateWinRateArray:[Game] = []
+
         var generalWinRateArray:[Game] = []
         
-        // If date is last 7 days
-        if date == 0 {
-            for var i = 0; i < listOfGames.count; i++ {
-                let today = NSDate()
-                let lastWeek = today.dateByAddingTimeInterval(-24 * 60 * 60 * 7)
-                if listOfGames[i].getNSDate().compare(lastWeek) == NSComparisonResult.OrderedDescending {
-                    dateWinRateArray.append(listOfGames[i])
-                    
-                }
-                
-            }
-            println("Count for the last 7 days: ")
-            println(dateWinRateArray.count)
-        // If date is last month
-        } else if date == 1 {
-            for var i = 0; i < listOfGames.count; i++ {
-                let today = NSDate()
-                let lastMonth = today.dateByAddingTimeInterval(-24 * 60 * 60 * 30)
-                if listOfGames[i].getNSDate().compare(lastMonth) == NSComparisonResult.OrderedDescending {
-                    dateWinRateArray.append(listOfGames[i])
-                }
-                
-            }
-            println("Count for the last month: ")
-            println(dateWinRateArray.count)
-        // If date is all
-        } else if date == 2 {
-            dateWinRateArray = listOfGames
-            println("Count for all dates: ")
-            println(dateWinRateArray.count)
-        } else {
-            println("ERROR!!! Date selection is wrong")
-        }
+        var dateArray = getDateArray(date)
         
         var selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
         if selectedDeckName == nil {
@@ -192,18 +160,16 @@ public class Data {
         
         // If current deck is selected
         if deckName == selectedDeckName {
-            for var i = 0; i < dateWinRateArray.count; i++ {
-                if deckName == dateWinRateArray[i].getPlayerDeckName() {
-                    generalWinRateArray.append(dateWinRateArray[i])
+            for var i = 0; i < dateArray.count; i++ {
+                if deckName == dateArray[i].getPlayerDeckName() {
+                    generalWinRateArray.append(dateArray[i])
                 }
             }
-            println("Count for selected Deck: ")
-            println(generalWinRateArray.count)
+            println("Count for selected Deck: " + String(generalWinRateArray.count))
         // If all decks are selected
         } else {
-            generalWinRateArray = dateWinRateArray
-            println("Count for all decks")
-            println(generalWinRateArray.count)
+            generalWinRateArray = dateArray
+            println("Count for all decks: " + String(generalWinRateArray.count))
         }
         
         
@@ -228,5 +194,75 @@ public class Data {
             return winRate
         }
 
+    }
+    
+    func getDateArray (date:Int) -> [Game] {
+        
+        var dateArray:[Game] = []
+        
+        // If date is last 7 days
+        if date == 0 {
+            for var i = 0; i < listOfGames.count; i++ {
+                let today = NSDate()
+                let lastWeek = today.dateByAddingTimeInterval(-24 * 60 * 60 * 7)
+                if listOfGames[i].getNSDate().compare(lastWeek) == NSComparisonResult.OrderedDescending {
+                    dateArray.append(listOfGames[i])
+                    
+                }
+                
+            }
+            println("Count for the last 7 days: " + String(dateArray.count))
+            return dateArray
+            // If date is last month
+        } else if date == 1 {
+            for var i = 0; i < listOfGames.count; i++ {
+                let today = NSDate()
+                let lastMonth = today.dateByAddingTimeInterval(-24 * 60 * 60 * 30)
+                if listOfGames[i].getNSDate().compare(lastMonth) == NSComparisonResult.OrderedDescending {
+                    dateArray.append(listOfGames[i])
+                }
+                
+            }
+            println("Count for the last month: " + String(dateArray.count))
+            return dateArray
+            // If date is all
+        } else if date == 2 {
+            dateArray = listOfGames
+            println("Count for all dates: " + String(dateArray.count))
+            return dateArray
+        } else {
+            println("ERROR!!! Date selection is wrong")
+            return dateArray
+        }
+    }
+    
+    func heroesPlayed (date:Int) -> [Int] {
+        var heroesPlayed:[Int] = [0,0,0,0,0,0,0,0,0]
+        var dateArray = getDateArray(date)
+        for var i = 0; i < dateArray.count; i++ {
+            var playerClass = dateArray[i].getPlayerDeckClass()
+            if playerClass == "Warrior" {
+                heroesPlayed[0]++
+            } else if playerClass == "Paladin" {
+                heroesPlayed[1]++
+            } else if playerClass == "Shaman" {
+                heroesPlayed[2]++
+            } else if playerClass == "Hunter" {
+                heroesPlayed[3]++
+            } else if playerClass == "Druid" {
+                heroesPlayed[4]++
+            } else if playerClass == "Rogue" {
+                heroesPlayed[5]++
+            } else if playerClass == "Mage" {
+                heroesPlayed[6]++
+            } else if playerClass == "Warlock" {
+                heroesPlayed[7]++
+            } else if playerClass == "Priest" {
+                heroesPlayed[8]++
+            } else {
+                assert(true, "Player Class Unknown")
+            }
+        }
+        return heroesPlayed
     }
 }
