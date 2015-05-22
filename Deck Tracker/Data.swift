@@ -137,10 +137,6 @@ public class Data {
         println("Game Edited")
     }
     
-
-
-
-
     // Calculates the general win rate of the user (all games)
     func generalWinRate(date:Int, deckName:String) -> Double {
         
@@ -182,20 +178,18 @@ public class Data {
         var totalGames = generalWinRateArray.count
         var winRate = 0.0
         if totalGames == 0 {
-            println("Total Games: " + String(totalGames))
-            println("Games Won: " + gamesWon.description)
-            println("Win Rate: " + winRate.description)
             return winRate
         } else {
             winRate =  Double(gamesWon) / Double(totalGames) * 100
-            println("Total Games: " + String(totalGames))
-            println("Games Won: " + gamesWon.description)
-            println("Win Rate: " + winRate.description)
+//            println("Total Games: " + String(totalGames))
+//            println("Games Won: " + gamesWon.description)
+//            println("Win Rate: " + winRate.description)
             return winRate
         }
 
     }
     
+    // Filters the gamesList array based on the date the user selected
     func getDateArray (date:Int) -> [Game] {
         
         var dateArray:[Game] = []
@@ -236,6 +230,7 @@ public class Data {
         }
     }
     
+    // Returns the heroes played by the user
     func heroesPlayed (date:Int) -> [Int] {
         var heroesPlayed:[Int] = [0,0,0,0,0,0,0,0,0]
         var dateArray = getDateArray(date)
