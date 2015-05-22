@@ -149,8 +149,6 @@ public class Data {
         var selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
         if selectedDeckName == nil {
             selectedDeckName = ""
-        } else {
-           
         }
         
         
@@ -259,5 +257,55 @@ public class Data {
             }
         }
         return heroesPlayed
+    }
+    
+    // Returns the opponents class encountered by the user
+    func opponentsPlayed (date:Int, deckName:String) -> [Int] {
+        var opponentsPlayed:[Int] = [0,0,0,0,0,0,0,0,0]
+        var dateArray = getDateArray(date)
+        var opponentsPlayedArray:[Game] = []
+        
+        var selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        if selectedDeckName == nil {
+            selectedDeckName = ""
+        }
+        
+        if deckName == selectedDeckName {
+            for var i = 0; i < dateArray.count; i++ {
+                if deckName == dateArray[i].getPlayerDeckName() {
+                    opponentsPlayedArray.append(dateArray[i])
+                }
+            }
+            println("Count for selected Deck: " + String(opponentsPlayedArray.count))
+        } else {
+            opponentsPlayedArray = dateArray
+            println("Count for all decks: " + String(opponentsPlayedArray.count))
+        }
+
+        for var i = 0; i < opponentsPlayedArray.count; i++ {
+            var opponentClass = opponentsPlayedArray[i].getOpponentDeck()
+            if opponentClass == "Warrior" {
+                opponentsPlayed[0]++
+            } else if opponentClass == "Paladin" {
+                opponentsPlayed[1]++
+            } else if opponentClass == "Shaman" {
+                opponentsPlayed[2]++
+            } else if opponentClass == "Hunter" {
+                opponentsPlayed[3]++
+            } else if opponentClass == "Druid" {
+                opponentsPlayed[4]++
+            } else if opponentClass == "Rogue" {
+                opponentsPlayed[5]++
+            } else if opponentClass == "Mage" {
+                opponentsPlayed[6]++
+            } else if opponentClass == "Warlock" {
+                opponentsPlayed[7]++
+            } else if opponentClass == "Priest" {
+                opponentsPlayed[8]++
+            } else {
+                assert(true, "Opponent Class Unknown")
+            }
+        }
+        return opponentsPlayed
     }
 }
