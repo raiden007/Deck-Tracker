@@ -182,7 +182,13 @@ public class Data {
             println("ERROR!!! Date selection is wrong")
         }
         
-        let selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        var selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        if selectedDeckName == nil {
+            selectedDeckName = ""
+        } else {
+           
+        }
+        
         
         // If current deck is selected
         if deckName == selectedDeckName {
