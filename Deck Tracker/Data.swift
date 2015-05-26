@@ -159,11 +159,11 @@ public class Data {
                     generalWinRateArray.append(dateArray[i])
                 }
             }
-            println("Count for selected Deck: " + String(generalWinRateArray.count))
+            //println("Count for selected Deck: " + String(generalWinRateArray.count))
         // If all decks are selected
         } else {
             generalWinRateArray = dateArray
-            println("Count for all decks: " + String(generalWinRateArray.count))
+            //println("Count for all decks: " + String(generalWinRateArray.count))
         }
         
         
@@ -276,10 +276,10 @@ public class Data {
                     opponentsPlayedArray.append(dateArray[i])
                 }
             }
-            println("Count for selected Deck: " + String(opponentsPlayedArray.count))
+            //println("Count for selected Deck: " + String(opponentsPlayedArray.count))
         } else {
             opponentsPlayedArray = dateArray
-            println("Count for all decks: " + String(opponentsPlayedArray.count))
+            //println("Count for all decks: " + String(opponentsPlayedArray.count))
         }
 
         for var i = 0; i < opponentsPlayedArray.count; i++ {
@@ -307,5 +307,111 @@ public class Data {
             }
         }
         return opponentsPlayed
+    }
+    
+    // Calculates the win rate when going first
+    func withCoinWinRate(date:Int, deckName:String) -> Double {
+        
+        var gamesWon = 0
+        var generalWinRateArray:[Game] = []
+        var dateArray = getDateArray(date)
+        var coinArray:[Game] = []
+        
+        var selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        if selectedDeckName == nil {
+            selectedDeckName = ""
+        }
+        
+        
+        // If current deck is selected
+        if deckName == selectedDeckName {
+            for var i = 0; i < dateArray.count; i++ {
+                if deckName == dateArray[i].getPlayerDeckName() {
+                    generalWinRateArray.append(dateArray[i])
+                }
+            }
+            //println("Count for selected Deck: " + String(generalWinRateArray.count))
+            // If all decks are selected
+        } else {
+            generalWinRateArray = dateArray
+            //println("Count for all decks: " + String(generalWinRateArray.count))
+        }
+        
+        for (var i=0; i<generalWinRateArray.count ; i++) {
+            if generalWinRateArray[i].coin == true {
+                coinArray.append(generalWinRateArray[i])
+            }
+        }
+        
+        for (var i=0; i<coinArray.count ; i++) {
+            if coinArray[i].win == true {
+                gamesWon++
+            }
+        }
+        
+        var totalGames = coinArray.count
+        var winRate = 0.0
+        if totalGames == 0 {
+            return winRate
+        } else {
+            winRate =  Double(gamesWon) / Double(totalGames) * 100
+            println("Coin Total Games: " + String(totalGames))
+            println("Coin Games Won: " + gamesWon.description)
+            println("Coin Win Rate: " + winRate.description)
+            return winRate
+        }
+    }
+    
+    // Calculates the win rate when going second
+    func withoutCoinWinRate(date:Int, deckName:String) -> Double {
+        
+        var gamesWon = 0
+        var generalWinRateArray:[Game] = []
+        var dateArray = getDateArray(date)
+        var coinArray:[Game] = []
+        
+        var selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        if selectedDeckName == nil {
+            selectedDeckName = ""
+        }
+        
+        
+        // If current deck is selected
+        if deckName == selectedDeckName {
+            for var i = 0; i < dateArray.count; i++ {
+                if deckName == dateArray[i].getPlayerDeckName() {
+                    generalWinRateArray.append(dateArray[i])
+                }
+            }
+            //println("Count for selected Deck: " + String(generalWinRateArray.count))
+            // If all decks are selected
+        } else {
+            generalWinRateArray = dateArray
+            //println("Count for all decks: " + String(generalWinRateArray.count))
+        }
+        
+        for (var i=0; i<generalWinRateArray.count ; i++) {
+            if generalWinRateArray[i].coin == false {
+                coinArray.append(generalWinRateArray[i])
+            }
+        }
+        
+        for (var i=0; i<coinArray.count ; i++) {
+            if coinArray[i].win == true {
+                gamesWon++
+            }
+        }
+        
+        var totalGames = coinArray.count
+        var winRate = 0.0
+        if totalGames == 0 {
+            return winRate
+        } else {
+            winRate =  Double(gamesWon) / Double(totalGames) * 100
+            println("Coin Total Games: " + String(totalGames))
+            println("Coin Games Won: " + gamesWon.description)
+            println("Coin Win Rate: " + winRate.description)
+            return winRate
+        }
     }
 }

@@ -29,7 +29,7 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         
         getInitialStatus()
         
-        self.pageTitles = NSArray(objects: "Win Rate", "Heroes Played", "Opponents Faced", "With Coin WinRate", "Without Coin WinRate")
+        self.pageTitles = NSArray(objects: "Win rate", "Heroes played", "Opponents faced", "Going first win rate", "Going second win rate")
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
         
@@ -145,35 +145,14 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         return ""
     }
     
-    func drawPieCharts() {
-        //createWinRatePieChart()
-        //createHeroesPlayedPieChart()
-        //createOpponentsPlayedPieChart()
-    }
-    
-    func getDateIndex() -> Int {
-        return dateIndex
-    }
-    
-    
-    
-    
-
-    
-    
-
-    
     func viewControllerAtIndex(index: Int) -> GraphsViewController {
         if (self.pageTitles.count == 0) || (index >= self.pageTitles.count) {
             return GraphsViewController()
         }
-        
         var vc: GraphsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as! GraphsViewController
         vc.titleText = self.pageTitles[index] as! String
         vc.pageIndex = index
-        
         return vc
-        
     }
     
     // Page View Controller data source
@@ -215,8 +194,4 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
     }
-
-    
-
-    
 }
