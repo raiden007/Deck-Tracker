@@ -21,28 +21,25 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
     var deckIndex = -1
     var deckName = ""
     
+    static let sharedInstance = Graphs()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getInitialStatus()
-        //drawPieCharts()
         
-        self.pageTitles = NSArray(objects: "Explore", "Today")
+        self.pageTitles = NSArray(objects: "Win Rate", "Heroes Playes", "Opponents Faced", "With Coin WinRate", "Without Coin WinRate")
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
         
         var startVC = self.viewControllerAtIndex(0) as GraphsViewController
-        //startVC.view.backgroundColor = UIColor.orangeColor()
         var viewControllers = [startVC]
         
         self.pageViewController.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: nil)
         self.pageViewController.view.frame = CGRectMake(0, 150, self.view.frame.width, self.view.frame.size.height - 200)
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
-        
-        //constraints pe H si V
-        
         self.pageViewController.didMoveToParentViewController(self)
         
     }
@@ -52,18 +49,13 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
 
         getInitialStatus()
         drawPieCharts()
-        
-        
-        //TODO: create withCoin graph
-        //TODO: create without coin graph
-        //TODO: settings screen where you can customize this
-        //TODO: add about in settings screen
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    // Loads what buttons are pressed
     func getInitialStatus() {
         dateIndex = dateSegment.selectedSegmentIndex
         deckIndex = deckSegment.selectedSegmentIndex
@@ -78,12 +70,20 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         } else {
             deckName = "All"
         }
+        
+        //println("Date Index: " + String(dateIndex))
+        //println("Deck Index: " + String(deckIndex))
+        //println("Deck Name: " + String(deckName))
     }
     
+    // Updates when the date button is changed
     @IBAction func dateChanged(sender: UISegmentedControl) {
         switch dateSegment.selectedSegmentIndex {
         case 0:
             dateIndex = 0
+            NSUserDefaults.standardUserDefaults().setInteger(dateIndex, forKey: "Date Index")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            println("Date Index: " + String(dateIndex))
             //println("Last 7 days")
         case 1:
             dateIndex = 1
@@ -94,9 +94,10 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         default:
             break
         }
-        drawPieCharts()
+        //GraphsViewController.sharedInstance.drawPieChart()
     }
     
+    // Updates when the deck button is changed
     @IBAction func deckChanged(sender: UISegmentedControl) {
         switch deckSegment.selectedSegmentIndex {
         case 0:
@@ -129,45 +130,49 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
     }
     
     func drawPieCharts() {
-        createWinRatePieChart()
+        //createWinRatePieChart()
         //createHeroesPlayedPieChart()
         //createOpponentsPlayedPieChart()
     }
     
-    func createWinRatePieChart() {
-        
-        var views: [String: UIView] = [:]
-        
-        var winRate:CGFloat = CGFloat(Data.sharedInstance.generalWinRate(dateIndex, deckName: deckName))
-        //println("winRate")
-        //println(winRate)
-        var loseRate:CGFloat = 100 - winRate
-        
-        var winSlice = Piechart.Slice()
-        winSlice.value = winRate / total
-        winSlice.color = UIColor.greenColor()
-        winSlice.text = "Win"
-        
-        var loseSlice = Piechart.Slice()
-        loseSlice.value = loseRate / total
-        loseSlice.color = UIColor.redColor()
-        loseSlice.text = "Loss"
-        
-        
-        var piechart = Piechart()
-        piechart.delegate = self
-        piechart.title = "% Win"
-        piechart.activeSlice = 0
-        piechart.layer.borderWidth = 1
-        piechart.slices = [winSlice, loseSlice]
-        
-        piechart.setTranslatesAutoresizingMaskIntoConstraints(false)
-        view.addSubview(piechart)
-        views["piechart"] = piechart
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[piechart]-|", options: nil, metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-125-[piechart(==200)]", options: nil, metrics: nil, views: views))
-    }
     
+    // Creates the Win Rate Pie Chart
+//    func createWinRatePieChart() {
+//        
+//        var views: [String: UIView] = [:]
+//        
+//        var winRate:CGFloat = CGFloat(Data.sharedInstance.generalWinRate(dateIndex, deckName: deckName))
+//        //println("winRate")
+//        //println(winRate)
+//        var loseRate:CGFloat = 100 - winRate
+//        
+//        var winSlice = Piechart.Slice()
+//        winSlice.value = winRate / total
+//        winSlice.color = UIColor.greenColor()
+//        winSlice.text = "Win"
+//        
+//        var loseSlice = Piechart.Slice()
+//        loseSlice.value = loseRate / total
+//        loseSlice.color = UIColor.redColor()
+//        loseSlice.text = "Loss"
+//        
+//        
+//        var piechart = Piechart()
+//        piechart.delegate = self
+//        piechart.title = "% Win"
+//        piechart.activeSlice = 0
+//        piechart.layer.borderWidth = 1
+//        piechart.slices = [winSlice, loseSlice]
+//        
+//        piechart.setTranslatesAutoresizingMaskIntoConstraints(false)
+//        view.addSubview(piechart)
+//        views["piechart"] = piechart
+//        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[piechart]-|", options: nil, metrics: nil, views: views))
+//        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-125-[piechart(==200)]", options: nil, metrics: nil, views: views))
+//    }
+    
+    
+    // Creates the Heroes Played Pie Chart
     func createHeroesPlayedPieChart() {
         var views: [String: UIView] = [:]
         
@@ -240,6 +245,7 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
     }
     
     
+    // Creates the opponents played pie chart
     func createOpponentsPlayedPieChart() {
         var views: [String: UIView] = [:]
         
