@@ -30,6 +30,7 @@
 		6DDD44941AEF87B700A4B5D2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDD44921AEF87B700A4B5D2 /* LaunchScreen.xib */; };
 		6DDD44A01AEF87B700A4B5D2 /* Deck_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD449F1AEF87B700A4B5D2 /* Deck_TrackerTests.swift */; };
 		6DDD44AA1AEFB1B300A4B5D2 /* AddDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */; };
+		6DE566961B15C2220026FBF5 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE566951B15C2220026FBF5 /* About.swift */; };
 		6DF363001AFB702600A5B507 /* AddGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF362FF1AFB702600A5B507 /* AddGame.swift */; };
 		8B10AFCD1B0310A100D33C29 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCB1B0310A100D33C29 /* Fabric.framework */; };
 		8B10AFCE1B0310A100D33C29 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */; };
@@ -73,6 +74,7 @@
 		6DDD449E1AEF87B700A4B5D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DDD449F1AEF87B700A4B5D2 /* Deck_TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck_TrackerTests.swift; sourceTree = "<group>"; };
 		6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeck.swift; sourceTree = "<group>"; };
+		6DE566951B15C2220026FBF5 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		6DF362FF1AFB702600A5B507 /* AddGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGame.swift; sourceTree = "<group>"; };
 		8B10AFCB1B0310A100D33C29 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				6D9538421B09E22400B4ED66 /* Graphs.swift */,
 				6DC3201F1B0F65D20098F60A /* GraphsViewController.swift */,
 				6D9538401B09E1C100B4ED66 /* Piechart.swift */,
+				6DE566951B15C2220026FBF5 /* About.swift */,
 				6DDD448D1AEF87B700A4B5D2 /* Main.storyboard */,
 				6DDD44901AEF87B700A4B5D2 /* Images.xcassets */,
 				6DDD44921AEF87B700A4B5D2 /* LaunchScreen.xib */,
@@ -307,6 +310,7 @@
 				6DDD44881AEF87B700A4B5D2 /* AppDelegate.swift in Sources */,
 				6D61AA431AF784E20013EB04 /* Game.swift in Sources */,
 				6DD844CF1AFA306500CF9C80 /* DecksCell.swift in Sources */,
+				6DE566961B15C2220026FBF5 /* About.swift in Sources */,
 				6DDD448A1AEF87B700A4B5D2 /* DecksList.swift in Sources */,
 				6DC320201B0F65D20098F60A /* GraphsViewController.swift in Sources */,
 				6DBB73A71B04CDCE00005B5E /* EditOpponentClass.swift in Sources */,
