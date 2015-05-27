@@ -1120,7 +1120,7 @@
         <scene sceneID="Lw8-0L-UmG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ex9-fr-FVh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Decks" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Decks" image="DeckIcon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JK7-ET-VPP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1139,7 +1139,7 @@
         <scene sceneID="KQp-sk-OaV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yHe-Mg-1hb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stats" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Stats" image="StatsIcon" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SoP-UC-bvl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1275,11 +1275,11 @@
             </objects>
             <point key="canvasLocation" x="3920" y="1207"/>
         </scene>
-        <!--Item-->
+        <!--Graphs-->
         <scene sceneID="SwD-9i-XWq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l1F-i4-mGJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="HkT-BI-K9G"/>
+                    <tabBarItem key="tabBarItem" title="Graphs" image="GraphsIcon" id="HkT-BI-K9G"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="64t-Hy-spK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1296,8 +1296,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="DeckIcon" width="25" height="21"/>
         <image name="DruidDeck Selected" width="62" height="62"/>
         <image name="DruidSmall" width="62" height="62"/>
+        <image name="GraphsIcon" width="25" height="24"/>
         <image name="HunterDeck Selected" width="62" height="62"/>
         <image name="HunterSmall" width="62" height="62"/>
         <image name="MageDeck Selected" width="62" height="62"/>
@@ -1310,14 +1312,13 @@
         <image name="RogueSmall" width="62" height="62"/>
         <image name="ShamanDeck Selected" width="62" height="62"/>
         <image name="ShamanSmall" width="62" height="62"/>
+        <image name="StatsIcon" width="20" height="18"/>
         <image name="WarlockDeck Selected" width="62" height="62"/>
         <image name="WarlockSmall" width="62" height="62"/>
         <image name="WarriorDeck Selected" width="62" height="62"/>
         <image name="WarriorSmall" width="62" height="62"/>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TOQ-ST-0j3"/>
+        <segue reference="JQI-6c-B9y"/>
     </inferredMetricsTieBreakers>
 </document>
