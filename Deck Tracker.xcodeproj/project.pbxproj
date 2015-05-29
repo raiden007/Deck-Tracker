@@ -14,6 +14,13 @@
 		6D9538411B09E1C100B4ED66 /* Piechart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9538401B09E1C100B4ED66 /* Piechart.swift */; };
 		6D9538431B09E22400B4ED66 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9538421B09E22400B4ED66 /* Graphs.swift */; };
 		6DB50E1B1B009B1D0000F97B /* GamesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB50E1A1B009B1D0000F97B /* GamesCell.swift */; };
+		6DB67A621B188890000A8E54 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB67A611B188890000A8E54 /* InterfaceController.swift */; };
+		6DB67A641B188890000A8E54 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB67A631B188890000A8E54 /* GlanceController.swift */; };
+		6DB67A661B188890000A8E54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DB67A651B188890000A8E54 /* Images.xcassets */; };
+		6DB67A6A1B188891000A8E54 /* Deck Tracker WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 6DB67A691B188891000A8E54 /* Deck Tracker WatchKit App.app */; };
+		6DB67A721B188891000A8E54 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DB67A701B188891000A8E54 /* Interface.storyboard */; };
+		6DB67A741B188891000A8E54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DB67A731B188891000A8E54 /* Images.xcassets */; };
+		6DB67A771B188891000A8E54 /* Deck Tracker WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6DB67A5D1B188890000A8E54 /* Deck Tracker WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6DBB739B1B0209FD00005B5E /* EditGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBB739A1B0209FD00005B5E /* EditGame.swift */; };
 		6DBB739D1B04840000005B5E /* EditDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBB739C1B04840000005B5E /* EditDate.swift */; };
 		6DBB73A51B04C99E00005B5E /* EditSelectedDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBB73A41B04C99E00005B5E /* EditSelectedDeck.swift */; };
@@ -37,6 +44,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6DB67A6B1B188891000A8E54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DDD447A1AEF87B700A4B5D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DB67A681B188891000A8E54;
+			remoteInfo = "Deck Tracker WatchKit App";
+		};
+		6DB67A751B188891000A8E54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DDD447A1AEF87B700A4B5D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DB67A5C1B188890000A8E54;
+			remoteInfo = "Deck Tracker WatchKit Extension";
+		};
 		6DDD449A1AEF87B700A4B5D2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6DDD447A1AEF87B700A4B5D2 /* Project object */;
@@ -46,6 +67,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6DB67A7E1B188891000A8E54 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6DB67A771B188891000A8E54 /* Deck Tracker WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6D5960521AFCB2AD0039EE47 /* SelectDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDate.swift; sourceTree = "<group>"; };
 		6D5960541AFCD45E0039EE47 /* SelectDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDeck.swift; sourceTree = "<group>"; };
@@ -54,6 +89,15 @@
 		6D9538401B09E1C100B4ED66 /* Piechart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piechart.swift; sourceTree = "<group>"; };
 		6D9538421B09E22400B4ED66 /* Graphs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		6DB50E1A1B009B1D0000F97B /* GamesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesCell.swift; sourceTree = "<group>"; };
+		6DB67A5D1B188890000A8E54 /* Deck Tracker WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Deck Tracker WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DB67A601B188890000A8E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DB67A611B188890000A8E54 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		6DB67A631B188890000A8E54 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		6DB67A651B188890000A8E54 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6DB67A691B188891000A8E54 /* Deck Tracker WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deck Tracker WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DB67A6F1B188891000A8E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DB67A711B188891000A8E54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		6DB67A731B188891000A8E54 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6DBB739A1B0209FD00005B5E /* EditGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGame.swift; sourceTree = "<group>"; };
 		6DBB739C1B04840000005B5E /* EditDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDate.swift; sourceTree = "<group>"; };
 		6DBB73A41B04C99E00005B5E /* EditSelectedDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSelectedDeck.swift; sourceTree = "<group>"; };
@@ -81,6 +125,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6DB67A5A1B188890000A8E54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DDD447F1AEF87B700A4B5D2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -100,11 +151,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6DB67A5E1B188890000A8E54 /* Deck Tracker WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6DB67A611B188890000A8E54 /* InterfaceController.swift */,
+				6DB67A631B188890000A8E54 /* GlanceController.swift */,
+				6DB67A651B188890000A8E54 /* Images.xcassets */,
+				6DB67A5F1B188890000A8E54 /* Supporting Files */,
+			);
+			path = "Deck Tracker WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		6DB67A5F1B188890000A8E54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6DB67A601B188890000A8E54 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6DB67A6D1B188891000A8E54 /* Deck Tracker WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				6DB67A701B188891000A8E54 /* Interface.storyboard */,
+				6DB67A731B188891000A8E54 /* Images.xcassets */,
+				6DB67A6E1B188891000A8E54 /* Supporting Files */,
+			);
+			path = "Deck Tracker WatchKit App";
+			sourceTree = "<group>";
+		};
+		6DB67A6E1B188891000A8E54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6DB67A6F1B188891000A8E54 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		6DDD44791AEF87B700A4B5D2 = {
 			isa = PBXGroup;
 			children = (
 				6DDD44841AEF87B700A4B5D2 /* Deck Tracker */,
 				6DDD449C1AEF87B700A4B5D2 /* Deck TrackerTests */,
+				6DB67A5E1B188890000A8E54 /* Deck Tracker WatchKit Extension */,
+				6DB67A6D1B188891000A8E54 /* Deck Tracker WatchKit App */,
 				6DDD44831AEF87B700A4B5D2 /* Products */,
 				8B10AFCB1B0310A100D33C29 /* Fabric.framework */,
 				8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */,
@@ -116,6 +206,8 @@
 			children = (
 				6DDD44821AEF87B700A4B5D2 /* Deck Tracker.app */,
 				6DDD44991AEF87B700A4B5D2 /* Deck TrackerTests.xctest */,
+				6DB67A5D1B188890000A8E54 /* Deck Tracker WatchKit Extension.appex */,
+				6DB67A691B188891000A8E54 /* Deck Tracker WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,6 +272,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6DB67A5C1B188890000A8E54 /* Deck Tracker WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DB67A7D1B188891000A8E54 /* Build configuration list for PBXNativeTarget "Deck Tracker WatchKit Extension" */;
+			buildPhases = (
+				6DB67A591B188890000A8E54 /* Sources */,
+				6DB67A5A1B188890000A8E54 /* Frameworks */,
+				6DB67A5B1B188890000A8E54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6DB67A6C1B188891000A8E54 /* PBXTargetDependency */,
+			);
+			name = "Deck Tracker WatchKit Extension";
+			productName = "Deck Tracker WatchKit Extension";
+			productReference = 6DB67A5D1B188890000A8E54 /* Deck Tracker WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		6DB67A681B188891000A8E54 /* Deck Tracker WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DB67A7C1B188891000A8E54 /* Build configuration list for PBXNativeTarget "Deck Tracker WatchKit App" */;
+			buildPhases = (
+				6DB67A671B188891000A8E54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Deck Tracker WatchKit App";
+			productName = "Deck Tracker WatchKit App";
+			productReference = 6DB67A691B188891000A8E54 /* Deck Tracker WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 		6DDD44811AEF87B700A4B5D2 /* Deck Tracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DDD44A31AEF87B700A4B5D2 /* Build configuration list for PBXNativeTarget "Deck Tracker" */;
@@ -188,10 +313,12 @@
 				6DDD447F1AEF87B700A4B5D2 /* Frameworks */,
 				6DDD44801AEF87B700A4B5D2 /* Resources */,
 				8B10AFCA1B03107400D33C29 /* ShellScript */,
+				6DB67A7E1B188891000A8E54 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6DB67A761B188891000A8E54 /* PBXTargetDependency */,
 			);
 			name = "Deck Tracker";
 			productName = "Deck Tracker";
@@ -225,6 +352,12 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Andrei Joghiu";
 				TargetAttributes = {
+					6DB67A5C1B188890000A8E54 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					6DB67A681B188891000A8E54 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
 					6DDD44811AEF87B700A4B5D2 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -249,11 +382,31 @@
 			targets = (
 				6DDD44811AEF87B700A4B5D2 /* Deck Tracker */,
 				6DDD44981AEF87B700A4B5D2 /* Deck TrackerTests */,
+				6DB67A5C1B188890000A8E54 /* Deck Tracker WatchKit Extension */,
+				6DB67A681B188891000A8E54 /* Deck Tracker WatchKit App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6DB67A5B1B188890000A8E54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DB67A661B188890000A8E54 /* Images.xcassets in Resources */,
+				6DB67A6A1B188891000A8E54 /* Deck Tracker WatchKit App.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DB67A671B188891000A8E54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DB67A721B188891000A8E54 /* Interface.storyboard in Resources */,
+				6DB67A741B188891000A8E54 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DDD44801AEF87B700A4B5D2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,6 +443,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6DB67A591B188890000A8E54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DB67A621B188890000A8E54 /* InterfaceController.swift in Sources */,
+				6DB67A641B188890000A8E54 /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DDD447E1AEF87B700A4B5D2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -329,6 +491,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6DB67A6C1B188891000A8E54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DB67A681B188891000A8E54 /* Deck Tracker WatchKit App */;
+			targetProxy = 6DB67A6B1B188891000A8E54 /* PBXContainerItemProxy */;
+		};
+		6DB67A761B188891000A8E54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DB67A5C1B188890000A8E54 /* Deck Tracker WatchKit Extension */;
+			targetProxy = 6DB67A751B188891000A8E54 /* PBXContainerItemProxy */;
+		};
 		6DDD449B1AEF87B700A4B5D2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6DDD44811AEF87B700A4B5D2 /* Deck Tracker */;
@@ -337,6 +509,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6DB67A701B188891000A8E54 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DB67A711B188891000A8E54 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		6DDD448D1AEF87B700A4B5D2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -356,6 +536,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6DB67A781B188891000A8E54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Deck Tracker WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6DB67A791B188891000A8E54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Deck Tracker WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6DB67A7A1B188891000A8E54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = Deck_Tracker_WatchKit_Extension;
+				INFOPLIST_FILE = "Deck Tracker WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		6DB67A7B1B188891000A8E54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				IBSC_MODULE = Deck_Tracker_WatchKit_Extension;
+				INFOPLIST_FILE = "Deck Tracker WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
 		6DDD44A11AEF87B700A4B5D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -502,6 +738,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6DB67A7C1B188891000A8E54 /* Build configuration list for PBXNativeTarget "Deck Tracker WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DB67A7A1B188891000A8E54 /* Debug */,
+				6DB67A7B1B188891000A8E54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6DB67A7D1B188891000A8E54 /* Build configuration list for PBXNativeTarget "Deck Tracker WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DB67A781B188891000A8E54 /* Debug */,
+				6DB67A791B188891000A8E54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		6DDD447D1AEF87B700A4B5D2 /* Build configuration list for PBXProject "Deck Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
