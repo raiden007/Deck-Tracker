@@ -39,6 +39,7 @@
 		6DDD44AA1AEFB1B300A4B5D2 /* AddDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */; };
 		6DE566961B15C2220026FBF5 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE566951B15C2220026FBF5 /* About.swift */; };
 		6DF363001AFB702600A5B507 /* AddGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF362FF1AFB702600A5B507 /* AddGame.swift */; };
+		6DFFCD9D1B1DAC75005218D8 /* SelectOpponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFFCD9C1B1DAC75005218D8 /* SelectOpponent.swift */; };
 		8B10AFCD1B0310A100D33C29 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCB1B0310A100D33C29 /* Fabric.framework */; };
 		8B10AFCE1B0310A100D33C29 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
@@ -120,6 +121,7 @@
 		6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeck.swift; sourceTree = "<group>"; };
 		6DE566951B15C2220026FBF5 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		6DF362FF1AFB702600A5B507 /* AddGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGame.swift; sourceTree = "<group>"; };
+		6DFFCD9C1B1DAC75005218D8 /* SelectOpponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOpponent.swift; sourceTree = "<group>"; };
 		8B10AFCB1B0310A100D33C29 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				6DB67A611B188890000A8E54 /* InterfaceController.swift */,
+				6DFFCD9C1B1DAC75005218D8 /* SelectOpponent.swift */,
 				6DB67A631B188890000A8E54 /* GlanceController.swift */,
 				6DB67A651B188890000A8E54 /* Images.xcassets */,
 				6DB67A5F1B188890000A8E54 /* Supporting Files */,
@@ -448,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DB67A621B188890000A8E54 /* InterfaceController.swift in Sources */,
+				6DFFCD9D1B1DAC75005218D8 /* SelectOpponent.swift in Sources */,
 				6DB67A641B188890000A8E54 /* GlanceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -745,6 +749,7 @@
 				6DB67A7B1B188891000A8E54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6DB67A7D1B188891000A8E54 /* Build configuration list for PBXNativeTarget "Deck Tracker WatchKit Extension" */ = {
 			isa = XCConfigurationList;
@@ -753,6 +758,7 @@
 				6DB67A791B188891000A8E54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6DDD447D1AEF87B700A4B5D2 /* Build configuration list for PBXProject "Deck Tracker" */ = {
 			isa = XCConfigurationList;
