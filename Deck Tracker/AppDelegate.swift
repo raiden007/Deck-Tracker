@@ -63,6 +63,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(application: UIApplication,
+        handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?,
+        reply: (([NSObject : AnyObject]!) -> Void)!) {
+        
+        var listOfDecksForWatch = Data.sharedInstance.listOfDecks
+        NSUserDefaults.standardUserDefaults().setObject(listOfDecksForWatch, forKey: "Decks for Watch")
+        NSUserDefaults.standardUserDefaults().synchronize()
+            
+    }
 
 
 }

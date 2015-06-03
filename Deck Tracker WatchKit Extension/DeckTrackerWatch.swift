@@ -1,5 +1,5 @@
 //
-//  InterfaceController.swift
+//  DeckTrackerWatch.swift
 //  Deck Tracker WatchKit Extension
 //
 //  Created by Andrei Joghiu on 29/5/15.
@@ -10,7 +10,7 @@ import WatchKit
 import Foundation
 
 
-class InterfaceController: WKInterfaceController {
+class DeckTrackerWatch: WKInterfaceController {
     
     @IBOutlet var selectDeckButton: WKInterfaceButton!
     @IBOutlet var selectOpponentButton: WKInterfaceButton!

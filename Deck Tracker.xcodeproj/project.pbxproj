@@ -11,10 +11,13 @@
 		6D5960551AFCD45E0039EE47 /* SelectDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5960541AFCD45E0039EE47 /* SelectDeck.swift */; };
 		6D5960571AFCD7880039EE47 /* SelectOpponentClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5960561AFCD7880039EE47 /* SelectOpponentClass.swift */; };
 		6D61AA431AF784E20013EB04 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D61AA421AF784E20013EB04 /* Game.swift */; };
+		6D6B21E71B1F276500B973B8 /* SelectDeckWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B21E61B1F276500B973B8 /* SelectDeckWatch.swift */; };
+		6D6B21E91B1F281400B973B8 /* DeckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B21E81B1F281400B973B8 /* DeckRow.swift */; };
+		6D6B21EB1B1F297E00B973B8 /* DeckWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B21EA1B1F297E00B973B8 /* DeckWatch.swift */; };
 		6D9538411B09E1C100B4ED66 /* Piechart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9538401B09E1C100B4ED66 /* Piechart.swift */; };
 		6D9538431B09E22400B4ED66 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9538421B09E22400B4ED66 /* Graphs.swift */; };
 		6DB50E1B1B009B1D0000F97B /* GamesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB50E1A1B009B1D0000F97B /* GamesCell.swift */; };
-		6DB67A621B188890000A8E54 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB67A611B188890000A8E54 /* InterfaceController.swift */; };
+		6DB67A621B188890000A8E54 /* DeckTrackerWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB67A611B188890000A8E54 /* DeckTrackerWatch.swift */; };
 		6DB67A641B188890000A8E54 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB67A631B188890000A8E54 /* GlanceController.swift */; };
 		6DB67A661B188890000A8E54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DB67A651B188890000A8E54 /* Images.xcassets */; };
 		6DB67A6A1B188891000A8E54 /* Deck Tracker WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 6DB67A691B188891000A8E54 /* Deck Tracker WatchKit App.app */; };
@@ -27,7 +30,7 @@
 		6DBB73A71B04CDCE00005B5E /* EditOpponentClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBB73A61B04CDCE00005B5E /* EditOpponentClass.swift */; };
 		6DC320201B0F65D20098F60A /* GraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC3201F1B0F65D20098F60A /* GraphsViewController.swift */; };
 		6DD844CB1AF8A86F00CF9C80 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CA1AF8A86F00CF9C80 /* Data.swift */; };
-		6DD844CD1AF8EFB300CF9C80 /* Decks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Decks.swift */; };
+		6DD844CD1AF8EFB300CF9C80 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Deck.swift */; };
 		6DD844CF1AFA306500CF9C80 /* DecksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CE1AFA306500CF9C80 /* DecksCell.swift */; };
 		6DDD44881AEF87B700A4B5D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD44871AEF87B700A4B5D2 /* AppDelegate.swift */; };
 		6DDD448A1AEF87B700A4B5D2 /* DecksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD44891AEF87B700A4B5D2 /* DecksList.swift */; };
@@ -39,7 +42,7 @@
 		6DDD44AA1AEFB1B300A4B5D2 /* AddDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */; };
 		6DE566961B15C2220026FBF5 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE566951B15C2220026FBF5 /* About.swift */; };
 		6DF363001AFB702600A5B507 /* AddGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF362FF1AFB702600A5B507 /* AddGame.swift */; };
-		6DFFCD9D1B1DAC75005218D8 /* SelectOpponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFFCD9C1B1DAC75005218D8 /* SelectOpponent.swift */; };
+		6DFFCD9D1B1DAC75005218D8 /* SelectOpponentWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */; };
 		8B10AFCD1B0310A100D33C29 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCB1B0310A100D33C29 /* Fabric.framework */; };
 		8B10AFCE1B0310A100D33C29 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
@@ -87,12 +90,15 @@
 		6D5960541AFCD45E0039EE47 /* SelectDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDeck.swift; sourceTree = "<group>"; };
 		6D5960561AFCD7880039EE47 /* SelectOpponentClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOpponentClass.swift; sourceTree = "<group>"; };
 		6D61AA421AF784E20013EB04 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		6D6B21E61B1F276500B973B8 /* SelectDeckWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDeckWatch.swift; sourceTree = "<group>"; };
+		6D6B21E81B1F281400B973B8 /* DeckRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckRow.swift; sourceTree = "<group>"; };
+		6D6B21EA1B1F297E00B973B8 /* DeckWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckWatch.swift; sourceTree = "<group>"; };
 		6D9538401B09E1C100B4ED66 /* Piechart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piechart.swift; sourceTree = "<group>"; };
 		6D9538421B09E22400B4ED66 /* Graphs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		6DB50E1A1B009B1D0000F97B /* GamesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesCell.swift; sourceTree = "<group>"; };
 		6DB67A5D1B188890000A8E54 /* Deck Tracker WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Deck Tracker WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DB67A601B188890000A8E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DB67A611B188890000A8E54 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		6DB67A611B188890000A8E54 /* DeckTrackerWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTrackerWatch.swift; sourceTree = "<group>"; };
 		6DB67A631B188890000A8E54 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		6DB67A651B188890000A8E54 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6DB67A691B188891000A8E54 /* Deck Tracker WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deck Tracker WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +111,7 @@
 		6DBB73A61B04CDCE00005B5E /* EditOpponentClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditOpponentClass.swift; sourceTree = "<group>"; };
 		6DC3201F1B0F65D20098F60A /* GraphsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsViewController.swift; sourceTree = "<group>"; };
 		6DD844CA1AF8A86F00CF9C80 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		6DD844CC1AF8EFB300CF9C80 /* Decks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decks.swift; sourceTree = "<group>"; };
+		6DD844CC1AF8EFB300CF9C80 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		6DD844CE1AFA306500CF9C80 /* DecksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecksCell.swift; sourceTree = "<group>"; };
 		6DDD44821AEF87B700A4B5D2 /* Deck Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deck Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DDD44861AEF87B700A4B5D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,7 +127,7 @@
 		6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeck.swift; sourceTree = "<group>"; };
 		6DE566951B15C2220026FBF5 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		6DF362FF1AFB702600A5B507 /* AddGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGame.swift; sourceTree = "<group>"; };
-		6DFFCD9C1B1DAC75005218D8 /* SelectOpponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOpponent.swift; sourceTree = "<group>"; };
+		6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOpponentWatch.swift; sourceTree = "<group>"; };
 		8B10AFCB1B0310A100D33C29 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,8 +162,11 @@
 		6DB67A5E1B188890000A8E54 /* Deck Tracker WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				6DB67A611B188890000A8E54 /* InterfaceController.swift */,
-				6DFFCD9C1B1DAC75005218D8 /* SelectOpponent.swift */,
+				6D6B21EA1B1F297E00B973B8 /* DeckWatch.swift */,
+				6DB67A611B188890000A8E54 /* DeckTrackerWatch.swift */,
+				6D6B21E61B1F276500B973B8 /* SelectDeckWatch.swift */,
+				6D6B21E81B1F281400B973B8 /* DeckRow.swift */,
+				6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */,
 				6DB67A631B188890000A8E54 /* GlanceController.swift */,
 				6DB67A651B188890000A8E54 /* Images.xcassets */,
 				6DB67A5F1B188890000A8E54 /* Supporting Files */,
@@ -220,7 +229,7 @@
 			children = (
 				6DDD44871AEF87B700A4B5D2 /* AppDelegate.swift */,
 				6D61AA421AF784E20013EB04 /* Game.swift */,
-				6DD844CC1AF8EFB300CF9C80 /* Decks.swift */,
+				6DD844CC1AF8EFB300CF9C80 /* Deck.swift */,
 				6DD844CA1AF8A86F00CF9C80 /* Data.swift */,
 				6DD844CE1AFA306500CF9C80 /* DecksCell.swift */,
 				6DB50E1A1B009B1D0000F97B /* GamesCell.swift */,
@@ -450,8 +459,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DB67A621B188890000A8E54 /* InterfaceController.swift in Sources */,
-				6DFFCD9D1B1DAC75005218D8 /* SelectOpponent.swift in Sources */,
+				6DB67A621B188890000A8E54 /* DeckTrackerWatch.swift in Sources */,
+				6DFFCD9D1B1DAC75005218D8 /* SelectOpponentWatch.swift in Sources */,
+				6D6B21EB1B1F297E00B973B8 /* DeckWatch.swift in Sources */,
+				6D6B21E71B1F276500B973B8 /* SelectDeckWatch.swift in Sources */,
+				6D6B21E91B1F281400B973B8 /* DeckRow.swift in Sources */,
 				6DB67A641B188890000A8E54 /* GlanceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,7 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DD844CD1AF8EFB300CF9C80 /* Decks.swift in Sources */,
+				6DD844CD1AF8EFB300CF9C80 /* Deck.swift in Sources */,
 				6DDD44AA1AEFB1B300A4B5D2 /* AddDeck.swift in Sources */,
 				6DD844CB1AF8A86F00CF9C80 /* Data.swift in Sources */,
 				6D5960531AFCB2AD0039EE47 /* SelectDate.swift in Sources */,

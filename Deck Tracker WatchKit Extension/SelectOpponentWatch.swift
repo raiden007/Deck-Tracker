@@ -1,5 +1,5 @@
 //
-//  SelectOpponent.swift
+//  SelectOpponentWatch.swift
 //  Deck Tracker
 //
 //  Created by Andrei Joghiu on 2/6/15.
@@ -10,7 +10,7 @@ import WatchKit
 import Foundation
 
 
-class SelectOpponent: WKInterfaceController {
+class SelectOpponentWatch: WKInterfaceController {
     
     @IBOutlet var warriorButton: WKInterfaceButton!
     @IBOutlet var paladinButton: WKInterfaceButton!

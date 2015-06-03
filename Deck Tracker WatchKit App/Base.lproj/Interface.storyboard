@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Deck Tracker-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Deck_Tracker_WatchKit_App" customModuleProvider="target">
+                <controller title="Deck Tracker" id="AgC-eL-Hgc" customClass="DeckTrackerWatch" customModule="Deck_Tracker_WatchKit_Extension">
                     <items>
                         <button width="1" alignment="left" title="Select Deck" id="OeP-ur-hho">
                             <connections>
@@ -52,27 +52,37 @@
             </objects>
             <point key="canvasLocation" x="164" y="514"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Deck-->
         <scene sceneID="pkZ-3w-nSr">
             <objects>
-                <controller id="P0m-eW-eqT">
+                <controller title="Deck" id="P0m-eW-eqT" customClass="SelectDeckWatch" customModule="Deck_Tracker_WatchKit_Extension">
                     <items>
                         <table alignment="left" id="CiH-Vf-XeG">
                             <items>
-                                <tableRow id="q3R-AG-6lT">
-                                    <group key="rootItem" width="1" alignment="left" id="Ftd-Ai-kei"/>
+                                <tableRow identifier="DeckRow" id="q3R-AG-6lT" customClass="DeckRow" customModule="Deck_Tracker_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="Ftd-Ai-kei">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" text="Label" textAlignment="center" id="kAb-Ey-HUC"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="deckLabel" destination="kAb-Ey-HUC" id="adu-Vr-6lg"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
+                    <connections>
+                        <outlet property="deckTable" destination="CiH-Vf-XeG" id="Xsd-gR-NtR"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="416" y="53"/>
         </scene>
-        <!--Select Opponent-->
+        <!--Opponent-->
         <scene sceneID="ViO-y5-cVh">
             <objects>
-                <controller id="4oD-Qa-rEF" customClass="SelectOpponent" customModule="Deck_Tracker_WatchKit_Extension">
+                <controller title="Opponent" id="4oD-Qa-rEF" customClass="SelectOpponentWatch" customModule="Deck_Tracker_WatchKit_Extension">
                     <items>
                         <button width="1" alignment="left" title="Warrior" id="BaD-7m-2dq">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

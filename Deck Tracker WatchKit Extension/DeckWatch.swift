@@ -1,5 +1,5 @@
 //
-//  Decks.swift
+//  Deck.swift
 //  Deck Tracker
 //
 //  Created by Andrei Joghiu on 5/5/15.
