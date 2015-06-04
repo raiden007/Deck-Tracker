@@ -64,25 +64,17 @@ class SelectDeckWatch: WKInterfaceController {
 //        }
         
         
-        deckList = self.readDeckData() as! [Deck]
-        println(deckList)
-    }
-    
-    
-    // Reads the deck data and returns a Deck object
-    func readDeckData() -> NSArray? {
+        //deckList = self.readDeckData() as! [Deck]
+        //println(deckList)
+        
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
-        if let unarchivedObject = defaults.objectForKey("List of decks") as? NSData {
-            return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? NSArray
-        }
-        return nil
+        let unarchivedObject = defaults.objectForKey("List of decks") as? NSData
+        //println(unarchivedObject)
+        //NSKeyedUnarchiver.setClass(Deck.self, forClassName: "Deck")
+        let deckList: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject!)
+        println(deckList)
+        
     }
-    
 
-    
-
-
-    
-    
 
 }

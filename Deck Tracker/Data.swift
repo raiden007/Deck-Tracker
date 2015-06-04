@@ -88,8 +88,6 @@ public class Data {
     func saveDeck () {
         let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfDecks as [Deck])
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
-        //NSKeyedUnarchiver.setClass(Deck.self, forClassName: "Deck")
-        //NSKeyedArchiver.setClassName("Deck", forClass: Deck.self)
         defaults.setObject(archivedObject, forKey: "List of decks")
         defaults.synchronize()
         
