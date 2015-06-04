@@ -66,11 +66,8 @@ class DeckTrackerWatch: WKInterfaceController {
     func setSelectedDeckButton() {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         if let selectedDeckID = defaults.integerForKey("Selected Deck ID") as Int! {
-            println(selectedDeckID)
             var selectedDeckName = defaults.stringForKey("Selected Deck Name")!
-            println(selectedDeckName)
             var selectedDeckClass = defaults.stringForKey("Selected Deck Class")!
-            println(selectedDeckClass)
             selectDeckButton.setTitle(selectedDeckName)
             colorCell(selectedDeckClass, button: selectDeckButton, opponent: false, deckName: selectedDeckName)
         }

@@ -86,10 +86,12 @@ public class Data {
     
     // Adds the decks list to NS User Defaults
     func saveDeck () {
-        let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfDecks as NSArray)
-        var defaults = NSUserDefaults(suiteName: "group.Decks")
-        defaults?.setObject(archivedObject, forKey: "List of decks")
-        defaults?.synchronize()
+        let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfDecks as [Deck])
+        var defaults = NSUserDefaults(suiteName: "group.Decks")!
+        //NSKeyedUnarchiver.setClass(Deck.self, forClassName: "Deck")
+        //NSKeyedArchiver.setClassName("Deck", forClass: Deck.self)
+        defaults.setObject(archivedObject, forKey: "List of decks")
+        defaults.synchronize()
         
     }
     
@@ -97,6 +99,8 @@ public class Data {
     func readDeckData() -> [Deck]? {
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
         if let unarchivedObject = defaults.objectForKey("List of decks") as? NSData {
+            //NSKeyedUnarchiver.setClass(Deck.self, forClassName: "Deck")
+            //NSKeyedArchiver.setClassName("Deck", forClass: Deck.self)
             return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Deck]
         }
         return nil

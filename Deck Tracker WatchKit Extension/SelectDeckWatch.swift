@@ -13,6 +13,7 @@ import Foundation
 class SelectDeckWatch: WKInterfaceController {
 
     @IBOutlet var deckTable: WKInterfaceTable!
+    var deckList:[Deck] = []
     
     
     override func awakeWithContext(context: AnyObject?) {
@@ -53,14 +54,28 @@ class SelectDeckWatch: WKInterfaceController {
         
         
 
+//        var defaults = NSUserDefaults(suiteName: "group.Decks")!
+//        if let unarchivedObject = defaults.objectForKey("List of decks") as? NSData {
+//            println(unarchivedObject)
+//            var decksList = NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Deck]
+//            println(decksList)
+//        } else {
+//            println("Decklist empty")
+//        }
+        
+        
+        deckList = self.readDeckData() as! [Deck]
+        println(deckList)
+    }
+    
+    
+    // Reads the deck data and returns a Deck object
+    func readDeckData() -> NSArray? {
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
         if let unarchivedObject = defaults.objectForKey("List of decks") as? NSData {
-            println(unarchivedObject)
-            var decksList = NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Deck]
-            println(decksList)
-        } else {
-            println("Decklist empty")
+            return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? NSArray
         }
+        return nil
     }
     
 
