@@ -1166,6 +1166,9 @@
                                 <state key="normal" title="raiden007@gmail.com">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="emailButtonPressed:" destination="DAJ-Df-kMl" eventType="touchUpInside" id="nK2-DY-kNF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1190,6 +1193,10 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="About" id="S4y-In-a8r"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="emailButton" destination="PYC-7m-SVI" id="sye-kx-ibR"/>
+                        <outlet property="versionLabel" destination="TcA-5A-UIm" id="xcm-d7-OBr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yo0-2X-sJx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

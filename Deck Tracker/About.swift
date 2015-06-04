@@ -10,9 +10,16 @@ import UIKit
 
 class About: UIViewController {
 
+    @IBOutlet var versionLabel: UILabel!
+    @IBOutlet var emailButton: UIButton!
+    
+    var wormhole = MMWormhole(applicationGroupIdentifier: "group.Decks", optionalDirectory: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+        
         // Do any additional setup after loading the view.
     }
 
@@ -20,6 +27,11 @@ class About: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func emailButtonPressed(sender: UIButton) {
+        wormhole.passMessageObject("object", identifier: "identifier1")
+    }
+    
     
 
     /*

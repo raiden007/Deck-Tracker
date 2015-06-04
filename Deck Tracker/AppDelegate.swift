@@ -38,6 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarController.selectedIndex = 1
         }
         
+        var wormhole = MMWormhole(applicationGroupIdentifier: "group.Decks", optionalDirectory: nil)
+        
+        wormhole.listenForMessageWithIdentifier("identifier1", listener: { (message) -> Void in
+            
+        })
         
         return true
     }
