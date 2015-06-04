@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Data.sharedInstance.printGameData()
         Data.sharedInstance.printDeckData()
         
+        // Show page UI for graphs
         var pageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
         pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
@@ -36,8 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let tabBarController = self.window!.rootViewController as? UITabBarController {
             tabBarController.selectedIndex = 1
         }
-        
-
         
         return true
     }
@@ -64,12 +63,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    // Called from the Apple Watch
     func application(application: UIApplication,
         handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?,
         reply: (([NSObject : AnyObject]!) -> Void)!) {
+            
+        Data.init()
+        Data.sharedInstance.printGameData()
+        Data.sharedInstance.printDeckData()
         
-        var listOfDecksForWatch = Data.sharedInstance.listOfDecks
-        NSUserDefaults.standardUserDefaults().setObject(listOfDecksForWatch, forKey: "Decks for Watch")
+        var listOfDecksForWatch = Data.sharedInstance.readDeckData() as [Deck]!
+        let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfDecksForWatch as NSArray)
+        NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "List of decks for Watch")
         NSUserDefaults.standardUserDefaults().synchronize()
             
     }

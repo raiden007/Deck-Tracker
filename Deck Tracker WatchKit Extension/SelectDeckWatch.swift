@@ -19,19 +19,15 @@ class SelectDeckWatch: WKInterfaceController {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
+        
+        
+//        WKInterfaceController.openParentApplication(["request": "refreshData"],
+//            reply: { (replyInfo, error) -> Void in
+//                // TODO: process reply data
+//                NSLog("Reply: \(replyInfo)")
+//        })
+        
         reloadTable()
-        
-        WKInterfaceController.openParentApplication(["request": "refreshData"],
-            reply: { (replyInfo, error) -> Void in
-                // TODO: process reply data
-                NSLog("Reply: \(replyInfo)")
-        })
-        
-        if let deckList:[Deck] = NSUserDefaults.standardUserDefaults().objectForKey("Decks for Watch") as? [Deck] {
-            println(deckList)
-        } else {
-            println("Decklist Empty")
-        }
         
         
     }
@@ -54,6 +50,15 @@ class SelectDeckWatch: WKInterfaceController {
         if let row = deckTable.rowControllerAtIndex(0) as? DeckRow {
             row.deckLabel.setText("A")
         }
+        
+        
+        let unarchivedObject = NSUserDefaults.standardUserDefaults().objectForKey("List of decks for Watch") as? NSData 
+            println(unarchivedObject)
+        //} else {
+        //    println("Decklist Empty")
+        //}
+        let test = NSUserDefaults.standardUserDefaults().stringArrayForKey("Selected Deck Name")
+        println(test)
         
     }
     
