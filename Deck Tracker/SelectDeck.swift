@@ -76,7 +76,7 @@ class SelectDeck: UITableViewController {
     
     // Saves the selected deck ID in NSUserDefaults
     func saveSelectedDeckID(deck : Deck) {
-        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        var defaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setInteger(deck.getID(), forKey: "Selected Deck ID")
         defaults.synchronize()
     }
@@ -90,13 +90,13 @@ class SelectDeck: UITableViewController {
     
     // Saves the selected deck name in NSUserDefaults
     func saveSelectedDeckName(deck: Deck) {
-        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(deck.getName(), forKey: "Selected Deck Name")
         defaults.synchronize()
     }
     
     func readSelectedDeckName() -> String {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         let name = defaults.stringForKey("Selected Deck Name") as String!
         if name == nil {
             return ""
@@ -107,7 +107,7 @@ class SelectDeck: UITableViewController {
     
     // Saves the selected deck class
     func saveSelectedDeckClass( deck: Deck) {
-        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(deck.getClass(), forKey: "Selected Deck Class")
         defaults.synchronize()
     }

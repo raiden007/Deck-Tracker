@@ -61,11 +61,11 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         deckIndex = deckSegment.selectedSegmentIndex
         if deckIndex == 0 {
             //println(deckName)
-            var testNilValue = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+            var testNilValue = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
             if testNilValue == nil {
                 deckName = ""
             } else {
-                deckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+                deckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
             }
         } else {
             deckName = "All"
@@ -110,11 +110,11 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
     @IBAction func deckChanged(sender: UISegmentedControl) {
         switch deckSegment.selectedSegmentIndex {
         case 0:
-            var testNilValue = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+            var testNilValue = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
             if testNilValue == nil {
                 deckName = ""
             } else {
-               deckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+               deckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
             }
             //println("Selected Deck")
         case 1:

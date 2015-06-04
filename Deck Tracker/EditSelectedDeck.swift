@@ -92,20 +92,20 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
     
     // Saves the selected deck name in NSUserDefaults
     func saveEditedDeckName(deck: Deck) {
-        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(deck.getName(), forKey: "Edited Deck Name")
         defaults.synchronize()
     }
     
     // Saves the selected deck class
     func saveEditedDeckClass(deck: Deck) {
-        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(deck.getClass(), forKey: "Edited Deck Class")
         defaults.synchronize()
     }
     
     func readEditedDeckName() -> String {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         let name = defaults.stringForKey("Edited Deck Name") as String!
         if name == nil {
             return ""

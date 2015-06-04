@@ -87,13 +87,16 @@ public class Data {
     // Adds the decks list to NS User Defaults
     func saveDeck () {
         let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfDecks as NSArray)
-        NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "List of decks")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        var defaults = NSUserDefaults(suiteName: "group.Decks")
+        defaults?.setObject(archivedObject, forKey: "List of decks")
+        defaults?.synchronize()
+        
     }
     
     // Reads the deck data and returns a Deck object
     func readDeckData() -> [Deck]? {
-        if let unarchivedObject = NSUserDefaults.standardUserDefaults().objectForKey("List of decks") as? NSData {
+        var defaults = NSUserDefaults(suiteName: "group.Decks")!
+        if let unarchivedObject = defaults.objectForKey("List of decks") as? NSData {
             return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Deck]
         }
         return nil
@@ -146,7 +149,7 @@ public class Data {
         
         var dateArray = getDateArray(date)
         
-        var selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
         if selectedDeckName == nil {
             selectedDeckName = ""
         }
@@ -265,7 +268,7 @@ public class Data {
         var dateArray = getDateArray(date)
         var opponentsPlayedArray:[Game] = []
         
-        var selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
         if selectedDeckName == nil {
             selectedDeckName = ""
         }
@@ -317,7 +320,7 @@ public class Data {
         var dateArray = getDateArray(date)
         var coinArray:[Game] = []
         
-        var selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
         if selectedDeckName == nil {
             selectedDeckName = ""
         }
@@ -370,7 +373,7 @@ public class Data {
         var dateArray = getDateArray(date)
         var coinArray:[Game] = []
         
-        var selectedDeckName = NSUserDefaults.standardUserDefaults().stringForKey("Selected Deck Name") as String!
+        var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
         if selectedDeckName == nil {
             selectedDeckName = ""
         }

@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarController.selectedIndex = 1
         }
         
+        
         return true
     }
 
@@ -63,21 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    // Called from the Apple Watch
-    func application(application: UIApplication,
-        handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?,
-        reply: (([NSObject : AnyObject]!) -> Void)!) {
-            
-        Data.init()
-        Data.sharedInstance.printGameData()
-        Data.sharedInstance.printDeckData()
-        
-        var listOfDecksForWatch = Data.sharedInstance.readDeckData() as [Deck]!
-        let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfDecksForWatch as NSArray)
-        NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "List of decks for Watch")
-        NSUserDefaults.standardUserDefaults().synchronize()
-            
-    }
+
 
 
 }

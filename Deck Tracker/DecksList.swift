@@ -76,34 +76,34 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     
     // Saves the selected deck ID in NSUserDefaults
     func saveSelectedDeckID(deck : Deck) {
-        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        var defaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setInteger(deck.getID(), forKey: "Selected Deck ID")
         defaults.synchronize()
     }
     
     // Reads the selected deck ID from NSUserDefaults
     func readSelectedDeckID() -> Int {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         let id:Int = defaults.integerForKey("Selected Deck ID")
         return id
     }
     
     // Saves the selected deck name in NSUserDefaults
     func saveSelectedDeckName(deck: Deck) {
-        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(deck.getName(), forKey: "Selected Deck Name")
         defaults.synchronize()
     }
     
     // Saves the selected deck class
     func saveSelectedDeckClass( deck: Deck) {
-        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(deck.getClass(), forKey: "Selected Deck Class")
         defaults.synchronize()
     }
     
     func readSelectedDeckName() -> String {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         let name = defaults.stringForKey("Selected Deck Name") as String!
         if name == nil {
             return ""

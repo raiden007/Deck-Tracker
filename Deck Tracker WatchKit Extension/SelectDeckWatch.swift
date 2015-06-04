@@ -52,14 +52,15 @@ class SelectDeckWatch: WKInterfaceController {
         }
         
         
-        let unarchivedObject = NSUserDefaults.standardUserDefaults().objectForKey("List of decks for Watch") as? NSData 
+
+        var defaults = NSUserDefaults(suiteName: "group.Decks")!
+        if let unarchivedObject = defaults.objectForKey("List of decks") as? NSData {
             println(unarchivedObject)
-        //} else {
-        //    println("Decklist Empty")
-        //}
-        let test = NSUserDefaults.standardUserDefaults().stringArrayForKey("Selected Deck Name")
-        println(test)
-        
+            var decksList = NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Deck]
+            println(decksList)
+        } else {
+            println("Decklist empty")
+        }
     }
     
 

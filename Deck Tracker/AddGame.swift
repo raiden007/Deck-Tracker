@@ -58,7 +58,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     
     // Reads the selected deck name from NSUserDefaults
     func readSelectedDeckName() -> String {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         let name = defaults.stringForKey("Selected Deck Name") as String!
         if name == nil {
             return ""
@@ -140,8 +140,8 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         //var x = SelectDate()
         var newGameDate = SelectDate().readDate()
         //var newGameDateString = x.dateToString(newGameDate)
-        var newGamePlayerDeckName = defaults.stringForKey("Selected Deck Name") as String?
-        var newGamePlayerDeckClass = defaults.stringForKey("Selected Deck Class") as String?
+        var newGamePlayerDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String?
+        var newGamePlayerDeckClass = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Class") as String?
         var newGameOpponentClass = defaults.stringForKey("Opponent Class") as String?
         var newGameCoin = coinCellSwitch.on
         var newGameWin = winCellSwitch.on

@@ -32,6 +32,7 @@ class DeckTrackerWatch: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
+        setSelectedDeckButton()
         setOpponentClassButton()
         
 
@@ -60,6 +61,19 @@ class DeckTrackerWatch: WKInterfaceController {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+    
+    func setSelectedDeckButton() {
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
+        if let selectedDeckID = defaults.integerForKey("Selected Deck ID") as Int! {
+            println(selectedDeckID)
+            var selectedDeckName = defaults.stringForKey("Selected Deck Name")!
+            println(selectedDeckName)
+            var selectedDeckClass = defaults.stringForKey("Selected Deck Class")!
+            println(selectedDeckClass)
+            selectDeckButton.setTitle(selectedDeckName)
+        }
+
     }
     
     func setOpponentClassButton() {
