@@ -54,4 +54,13 @@ class Deck : NSObject, NSCoding {
         return ("Deck ID: " + deckIDString + " ,name: " + deckName + " ,class : " + deckClass)
     }
     
+    func getDict() -> NSDictionary {
+        var dict = NSDictionary()
+        dict.setValue(self.deckName, forKey: "deckName")
+        dict.setValue(self.deckClass, forKey: "deckClass")
+        dict.setValue(self.deckID, forKey: "deckID")
+        
+        return dict
+    }
+    
 }

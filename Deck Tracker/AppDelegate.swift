@@ -14,7 +14,8 @@ import Crashlytics
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var wormhole = MMWormhole(applicationGroupIdentifier: "group.Decks", optionalDirectory: nil)
+    var deckListForPhone:[NSDictionary] = []
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch
@@ -38,13 +39,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarController.selectedIndex = 1
         }
         
-        var wormhole = MMWormhole(applicationGroupIdentifier: "group.Decks", optionalDirectory: nil)
-        
-        wormhole.listenForMessageWithIdentifier("identifier1", listener: { (message) -> Void in
-            
-        })
+        println("Watch to Phone message: " + String(stringInterpolationSegment: NSUserDefaults.standardUserDefaults().stringForKey("true")))
         
         return true
+    }
+    
+    func application(application: UIApplication,
+        handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?,
+        reply: (([NSObject : AnyObject]!) -> Void)!) {
+            
+            NSUserDefaults.standardUserDefaults().setValue("Watch -> Phone", forKey: "WatchPhone")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            
+            
+            wormhole.listenForMessageWithIdentifier("requestDeckList", listener: { (message) -> Void in
+                
+           })
+        
+//            var deckList:[Deck] = Data.sharedInstance.readDeckData()!
+//            println(deckList)
+//            
+//            for var i = 0; i < deckList.count; i++ {
+//                var deckDict = deckList[i].getDict()
+//                self.deckListForPhone.append(deckDict)
+//            }
+//            self.wormhole.passMessageObject(self.deckListForPhone, identifier: "caine")
+            
+
+            
     }
 
     func applicationWillResignActive(application: UIApplication) {

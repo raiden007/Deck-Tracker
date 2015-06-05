@@ -142,6 +142,8 @@ public class Data {
         println("Game Edited")
     }
     
+    
+    
     // Calculates the general win rate of the user (all games)
     func generalWinRate(date:Int, deckName:String) -> Double {
         

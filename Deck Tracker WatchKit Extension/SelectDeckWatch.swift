@@ -13,8 +13,8 @@ import Foundation
 class SelectDeckWatch: WKInterfaceController {
 
     @IBOutlet var deckTable: WKInterfaceTable!
-    var deckList:[Deck] = []
-    
+    //var deckList:[Deck] = []
+    var wormhole = MMWormhole(applicationGroupIdentifier: "group.Decks", optionalDirectory: nil)
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -28,8 +28,19 @@ class SelectDeckWatch: WKInterfaceController {
 //                NSLog("Reply: \(replyInfo)")
 //        })
         
-        reloadTable()
+        self.wormhole.listenForMessageWithIdentifier("caine", listener: { (object: AnyObject?) -> Void in
+            
+            println("mesaj")
+        })
         
+//        self.wormhole.listenForMessageWithIdentifier("receiveDeckList", listener: { (deckListForPhone) -> Void in
+//            //if let message: AnyObject = deckListForPhone {
+//                println("Message received")
+//            //}
+//        })
+        
+        reloadTable()
+        activatePhoneApp()
         
     }
 
@@ -52,28 +63,16 @@ class SelectDeckWatch: WKInterfaceController {
             row.deckLabel.setText("A")
         }
         
-        
 
-//        var defaults = NSUserDefaults(suiteName: "group.Decks")!
-//        if let unarchivedObject = defaults.objectForKey("List of decks") as? NSData {
-//            println(unarchivedObject)
-//            var decksList = NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Deck]
-//            println(decksList)
-//        } else {
-//            println("Decklist empty")
-//        }
-        
-        
-        //deckList = self.readDeckData() as! [Deck]
-        //println(deckList)
-        
-        var defaults = NSUserDefaults(suiteName: "group.Decks")!
-        let unarchivedObject = defaults.objectForKey("List of decks") as? NSData
-        //println(unarchivedObject)
-        //NSKeyedUnarchiver.setClass(Deck.self, forClassName: "Deck")
-        let deckList: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject!)
-        println(deckList)
-        
+
+    }
+    
+    func activatePhoneApp() {
+        WKInterfaceController.openParentApplication(["request": "refreshData"],
+            reply: { (replyInfo, error) -> Void in
+                self.wormhole.passMessageObject("object", identifier: "requestDeckList")
+               
+        })
     }
 
 

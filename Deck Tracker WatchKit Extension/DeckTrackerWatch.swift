@@ -19,7 +19,7 @@ class DeckTrackerWatch: WKInterfaceController {
     @IBOutlet var saveGameButton: WKInterfaceButton!
     
     
-    var wormhole = MMWormhole(applicationGroupIdentifier: "group.Decks", optionalDirectory: nil)
+    
 
 
     override func awakeWithContext(context: AnyObject?) {
@@ -38,9 +38,9 @@ class DeckTrackerWatch: WKInterfaceController {
         setOpponentClassButton()
         
         
-        wormhole.listenForMessageWithIdentifier("identifier1", listener: { (message) -> Void in
-            self.selectDeckButton.setTitle("AAAA")
-        })
+
+        
+        
         
         
         

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D08D4D61B203C790094D4B3 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Deck.swift */; };
 		6D5960531AFCB2AD0039EE47 /* SelectDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5960521AFCB2AD0039EE47 /* SelectDate.swift */; };
 		6D5960551AFCD45E0039EE47 /* SelectDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5960541AFCD45E0039EE47 /* SelectDeck.swift */; };
 		6D5960571AFCD7880039EE47 /* SelectOpponentClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5960561AFCD7880039EE47 /* SelectOpponentClass.swift */; };
@@ -495,7 +494,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D08D4D61B203C790094D4B3 /* Deck.swift in Sources */,
 				6DB67A621B188890000A8E54 /* DeckTrackerWatch.swift in Sources */,
 				6DFFCD9D1B1DAC75005218D8 /* SelectOpponentWatch.swift in Sources */,
 				6D6B21E71B1F276500B973B8 /* SelectDeckWatch.swift in Sources */,
