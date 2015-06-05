@@ -39,35 +39,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarController.selectedIndex = 1
         }
         
-        println("Watch to Phone message: " + String(stringInterpolationSegment: NSUserDefaults.standardUserDefaults().stringForKey("true")))
+        //println("Watch to Phone message: " + String(stringInterpolationSegment: NSUserDefaults.standardUserDefaults().stringForKey("true")))
         
         return true
     }
     
-    func application(application: UIApplication,
-        handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?,
-        reply: (([NSObject : AnyObject]!) -> Void)!) {
-            
-            NSUserDefaults.standardUserDefaults().setValue("Watch -> Phone", forKey: "WatchPhone")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            
-            
-            wormhole.listenForMessageWithIdentifier("requestDeckList", listener: { (message) -> Void in
-                
-           })
-        
-//            var deckList:[Deck] = Data.sharedInstance.readDeckData()!
-//            println(deckList)
+//    func application(application: UIApplication,
+//        handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?,
+//        reply: (([NSObject : AnyObject]!) -> Void)!) {
 //            
-//            for var i = 0; i < deckList.count; i++ {
-//                var deckDict = deckList[i].getDict()
-//                self.deckListForPhone.append(deckDict)
-//            }
-//            self.wormhole.passMessageObject(self.deckListForPhone, identifier: "caine")
-            
-
-            
-    }
+//            NSUserDefaults.standardUserDefaults().setValue("Watch -> Phone", forKey: "WatchPhone")
+//            NSUserDefaults.standardUserDefaults().synchronize()
+//            
+//            
+//            wormhole.listenForMessageWithIdentifier("requestDeckList", listener: { (message) -> Void in
+//                
+//           })
+//        
+////            var deckList:[Deck] = Data.sharedInstance.readDeckData()!
+////            println(deckList)
+////            
+////            for var i = 0; i < deckList.count; i++ {
+////                var deckDict = deckList[i].getDict()
+////                self.deckListForPhone.append(deckDict)
+////            }
+////            self.wormhole.passMessageObject(self.deckListForPhone, identifier: "caine")
+//            
+//
+//            
+//    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

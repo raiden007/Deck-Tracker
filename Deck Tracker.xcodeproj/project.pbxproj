@@ -50,6 +50,7 @@
 		6DFFCD9D1B1DAC75005218D8 /* SelectOpponentWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */; };
 		8B10AFCD1B0310A100D33C29 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCB1B0310A100D33C29 /* Fabric.framework */; };
 		8B10AFCE1B0310A100D33C29 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */; };
+		8BD870E51B223042008398B8 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Deck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -494,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BD870E51B223042008398B8 /* Deck.swift in Sources */,
 				6DB67A621B188890000A8E54 /* DeckTrackerWatch.swift in Sources */,
 				6DFFCD9D1B1DAC75005218D8 /* SelectOpponentWatch.swift in Sources */,
 				6D6B21E71B1F276500B973B8 /* SelectDeckWatch.swift in Sources */,

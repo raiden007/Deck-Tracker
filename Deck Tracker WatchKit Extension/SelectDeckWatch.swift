@@ -13,7 +13,7 @@ import Foundation
 class SelectDeckWatch: WKInterfaceController {
 
     @IBOutlet var deckTable: WKInterfaceTable!
-    //var deckList:[Deck] = []
+    var deckList:[Deck] = []
     var wormhole = MMWormhole(applicationGroupIdentifier: "group.Decks", optionalDirectory: nil)
     
     override func awakeWithContext(context: AnyObject?) {
@@ -39,8 +39,10 @@ class SelectDeckWatch: WKInterfaceController {
 //            //}
 //        })
         
+        loadData()
         reloadTable()
-        activatePhoneApp()
+//        activatePhoneApp()
+        
         
     }
 
@@ -56,24 +58,40 @@ class SelectDeckWatch: WKInterfaceController {
         super.didDeactivate()
     }
     
-    func reloadTable() {
-        deckTable.setNumberOfRows(10, withRowType: "DeckRow")
-
-        if let row = deckTable.rowControllerAtIndex(0) as? DeckRow {
-            row.deckLabel.setText("A")
-        }
-        
-
-
+    func loadData() {
+        var defaults = NSUserDefaults(suiteName: "group.Decks")!
+        var dict:[NSDictionary] = defaults.objectForKey("List of decks dictionary") as! [NSDictionary]
+        extractDictToArrayOfDecks(dict)
     }
     
-    func activatePhoneApp() {
-        WKInterfaceController.openParentApplication(["request": "refreshData"],
-            reply: { (replyInfo, error) -> Void in
-                self.wormhole.passMessageObject("object", identifier: "requestDeckList")
-               
-        })
+    func extractDictToArrayOfDecks(dict:[NSDictionary]) {
+        println(dict)
+        
+        for var i = 0; i < dict.count; i++ {
+            var deckName: String = dict[i]["deckName"] as! String
+            var deckClass: String = dict[i]["deckClass"] as! String
+            var deckID: Int = dict[i]["deckID"] as! Int
+            var newDeck = Deck(newDeckID: deckID, newDeckName: deckName, newDeckClass: deckClass)
+            deckList.append(newDeck)
+        }
     }
-
-
+    
+    func reloadTable() {
+        deckTable.setNumberOfRows(deckList.count, withRowType: "DeckRow")
+        for var i = 0; i < deckList.count; i++ {
+            if let row = deckTable.rowControllerAtIndex(i) as? DeckRow {
+                row.deckLabel.setText(deckList[i].getName())
+            }
+        }
+    }
+    
+//    func activatePhoneApp() {
+//        WKInterfaceController.openParentApplication(["request": "refreshData"],
+//            reply: { (replyInfo, error) -> Void in
+//                self.wormhole.passMessageObject("object", identifier: "requestDeckList")
+//               
+//        })
+//    }
+//
+//
 }

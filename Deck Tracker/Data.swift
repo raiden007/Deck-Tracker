@@ -18,6 +18,7 @@ public class Data {
     // We create two arrays that will hold our objects
     var listOfGames:[Game] = []
     var listOfDecks:[Deck] = []
+    var deckListForPhone:[NSDictionary] = []
     
     // We initialize the data structure
     init() {
@@ -90,6 +91,13 @@ public class Data {
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(archivedObject, forKey: "List of decks")
         defaults.synchronize()
+        
+        // Create an dictionary array so we can read this in the shared app group
+        for var i = 0; i < listOfDecks.count; i++ {
+            var dict: NSMutableDictionary = listOfDecks[i].getDict()
+            deckListForPhone.append(dict)
+        }
+        defaults.setObject(deckListForPhone, forKey: "List of decks dictionary")
         
     }
     
