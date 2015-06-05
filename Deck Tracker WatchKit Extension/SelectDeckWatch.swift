@@ -18,32 +18,9 @@ class SelectDeckWatch: WKInterfaceController {
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
-        // Configure interface objects here.
-        
-        
-//        WKInterfaceController.openParentApplication(["request": "refreshData"],
-//            reply: { (replyInfo, error) -> Void in
-//                // TODO: process reply data
-//                NSLog("Reply: \(replyInfo)")
-//        })
-        
-        self.wormhole.listenForMessageWithIdentifier("caine", listener: { (object: AnyObject?) -> Void in
-            
-            println("mesaj")
-        })
-        
-//        self.wormhole.listenForMessageWithIdentifier("receiveDeckList", listener: { (deckListForPhone) -> Void in
-//            //if let message: AnyObject = deckListForPhone {
-//                println("Message received")
-//            //}
-//        })
-        
+    
         loadData()
         reloadTable()
-//        activatePhoneApp()
-        
-        
     }
 
     override func willActivate() {
@@ -58,12 +35,14 @@ class SelectDeckWatch: WKInterfaceController {
         super.didDeactivate()
     }
     
+    // Loads data from NSUserDefaults
     func loadData() {
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
         var dict:[NSDictionary] = defaults.objectForKey("List of decks dictionary") as! [NSDictionary]
         extractDictToArrayOfDecks(dict)
     }
     
+    // Takes the saved dictionary and transforms it into a Deck array
     func extractDictToArrayOfDecks(dict:[NSDictionary]) {
         println(dict)
         
@@ -76,6 +55,7 @@ class SelectDeckWatch: WKInterfaceController {
         }
     }
     
+    // Populates the table
     func reloadTable() {
         deckTable.setNumberOfRows(deckList.count, withRowType: "DeckRow")
         for var i = 0; i < deckList.count; i++ {
@@ -84,14 +64,4 @@ class SelectDeckWatch: WKInterfaceController {
             }
         }
     }
-    
-//    func activatePhoneApp() {
-//        WKInterfaceController.openParentApplication(["request": "refreshData"],
-//            reply: { (replyInfo, error) -> Void in
-//                self.wormhole.passMessageObject("object", identifier: "requestDeckList")
-//               
-//        })
-//    }
-//
-//
 }
