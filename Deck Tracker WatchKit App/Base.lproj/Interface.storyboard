@@ -67,6 +67,7 @@
                                     </group>
                                     <connections>
                                         <outlet property="deckLabel" destination="kAb-Ey-HUC" id="adu-Vr-6lg"/>
+                                        <outlet property="groupTable" destination="Ftd-Ai-kei" id="b5i-r4-BxR"/>
                                     </connections>
                                 </tableRow>
                             </items>

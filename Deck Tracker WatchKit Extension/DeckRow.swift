@@ -12,6 +12,7 @@ import WatchKit
 class DeckRow: NSObject {
     
     @IBOutlet var deckLabel: WKInterfaceLabel!
+    @IBOutlet var groupTable: WKInterfaceGroup!
     
     
     

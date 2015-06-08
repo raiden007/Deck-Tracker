@@ -34,7 +34,7 @@ class DeckTrackerWatch: WKInterfaceController {
         
         println("Watch app started")
         
-        //setSelectedDeckButton()
+        setSelectedDeckButton()
         setOpponentClassButton()
         
         

@@ -81,8 +81,19 @@ public class Data {
     // Adds a deck object to the array
     func addDeck (newDeck: Deck) {
         listOfDecks.append(newDeck)
+        saveDict()
         saveDeck()
         println("Deck added")
+    }
+    
+    // Creates a new dict to use with phone
+    func saveDict() {
+        deckListForPhone.removeAll(keepCapacity: true)
+        // Create an dictionary array so we can read this in the shared app group
+        for var i = 0; i < listOfDecks.count; i++ {
+            var dict: NSMutableDictionary = listOfDecks[i].getDict()
+            deckListForPhone.append(dict)
+        }
     }
     
     // Adds the decks list to NS User Defaults
@@ -90,14 +101,8 @@ public class Data {
         let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfDecks as [Deck])
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(archivedObject, forKey: "List of decks")
-        defaults.synchronize()
-        
-        // Create an dictionary array so we can read this in the shared app group
-        for var i = 0; i < listOfDecks.count; i++ {
-            var dict: NSMutableDictionary = listOfDecks[i].getDict()
-            deckListForPhone.append(dict)
-        }
         defaults.setObject(deckListForPhone, forKey: "List of decks dictionary")
+        defaults.synchronize()
         
     }
     

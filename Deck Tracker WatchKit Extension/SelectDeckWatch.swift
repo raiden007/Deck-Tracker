@@ -61,7 +61,42 @@ class SelectDeckWatch: WKInterfaceController {
         for var i = 0; i < deckList.count; i++ {
             if let row = deckTable.rowControllerAtIndex(i) as? DeckRow {
                 row.deckLabel.setText(deckList[i].getName())
+                row.deckLabel.setTextColor(UIColor.blackColor())
+                
+                // Colors the cells
+                if deckList[i].getClass() == "Warrior" {
+                    row.groupTable.setBackgroundColor(UIColorFromRGB(0xCC0000))
+                } else if deckList[i].getClass() == "Paladin" {
+                    row.groupTable.setBackgroundColor(UIColorFromRGB(0xCCC333))
+                } else if deckList[i].getClass() == "Shaman" {
+                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x3366CC))
+                } else if deckList[i].getClass() == "Hunter" {
+                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x339933))
+                } else if deckList[i].getClass() == "Druid" {
+                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x990000))
+                } else if deckList[i].getClass() == "Rogue" {
+                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x666666))
+                } else if deckList[i].getClass() == "Warlock" {
+                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x9900CC))
+                } else if deckList[i].getClass() == "Mage" {
+                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x009999))
+                } else if deckList[i].getClass() == "Priest" {
+                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x999999))
+                }
             }
         }
+    }
+    
+    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+        println("a")
+    }
+    
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }
