@@ -39,6 +39,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarController.selectedIndex = 1
         }
         
+        func application(application: UIApplication!, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]!, reply: (([NSObject : AnyObject]!) -> Void)!) {
+            
+            println("Message from Watch received")
+            
+            let defaults = NSUserDefaults(suiteName: "group.Decks")!
+            var dict: NSDictionary = defaults.objectForKey("Add Game Watch") as! NSDictionary
+            
+            let gameID = AddGame().newGameGetID()
+            let date = NSDate()
+            let playerDeckName = dict["selectedDeckName"] as! String
+            let playerDeckClass = dict["selectedDeckClass"] as! String
+            let opponentClass = dict["opponentClass"] as! String
+            let coin = dict["coin"] as! Bool
+            let win = dict["win"] as! Bool
+            
+            var newGame = Game(newID: gameID, newDate: date, newPlayerDeckName: playerDeckName, newPlayerDeckClass: playerDeckClass, newOpponentDeck: opponentClass, newCoin: coin, newWin: win)
+            Data.sharedInstance.addGame(newGame)
+            
+        }
+        
         return true
     }
 

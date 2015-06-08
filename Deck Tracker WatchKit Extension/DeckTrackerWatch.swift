@@ -18,7 +18,8 @@ class DeckTrackerWatch: WKInterfaceController {
     @IBOutlet var winSwitch: WKInterfaceSwitch!
     @IBOutlet var saveGameButton: WKInterfaceButton!
     
-    
+    var coinSwitchInt:Int = 0
+    var winSwitchInt:Int = 1
     
 
 
@@ -33,17 +34,8 @@ class DeckTrackerWatch: WKInterfaceController {
         super.willActivate()
         
         println("Watch app started")
-        
         setSelectedDeckButton()
         setOpponentClassButton()
-        
-        
-
-        
-        
-        
-        
-        
     }
 
     override func didDeactivate() {
@@ -53,6 +45,48 @@ class DeckTrackerWatch: WKInterfaceController {
     }
 
     @IBAction func saveButtonPressed() {
+        
+        // Gathers the data to make the dict
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
+        var dict = NSMutableDictionary()
+        let selectedDeckName = defaults.stringForKey("Selected Deck Name")!
+        let selectedDeckClass = defaults.stringForKey("Selected Deck Class")!
+        let opponentClass = NSUserDefaults.standardUserDefaults().stringForKey("Watch Opponent Class")
+        var coin:Bool = false
+        if coinSwitchInt == 0 {
+            coin = false
+        } else {
+            coin = true
+        }
+        
+        var win:Bool = true
+        if winSwitchInt == 0 {
+            win = false
+        } else {
+            win = true
+        }
+
+        // Creates the dictionary to send to phone
+        dict.setValue(selectedDeckName, forKey: "selectedDeckName")
+        dict.setValue(selectedDeckClass, forKey: "selectedDeckClass")
+        dict.setValue(opponentClass, forKey: "opponentClass")
+        dict.setValue(coin, forKey: "coin")
+        dict.setValue(win, forKey: "win")
+        
+        defaults.setObject(dict, forKey: "Add Game Watch")
+        defaults.synchronize()
+        
+//        WKInterfaceController.openParentApplication("SiteName": "Tech-Recipes", reply: {
+//            (reply, error) -> Void in
+//            if let message = reply["Message"] as? String {
+//                println(message)
+//            }
+//        })
+        
+        WKInterfaceController.openParentApplication(dict as Dictionary) {
+            (replyInfo, error) -> Void in
+            println("openParentApplication called in button function")
+        }
         
         // Remove saved settings
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Watch Opponent Class")
@@ -202,5 +236,23 @@ class DeckTrackerWatch: WKInterfaceController {
             }
         }
     }
+    
+    @IBAction func coinSwitchToggled(value: Bool) {
+        if value {
+            coinSwitchInt = 1
+        } else {
+            coinSwitchInt = 0
+        }
+    }
+    
+    @IBAction func winSwitchToggled(value: Bool) {
+        if value {
+            winSwitchInt = 1
+        } else {
+            winSwitchInt = 0
+        }
+    }
+    
+    
 
 }

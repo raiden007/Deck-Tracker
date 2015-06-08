@@ -20,8 +20,16 @@
                                 <segue destination="4oD-Qa-rEF" kind="push" id="TM5-jZ-1Li"/>
                             </connections>
                         </button>
-                        <switch width="1" alignment="left" title="Coin" id="VJz-zJ-NLf"/>
-                        <switch width="1" alignment="left" value="YES" title="Win" id="cvZ-B2-9oe"/>
+                        <switch width="1" alignment="left" title="Coin" id="VJz-zJ-NLf">
+                            <connections>
+                                <action selector="coinSwitchToggled:" destination="AgC-eL-Hgc" id="b5S-Xs-xdJ"/>
+                            </connections>
+                        </switch>
+                        <switch width="1" alignment="left" value="YES" title="Win" id="cvZ-B2-9oe">
+                            <connections>
+                                <action selector="winSwitchToggled:" destination="AgC-eL-Hgc" id="xob-9B-3sa"/>
+                            </connections>
+                        </switch>
                         <button width="1" alignment="left" title="Save Game" id="jsT-xT-AhW">
                             <connections>
                                 <action selector="saveButtonPressed" destination="AgC-eL-Hgc" id="LJG-Ae-978"/>

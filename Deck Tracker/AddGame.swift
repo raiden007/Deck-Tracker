@@ -192,7 +192,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     }
     
     // Gets the ID for a new Game
-    func newGameGetID () -> Int{
+    func newGameGetID () -> Int {
         var matchesCount = NSUserDefaults.standardUserDefaults().integerForKey("Matches Count");
         matchesCount++
         NSUserDefaults.standardUserDefaults().setInteger(matchesCount, forKey: "Matches Count");
