@@ -45,6 +45,7 @@ class SelectOpponentWatch: WKInterfaceController {
         super.didDeactivate()
     }
     
+    // Saves info for opponent class and returns to Main View
     @IBAction func warriorButtonPressed() {
         NSUserDefaults.standardUserDefaults().setObject("Warrior", forKey: "Watch Opponent Class")
         NSUserDefaults.standardUserDefaults().synchronize()

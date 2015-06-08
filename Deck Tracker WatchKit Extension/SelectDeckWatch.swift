@@ -44,8 +44,6 @@ class SelectDeckWatch: WKInterfaceController {
     
     // Takes the saved dictionary and transforms it into a Deck array
     func extractDictToArrayOfDecks(dict:[NSDictionary]) {
-        println(dict)
-        
         for var i = 0; i < dict.count; i++ {
             var deckName: String = dict[i]["deckName"] as! String
             var deckClass: String = dict[i]["deckClass"] as! String
@@ -87,10 +85,19 @@ class SelectDeckWatch: WKInterfaceController {
         }
     }
     
+    // Saves the selected deck and returns to Main View
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        println("a")
+        let row = table.rowControllerAtIndex(rowIndex) as? DeckRow
+        var selectedDeck = deckList[rowIndex]
+        var defaults = NSUserDefaults(suiteName: "group.Decks")!
+        defaults.setInteger(selectedDeck.getID(), forKey: "Selected Deck ID")
+        defaults.setObject(selectedDeck.getName(), forKey: "Selected Deck Name")
+        defaults.setObject(selectedDeck.getClass(), forKey: "Selected Deck Class")
+        defaults.synchronize()
+        self.popController()
     }
     
+    // Converts the color from RGB
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
