@@ -22,8 +22,16 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         readData()
+        
+        // Listens for "Game Added" and calls refreshData()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshData", name: "GameAdded", object: nil)
     }
-
+    
+    // Cleans stuff up
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -131,6 +139,10 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     // Refreshes the view after adding a deck
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        refreshData()
+    }
+    
+    func refreshData() {
         readData()
         statsTable.reloadData()
     }
