@@ -32,6 +32,7 @@ class SelectDate: UIViewController {
         readDate()
     }
     
+    // Returns the date as String
     func dateToString(date:NSDate) -> String {
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.ShortStyle
@@ -39,12 +40,14 @@ class SelectDate: UIViewController {
         return dateString
     }
     
+    // Saves the selected date in NSUserDefaults
     func saveDate(date:NSDate) {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(date, forKey: "Saved Date")
         defaults.synchronize()
     }
     
+    // Reads the saved date
     func readDate() -> NSDate {
         let defaults = NSUserDefaults.standardUserDefaults()
         if let date:NSDate = defaults.objectForKey("Saved Date") as? NSDate {
@@ -56,16 +59,4 @@ class SelectDate: UIViewController {
             return NSDate()
         }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -45,6 +45,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         populateScreen()
     }
     
+    // Populates the screen with latest data
     override func viewDidAppear(animated: Bool) {
         // Populates the screen with data
         putSelectedDateOnLabel()
@@ -52,6 +53,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         putSelectedOpponentClassOnLabel()
     }
     
+    // Populates the screen with data
     func populateScreen() {
         putSavedDateOnLabel()
         putSavedPlayerDeckOnLabel()
@@ -60,26 +62,31 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         putSavedWinStatusOnSwitch()
     }
     
+    // Puts saved date on label
     func putSavedDateOnLabel() {
         var savedDate = selectedGame.getDate()
         dateLabel.text = "Date: " + savedDate
     }
     
+    // Puts selected deck on label
     func putSavedPlayerDeckOnLabel() {
         var savedPlayedDeck = selectedGame.getPlayerDeckName()
         playerDeckLabel.text = "Your deck: " + savedPlayedDeck
     }
     
+    // Puts opponent class on label
     func putSavedOpponentClassOnLabel() {
         var savedOpponentDeck = selectedGame.getOpponentDeck()
         opponentDeckLabel.text = "Opponent's Class: " + savedOpponentDeck
     }
     
+    // Puts the coin status
     func putSavedCoinStatusOnSwitch() {
         var savedCoin = selectedGame.getCoin()
         coinSwitch.setOn(savedCoin, animated: true)
     }
     
+    // Puts the win status
     func putSavedWinStatusOnSwitch() {
         var savedWin = selectedGame.getWin()
         winSwitch.setOn(savedWin, animated: true)
@@ -100,6 +107,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         }
     }
     
+    // Puts edited deck name on label
     func putSelectedPlayerDeckOnLabel() {
         var savedDeck = selectedGame.getPlayerDeckName()
         var editedDeck = defaults.stringForKey("Edited Deck Name")
@@ -110,6 +118,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         }
     }
     
+    // Puts edited opponent class on label
     func putSelectedOpponentClassOnLabel() {
         var savedOpponentClass = selectedGame.getOpponentDeck()
         //println(savedOpponentClass)
@@ -129,23 +138,6 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         // Dispose of any resources that can be recreated.
     }
     
-
-    
-
-
-    // MARK: - Table view data source
-
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Potentially incomplete method implementation.
-//        // Return the number of sections.
-//        return 0
-//    }
-//
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete method implementation.
-//        // Return the number of rows in the section.
-//        return 5
-//    }
     
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
         
@@ -204,62 +196,4 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         NSUserDefaults.standardUserDefaults().synchronize()
         self.dismissViewControllerAnimated(true, completion: {});
     }
-    
-    
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

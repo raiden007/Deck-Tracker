@@ -104,6 +104,7 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
         defaults.synchronize()
     }
     
+    // Reads the edited deck name
     func readEditedDeckName() -> String {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         let name = defaults.stringForKey("Edited Deck Name") as String!
@@ -183,14 +184,5 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
         
         
     }
-    
-    // Have the nav bar show ok.
-    // You need to crtl+drag the nav bar to the view controller in storyboard to create a delegate
-    // Then add "UINavigationBarDelegate" to the class on top
-    // And move the nav bar 20 points down
-//    func positionForBar(bar: UIBarPositioning) -> UIBarPosition  {
-//        return UIBarPosition.TopAttached
-//    }
-    
 }
 

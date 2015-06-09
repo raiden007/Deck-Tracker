@@ -38,6 +38,7 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     }
     
     
+    // Cancel button is pressed
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: {})
     }
@@ -84,13 +85,6 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
                 alert.show()
             }
         }
-
-
-
-        
-        
-        
-        
     }
     
     @IBAction func deck2Pressed(sender: UIButton) {
@@ -133,6 +127,7 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
         deck9.selected = true
     }
     
+    // Deselects all decks
     func deselectAll () {
         deck1.selected = false
         deck2.selected = false
@@ -146,6 +141,7 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
         
     }
     
+    // Returns the selected deck class
     func selectedDeck() -> String {
         if deck1.selected == true {
             return "Warrior"
@@ -181,26 +177,4 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
-    
-    // Have the nav bar show ok.
-    // You need to crtl+drag the nav bar to the view controller in storyboard to create a delegate
-    // Then add "UINavigationBarDelegate" to the class on top
-    // And move the nav bar 20 points down
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition  {
-        return UIBarPosition.TopAttached
-    }
-    
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

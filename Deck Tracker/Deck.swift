@@ -36,14 +36,17 @@ class Deck : NSObject, NSCoding {
         aCoder.encodeObject(deckID, forKey: "deckID")
     }
     
+    // Returns deck name
     func getName() -> String {
         return deckName
     }
     
+    // Returns deck class
     func getClass() -> String {
         return deckClass
     }
     
+    // Returns deck id
     func getID() -> Int {
         return deckID
     }
@@ -54,13 +57,12 @@ class Deck : NSObject, NSCoding {
         return ("Deck ID: " + deckIDString + " ,name: " + deckName + " ,class : " + deckClass)
     }
     
+    // Returns a dictionary with all properties in it
     func getDict() -> NSMutableDictionary {
         var dict = NSMutableDictionary()
         dict.setValue(self.deckName, forKey: "deckName")
         dict.setValue(self.deckClass, forKey: "deckClass")
         dict.setValue(self.deckID, forKey: "deckID")
-        
         return dict
     }
-    
 }

@@ -27,12 +27,6 @@
 		6DBB739D1B04840000005B5E /* EditDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBB739C1B04840000005B5E /* EditDate.swift */; };
 		6DBB73A51B04C99E00005B5E /* EditSelectedDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBB73A41B04C99E00005B5E /* EditSelectedDeck.swift */; };
 		6DBB73A71B04CDCE00005B5E /* EditOpponentClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBB73A61B04CDCE00005B5E /* EditOpponentClass.swift */; };
-		6DBDB9A01B2091C00034B1BE /* MMWormhole.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DBDB99B1B2091C00034B1BE /* MMWormhole.m */; };
-		6DBDB9A11B2091C00034B1BE /* MMWormhole.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DBDB99B1B2091C00034B1BE /* MMWormhole.m */; };
-		6DBDB9A21B2091C00034B1BE /* MMWormholeCoordinatedFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DBDB99D1B2091C00034B1BE /* MMWormholeCoordinatedFileTransiting.m */; };
-		6DBDB9A31B2091C00034B1BE /* MMWormholeCoordinatedFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DBDB99D1B2091C00034B1BE /* MMWormholeCoordinatedFileTransiting.m */; };
-		6DBDB9A41B2091C00034B1BE /* MMWormholeFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DBDB99F1B2091C00034B1BE /* MMWormholeFileTransiting.m */; };
-		6DBDB9A51B2091C00034B1BE /* MMWormholeFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DBDB99F1B2091C00034B1BE /* MMWormholeFileTransiting.m */; };
 		6DC320201B0F65D20098F60A /* GraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC3201F1B0F65D20098F60A /* GraphsViewController.swift */; };
 		6DD844CB1AF8A86F00CF9C80 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CA1AF8A86F00CF9C80 /* Data.swift */; };
 		6DD844CD1AF8EFB300CF9C80 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Deck.swift */; };
@@ -118,12 +112,6 @@
 		6DBB73A61B04CDCE00005B5E /* EditOpponentClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditOpponentClass.swift; sourceTree = "<group>"; };
 		6DBDB9981B2091C00034B1BE /* Deck Tracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Deck Tracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		6DBDB9991B2091C00034B1BE /* Deck Tracker WatchKit Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Deck Tracker WatchKit Extension-Bridging-Header.h"; sourceTree = "<group>"; };
-		6DBDB99A1B2091C00034B1BE /* MMWormhole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormhole.h; sourceTree = "<group>"; };
-		6DBDB99B1B2091C00034B1BE /* MMWormhole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormhole.m; sourceTree = "<group>"; };
-		6DBDB99C1B2091C00034B1BE /* MMWormholeCoordinatedFileTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeCoordinatedFileTransiting.h; sourceTree = "<group>"; };
-		6DBDB99D1B2091C00034B1BE /* MMWormholeCoordinatedFileTransiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormholeCoordinatedFileTransiting.m; sourceTree = "<group>"; };
-		6DBDB99E1B2091C00034B1BE /* MMWormholeFileTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeFileTransiting.h; sourceTree = "<group>"; };
-		6DBDB99F1B2091C00034B1BE /* MMWormholeFileTransiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormholeFileTransiting.m; sourceTree = "<group>"; };
 		6DC3201F1B0F65D20098F60A /* GraphsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsViewController.swift; sourceTree = "<group>"; };
 		6DD844CA1AF8A86F00CF9C80 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		6DD844CC1AF8EFB300CF9C80 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
@@ -267,12 +255,6 @@
 				6DDD448D1AEF87B700A4B5D2 /* Main.storyboard */,
 				6DDD44901AEF87B700A4B5D2 /* Images.xcassets */,
 				6DDD44921AEF87B700A4B5D2 /* LaunchScreen.xib */,
-				6DBDB99A1B2091C00034B1BE /* MMWormhole.h */,
-				6DBDB99B1B2091C00034B1BE /* MMWormhole.m */,
-				6DBDB99C1B2091C00034B1BE /* MMWormholeCoordinatedFileTransiting.h */,
-				6DBDB99D1B2091C00034B1BE /* MMWormholeCoordinatedFileTransiting.m */,
-				6DBDB99E1B2091C00034B1BE /* MMWormholeFileTransiting.h */,
-				6DBDB99F1B2091C00034B1BE /* MMWormholeFileTransiting.m */,
 				6DDD44851AEF87B700A4B5D2 /* Supporting Files */,
 				6DBDB9981B2091C00034B1BE /* Deck Tracker-Bridging-Header.h */,
 				6DBDB9991B2091C00034B1BE /* Deck Tracker WatchKit Extension-Bridging-Header.h */,
@@ -501,9 +483,6 @@
 				6DFFCD9D1B1DAC75005218D8 /* SelectOpponentWatch.swift in Sources */,
 				6D6B21E71B1F276500B973B8 /* SelectDeckWatch.swift in Sources */,
 				6D6B21E91B1F281400B973B8 /* DeckRow.swift in Sources */,
-				6DBDB9A11B2091C00034B1BE /* MMWormhole.m in Sources */,
-				6DBDB9A31B2091C00034B1BE /* MMWormholeCoordinatedFileTransiting.m in Sources */,
-				6DBDB9A51B2091C00034B1BE /* MMWormholeFileTransiting.m in Sources */,
 				6DB67A641B188890000A8E54 /* GlanceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,8 +497,6 @@
 				6D5960531AFCB2AD0039EE47 /* SelectDate.swift in Sources */,
 				6DDD448C1AEF87B700A4B5D2 /* StatsList.swift in Sources */,
 				6D5960571AFCD7880039EE47 /* SelectOpponentClass.swift in Sources */,
-				6DBDB9A01B2091C00034B1BE /* MMWormhole.m in Sources */,
-				6DBDB9A41B2091C00034B1BE /* MMWormholeFileTransiting.m in Sources */,
 				6D5960551AFCD45E0039EE47 /* SelectDeck.swift in Sources */,
 				6D9538411B09E1C100B4ED66 /* Piechart.swift in Sources */,
 				6DBB73A51B04C99E00005B5E /* EditSelectedDeck.swift in Sources */,
@@ -532,7 +509,6 @@
 				6DD844CF1AFA306500CF9C80 /* DecksCell.swift in Sources */,
 				6DE566961B15C2220026FBF5 /* About.swift in Sources */,
 				6DDD448A1AEF87B700A4B5D2 /* DecksList.swift in Sources */,
-				6DBDB9A21B2091C00034B1BE /* MMWormholeCoordinatedFileTransiting.m in Sources */,
 				6DC320201B0F65D20098F60A /* GraphsViewController.swift in Sources */,
 				6DBB73A71B04CDCE00005B5E /* EditOpponentClass.swift in Sources */,
 				6DF363001AFB702600A5B507 /* AddGame.swift in Sources */,

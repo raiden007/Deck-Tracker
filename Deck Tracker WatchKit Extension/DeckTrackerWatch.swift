@@ -97,6 +97,7 @@ class DeckTrackerWatch: WKInterfaceController {
         willActivate()
     }
     
+    // Transforms RGB colors to UI Color
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
@@ -106,6 +107,7 @@ class DeckTrackerWatch: WKInterfaceController {
         )
     }
     
+    // Populates the selected deck button
     func setSelectedDeckButton() {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         if let selectedDeckID = defaults.integerForKey("Selected Deck ID") as Int! {
@@ -117,6 +119,7 @@ class DeckTrackerWatch: WKInterfaceController {
 
     }
     
+    // Populates the opponent class button
     func setOpponentClassButton() {
         if let opponentClass = NSUserDefaults.standardUserDefaults().stringForKey("Watch Opponent Class") {
             //selectOpponentButton.setTitle("Opponent: " + String(opponentClass))
@@ -127,6 +130,7 @@ class DeckTrackerWatch: WKInterfaceController {
         }
     }
     
+    // Sets the opponent class button to black
     func setOpponentClassBUttonBackgroundToBlack() {
         selectOpponentButton.setBackgroundColor(UIColorFromRGB(0x333333))
     }
@@ -245,6 +249,7 @@ class DeckTrackerWatch: WKInterfaceController {
         }
     }
     
+    // Keep track of coin switch
     @IBAction func coinSwitchToggled(value: Bool) {
         if value {
             coinSwitchInt = 1
@@ -253,6 +258,7 @@ class DeckTrackerWatch: WKInterfaceController {
         }
     }
     
+    // Keep track of win switch
     @IBAction func winSwitchToggled(value: Bool) {
         if value {
             winSwitchInt = 1

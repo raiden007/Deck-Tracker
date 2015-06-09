@@ -14,7 +14,6 @@ class SelectDeckWatch: WKInterfaceController {
 
     @IBOutlet var deckTable: WKInterfaceTable!
     var deckList:[Deck] = []
-    var wormhole = MMWormhole(applicationGroupIdentifier: "group.Decks", optionalDirectory: nil)
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)

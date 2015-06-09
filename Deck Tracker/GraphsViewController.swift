@@ -70,7 +70,7 @@ class GraphsViewController: UIViewController, PiechartDelegate {
     }
     
     
-    
+    // Creates Win Rate chart
     func createWinRatePieChart(dateIndex:Int, deckName:String) {
         
         var views: [String: UIView] = [:]
@@ -104,7 +104,7 @@ class GraphsViewController: UIViewController, PiechartDelegate {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-25-[piechart(==200)]", options: nil, metrics: nil, views: views))
     }
     
-    // Creates the Heroes Played Pie Chart
+    // Creates the Heroes Played Chart
     func createHeroesPlayedPieChart(dateIndex:Int) {
         var views: [String: UIView] = [:]
         
@@ -177,7 +177,7 @@ class GraphsViewController: UIViewController, PiechartDelegate {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-25-[piechart(==200)]", options: nil, metrics: nil, views: views))
     }
     
-    // Creates the opponents played pie chart
+    // Creates the opponents played chart
     func createOpponentsPlayedPieChart(dateIndex:Int, deckName:String) {
         var views: [String: UIView] = [:]
         
@@ -186,9 +186,6 @@ class GraphsViewController: UIViewController, PiechartDelegate {
         if totalGames == 0 {
             totalGames = 1
         }
-        
-        //println("Opponents Played array: " + String(stringInterpolationSegment: opponentsPlayed))
-        //println("Total Games count : " + String(totalGames))
         
         var warriorSlice = Piechart.Slice()
         warriorSlice.value = CGFloat(opponentsPlayed[0]) / CGFloat(totalGames)
@@ -250,6 +247,7 @@ class GraphsViewController: UIViewController, PiechartDelegate {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-25-[piechart(==200)]", options: nil, metrics: nil, views: views))
     }
     
+    // Creates going first chart
     func createCoinWinRatePieChart(dateIndex:Int, deckName:String) {
         
         var views: [String: UIView] = [:]
@@ -283,6 +281,7 @@ class GraphsViewController: UIViewController, PiechartDelegate {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-25-[piechart(==200)]", options: nil, metrics: nil, views: views))
     }
     
+    // Creates going second chart
     func createWithoutCoinWinRatePieChart(dateIndex:Int, deckName:String) {
         
         var views: [String: UIView] = [:]

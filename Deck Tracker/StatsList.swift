@@ -37,13 +37,6 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         // Dispose of any resources that can be recreated.
     }
     
-    // Have the nav bar show ok.
-    // You need to crtl+drag the nav bar to the view controller in storyboard to create a delegate
-    // Then add "UINavigationBarDelegate" to the class on top
-    // And move the nav bar 20 points down
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition  {
-        return UIBarPosition.TopAttached
-    }
     
     // Gets the number of rows to be displayed in the table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,9 +88,6 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         return nil
     }
     
-    
-
-    
     // Returns the image depeding on the deck class
     func getImage (str:String) -> String {
         
@@ -122,12 +112,9 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         } else {
             return ""
         }
-        
-        
     }
     
-    
-    
+    // Reads the games array
     func readData() {
         if Data.sharedInstance.readGameData() == nil {
             
@@ -141,7 +128,7 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         super.viewDidAppear(animated)
         refreshData()
     }
-    
+
     func refreshData() {
         readData()
         statsTable.reloadData()

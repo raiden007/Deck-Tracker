@@ -52,16 +52,23 @@ class Game : NSObject, NSCoding {
         aCoder.encodeObject(date, forKey: "date")
     }
     
-    
+    // Returns deck name
     func getPlayerDeckName() -> String {
         return playerDeckName
 
     }
     
+    // Returns deck class
+    func getPlayerDeckClass() -> String {
+        return playerDeckClass
+    }
+    
+    // Returns opponent class
     func getOpponentDeck() -> String {
         return opponentDeck
     }
     
+    // Returns Date in String format
     func getDate() -> String {
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.ShortStyle
@@ -69,10 +76,12 @@ class Game : NSObject, NSCoding {
         return dateString
     }
     
-    func getPlayerDeckClass() -> String {
-        return playerDeckClass
+    // Gets the NSDate
+    func getNSDate() -> NSDate {
+        return date
     }
-    
+
+    // Returns true/false if user played first
     func getCoin() -> Bool {
         if coin == true {
             return true
@@ -81,6 +90,7 @@ class Game : NSObject, NSCoding {
         }
     }
     
+    // Returns true/false if user won
     func getWin() -> Bool {
         if win == true {
             return true
@@ -89,6 +99,7 @@ class Game : NSObject, NSCoding {
         }
     }
     
+    // Returns won/lost String if user won
     func getWinString() -> String {
         if win == true {
             return "WON"
@@ -96,11 +107,8 @@ class Game : NSObject, NSCoding {
             return "LOST"
         }
     }
-    
-    func getNSDate() -> NSDate {
-        return date
-    }
-    
+
+    // Returns the ID
     func getID() -> Int {
         return id
     }
@@ -115,8 +123,4 @@ class Game : NSObject, NSCoding {
         return ("Game number: " + idString + ", date: " + getDate() + ", Player Deck Name: " + playerDeckName + ", Opponent Deck: " + opponentDeck + ", Coin: " + coinString + ", Win: " + winString)
         
     }
-    
-    
-    
-    
 }

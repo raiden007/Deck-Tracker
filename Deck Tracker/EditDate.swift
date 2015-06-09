@@ -24,6 +24,7 @@ class EditDate: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Saves edited date
     @IBAction func dateChanged(sender: UIDatePicker) {
         var newDate = datePicker.date
         dateToString(newDate)
@@ -31,12 +32,14 @@ class EditDate: UIViewController {
         readDate()
     }
     
+    // Saves to NSUserDefaults
     func saveEditedDate(date:NSDate) {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(date, forKey: "Saved Edited Date")
         defaults.synchronize()
     }
     
+    // Reads the edited date
     func readDate() -> NSDate? {
         let defaults = NSUserDefaults.standardUserDefaults()
         let date:NSDate! = defaults.objectForKey("Saved Edited Date") as? NSDate
@@ -48,23 +51,11 @@ class EditDate: UIViewController {
         }
     }
     
+    // Returns the edited date to String
     func dateToString(date:NSDate) -> String {
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.ShortStyle
         let dateString = formatter.stringFromDate(date)
         return dateString
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

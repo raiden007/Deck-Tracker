@@ -42,7 +42,6 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-
         putSelectedDateOnLabel()
         putSelectedDeckNameOnLabel()
         putSelectedOpponentClassOnLabel()
@@ -95,7 +94,6 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         } else {
             return ""
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -183,8 +181,6 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
 
         }
         
-
-        
         // Deletes the date and opponent class so the user needs to select again
         defaults.removeObjectForKey("Saved Date")
         defaults.removeObjectForKey("Opponent Class")
@@ -199,18 +195,4 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         NSUserDefaults.standardUserDefaults().synchronize()
         return matchesCount
     }
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

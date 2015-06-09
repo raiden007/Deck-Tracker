@@ -29,6 +29,7 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         
         getInitialStatus()
         
+        // Sets the page titles and size of graphs
         self.pageTitles = NSArray(objects: "Win rate", "Heroes played", "Opponents faced", "Going first win rate", "Going second win rate")
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
@@ -145,6 +146,7 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         return ""
     }
     
+    // Shows relevant graphs depending on page
     func viewControllerAtIndex(index: Int) -> GraphsViewController {
         if (self.pageTitles.count == 0) || (index >= self.pageTitles.count) {
             return GraphsViewController()
@@ -168,6 +170,7 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         index--
         return self.viewControllerAtIndex(index)
     }
+    
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         

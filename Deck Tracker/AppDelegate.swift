@@ -14,7 +14,6 @@ import Crashlytics
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var wormhole = MMWormhole(applicationGroupIdentifier: "group.Decks", optionalDirectory: nil)
     var deckListForPhone:[NSDictionary] = []
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -44,12 +43,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    // Executes the code when the watch sends a request
     func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
         
-        
+        // Fetches the saved dictionary
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         var dict: NSDictionary = defaults.objectForKey("Add Game Watch") as! NSDictionary
         
+        // Gets the values needed from the dictionary and adds a New Game
         let gameID = AddGame().newGameGetID()
         let date = NSDate()
         let playerDeckName = dict["selectedDeckName"] as! String
@@ -61,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var newGame = Game(newID: gameID, newDate: date, newPlayerDeckName: playerDeckName, newPlayerDeckClass: playerDeckClass, newOpponentDeck: opponentClass, newCoin: coin, newWin: win)
         Data.sharedInstance.addGame(newGame)
         
+        // Posts a notification for another screen (Games List)
         NSNotificationCenter.defaultCenter().postNotificationName("GameAdded", object: nil)
         
         

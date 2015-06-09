@@ -95,6 +95,7 @@ class SelectDeck: UITableViewController {
         defaults.synchronize()
     }
     
+    // Reads the saved deck
     func readSelectedDeckName() -> String {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         let name = defaults.stringForKey("Selected Deck Name") as String!
@@ -123,8 +124,6 @@ class SelectDeck: UITableViewController {
         super.viewDidAppear(animated)
         readData()
         decksTable.reloadData()
-        
-        
     }
     
     // Reads the data from Data file
@@ -170,18 +169,7 @@ class SelectDeck: UITableViewController {
         } else {
             return ""
         }
-        
-        
     }
-    
-    // Have the nav bar show ok.
-    // You need to crtl+drag the nav bar to the view controller in storyboard to create a delegate
-    // Then add "UINavigationBarDelegate" to the class on top
-    // And move the nav bar 20 points down
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition  {
-        return UIBarPosition.TopAttached
-    }
-    
 }
 
 

@@ -54,6 +54,7 @@ public class Data {
         println("Game added")
     }
     
+    // Saves the games array
     func saveGame() {
         let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfGames as NSArray)
         // Writing in NSUserDefaults
@@ -96,7 +97,7 @@ public class Data {
         }
     }
     
-    // Adds the decks list to NS User Defaults
+    // Adds the decks list to NSUserDefaults
     func saveDeck () {
         let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfDecks as [Deck])
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
@@ -161,16 +162,12 @@ public class Data {
     func generalWinRate(date:Int, deckName:String) -> Double {
         
         var gamesWon = 0
-
         var generalWinRateArray:[Game] = []
-        
         var dateArray = getDateArray(date)
-        
         var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
         if selectedDeckName == nil {
             selectedDeckName = ""
         }
-        
         
         // If current deck is selected
         if deckName == selectedDeckName {
@@ -179,13 +176,10 @@ public class Data {
                     generalWinRateArray.append(dateArray[i])
                 }
             }
-            //println("Count for selected Deck: " + String(generalWinRateArray.count))
         // If all decks are selected
         } else {
             generalWinRateArray = dateArray
-            //println("Count for all decks: " + String(generalWinRateArray.count))
         }
-        
         
         for (var i=0; i<generalWinRateArray.count ; i++) {
             if (generalWinRateArray[i].win == true) {
@@ -199,19 +193,16 @@ public class Data {
             return winRate
         } else {
             winRate =  Double(gamesWon) / Double(totalGames) * 100
-//            println("Total Games: " + String(totalGames))
-//            println("Games Won: " + gamesWon.description)
-//            println("Win Rate: " + winRate.description)
             return winRate
         }
 
     }
     
+    
     // Filters the gamesList array based on the date the user selected
     func getDateArray (date:Int) -> [Game] {
         
         var dateArray:[Game] = []
-        
         // If date is last 7 days
         if date == 0 {
             for var i = 0; i < listOfGames.count; i++ {
@@ -219,9 +210,7 @@ public class Data {
                 let lastWeek = today.dateByAddingTimeInterval(-24 * 60 * 60 * 7)
                 if listOfGames[i].getNSDate().compare(lastWeek) == NSComparisonResult.OrderedDescending {
                     dateArray.append(listOfGames[i])
-                    
                 }
-                
             }
             println("Count for the last 7 days: " + String(dateArray.count))
             return dateArray
@@ -233,7 +222,6 @@ public class Data {
                 if listOfGames[i].getNSDate().compare(lastMonth) == NSComparisonResult.OrderedDescending {
                     dateArray.append(listOfGames[i])
                 }
-                
             }
             println("Count for the last month: " + String(dateArray.count))
             return dateArray
@@ -247,6 +235,7 @@ public class Data {
             return dateArray
         }
     }
+    
     
     // Returns the heroes played by the user
     func heroesPlayed (date:Int) -> [Int] {
@@ -279,6 +268,7 @@ public class Data {
         return heroesPlayed
     }
     
+    
     // Returns the opponents class encountered by the user
     func opponentsPlayed (date:Int, deckName:String) -> [Int] {
         var opponentsPlayed:[Int] = [0,0,0,0,0,0,0,0,0]
@@ -296,10 +286,8 @@ public class Data {
                     opponentsPlayedArray.append(dateArray[i])
                 }
             }
-            //println("Count for selected Deck: " + String(opponentsPlayedArray.count))
         } else {
             opponentsPlayedArray = dateArray
-            //println("Count for all decks: " + String(opponentsPlayedArray.count))
         }
 
         for var i = 0; i < opponentsPlayedArray.count; i++ {
@@ -329,6 +317,7 @@ public class Data {
         return opponentsPlayed
     }
     
+    
     // Calculates the win rate when going first
     func withCoinWinRate(date:Int, deckName:String) -> Double {
         
@@ -336,7 +325,6 @@ public class Data {
         var generalWinRateArray:[Game] = []
         var dateArray = getDateArray(date)
         var coinArray:[Game] = []
-        
         var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
         if selectedDeckName == nil {
             selectedDeckName = ""
@@ -382,6 +370,7 @@ public class Data {
         }
     }
     
+    
     // Calculates the win rate when going second
     func withoutCoinWinRate(date:Int, deckName:String) -> Double {
         
@@ -394,7 +383,6 @@ public class Data {
         if selectedDeckName == nil {
             selectedDeckName = ""
         }
-        
         
         // If current deck is selected
         if deckName == selectedDeckName {
