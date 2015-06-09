@@ -30,7 +30,7 @@
                                 <action selector="winSwitchToggled:" destination="AgC-eL-Hgc" id="xob-9B-3sa"/>
                             </connections>
                         </switch>
-                        <button width="1" alignment="left" title="Save Game" id="jsT-xT-AhW">
+                        <button width="1" alignment="center" title="Save Game" id="jsT-xT-AhW">
                             <connections>
                                 <action selector="saveButtonPressed" destination="AgC-eL-Hgc" id="LJG-Ae-978"/>
                             </connections>

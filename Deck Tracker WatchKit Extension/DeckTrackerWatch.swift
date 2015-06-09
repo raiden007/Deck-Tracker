@@ -52,6 +52,7 @@ class DeckTrackerWatch: WKInterfaceController {
         let selectedDeckName = defaults.stringForKey("Selected Deck Name")!
         let selectedDeckClass = defaults.stringForKey("Selected Deck Class")!
         let opponentClass = NSUserDefaults.standardUserDefaults().stringForKey("Watch Opponent Class")
+
         var coin:Bool = false
         if coinSwitchInt == 0 {
             coin = false
@@ -69,28 +70,31 @@ class DeckTrackerWatch: WKInterfaceController {
         // Creates the dictionary to send to phone
         dict.setValue(selectedDeckName, forKey: "selectedDeckName")
         dict.setValue(selectedDeckClass, forKey: "selectedDeckClass")
-        dict.setValue(opponentClass, forKey: "opponentClass")
+        dict.setValue(opponentClass, forKey: "watchOpponentClass")
         dict.setValue(coin, forKey: "coin")
         dict.setValue(win, forKey: "win")
         
-        defaults.setObject(dict, forKey: "Add Game Watch")
-        defaults.synchronize()
-        
-//        WKInterfaceController.openParentApplication("SiteName": "Tech-Recipes", reply: {
-//            (reply, error) -> Void in
-//            if let message = reply["Message"] as? String {
-//                println(message)
-//            }
-//        })
-        
-        WKInterfaceController.openParentApplication(dict as Dictionary) {
-            (replyInfo, error) -> Void in
-            println("openParentApplication called in button function")
+        // Saves the dictionary and sends the info to the phone
+        if opponentClass != nil {
+            defaults.setObject(dict, forKey: "Add Game Watch")
+            defaults.synchronize()
+            
+            let randomColorComponents = [
+                "red" : CGFloat(arc4random() % 255),
+                "green" : CGFloat(arc4random() % 255),
+                "blue" : CGFloat(arc4random() % 255)]
+            
+            WKInterfaceController.openParentApplication(randomColorComponents , reply: { [unowned self](reply, error) -> Void in
+                })
+            
+        } else {
+            saveGameButton.setTitle("Opponent Class needed!")
         }
         
         // Remove saved settings
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Watch Opponent Class")
-        
+        setOpponentClassBUttonBackgroundToBlack()
+        willActivate()
     }
     
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
@@ -121,6 +125,10 @@ class DeckTrackerWatch: WKInterfaceController {
         } else {
             selectOpponentButton.setTitle("Select Opponent")
         }
+    }
+    
+    func setOpponentClassBUttonBackgroundToBlack() {
+        selectOpponentButton.setBackgroundColor(UIColorFromRGB(0x333333))
     }
     
     // Colors the cell according to the Class specified
