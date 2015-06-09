@@ -124,9 +124,10 @@ class DeckTrackerWatch: WKInterfaceController {
         if let opponentClass = NSUserDefaults.standardUserDefaults().stringForKey("Watch Opponent Class") {
             //selectOpponentButton.setTitle("Opponent: " + String(opponentClass))
             colorCell(opponentClass, button: selectOpponentButton, opponent: true, deckName: "")
-            
+            saveGameButton.setTitle("Save Game")
         } else {
             selectOpponentButton.setTitle("Select Opponent")
+            saveGameButton.setTitle("Opponent Class Needed!")
         }
     }
     
