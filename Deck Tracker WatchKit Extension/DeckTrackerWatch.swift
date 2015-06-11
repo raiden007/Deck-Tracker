@@ -20,7 +20,8 @@ class DeckTrackerWatch: WKInterfaceController {
     
     var coinSwitchInt:Int = 0
     var winSwitchInt:Int = 1
-    
+    var selectedDeckName: String = ""
+    var selectedDeckClass: String = ""
 
 
     override func awakeWithContext(context: AnyObject?) {
@@ -49,16 +50,23 @@ class DeckTrackerWatch: WKInterfaceController {
         // Gathers the data to make the dict
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         var dict = NSMutableDictionary()
-        let selectedDeckName = defaults.stringForKey("Selected Deck Name")!
-        let selectedDeckClass = defaults.stringForKey("Selected Deck Class")!
+        if let checkSelectedDeckName = defaults.stringForKey("Selected Deck Name") {
+            selectedDeckName = defaults.stringForKey("Selected Deck Name")!
+            selectedDeckClass = defaults.stringForKey("Selected Deck Class")!
+            dict.setValue(selectedDeckName, forKey: "selectedDeckName")
+            dict.setValue(selectedDeckClass, forKey: "selectedDeckClass")
+        }
+        
         let opponentClass = NSUserDefaults.standardUserDefaults().stringForKey("Watch Opponent Class")
-
+        dict.setValue(opponentClass, forKey: "watchOpponentClass")
+        
         var coin:Bool = false
         if coinSwitchInt == 0 {
             coin = false
         } else {
             coin = true
         }
+        dict.setValue(coin, forKey: "coin")
         
         var win:Bool = true
         if winSwitchInt == 0 {
@@ -66,21 +74,22 @@ class DeckTrackerWatch: WKInterfaceController {
         } else {
             win = true
         }
-
-        // Creates the dictionary to send to phone
-        dict.setValue(selectedDeckName, forKey: "selectedDeckName")
-        dict.setValue(selectedDeckClass, forKey: "selectedDeckClass")
-        dict.setValue(opponentClass, forKey: "watchOpponentClass")
-        dict.setValue(coin, forKey: "coin")
         dict.setValue(win, forKey: "win")
+        
+        println(selectedDeckName)
         
         // Saves the dictionary and sends the info to the phone
         if opponentClass != nil {
-            defaults.setObject(dict, forKey: "Add Game Watch")
-            defaults.synchronize()
-            
-            WKInterfaceController.openParentApplication(["Save New Game" : ""] , reply: { [unowned self](reply, error) -> Void in
-                })
+            if let checkSelectedDeckName = defaults.stringForKey("Selected Deck Name") {
+                defaults.setObject(dict, forKey: "Add Game Watch")
+                defaults.synchronize()
+                
+                WKInterfaceController.openParentApplication(["Save New Game" : ""] , reply: { [unowned self](reply, error) -> Void in
+                    })
+            } else {
+                saveGameButton.setTitle("Select a deck!")
+            }
+
             
         } else {
             saveGameButton.setTitle("Opponent Class needed!")
