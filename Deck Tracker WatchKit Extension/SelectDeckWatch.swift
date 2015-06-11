@@ -58,11 +58,12 @@ class SelectDeckWatch: WKInterfaceController {
     // Populates the table
     func reloadTable() {
         
+        deckTable.setNumberOfRows(deckList.count, withRowType: "DeckRow")
+        
         if deckList.count == 0 {
             noDeckLabel.setHidden(false)
         } else {
             for var i = 0; i < deckList.count; i++ {
-                deckTable.setNumberOfRows(deckList.count, withRowType: "DeckRow")
                 if let row = deckTable.rowControllerAtIndex(i) as? DeckRow {
                     row.deckLabel.setText(deckList[i].getName())
                     row.deckLabel.setTextColor(UIColor.blackColor())
