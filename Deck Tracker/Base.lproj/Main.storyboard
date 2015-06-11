@@ -861,14 +861,23 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOJ-RN-Is2">
+                                <rect key="frame" x="279" y="559" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="6bl-1I-Or9" firstAttribute="top" secondItem="NOJ-RN-Is2" secondAttribute="bottom" constant="20" id="AQ9-ol-zY8"/>
                             <constraint firstItem="a5T-KN-QjC" firstAttribute="top" secondItem="fMh-MK-aFV" secondAttribute="bottom" id="iJ9-Bh-Tom"/>
+                            <constraint firstAttribute="centerX" secondItem="NOJ-RN-Is2" secondAttribute="centerX" id="t9c-kd-Gvh"/>
                             <constraint firstAttribute="centerX" secondItem="a5T-KN-QjC" secondAttribute="centerX" id="uii-iF-KgK"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomLabel" destination="NOJ-RN-Is2" id="lRv-Vm-6Sv"/>
                         <outlet property="titleLabel" destination="a5T-KN-QjC" id="ot5-ej-cOR"/>
                     </connections>
                 </viewController>

@@ -20,6 +20,10 @@ public class Data {
     var listOfDecks:[Deck] = []
     var deckListForPhone:[NSDictionary] = []
     
+    // Objects needed to be updated in different functions
+    var generalWinRateArray:[Game] = []
+    var coinArray:[Game] = []
+    
     // We initialize the data structure
     init() {
         
@@ -162,7 +166,6 @@ public class Data {
     func generalWinRate(date:Int, deckName:String) -> Double {
         
         var gamesWon = 0
-        var generalWinRateArray:[Game] = []
         var dateArray = getDateArray(date)
         var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
         if selectedDeckName == nil {
@@ -171,6 +174,7 @@ public class Data {
         
         // If current deck is selected
         if deckName == selectedDeckName {
+            generalWinRateArray = []
             for var i = 0; i < dateArray.count; i++ {
                 if deckName == dateArray[i].getPlayerDeckName() {
                     generalWinRateArray.append(dateArray[i])
@@ -196,6 +200,10 @@ public class Data {
             return winRate
         }
 
+    }
+    
+    func generalWinRateCount() -> Int {
+        return generalWinRateArray.count
     }
     
     
@@ -268,6 +276,8 @@ public class Data {
         return heroesPlayed
     }
     
+    // Gets the number of game
+    
     
     // Returns the opponents class encountered by the user
     func opponentsPlayed (date:Int, deckName:String) -> [Int] {
@@ -322,9 +332,8 @@ public class Data {
     func withCoinWinRate(date:Int, deckName:String) -> Double {
         
         var gamesWon = 0
-        var generalWinRateArray:[Game] = []
         var dateArray = getDateArray(date)
-        var coinArray:[Game] = []
+        coinArray = []
         var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
         if selectedDeckName == nil {
             selectedDeckName = ""
@@ -333,6 +342,7 @@ public class Data {
         
         // If current deck is selected
         if deckName == selectedDeckName {
+            generalWinRateArray = []
             for var i = 0; i < dateArray.count; i++ {
                 if deckName == dateArray[i].getPlayerDeckName() {
                     generalWinRateArray.append(dateArray[i])
@@ -370,14 +380,17 @@ public class Data {
         }
     }
     
+    func coinWinRateCount () -> Int {
+        return coinArray.count
+    }
+    
     
     // Calculates the win rate when going second
     func withoutCoinWinRate(date:Int, deckName:String) -> Double {
         
         var gamesWon = 0
-        var generalWinRateArray:[Game] = []
         var dateArray = getDateArray(date)
-        var coinArray:[Game] = []
+        coinArray = []
         
         var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
         if selectedDeckName == nil {
@@ -386,6 +399,7 @@ public class Data {
         
         // If current deck is selected
         if deckName == selectedDeckName {
+            generalWinRateArray = []
             for var i = 0; i < dateArray.count; i++ {
                 if deckName == dateArray[i].getPlayerDeckName() {
                     generalWinRateArray.append(dateArray[i])

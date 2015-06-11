@@ -12,6 +12,7 @@ import UIKit
 class GraphsViewController: UIViewController, PiechartDelegate {
 
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var bottomLabel: UILabel!
     
     var pageIndex: Int!
     var titleText: String!
@@ -49,14 +50,19 @@ class GraphsViewController: UIViewController, PiechartDelegate {
         
         if self.titleLabel.text == "Win rate" {
             createWinRatePieChart(dateIndex, deckName: deckName!)
+            bottomLabel.text = "Total Games: " + String(Data.sharedInstance.generalWinRateCount())
         } else if self.titleLabel.text == "Heroes played" {
             createHeroesPlayedPieChart(dateIndex)
+            bottomLabel.text = "Tap the graph for more information"
         } else if self.titleLabel.text == "Opponents faced" {
             createOpponentsPlayedPieChart(dateIndex, deckName: deckName!)
+            bottomLabel.text = "Tap the graph for more information"
         } else if self.titleLabel.text == "Going first win rate" {
             createCoinWinRatePieChart(dateIndex, deckName: deckName)
+            bottomLabel.text = "Total Games: " + String(Data.sharedInstance.coinWinRateCount())
         } else if self.titleLabel.text == "Going second win rate" {
             createWithoutCoinWinRatePieChart(dateIndex, deckName: deckName)
+            bottomLabel.text = "Total Games: " + String(Data.sharedInstance.coinWinRateCount())
         } else {
             assert(true, "Wrong page")
         }
