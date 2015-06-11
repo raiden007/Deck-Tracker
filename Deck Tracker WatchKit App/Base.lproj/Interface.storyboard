@@ -67,9 +67,11 @@
                                 </tableRow>
                             </items>
                         </table>
+                        <label width="1" alignment="left" text="Add a deck from iOS app" textAlignment="center" numberOfLines="2" id="Wbx-1S-oxm"/>
                     </items>
                     <connections>
                         <outlet property="deckTable" destination="CiH-Vf-XeG" id="Xsd-gR-NtR"/>
+                        <outlet property="noDeckLabel" destination="Wbx-1S-oxm" id="X2H-Qd-bw4"/>
                     </connections>
                 </controller>
             </objects>

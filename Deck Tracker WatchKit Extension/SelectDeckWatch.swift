@@ -13,11 +13,12 @@ import Foundation
 class SelectDeckWatch: WKInterfaceController {
 
     @IBOutlet var deckTable: WKInterfaceTable!
+    @IBOutlet var noDeckLabel: WKInterfaceLabel!
     var deckList:[Deck] = []
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-    
+        noDeckLabel.setHidden(true)
         loadData()
         reloadTable()
     }
@@ -37,8 +38,10 @@ class SelectDeckWatch: WKInterfaceController {
     // Loads data from NSUserDefaults
     func loadData() {
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
-        var dict:[NSDictionary] = defaults.objectForKey("List of decks dictionary") as! [NSDictionary]
-        extractDictToArrayOfDecks(dict)
+        if let dict:[NSDictionary] = defaults.objectForKey("List of decks dictionary") as? [NSDictionary] {
+            extractDictToArrayOfDecks(dict)
+        }
+        
     }
     
     // Takes the saved dictionary and transforms it into a Deck array
@@ -54,34 +57,40 @@ class SelectDeckWatch: WKInterfaceController {
     
     // Populates the table
     func reloadTable() {
-        deckTable.setNumberOfRows(deckList.count, withRowType: "DeckRow")
-        for var i = 0; i < deckList.count; i++ {
-            if let row = deckTable.rowControllerAtIndex(i) as? DeckRow {
-                row.deckLabel.setText(deckList[i].getName())
-                row.deckLabel.setTextColor(UIColor.blackColor())
-                
-                // Colors the cells
-                if deckList[i].getClass() == "Warrior" {
-                    row.groupTable.setBackgroundColor(UIColorFromRGB(0xCC0000))
-                } else if deckList[i].getClass() == "Paladin" {
-                    row.groupTable.setBackgroundColor(UIColorFromRGB(0xCCC333))
-                } else if deckList[i].getClass() == "Shaman" {
-                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x3366CC))
-                } else if deckList[i].getClass() == "Hunter" {
-                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x339933))
-                } else if deckList[i].getClass() == "Druid" {
-                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x990000))
-                } else if deckList[i].getClass() == "Rogue" {
-                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x666666))
-                } else if deckList[i].getClass() == "Warlock" {
-                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x9900CC))
-                } else if deckList[i].getClass() == "Mage" {
-                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x009999))
-                } else if deckList[i].getClass() == "Priest" {
-                    row.groupTable.setBackgroundColor(UIColorFromRGB(0x999999))
+        
+        if deckList.count == 0 {
+            noDeckLabel.setHidden(false)
+        } else {
+            for var i = 0; i < deckList.count; i++ {
+                deckTable.setNumberOfRows(deckList.count, withRowType: "DeckRow")
+                if let row = deckTable.rowControllerAtIndex(i) as? DeckRow {
+                    row.deckLabel.setText(deckList[i].getName())
+                    row.deckLabel.setTextColor(UIColor.blackColor())
+                    
+                    // Colors the cells
+                    if deckList[i].getClass() == "Warrior" {
+                        row.groupTable.setBackgroundColor(UIColorFromRGB(0xCC0000))
+                    } else if deckList[i].getClass() == "Paladin" {
+                        row.groupTable.setBackgroundColor(UIColorFromRGB(0xCCC333))
+                    } else if deckList[i].getClass() == "Shaman" {
+                        row.groupTable.setBackgroundColor(UIColorFromRGB(0x3366CC))
+                    } else if deckList[i].getClass() == "Hunter" {
+                        row.groupTable.setBackgroundColor(UIColorFromRGB(0x339933))
+                    } else if deckList[i].getClass() == "Druid" {
+                        row.groupTable.setBackgroundColor(UIColorFromRGB(0x990000))
+                    } else if deckList[i].getClass() == "Rogue" {
+                        row.groupTable.setBackgroundColor(UIColorFromRGB(0x666666))
+                    } else if deckList[i].getClass() == "Warlock" {
+                        row.groupTable.setBackgroundColor(UIColorFromRGB(0x9900CC))
+                    } else if deckList[i].getClass() == "Mage" {
+                        row.groupTable.setBackgroundColor(UIColorFromRGB(0x009999))
+                    } else if deckList[i].getClass() == "Priest" {
+                        row.groupTable.setBackgroundColor(UIColorFromRGB(0x999999))
+                    }
                 }
             }
         }
+
     }
     
     // Saves the selected deck and returns to Main View
