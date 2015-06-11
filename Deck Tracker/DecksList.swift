@@ -19,16 +19,10 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        readData()
+        refreshData()
         
-        // If there is a deck selected get it's index
-        var savedUserDefaults = readSelectedDeckID()
-        for var i = 0; i < decksList.count; i++ {
-            if savedUserDefaults == decksList[i].getID() {
-                indexOfSelectedDeck = i
-                break
-            }
-        }
+        // Listens for "Deck Selected" and calls refreshData()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshData", name: "DeckSelected", object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,9 +59,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         var selectedDeck = decksList[indexPath.row]
         saveSelectedDeckID(selectedDeck)
-        readSelectedDeckID()
         saveSelectedDeckName(selectedDeck)
-        readSelectedDeckName()
         saveSelectedDeckClass(selectedDeck)
         indexOfSelectedDeck = indexPath.row
         tableView.reloadData()
@@ -123,17 +115,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     // Refreshes the view after adding a deck
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        readData()
-        decksTable.reloadData()
-        
-        // If there is a deck selected get it's index
-        var savedUserDefaults = readSelectedDeckID()
-        for var i = 0; i < decksList.count; i++ {
-            if savedUserDefaults == decksList[i].getID() {
-                indexOfSelectedDeck = i
-                break
-            }
-        }
+        refreshData()
     }
     
     // Reads the data from Data file
@@ -179,6 +161,21 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         } else {
             return ""
         }
+    }
+    
+    func refreshData() {
+        readData()
+        decksTable.reloadData()
+        
+        // If there is a deck selected get it's index
+        var savedUserDefaults = readSelectedDeckID()
+        for var i = 0; i < decksList.count; i++ {
+            if savedUserDefaults == decksList[i].getID() {
+                indexOfSelectedDeck = i
+                break
+            }
+        }
+        
     }
 }
 

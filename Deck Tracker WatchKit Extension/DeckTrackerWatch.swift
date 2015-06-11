@@ -79,12 +79,7 @@ class DeckTrackerWatch: WKInterfaceController {
             defaults.setObject(dict, forKey: "Add Game Watch")
             defaults.synchronize()
             
-            let randomColorComponents = [
-                "red" : CGFloat(arc4random() % 255),
-                "green" : CGFloat(arc4random() % 255),
-                "blue" : CGFloat(arc4random() % 255)]
-            
-            WKInterfaceController.openParentApplication(randomColorComponents , reply: { [unowned self](reply, error) -> Void in
+            WKInterfaceController.openParentApplication(["Save New Game" : ""] , reply: { [unowned self](reply, error) -> Void in
                 })
             
         } else {

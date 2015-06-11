@@ -93,6 +93,8 @@ class SelectDeckWatch: WKInterfaceController {
         defaults.setObject(selectedDeck.getName(), forKey: "Selected Deck Name")
         defaults.setObject(selectedDeck.getClass(), forKey: "Selected Deck Class")
         defaults.synchronize()
+        WKInterfaceController.openParentApplication(["Save Selected Deck" : ""] , reply: { [unowned self](reply, error) -> Void in
+            })
         self.popController()
     }
     

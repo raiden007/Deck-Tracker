@@ -46,6 +46,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Executes the code when the watch sends a request
     func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
         
+        var infoFromWatch: NSDictionary = userInfo!
+        println(infoFromWatch)
+
+        // Depending on what screen this function is called do stuff
+        if let val = infoFromWatch["Save New Game"] {
+            saveGameFromWatch()
+        } else  {
+            println("test")
+            saveSelectedDeckFromWatch()
+        }
+    }
+    
+    func saveGameFromWatch() {
         // Fetches the saved dictionary
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         var dict: NSDictionary = defaults.objectForKey("Add Game Watch") as! NSDictionary
@@ -64,8 +77,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Posts a notification for another screen (Games List)
         NSNotificationCenter.defaultCenter().postNotificationName("GameAdded", object: nil)
-        
-        
+    }
+    
+    func saveSelectedDeckFromWatch() {
+        // Posts a notification for another screen (Decks List)
+        NSNotificationCenter.defaultCenter().postNotificationName("DeckSelected", object: nil)
     }
 
 
