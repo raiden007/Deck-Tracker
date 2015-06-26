@@ -858,6 +858,14 @@
             </objects>
             <point key="canvasLocation" x="-304" y="1844"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="PE0-Or-xsT">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="x1k-Dd-I3e" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uS7-RR-ZzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1394" y="1838"/>
+        </scene>
         <!--Graphs View Controller-->
         <scene sceneID="OeL-lu-59H">
             <objects>
@@ -898,7 +906,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtF-Cw-27C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1562" y="1948"/>
+            <point key="canvasLocation" x="2048" y="1838"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U4u-ai-sqa">

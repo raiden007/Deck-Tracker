@@ -13,7 +13,7 @@ class SelectNote: UITableViewController {
     @IBOutlet var notesTable: UITableView!
     @IBOutlet var plusButton: UIBarButtonItem!
 
-    var notesArray:[String] = ["Zoo", "Whatever", "Blabla"]
+    var notesArray:[String] = []
     var selectedNotesArray:[String] = []
     var notes:[String] = []
 
@@ -68,7 +68,7 @@ class SelectNote: UITableViewController {
             var cellLabel = cell?.textLabel?.text as String!
             selectedNotesArray.append(cellLabel)
             saveSelectedNotes(selectedNotesArray)
-            println(readSelectedNotes())
+            //println(readSelectedNotes())
         } else {
             cell?.accessoryType = UITableViewCellAccessoryType.None
             for var i = 0; i < selectedNotesArray.count; i++ {
@@ -77,7 +77,7 @@ class SelectNote: UITableViewController {
                 }
             }
             saveSelectedNotes(selectedNotesArray)
-            println(readSelectedNotes())
+            //println(readSelectedNotes())
         }
 
     }
@@ -99,6 +99,7 @@ class SelectNote: UITableViewController {
     }
     
     func readData() {
+        notesArray = readNotes()
         selectedNotesArray = readSelectedNotes()
     }
     
@@ -112,17 +113,46 @@ class SelectNote: UITableViewController {
             textField.placeholder = "Tag name"
         })
         
-        //3. Grab the value from the text field, and print it when the user clicks OK.
+        //3. Grab the value from the text field, and adds it to the array when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Finish", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as! UITextField
-            println("Text field: \(textField.text)")
+            self.notesArray.append(textField.text)
+            self.saveNotesArray()
+            self.readNotes()
+            self.notesTable.reloadData()
+            //println(self.notesArray)
+            //println("Text field: \(textField.text)")
         }))
         
         // 4. Present the alert.
         self.presentViewController(alert, animated: true, completion: nil)
         
-        // 5. Add it in the array
-        
+    }
+    
+    func saveNotesArray() {
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(notesArray, forKey: "All Notes")
+        defaults.synchronize()
+    }
+    
+    func readNotes() -> [String]{
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let notesTest = defaults.arrayForKey("All Notes") {
+            notesArray = defaults.arrayForKey("All Notes") as! [String]
+        }
+        //println(notesArray)
+        return notesArray
+    }
+    
+    // Deletes the row
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            var index = indexPath.row
+            notesArray.removeAtIndex(index)
+            saveNotesArray()
+            readData()
+            self.notesTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        }
     }
     
     
