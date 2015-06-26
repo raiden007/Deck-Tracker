@@ -18,9 +18,10 @@ class Game : NSObject, NSCoding {
     var coin:Bool
     var win:Bool
     var date:NSDate
+    var note:String
 
     // Initialize an Game object with the following arguments
-    init (newID:Int, newDate:NSDate, newPlayerDeckName:String, newPlayerDeckClass:String, newOpponentDeck:String, newCoin:Bool, newWin:Bool) {
+    init (newID:Int, newDate:NSDate, newPlayerDeckName:String, newPlayerDeckClass:String, newOpponentDeck:String, newCoin:Bool, newWin:Bool, newNote:String) {
         self.id = newID
         self.playerDeckName = newPlayerDeckName
         self.playerDeckClass = newPlayerDeckClass
@@ -28,6 +29,7 @@ class Game : NSObject, NSCoding {
         self.coin = newCoin
         self.win = newWin
         self.date = newDate
+        self.note = newNote
     }
     
     // Encode and decode the object so it can be stored in NSUserDefaults
@@ -39,6 +41,10 @@ class Game : NSObject, NSCoding {
         coin = aDecoder.decodeObjectForKey("coin") as! Bool
         win = aDecoder.decodeObjectForKey("win") as! Bool
         date = aDecoder.decodeObjectForKey("date") as! NSDate
+        note = ""
+        if let testNote = aDecoder.decodeObjectForKey("note") as? String {
+            note = aDecoder.decodeObjectForKey("note") as! String
+        }
     }
     
     
@@ -50,6 +56,7 @@ class Game : NSObject, NSCoding {
         aCoder.encodeObject(coin, forKey: "coin")
         aCoder.encodeObject(win, forKey: "win")
         aCoder.encodeObject(date, forKey: "date")
+        aCoder.encodeObject(note, forKey: "note")
     }
     
     // Returns deck name
@@ -113,6 +120,16 @@ class Game : NSObject, NSCoding {
         return id
     }
     
+    // Returns the note
+    func getNote() -> String {
+        return note
+    }
+    
+    // Sets note
+    func setNotes(newNote:String) {
+        note = newNote
+    }
+    
     // Returns a string containing all the proprierties of the object
     func toString() -> String {
         
@@ -120,7 +137,7 @@ class Game : NSObject, NSCoding {
         var winString = String(stringInterpolationSegment: win)
         var idString = String(id)
         
-        return ("Game number: " + idString + ", date: " + getDate() + ", Player Deck Name: " + playerDeckName + ", Opponent Deck: " + opponentDeck + ", Coin: " + coinString + ", Win: " + winString)
+        return ("Game number: " + idString + ", date: " + getDate() + ", Player Deck Name: " + playerDeckName + ", Opponent Deck: " + opponentDeck + ", Coin: " + coinString + ", Win: " + winString + ", Note: " + note)
         
     }
 }

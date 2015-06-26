@@ -436,4 +436,13 @@ public class Data {
             return winRate
         }
     }
+    
+    
+    func convertDataFromVersion1ToVersion2() {
+        for var i = 0; i < listOfGames.count; i++ {
+            var game:Game = listOfGames[i]
+            game.setNotes(" TEEEEEEEST ")
+        }
+    }
+    
 }

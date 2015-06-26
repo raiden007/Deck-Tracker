@@ -25,7 +25,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
 
     var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var selectedGameArray:[Game] = []
-    var selectedGame:Game = Game(newID: 1, newDate: NSDate(), newPlayerDeckName: "1", newPlayerDeckClass: "1", newOpponentDeck: "1", newCoin: true, newWin: true)
+    var selectedGame:Game = Game(newID: 1, newDate: NSDate(), newPlayerDeckName: "1", newPlayerDeckClass: "1", newOpponentDeck: "1", newCoin: true, newWin: true, newNote: "")
     static let sharedInstance = EditGame()
     
 
@@ -182,7 +182,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         
        
         // Create a new Game object
-        var editedGame = Game(newID: editedID, newDate: editedDate!, newPlayerDeckName: editedPlayerDeckName!, newPlayerDeckClass: editedPlayerDeckClass!, newOpponentDeck: editedOpponentClass!, newCoin: editedCoin, newWin: editedWin)
+        var editedGame = Game(newID: editedID, newDate: editedDate!, newPlayerDeckName: editedPlayerDeckName!, newPlayerDeckClass: editedPlayerDeckClass!, newOpponentDeck: editedOpponentClass!, newCoin: editedCoin, newWin: editedWin, newNote: "Not added yet")
         
         Data.sharedInstance.editGame(editedID, oldGame: selectedGame, newGame: editedGame)
         
