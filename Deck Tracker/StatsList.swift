@@ -25,6 +25,9 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         
         // Listens for "Game Added" and calls refreshData()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshData", name: "GameAdded", object: nil)
+        
+        // Removes the empty rows from view
+        statsTable.tableFooterView = UIView(frame: CGRectZero)
     }
     
     // Cleans stuff up

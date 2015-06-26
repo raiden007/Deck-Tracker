@@ -11,16 +11,19 @@ import UIKit
 class SelectNote: UITableViewController {
     
     @IBOutlet var notesTable: UITableView!
+    @IBOutlet var plusButton: UIBarButtonItem!
 
     var notesArray:[String] = ["Zoo", "Whatever", "Blabla"]
     var selectedNotesArray:[String] = []
-    
+    var notes:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         readData()
         readSelectedNotes()
+        // Removes the empty rows from view
+        notesTable.tableFooterView = UIView(frame: CGRectZero)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -89,12 +92,38 @@ class SelectNote: UITableViewController {
     // Reads the selected notes from NSUserDefaults
     func readSelectedNotes() -> [String] {
         let defaults = NSUserDefaults.standardUserDefaults()
-        let notes:[String] = defaults.arrayForKey("Selected Notes") as! [String]!
+        if let notesTest = defaults.arrayForKey("Selected Notes") {
+            notes = defaults.arrayForKey("Selected Notes") as! [String]
+        }
         return notes
     }
     
     func readData() {
         selectedNotesArray = readSelectedNotes()
     }
+    
+    @IBAction func plusButtonPressed(sender: UIBarButtonItem) {
+        
+        //1. Create the alert controller.
+        var alert = UIAlertController(title: "New Tag", message: "Enter Tag", preferredStyle: .Alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.placeholder = "Tag name"
+        })
+        
+        //3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "Finish", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as! UITextField
+            println("Text field: \(textField.text)")
+        }))
+        
+        // 4. Present the alert.
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        // 5. Add it in the array
+        
+    }
+    
     
 }

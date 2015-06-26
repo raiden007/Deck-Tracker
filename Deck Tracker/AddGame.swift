@@ -27,7 +27,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     @IBOutlet var winCellSwitch: UISwitch!
     @IBOutlet var noteLabel: UILabel!
     
-    
+    var notesArray:[String] = []
     
     
     
@@ -202,9 +202,11 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     // Puts the notes on the Notes Label
     func putNoteLabel() {
         let defaults = NSUserDefaults.standardUserDefaults()
-        let notesArray:[String] = defaults.arrayForKey("Selected Notes") as! [String]!
+        if let notesArrayTest = defaults.arrayForKey("Selected Notes") {
+            notesArray = defaults.arrayForKey("Selected Notes") as! [String]!
+        }
         if notesArray.isEmpty {
-            noteLabel.text = "Add Notes"
+            noteLabel.text = "Add Tags"
         } else {
             var str = "";
             for var i = 0; i < notesArray.count; i++ {
@@ -214,7 +216,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
                     str += notesArray[i] + ", "
                 }
             }
-            noteLabel.text = str
+            noteLabel.text = "Tags: " + str
         }
     }
 }

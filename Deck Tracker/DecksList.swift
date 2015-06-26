@@ -23,6 +23,9 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         
         // Listens for "Deck Selected" and calls refreshData()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshData", name: "DeckSelected", object: nil)
+        
+        // Removes the empty rows from view
+        decksTable.tableFooterView = UIView(frame: CGRectZero)
     }
 
     override func didReceiveMemoryWarning() {

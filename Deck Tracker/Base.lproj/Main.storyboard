@@ -694,7 +694,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eDc-WV-q16" id="n7H-n2-1JG">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhh-fq-QHP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add Tags" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhh-fq-QHP">
                                                     <rect key="frame" x="8" y="11" width="527" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -856,7 +856,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Xu-F1-y3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1576" y="1884"/>
+            <point key="canvasLocation" x="-304" y="1844"/>
         </scene>
         <!--Graphs View Controller-->
         <scene sceneID="OeL-lu-59H">
@@ -898,7 +898,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtF-Cw-27C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318" y="1900"/>
+            <point key="canvasLocation" x="1562" y="1948"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U4u-ai-sqa">
@@ -1152,7 +1152,7 @@
             </objects>
             <point key="canvasLocation" x="3759" y="14"/>
         </scene>
-        <!--Add Note-->
+        <!--Add Tags-->
         <scene sceneID="eY2-0H-DKw">
             <objects>
                 <tableViewController id="rkA-YN-m9y" customClass="SelectNote" customModule="Deck_Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -1186,11 +1186,16 @@
                             <outlet property="delegate" destination="rkA-YN-m9y" id="hej-rQ-wiv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Note" id="xau-KR-VwP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3o0-BY-Epk"/>
+                    <navigationItem key="navigationItem" title="Add Tags" id="xau-KR-VwP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3o0-BY-Epk">
+                            <connections>
+                                <action selector="plusButtonPressed:" destination="rkA-YN-m9y" id="agR-Iz-8pu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="notesTable" destination="y3u-aJ-Urp" id="4MV-Vl-ngW"/>
+                        <outlet property="plusButton" destination="3o0-BY-Epk" id="tN7-Qg-OjS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KH3-ot-NqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1447,7 +1452,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFj-Ms-enh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="1844"/>
+            <point key="canvasLocation" x="-282" y="1044"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tsl-Xm-uKS">
