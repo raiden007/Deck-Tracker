@@ -47,6 +47,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         putSelectedDateOnLabel()
         putSelectedDeckNameOnLabel()
         putSelectedOpponentClassOnLabel()
+        putNoteLabel()
     }
     
     func putSelectedDateOnLabel() {
@@ -196,5 +197,24 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         NSUserDefaults.standardUserDefaults().setInteger(matchesCount, forKey: "Matches Count");
         NSUserDefaults.standardUserDefaults().synchronize()
         return matchesCount
+    }
+    
+    // Puts the notes on the Notes Label
+    func putNoteLabel() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let notesArray:[String] = defaults.arrayForKey("Selected Notes") as! [String]!
+        if notesArray.isEmpty {
+            noteLabel.text = "Add Notes"
+        } else {
+            var str = "";
+            for var i = 0; i < notesArray.count; i++ {
+                if i == notesArray.count - 1 {
+                    str += notesArray[i]
+                } else {
+                    str += notesArray[i] + ", "
+                }
+            }
+            noteLabel.text = str
+        }
     }
 }
