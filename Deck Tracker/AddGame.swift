@@ -25,6 +25,8 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     @IBOutlet var winCell: UITableViewCell!
     @IBOutlet var winCellLabel: UILabel!
     @IBOutlet var winCellSwitch: UISwitch!
+    @IBOutlet var noteLabel: UILabel!
+    
     
     
     
