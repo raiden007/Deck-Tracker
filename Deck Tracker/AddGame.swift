@@ -147,11 +147,13 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         var newGameOpponentClass = defaults.stringForKey("Opponent Class") as String?
         var newGameCoin = coinCellSwitch.on
         var newGameWin = winCellSwitch.on
+        var newGameNote = notesArray
+
         
         if newGamePlayerDeckName != nil && newGameOpponentClass != nil {
             
             // Adds a new game
-            var newGame = Game(newID: newGameID, newDate: newGameDate, newPlayerDeckName: newGamePlayerDeckName!, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin, newNote: "Not added yet")
+            var newGame = Game(newID: newGameID, newDate: newGameDate, newPlayerDeckName: newGamePlayerDeckName!, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin, newNote: newGameNote)
             // Add to Data class file
             Data.sharedInstance.addGame(newGame)
             self.dismissViewControllerAnimated(true, completion: {})

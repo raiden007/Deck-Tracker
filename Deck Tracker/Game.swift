@@ -18,10 +18,10 @@ class Game : NSObject, NSCoding {
     var coin:Bool
     var win:Bool
     var date:NSDate
-    var note:String
+    var note:[String]
 
     // Initialize an Game object with the following arguments
-    init (newID:Int, newDate:NSDate, newPlayerDeckName:String, newPlayerDeckClass:String, newOpponentDeck:String, newCoin:Bool, newWin:Bool, newNote:String) {
+    init (newID:Int, newDate:NSDate, newPlayerDeckName:String, newPlayerDeckClass:String, newOpponentDeck:String, newCoin:Bool, newWin:Bool, newNote:[String]) {
         self.id = newID
         self.playerDeckName = newPlayerDeckName
         self.playerDeckClass = newPlayerDeckClass
@@ -41,9 +41,9 @@ class Game : NSObject, NSCoding {
         coin = aDecoder.decodeObjectForKey("coin") as! Bool
         win = aDecoder.decodeObjectForKey("win") as! Bool
         date = aDecoder.decodeObjectForKey("date") as! NSDate
-        note = ""
-        if let testNote = aDecoder.decodeObjectForKey("note") as? String {
-            note = aDecoder.decodeObjectForKey("note") as! String
+        note = []
+        if let testNote = aDecoder.decodeObjectForKey("note") as? [String] {
+            note = aDecoder.decodeObjectForKey("note") as! [String]
         }
     }
     
@@ -121,12 +121,12 @@ class Game : NSObject, NSCoding {
     }
     
     // Returns the note
-    func getNote() -> String {
+    func getNote() -> [String] {
         return note
     }
     
     // Sets note
-    func setNotes(newNote:String) {
+    func setNotes(newNote:[String]) {
         note = newNote
     }
     
@@ -136,8 +136,12 @@ class Game : NSObject, NSCoding {
         var coinString = String(stringInterpolationSegment: coin)
         var winString = String(stringInterpolationSegment: win)
         var idString = String(id)
+        var notesString = ""
+        for var i = 0; i < note.count; i++ {
+            notesString += note[i] + ", "
+        }
         
-        return ("Game number: " + idString + ", date: " + getDate() + ", Player Deck Name: " + playerDeckName + ", Opponent Deck: " + opponentDeck + ", Coin: " + coinString + ", Win: " + winString + ", Note: " + note)
+        return ("Game number: " + idString + ", date: " + getDate() + ", Player Deck Name: " + playerDeckName + ", Opponent Deck: " + opponentDeck + ", Coin: " + coinString + ", Win: " + winString + ", Note: " + notesString)
         
     }
 }
