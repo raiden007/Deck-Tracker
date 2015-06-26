@@ -117,6 +117,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey("Saved Date")
         defaults.removeObjectForKey("Opponent Class")
+        defaults.removeObjectForKey("Selected Notes")
         defaults.synchronize()
         self.dismissViewControllerAnimated(true, completion: {})
     }
@@ -131,7 +132,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         return dateString
     }
     
-    // Removes the selected date and selected opponent class from NSUserDefaults and sends all the info to the Game List
+    // Removes the selected date, opponent class and selected tags from NSUserDefaults and sends all the info to the Game List
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
 
@@ -184,9 +185,10 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
 
         }
         
-        // Deletes the date and opponent class so the user needs to select again
+        // Deletes the date, opponent class and selected tags so the user needs to select again
         defaults.removeObjectForKey("Saved Date")
         defaults.removeObjectForKey("Opponent Class")
+        defaults.removeObjectForKey("Selected Notes")
         defaults.synchronize()
     }
     
