@@ -22,6 +22,8 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     @IBOutlet var coinSwitch: UISwitch!
     @IBOutlet var winCell: UITableViewCell!
     @IBOutlet var winSwitch: UISwitch!
+    @IBOutlet var tagsLabel: UILabel!
+    
 
     var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var selectedGameArray:[Game] = []
@@ -60,6 +62,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         putSavedOpponentClassOnLabel()
         putSavedCoinStatusOnSwitch()
         putSavedWinStatusOnSwitch()
+        putSavedNotesOnLabel()
     }
     
     // Puts saved date on label
@@ -90,6 +93,25 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     func putSavedWinStatusOnSwitch() {
         var savedWin = selectedGame.getWin()
         winSwitch.setOn(savedWin, animated: true)
+    }
+    
+    // Puts the selected tags
+    func putSavedNotesOnLabel() {
+        var savedTags = selectedGame.getNote()
+        
+        if savedTags.isEmpty {
+            tagsLabel.text = "Tags: "
+        } else {
+            var str = "";
+            for var i = 0; i < savedTags.count; i++ {
+                if i == savedTags.count - 1 {
+                    str += savedTags[i]
+                } else {
+                    str += savedTags[i] + ", "
+                }
+            }
+            tagsLabel.text = "Tags: " + str
+        }
     }
     
     // Puts the selected date on the date label

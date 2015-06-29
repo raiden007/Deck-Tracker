@@ -21,9 +21,13 @@ class SelectNote: UITableViewController {
         super.viewDidLoad()
 
         readData()
-        readSelectedNotes()
+        //readSelectedNotes()
+        
+        
         // Removes the empty rows from view
         notesTable.tableFooterView = UIView(frame: CGRectZero)
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
