@@ -130,13 +130,13 @@ class SelectNote: UITableViewController {
     }
     
     func saveNotesArray() {
-        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(notesArray, forKey: "All Notes")
         defaults.synchronize()
     }
     
     func readNotes() -> [String]{
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         if let notesTest = defaults.arrayForKey("All Notes") {
             notesArray = defaults.arrayForKey("All Notes") as! [String]
         }
