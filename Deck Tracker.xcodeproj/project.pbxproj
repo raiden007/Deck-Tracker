@@ -164,6 +164,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D2F2B511B4278BD00B267C9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6D61AA421AF784E20013EB04 /* Game.swift */,
+				6DD844CC1AF8EFB300CF9C80 /* Deck.swift */,
+				6DD844CA1AF8A86F00CF9C80 /* Data.swift */,
+				6DD844CE1AFA306500CF9C80 /* DecksCell.swift */,
+				6DB50E1A1B009B1D0000F97B /* GamesCell.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		6D2F2B521B4278D300B267C9 /* Decks View */ = {
+			isa = PBXGroup;
+			children = (
+				6DDD44891AEF87B700A4B5D2 /* DecksList.swift */,
+				6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */,
+				6DDD448B1AEF87B700A4B5D2 /* StatsList.swift */,
+			);
+			name = "Decks View";
+			sourceTree = "<group>";
+		};
+		6D2F2B531B4278E400B267C9 /* Add New Game */ = {
+			isa = PBXGroup;
+			children = (
+				6DF362FF1AFB702600A5B507 /* AddGame.swift */,
+				6D5960521AFCB2AD0039EE47 /* SelectDate.swift */,
+				6D5960541AFCD45E0039EE47 /* SelectDeck.swift */,
+				6D5960561AFCD7880039EE47 /* SelectOpponentClass.swift */,
+				6DD866681B3D7E0F002E5D82 /* SelectNote.swift */,
+			);
+			name = "Add New Game";
+			sourceTree = "<group>";
+		};
+		6D2F2B541B4278EC00B267C9 /* Edit Game */ = {
+			isa = PBXGroup;
+			children = (
+				6DBB739A1B0209FD00005B5E /* EditGame.swift */,
+				6DBB739C1B04840000005B5E /* EditDate.swift */,
+				6DBB73A41B04C99E00005B5E /* EditSelectedDeck.swift */,
+				6DBB73A61B04CDCE00005B5E /* EditOpponentClass.swift */,
+				6D2F2B4E1B412D5C00B267C9 /* EditTags.swift */,
+			);
+			name = "Edit Game";
+			sourceTree = "<group>";
+		};
+		6D2F2B551B4278F400B267C9 /* Graphs */ = {
+			isa = PBXGroup;
+			children = (
+				6D9538421B09E22400B4ED66 /* Graphs.swift */,
+				6DC3201F1B0F65D20098F60A /* GraphsViewController.swift */,
+				6D9538401B09E1C100B4ED66 /* Piechart.swift */,
+			);
+			name = Graphs;
+			sourceTree = "<group>";
+		};
 		6DB67A5E1B188890000A8E54 /* Deck Tracker WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,27 +289,11 @@
 			children = (
 				6D7C5B531B20273400E18252 /* Deck Tracker.entitlements */,
 				6DDD44871AEF87B700A4B5D2 /* AppDelegate.swift */,
-				6D61AA421AF784E20013EB04 /* Game.swift */,
-				6DD844CC1AF8EFB300CF9C80 /* Deck.swift */,
-				6DD844CA1AF8A86F00CF9C80 /* Data.swift */,
-				6DD844CE1AFA306500CF9C80 /* DecksCell.swift */,
-				6DB50E1A1B009B1D0000F97B /* GamesCell.swift */,
-				6DDD44891AEF87B700A4B5D2 /* DecksList.swift */,
-				6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */,
-				6DDD448B1AEF87B700A4B5D2 /* StatsList.swift */,
-				6DF362FF1AFB702600A5B507 /* AddGame.swift */,
-				6D5960521AFCB2AD0039EE47 /* SelectDate.swift */,
-				6D5960541AFCD45E0039EE47 /* SelectDeck.swift */,
-				6D5960561AFCD7880039EE47 /* SelectOpponentClass.swift */,
-				6DD866681B3D7E0F002E5D82 /* SelectNote.swift */,
-				6DBB739A1B0209FD00005B5E /* EditGame.swift */,
-				6DBB739C1B04840000005B5E /* EditDate.swift */,
-				6DBB73A41B04C99E00005B5E /* EditSelectedDeck.swift */,
-				6DBB73A61B04CDCE00005B5E /* EditOpponentClass.swift */,
-				6D2F2B4E1B412D5C00B267C9 /* EditTags.swift */,
-				6D9538421B09E22400B4ED66 /* Graphs.swift */,
-				6DC3201F1B0F65D20098F60A /* GraphsViewController.swift */,
-				6D9538401B09E1C100B4ED66 /* Piechart.swift */,
+				6D2F2B511B4278BD00B267C9 /* Data */,
+				6D2F2B521B4278D300B267C9 /* Decks View */,
+				6D2F2B531B4278E400B267C9 /* Add New Game */,
+				6D2F2B541B4278EC00B267C9 /* Edit Game */,
+				6D2F2B551B4278F400B267C9 /* Graphs */,
 				6DE566951B15C2220026FBF5 /* About.swift */,
 				6DDD448D1AEF87B700A4B5D2 /* Main.storyboard */,
 				6DDD44901AEF87B700A4B5D2 /* Images.xcassets */,
