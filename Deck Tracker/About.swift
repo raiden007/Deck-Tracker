@@ -13,9 +13,13 @@ class About: UIViewController {
     @IBOutlet var versionLabel: UILabel!
     @IBOutlet var emailButton: UIButton!
     
+    let version = "1.1"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        versionLabel.text = "Version: " + version
         
         // Do any additional setup after loading the view.
     }
