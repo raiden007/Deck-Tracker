@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
@@ -30,6 +30,11 @@
                                 <action selector="winSwitchToggled:" destination="AgC-eL-Hgc" id="xob-9B-3sa"/>
                             </connections>
                         </switch>
+                        <button width="1" alignment="left" title="Add Tags" id="dss-WK-fqe">
+                            <connections>
+                                <segue destination="Ysh-R1-kNH" kind="push" id="5q1-Nt-1kX"/>
+                            </connections>
+                        </button>
                         <button width="1" alignment="center" title="Save Game" id="jsT-xT-AhW">
                             <connections>
                                 <action selector="saveButtonPressed" destination="AgC-eL-Hgc" id="LJG-Ae-978"/>
@@ -159,7 +164,37 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="416" y="404.75"/>
+            <point key="canvasLocation" x="651" y="216.25"/>
+        </scene>
+        <!--Tags-->
+        <scene sceneID="WJF-v7-EuL">
+            <objects>
+                <controller title="Tags" id="Ysh-R1-kNH" customClass="SelectTagsWatch" customModule="Deck_Tracker_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="oXB-bb-J2T">
+                            <items>
+                                <tableRow identifier="TagRow" id="cAu-C7-JOy" customClass="TagsRow" customModule="Deck_Tracker_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="2Ef-04-75P">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" text="Label" textAlignment="center" id="h0I-vI-FVp"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="groupTable" destination="2Ef-04-75P" id="fDq-PM-XeX"/>
+                                        <outlet property="tagLabel" destination="h0I-vI-FVp" id="O9i-e1-fmf"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <label width="1" alignment="left" text="Add tags from iOS app" textAlignment="center" numberOfLines="2" id="eYJ-v1-z0o"/>
+                    </items>
+                    <connections>
+                        <outlet property="noTagsLabel" destination="eYJ-v1-z0o" id="48e-tk-JFc"/>
+                        <outlet property="tagsTable" destination="oXB-bb-J2T" id="SGs-Nj-YOk"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="416" y="360"/>
         </scene>
     </scenes>
 </document>
