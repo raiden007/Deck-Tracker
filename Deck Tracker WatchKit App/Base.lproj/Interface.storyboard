@@ -46,6 +46,7 @@
                         <outlet property="saveGameButton" destination="jsT-xT-AhW" id="tPL-28-ON5"/>
                         <outlet property="selectDeckButton" destination="OeP-ur-hho" id="RjX-5j-R6a"/>
                         <outlet property="selectOpponentButton" destination="2U8-dk-e3Q" id="KHr-x1-c4z"/>
+                        <outlet property="tagsButton" destination="dss-WK-fqe" id="b0g-tq-vMD"/>
                         <outlet property="winSwitch" destination="cvZ-B2-9oe" id="lHi-hw-YTw"/>
                     </connections>
                 </controller>

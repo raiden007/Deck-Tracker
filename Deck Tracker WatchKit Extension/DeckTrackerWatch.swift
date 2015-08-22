@@ -16,12 +16,14 @@ class DeckTrackerWatch: WKInterfaceController {
     @IBOutlet var selectOpponentButton: WKInterfaceButton!
     @IBOutlet var coinSwitch: WKInterfaceSwitch!
     @IBOutlet var winSwitch: WKInterfaceSwitch!
+    @IBOutlet weak var tagsButton: WKInterfaceButton!
     @IBOutlet var saveGameButton: WKInterfaceButton!
     
     var coinSwitchInt:Int = 0
     var winSwitchInt:Int = 1
     var selectedDeckName: String = ""
     var selectedDeckClass: String = ""
+    var selectedTags:[String] = []
 
 
     override func awakeWithContext(context: AnyObject?) {
@@ -37,6 +39,7 @@ class DeckTrackerWatch: WKInterfaceController {
         println("Watch app started")
         setSelectedDeckButton()
         setOpponentClassButton()
+        setTagsButton()
     }
 
     override func didDeactivate() {
@@ -254,6 +257,7 @@ class DeckTrackerWatch: WKInterfaceController {
         }
     }
     
+    
     // Keep track of coin switch
     @IBAction func coinSwitchToggled(value: Bool) {
         if value {
@@ -270,6 +274,16 @@ class DeckTrackerWatch: WKInterfaceController {
         } else {
             winSwitchInt = 0
         }
+    }
+    
+    func setTagsButton() {
+        if let tags: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") {
+            selectedTags = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") as! [String]!
+            tagsButton.setTitle("Tags Added")
+        } else {
+            tagsButton.setTitle("Add Tags")
+        }
+        println(selectedTags)
     }
     
     

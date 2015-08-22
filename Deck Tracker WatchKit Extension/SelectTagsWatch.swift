@@ -15,6 +15,8 @@ class SelectTagsWatch: WKInterfaceController {
     @IBOutlet weak var tagsTable: WKInterfaceTable!
     @IBOutlet weak var noTagsLabel: WKInterfaceLabel!
     var tagsList:[String] = []
+    var selectedTagsArray:[String] = []
+    var wasAlreadySelected = false
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -65,9 +67,38 @@ class SelectTagsWatch: WKInterfaceController {
     // Saves the selected tag and colors the row
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
         let row = table.rowControllerAtIndex(rowIndex) as? TagsRow
+        
+        wasAlreadySelected = false
+        
         var selectedTag = tagsList[rowIndex]
+        for var i = 0; i < selectedTagsArray.count; i++ {
+            if selectedTag == selectedTagsArray[i] {
+                wasAlreadySelected = true
+            } else {
+                //wasAlreadySelected = false
+            }
+        }
+        
+        if wasAlreadySelected == true {
+            for var i = 0; i < selectedTagsArray.count; i++ {
+                if selectedTag == selectedTagsArray[i] {
+                    selectedTagsArray.removeAtIndex(i)
+                }
+            }
+            row!.groupTable.setBackgroundColor(UIColor.blackColor())
+            row?.tagLabel.setTextColor(UIColor.whiteColor())
+        } else {
+            selectedTagsArray.append(selectedTag)
+            row!.groupTable.setBackgroundColor(UIColor.greenColor())
+            row?.tagLabel.setTextColor(UIColor.blackColor())
+        }
+        println(selectedTag)
+        println(selectedTagsArray)
+        println(wasAlreadySelected)
+        
+
         var defaults = NSUserDefaults.standardUserDefaults()
-        row!.groupTable.setBackgroundColor(UIColor.greenColor())
+        defaults.setObject(selectedTagsArray, forKey: "Selected Tags Watch")
         defaults.synchronize()
     }
 
