@@ -79,6 +79,13 @@ class DeckTrackerWatch: WKInterfaceController {
         }
         dict.setValue(win, forKey: "win")
         
+        if let checkSelectedTags: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") {
+            selectedTags = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") as! [String]
+        } else {
+            selectedTags = [""]
+        }
+        dict.setValue(selectedTags, forKey: "watchSelectedTags")
+        
         println(selectedDeckName)
         
         // Saves the dictionary and sends the info to the phone
@@ -100,6 +107,7 @@ class DeckTrackerWatch: WKInterfaceController {
         
         // Remove saved settings
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Watch Opponent Class")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Tags Watch")
         setOpponentClassBUttonBackgroundToBlack()
         willActivate()
     }

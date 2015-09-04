@@ -72,8 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let opponentClass = dict["watchOpponentClass"] as! String
         let coin = dict["coin"] as! Bool
         let win = dict["win"] as! Bool
+        let tags = dict["watchSelectedTags"] as! [String]
         
-        var newGame = Game(newID: gameID, newDate: date, newPlayerDeckName: playerDeckName, newPlayerDeckClass: playerDeckClass, newOpponentDeck: opponentClass, newCoin: coin, newWin: win, newNote: ["Not added yet"])
+        var newGame = Game(newID: gameID, newDate: date, newPlayerDeckName: playerDeckName, newPlayerDeckClass: playerDeckClass, newOpponentDeck: opponentClass, newCoin: coin, newWin: win, newNote: tags)
         Data.sharedInstance.addGame(newGame)
         
         // Posts a notification for another screen (Games List)
