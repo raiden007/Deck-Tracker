@@ -125,6 +125,8 @@ class EditTags: UITableViewController {
         if let allTagsTest = defaults.arrayForKey("All Tags") {
             allTags = defaults.arrayForKey("All Tags") as! [String]
         }
+        var sortedtags = sorted(allTags, <)
+        allTags = sortedtags
         return allTags
     }
     

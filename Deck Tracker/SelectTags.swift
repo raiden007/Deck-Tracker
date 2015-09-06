@@ -125,6 +125,8 @@ class SelectTags: UITableViewController {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         if let testAllTags = defaults.arrayForKey("All Tags") {
             allTags = defaults.arrayForKey("All Tags") as! [String]
+            var sortedtags = sorted(allTags, <)
+            allTags = sortedtags
         }
         return allTags
     }

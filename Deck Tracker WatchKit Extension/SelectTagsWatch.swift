@@ -43,6 +43,8 @@ class SelectTagsWatch: WKInterfaceController {
         if let testTags: AnyObject = defaults.objectForKey("All Tags") {
             tagsList = testTags as! [String]
         }
+        var sortedtags = sorted(tagsList, <)
+        tagsList = sortedtags
         if let testSelectedTags: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") {
             selectedTagsArray = testSelectedTags as! [String]
         }
