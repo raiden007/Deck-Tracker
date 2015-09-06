@@ -25,9 +25,10 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     @IBOutlet var winCell: UITableViewCell!
     @IBOutlet var winCellLabel: UILabel!
     @IBOutlet var winCellSwitch: UISwitch!
-    @IBOutlet var noteLabel: UILabel!
+    @IBOutlet weak var tagsLabel: UILabel!
+
     
-    var notesArray:[String] = []
+    var allTags:[String] = []
     
     
     
@@ -47,7 +48,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         putSelectedDateOnLabel()
         putSelectedDeckNameOnLabel()
         putSelectedOpponentClassOnLabel()
-        putNoteLabel()
+        putTagLabel()
     }
     
     func putSelectedDateOnLabel() {
@@ -117,7 +118,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey("Saved Date")
         defaults.removeObjectForKey("Opponent Class")
-        defaults.removeObjectForKey("Selected Notes")
+        defaults.removeObjectForKey("Selected Tags")
         defaults.synchronize()
         self.dismissViewControllerAnimated(true, completion: {})
     }
@@ -147,13 +148,13 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         var newGameOpponentClass = defaults.stringForKey("Opponent Class") as String?
         var newGameCoin = coinCellSwitch.on
         var newGameWin = winCellSwitch.on
-        var newGameNote = notesArray
+        var newGameTag = allTags
 
         
         if newGamePlayerDeckName != nil && newGameOpponentClass != nil {
             
             // Adds a new game
-            var newGame = Game(newID: newGameID, newDate: newGameDate, newPlayerDeckName: newGamePlayerDeckName!, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin, newNote: newGameNote)
+            var newGame = Game(newID: newGameID, newDate: newGameDate, newPlayerDeckName: newGamePlayerDeckName!, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin, newTags: newGameTag)
             // Add to Data class file
             Data.sharedInstance.addGame(newGame)
             self.dismissViewControllerAnimated(true, completion: {})
@@ -190,7 +191,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         // Deletes the date, opponent class and selected tags so the user needs to select again
         defaults.removeObjectForKey("Saved Date")
         defaults.removeObjectForKey("Opponent Class")
-        defaults.removeObjectForKey("Selected Notes")
+        defaults.removeObjectForKey("Selected Tags")
         defaults.synchronize()
     }
     
@@ -203,24 +204,24 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         return matchesCount
     }
     
-    // Puts the notes on the Notes Label
-    func putNoteLabel() {
+    // Puts the tags on the Tags Label
+    func putTagLabel() {
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let notesArrayTest = defaults.arrayForKey("Selected Notes") {
-            notesArray = defaults.arrayForKey("Selected Notes") as! [String]!
+        if let allTagsTest = defaults.arrayForKey("Selected Tags") {
+            allTags = defaults.arrayForKey("Selected Tags") as! [String]!
         }
-        if notesArray.isEmpty {
-            noteLabel.text = "Add Tags"
+        if allTags.isEmpty {
+            tagsLabel.text = "Add Tags"
         } else {
             var str = "";
-            for var i = 0; i < notesArray.count; i++ {
-                if i == notesArray.count - 1 {
-                    str += notesArray[i]
+            for var i = 0; i < allTags.count; i++ {
+                if i == allTags.count - 1 {
+                    str += allTags[i]
                 } else {
-                    str += notesArray[i] + ", "
+                    str += allTags[i] + ", "
                 }
             }
-            noteLabel.text = "Tags: " + str
+            tagsLabel.text = "Tags: " + str
         }
     }
 }

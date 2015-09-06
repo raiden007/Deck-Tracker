@@ -40,7 +40,7 @@ class SelectTagsWatch: WKInterfaceController {
     func loadData() {
         // Loads all saved tags and then the already selected by user
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
-        if let testTags: AnyObject = defaults.objectForKey("All Notes") {
+        if let testTags: AnyObject = defaults.objectForKey("All Tags") {
             tagsList = testTags as! [String]
         }
         if let testSelectedTags: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") {

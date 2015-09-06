@@ -1,5 +1,5 @@
 //
-//  SelectNote.swift
+//  SelectTags.swift
 //  Deck Tracker
 //
 //  Created by Andrei Joghiu on 26/6/15.
@@ -8,24 +8,23 @@
 
 import UIKit
 
-class SelectNote: UITableViewController {
+class SelectTags: UITableViewController {
     
-    @IBOutlet var notesTable: UITableView!
+    @IBOutlet var tagsTable: UITableView!
     @IBOutlet var plusButton: UIBarButtonItem!
 
-    var notesArray:[String] = []
-    var selectedNotesArray:[String] = []
-    var notes:[String] = []
+    var allTags:[String] = []
+    var selectedTags:[String] = []
+    var tags:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         readData()
-        //readSelectedNotes()
         
         
         // Removes the empty rows from view
-        notesTable.tableFooterView = UIView(frame: CGRectZero)
+        tagsTable.tableFooterView = UIView(frame: CGRectZero)
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -47,16 +46,16 @@ class SelectNote: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return notesArray.count
+        return allTags.count
     }
 
     // Configures the cell
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = notesArray[indexPath.row]
+        cell.textLabel?.text = allTags[indexPath.row]
         var cellLabel = cell.textLabel?.text as String!
-        for var i = 0; i < selectedNotesArray.count; i++ {
-            if cellLabel == selectedNotesArray[i] {
+        for var i = 0; i < selectedTags.count; i++ {
+            if cellLabel == selectedTags[i] {
                 cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             }
         }
@@ -70,41 +69,39 @@ class SelectNote: UITableViewController {
         if cell?.accessoryType == UITableViewCellAccessoryType.None {
             cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
             var cellLabel = cell?.textLabel?.text as String!
-            selectedNotesArray.append(cellLabel)
-            saveSelectedNotes(selectedNotesArray)
-            //println(readSelectedNotes())
+            selectedTags.append(cellLabel)
+            saveSelectedTags(selectedTags)
         } else {
             cell?.accessoryType = UITableViewCellAccessoryType.None
-            for var i = 0; i < selectedNotesArray.count; i++ {
-                if selectedNotesArray[i] == cell?.textLabel?.text {
-                    selectedNotesArray.removeAtIndex(i)
+            for var i = 0; i < selectedTags.count; i++ {
+                if selectedTags[i] == cell?.textLabel?.text {
+                    selectedTags.removeAtIndex(i)
                 }
             }
-            saveSelectedNotes(selectedNotesArray)
-            //println(readSelectedNotes())
+            saveSelectedTags(selectedTags)
         }
 
     }
     
-    // Saves the selected notes as an array
-    func saveSelectedNotes(selectedNotes:[String]) {
+    // Saves the selected tags as an array
+    func saveSelectedTags(selectedTags:[String]) {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(selectedNotes, forKey: "Selected Notes")
+        defaults.setObject(selectedTags, forKey: "Selected Tags")
         defaults.synchronize()
     }
     
-    // Reads the selected notes from NSUserDefaults
-    func readSelectedNotes() -> [String] {
+    // Reads the selected tags from NSUserDefaults
+    func readSelectedTags() -> [String] {
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let notesTest = defaults.arrayForKey("Selected Notes") {
-            notes = defaults.arrayForKey("Selected Notes") as! [String]
+        if let tagsTest = defaults.arrayForKey("Selected Tags") {
+            tags = defaults.arrayForKey("Selected Tags") as! [String]
         }
-        return notes
+        return tags
     }
     
     func readData() {
-        notesArray = readNotes()
-        selectedNotesArray = readSelectedNotes()
+        allTags = readTags()
+        selectedTags = readSelectedTags()
     }
     
     @IBAction func plusButtonPressed(sender: UIBarButtonItem) {
@@ -120,12 +117,10 @@ class SelectNote: UITableViewController {
         //3. Grab the value from the text field, and adds it to the array when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Finish", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as! UITextField
-            self.notesArray.append(textField.text)
-            self.saveNotesArray()
-            self.readNotes()
-            self.notesTable.reloadData()
-            //println(self.notesArray)
-            //println("Text field: \(textField.text)")
+            self.allTags.append(textField.text)
+            self.saveAllTags()
+            self.readTags()
+            self.tagsTable.reloadData()
         }))
         
         // 4. Present the alert.
@@ -133,29 +128,28 @@ class SelectNote: UITableViewController {
         
     }
     
-    func saveNotesArray() {
+    func saveAllTags() {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        defaults.setObject(notesArray, forKey: "All Notes")
+        defaults.setObject(allTags, forKey: "All Tags")
         defaults.synchronize()
     }
     
-    func readNotes() -> [String]{
+    func readTags() -> [String]{
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        if let notesTest = defaults.arrayForKey("All Notes") {
-            notesArray = defaults.arrayForKey("All Notes") as! [String]
+        if let testAllTags = defaults.arrayForKey("All Tags") {
+            allTags = defaults.arrayForKey("All Tags") as! [String]
         }
-        //println(notesArray)
-        return notesArray
+        return allTags
     }
     
     // Deletes the row
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             var index = indexPath.row
-            notesArray.removeAtIndex(index)
-            saveNotesArray()
+            allTags.removeAtIndex(index)
+            saveAllTags()
             readData()
-            self.notesTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            self.tagsTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         }
     }
     

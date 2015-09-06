@@ -27,7 +27,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
 
     var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var selectedGameArray:[Game] = []
-    var selectedGame:Game = Game(newID: 1, newDate: NSDate(), newPlayerDeckName: "1", newPlayerDeckClass: "1", newOpponentDeck: "1", newCoin: true, newWin: true, newNote: [])
+    var selectedGame:Game = Game(newID: 1, newDate: NSDate(), newPlayerDeckName: "1", newPlayerDeckClass: "1", newOpponentDeck: "1", newCoin: true, newWin: true, newTags: [])
     static let sharedInstance = EditGame()
     
 
@@ -62,7 +62,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         putSavedOpponentClassOnLabel()
         putSavedCoinStatusOnSwitch()
         putSavedWinStatusOnSwitch()
-        putSavedNotesOnLabel()
+        putSavedTagsOnLabel()
     }
     
     // Puts saved date on label
@@ -96,8 +96,8 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     }
     
     // Puts the selected tags
-    func putSavedNotesOnLabel() {
-        var savedTags = selectedGame.getNote()
+    func putSavedTagsOnLabel() {
+        var savedTags = selectedGame.getTags()
         
         if savedTags.isEmpty {
             tagsLabel.text = "Tags: "
@@ -204,7 +204,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         
        
         // Create a new Game object
-        var editedGame = Game(newID: editedID, newDate: editedDate!, newPlayerDeckName: editedPlayerDeckName!, newPlayerDeckClass: editedPlayerDeckClass!, newOpponentDeck: editedOpponentClass!, newCoin: editedCoin, newWin: editedWin, newNote: ["Not Added Yet"])
+        var editedGame = Game(newID: editedID, newDate: editedDate!, newPlayerDeckName: editedPlayerDeckName!, newPlayerDeckClass: editedPlayerDeckClass!, newOpponentDeck: editedOpponentClass!, newCoin: editedCoin, newWin: editedWin, newTags: ["Not Added Yet"])
         
         Data.sharedInstance.editGame(editedID, oldGame: selectedGame, newGame: editedGame)
         

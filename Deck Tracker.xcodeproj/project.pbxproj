@@ -31,7 +31,7 @@
 		6DD844CB1AF8A86F00CF9C80 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CA1AF8A86F00CF9C80 /* Data.swift */; };
 		6DD844CD1AF8EFB300CF9C80 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Deck.swift */; };
 		6DD844CF1AFA306500CF9C80 /* DecksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CE1AFA306500CF9C80 /* DecksCell.swift */; };
-		6DD866691B3D7E0F002E5D82 /* SelectNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD866681B3D7E0F002E5D82 /* SelectNote.swift */; };
+		6DD866691B3D7E0F002E5D82 /* SelectTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD866681B3D7E0F002E5D82 /* SelectTags.swift */; };
 		6DDD44881AEF87B700A4B5D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD44871AEF87B700A4B5D2 /* AppDelegate.swift */; };
 		6DDD448A1AEF87B700A4B5D2 /* DecksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD44891AEF87B700A4B5D2 /* DecksList.swift */; };
 		6DDD448C1AEF87B700A4B5D2 /* StatsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD448B1AEF87B700A4B5D2 /* StatsList.swift */; };
@@ -119,7 +119,7 @@
 		6DD844CA1AF8A86F00CF9C80 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		6DD844CC1AF8EFB300CF9C80 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		6DD844CE1AFA306500CF9C80 /* DecksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecksCell.swift; sourceTree = "<group>"; };
-		6DD866681B3D7E0F002E5D82 /* SelectNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectNote.swift; sourceTree = "<group>"; };
+		6DD866681B3D7E0F002E5D82 /* SelectTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTags.swift; sourceTree = "<group>"; };
 		6DDD44821AEF87B700A4B5D2 /* Deck Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deck Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DDD44861AEF87B700A4B5D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DDD44871AEF87B700A4B5D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 				6D5960521AFCB2AD0039EE47 /* SelectDate.swift */,
 				6D5960541AFCD45E0039EE47 /* SelectDeck.swift */,
 				6D5960561AFCD7880039EE47 /* SelectOpponentClass.swift */,
-				6DD866681B3D7E0F002E5D82 /* SelectNote.swift */,
+				6DD866681B3D7E0F002E5D82 /* SelectTags.swift */,
 			);
 			name = "Add New Game";
 			sourceTree = "<group>";
@@ -544,7 +544,7 @@
 				6DD844CD1AF8EFB300CF9C80 /* Deck.swift in Sources */,
 				6DDD44AA1AEFB1B300A4B5D2 /* AddDeck.swift in Sources */,
 				6DD844CB1AF8A86F00CF9C80 /* Data.swift in Sources */,
-				6DD866691B3D7E0F002E5D82 /* SelectNote.swift in Sources */,
+				6DD866691B3D7E0F002E5D82 /* SelectTags.swift in Sources */,
 				6D5960531AFCB2AD0039EE47 /* SelectDate.swift in Sources */,
 				6DDD448C1AEF87B700A4B5D2 /* StatsList.swift in Sources */,
 				6D5960571AFCD7880039EE47 /* SelectOpponentClass.swift in Sources */,

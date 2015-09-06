@@ -441,8 +441,8 @@ public class Data {
     func convertDataFromVersion1ToVersion2() {
         for var i = 0; i < listOfGames.count; i++ {
             var game:Game = listOfGames[i]
-            if game.note.isEmpty {
-                game.setNotes([])
+            if game.tags.isEmpty {
+                game.setTagAsEmpty([])
             }
         }
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -689,7 +689,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Note" id="eDc-WV-q16">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Tags" id="eDc-WV-q16">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eDc-WV-q16" id="n7H-n2-1JG">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -739,12 +739,12 @@
                         <outlet property="coinCellSwitch" destination="cys-QU-Sz2" id="3Qi-dL-3Cb"/>
                         <outlet property="dateCell" destination="jps-8H-OWa" id="Xzk-5h-1fc"/>
                         <outlet property="dateCellLabel" destination="VdP-vE-BNJ" id="362-rq-jxK"/>
-                        <outlet property="noteLabel" destination="hhh-fq-QHP" id="HQa-8d-zwu"/>
                         <outlet property="opponentDeckCell" destination="x2t-DH-5d7" id="vz0-g5-Tbn"/>
                         <outlet property="opponentDeckLabel" destination="Nhj-0f-JZJ" id="GMf-Op-0YU"/>
                         <outlet property="playerDeckCell" destination="EVE-Yv-8jr" id="fsh-Z3-HXP"/>
                         <outlet property="playerDeckLabel" destination="5IZ-f3-G7M" id="gFa-9S-lUJ"/>
                         <outlet property="saveButton" destination="5Hl-B7-dSn" id="OKW-9P-T51"/>
+                        <outlet property="tagsLabel" destination="hhh-fq-QHP" id="nHR-ug-U5L"/>
                         <outlet property="winCell" destination="Yo5-0J-aBk" id="9x8-WJ-WO4"/>
                         <outlet property="winCellLabel" destination="O4d-WN-ZCz" id="4xd-aF-Gb7"/>
                         <outlet property="winCellSwitch" destination="l1i-0q-unM" id="8L4-ON-Hoh"/>
@@ -1236,7 +1236,7 @@
         <!--Add Tags-->
         <scene sceneID="eY2-0H-DKw">
             <objects>
-                <tableViewController id="rkA-YN-m9y" customClass="SelectNote" customModule="Deck_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="rkA-YN-m9y" customClass="SelectTags" customModule="Deck_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="y3u-aJ-Urp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1275,8 +1275,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="notesTable" destination="y3u-aJ-Urp" id="4MV-Vl-ngW"/>
                         <outlet property="plusButton" destination="3o0-BY-Epk" id="tN7-Qg-OjS"/>
+                        <outlet property="tagsTable" destination="y3u-aJ-Urp" id="skq-tI-hsr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KH3-ot-NqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1587,7 +1587,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpl-Th-Rc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5631" y="1752"/>
+            <point key="canvasLocation" x="5623" y="1752"/>
         </scene>
     </scenes>
     <resources>
