@@ -230,10 +230,10 @@
 				6D7C5B541B20278C00E18252 /* Deck Tracker WatchKit Extension.entitlements */,
 				6DB67A611B188890000A8E54 /* DeckTrackerWatch.swift */,
 				6D6B21E61B1F276500B973B8 /* SelectDeckWatch.swift */,
+				6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */,
 				8B4507C81B88B95500B0D12E /* SelectTagsWatch.swift */,
 				6D6B21E81B1F281400B973B8 /* DeckRow.swift */,
 				8B4507CA1B88BBA500B0D12E /* TagsRow.swift */,
-				6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */,
 				6DB67A651B188890000A8E54 /* Images.xcassets */,
 				6DB67A5F1B188890000A8E54 /* Supporting Files */,
 			);

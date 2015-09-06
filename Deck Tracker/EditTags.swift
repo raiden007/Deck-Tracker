@@ -105,6 +105,8 @@ class EditTags: UITableViewController {
         alert.addAction(UIAlertAction(title: "Finish", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as! UITextField
             self.allTags.append(textField.text)
+            var sortedtags = sorted(self.allTags, <)
+            self.allTags = sortedtags
             self.saveAllTags()
             self.readTags()
             self.tagsTable.reloadData()
@@ -125,8 +127,6 @@ class EditTags: UITableViewController {
         if let allTagsTest = defaults.arrayForKey("All Tags") {
             allTags = defaults.arrayForKey("All Tags") as! [String]
         }
-        var sortedtags = sorted(allTags, <)
-        allTags = sortedtags
         return allTags
     }
     
