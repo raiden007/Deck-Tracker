@@ -397,8 +397,9 @@ public class Data {
             selectedDeckName = ""
         }
         
-        // If current deck is selected
+        
         if deckName == selectedDeckName {
+            // If current deck is selected
             generalWinRateArray = []
             for var i = 0; i < dateArray.count; i++ {
                 if deckName == dateArray[i].getPlayerDeckName() {
@@ -406,8 +407,9 @@ public class Data {
                 }
             }
             //println("Count for selected Deck: " + String(generalWinRateArray.count))
-            // If all decks are selected
+            
         } else {
+            // If all decks are selected
             generalWinRateArray = dateArray
             //println("Count for all decks: " + String(generalWinRateArray.count))
         }

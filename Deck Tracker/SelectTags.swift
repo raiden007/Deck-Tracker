@@ -15,23 +15,12 @@ class SelectTags: UITableViewController {
 
     var allTags:[String] = []
     var selectedTags:[String] = []
-    var tags:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         readData()
-        
-        
         // Removes the empty rows from view
         tagsTable.tableFooterView = UIView(frame: CGRectZero)
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,18 +28,14 @@ class SelectTags: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
-
-    // Gets the number of rows to be displayed in the table
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return allTags.count
     }
 
-    // Configures the cell
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // Configures the cells
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = allTags[indexPath.row]
         var cellLabel = cell.textLabel?.text as String!
@@ -63,8 +48,9 @@ class SelectTags: UITableViewController {
     }
     
     
-    // Selects the row and saves the info so we can add a checkmark
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // Selects the row and saves the info so we can add a checkmark
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         if cell?.accessoryType == UITableViewCellAccessoryType.None {
             cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
@@ -80,23 +66,24 @@ class SelectTags: UITableViewController {
             }
             saveSelectedTags(selectedTags)
         }
-
     }
     
-    // Saves the selected tags as an array
+    
     func saveSelectedTags(selectedTags:[String]) {
+        // Saves the selected tags as an array
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(selectedTags, forKey: "Selected Tags")
         defaults.synchronize()
     }
     
-    // Reads the selected tags from NSUserDefaults
+    
     func readSelectedTags() -> [String] {
+        // Reads the selected tags from NSUserDefaults
         let defaults = NSUserDefaults.standardUserDefaults()
         if let tagsTest = defaults.arrayForKey("Selected Tags") {
-            tags = defaults.arrayForKey("Selected Tags") as! [String]
+            selectedTags = defaults.arrayForKey("Selected Tags") as! [String]
         }
-        return tags
+        return selectedTags
     }
     
     func readData() {
@@ -142,8 +129,9 @@ class SelectTags: UITableViewController {
         return allTags
     }
     
-    // Deletes the row
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // Deletes the row
         if editingStyle == UITableViewCellEditingStyle.Delete {
             var index = indexPath.row
             allTags.removeAtIndex(index)

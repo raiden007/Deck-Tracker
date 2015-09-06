@@ -29,17 +29,11 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     var selectedGameArray:[Game] = []
     var selectedGame:Game = Game(newID: 1, newDate: NSDate(), newPlayerDeckName: "1", newPlayerDeckClass: "1", newOpponentDeck: "1", newCoin: true, newWin: true, newTags: [])
     static let sharedInstance = EditGame()
+    var selectedTags: [String] = []
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         selectedGameArray = StatsList.sharedInstance.readSelectedGame() as [Game]!
         selectedGame = selectedGameArray[0]
 
@@ -50,13 +44,12 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     // Populates the screen with latest data
     override func viewDidAppear(animated: Bool) {
         // Populates the screen with data
-        putSelectedDateOnLabel()
-        putSelectedPlayerDeckOnLabel()
-        putSelectedOpponentClassOnLabel()
+        populateScreen()
     }
     
-    // Populates the screen with data
+    
     func populateScreen() {
+        // Populates the screen with data
         putSavedDateOnLabel()
         putSavedPlayerDeckOnLabel()
         putSavedOpponentClassOnLabel()
@@ -97,21 +90,32 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     
     // Puts the selected tags
     func putSavedTagsOnLabel() {
-        var savedTags = selectedGame.getTags()
         
-        if savedTags.isEmpty {
+        selectedTags = selectedGame.getTags()
+        println("Selected Tags Edit Screen with default tags: " + String(stringInterpolationSegment: selectedTags))
+        if let testSavedTags = defaults.arrayForKey("Edited Selected Tags") as? [String] {
+            selectedTags = defaults.arrayForKey("Edited Selected Tags") as! [String]
+        }
+        defaults.setObject(selectedTags, forKey: "Edited Selected Tags")
+        defaults.synchronize()
+        println("Selected Tags Edit Screen after loading Edited Tags: " + String(stringInterpolationSegment: selectedTags))
+
+        if selectedTags.isEmpty {
             tagsLabel.text = "Tags: "
         } else {
             var str = "";
-            for var i = 0; i < savedTags.count; i++ {
-                if i == savedTags.count - 1 {
-                    str += savedTags[i]
+            for var i = 0; i < selectedTags.count; i++ {
+                if i == selectedTags.count - 1 {
+                    str += selectedTags[i]
                 } else {
-                    str += savedTags[i] + ", "
+                    str += selectedTags[i] + ", "
                 }
             }
             tagsLabel.text = "Tags: " + str
         }
+        
+        
+        
     }
     
     // Puts the selected date on the date label
@@ -169,6 +173,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Name")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Class")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Opponent Class")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Selected Tags")
         NSUserDefaults.standardUserDefaults().synchronize()
         self.dismissViewControllerAnimated(true, completion: {});
     }
@@ -202,9 +207,10 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         
         var editedWin = winSwitch.on
         
+        var editedTags = defaults.arrayForKey("Edited Selected Tags") as! [String]
        
         // Create a new Game object
-        var editedGame = Game(newID: editedID, newDate: editedDate!, newPlayerDeckName: editedPlayerDeckName!, newPlayerDeckClass: editedPlayerDeckClass!, newOpponentDeck: editedOpponentClass!, newCoin: editedCoin, newWin: editedWin, newTags: ["Not Added Yet"])
+        var editedGame = Game(newID: editedID, newDate: editedDate!, newPlayerDeckName: editedPlayerDeckName!, newPlayerDeckClass: editedPlayerDeckClass!, newOpponentDeck: editedOpponentClass!, newCoin: editedCoin, newWin: editedWin, newTags: editedTags)
         
         Data.sharedInstance.editGame(editedID, oldGame: selectedGame, newGame: editedGame)
         
@@ -215,6 +221,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Name")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Class")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Opponent Class")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Selected Tags")
         NSUserDefaults.standardUserDefaults().synchronize()
         self.dismissViewControllerAnimated(true, completion: {});
     }

@@ -15,7 +15,7 @@ class EditTags: UITableViewController {
     
 
     var allTags:[String] = []
-    var selectedtags:[String] = []
+    var selectedTags:[String] = []
     
     
     override func viewDidLoad() {
@@ -38,23 +38,86 @@ class EditTags: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // Populates the screen
+        // Configures the cells
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = allTags[indexPath.row]
         var cellLabel = cell.textLabel?.text as String!
-        for var i = 0; i < selectedtags.count; i++ {
-            if cellLabel == selectedtags[i] {
+        for var i = 0; i < selectedTags.count; i++ {
+            if cellLabel == selectedTags[i] {
                 cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             }
         }
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // Selects the row and saves the info so we can add a checkmark
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        if cell?.accessoryType == UITableViewCellAccessoryType.None {
+            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            var cellLabel = cell?.textLabel?.text as String!
+            selectedTags.append(cellLabel)
+            saveSelectedTags(selectedTags)
+        } else {
+            cell?.accessoryType = UITableViewCellAccessoryType.None
+            for var i = 0; i < selectedTags.count; i++ {
+                if selectedTags[i] == cell?.textLabel?.text {
+                    selectedTags.removeAtIndex(i)
+                }
+            }
+            saveSelectedTags(selectedTags)
+        }
+    }
+    
+    func saveSelectedTags(selectedTags:[String]) {
+        // Saves the selected tags as an array
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(selectedTags, forKey: "Edited Selected Tags")
+        defaults.synchronize()
+    }
+    
+    func readSelectedTags() {
+        // Reads the selected tags from NSUserDefaults
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let tagsTest = defaults.arrayForKey("Edited Selected Tags") {
+            selectedTags = defaults.arrayForKey("Edited Selected Tags") as! [String]
+        } else {
+            selectedTags = []
+        }
+        println("Selected tags Tags screen: " + String(stringInterpolationSegment: selectedTags))
+    }
+    
     func readData() {
         allTags = readTags()
+        readSelectedTags()
     }
     
     @IBAction func plusButtonPressed(sender: UIBarButtonItem) {
+        //1. Create the alert controller.
+        var alert = UIAlertController(title: "New Tag", message: "Enter Tag", preferredStyle: .Alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.placeholder = "Tag name"
+        })
+        
+        //3. Grab the value from the text field, and adds it to the array when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "Finish", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as! UITextField
+            self.allTags.append(textField.text)
+            self.saveAllTags()
+            self.readTags()
+            self.tagsTable.reloadData()
+        }))
+        
+        // 4. Present the alert.
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func saveAllTags() {
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
+        defaults.setObject(allTags, forKey: "All Tags")
+        defaults.synchronize()
     }
     
     func readTags() -> [String] {
@@ -63,6 +126,17 @@ class EditTags: UITableViewController {
             allTags = defaults.arrayForKey("All Tags") as! [String]
         }
         return allTags
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // Deletes the row
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            var index = indexPath.row
+            allTags.removeAtIndex(index)
+            saveAllTags()
+            readData()
+            self.tagsTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        }
     }
     
 

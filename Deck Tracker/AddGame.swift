@@ -27,11 +27,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     @IBOutlet var winCellSwitch: UISwitch!
     @IBOutlet weak var tagsLabel: UILabel!
 
-    
     var allTags:[String] = []
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +40,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+        // Populates the rows with data
         putSelectedDateOnLabel()
         putSelectedDeckNameOnLabel()
         putSelectedOpponentClassOnLabel()
@@ -59,8 +55,9 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         dateCellLabel.text = "Date: " + newDateString
     }
     
-    // Reads the selected deck name from NSUserDefaults
+    
     func readSelectedDeckName() -> String {
+        // Reads the selected deck name from NSUserDefaults
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         let name = defaults.stringForKey("Selected Deck Name") as String!
         if name == nil {
@@ -70,8 +67,9 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         }
     }
     
-    // Gets the selected deck from NSUserDefaults and puts it on the label
+    
     func putSelectedDeckNameOnLabel() {
+        // Gets the selected deck from NSUserDefaults and puts it on the label
         var selectedDeck = readSelectedDeckName()
         if selectedDeck == "" {
             playerDeckLabel.text = "You need to select a deck first"
@@ -80,8 +78,9 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         }
     }
     
-    // Puts opponent's class in NSUserDefaults
+    
     func putSelectedOpponentClassOnLabel() {
+        // Puts opponent's class in NSUserDefaults
         var selectedOpponentClass = readSelectedOpponentClass()
         if selectedOpponentClass == "" {
             opponentDeckLabel.text = "Select Opponent's Class"
@@ -90,8 +89,9 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         }
     }
     
-    // Reads the selected opponent's class from NSUserDefaults
+    
     func readSelectedOpponentClass() -> String {
+        // Reads the selected opponent's class from NSUserDefaults
         let defaults = NSUserDefaults.standardUserDefaults()
         if let name:String = defaults.stringForKey("Opponent Class") as String! {
             return name
@@ -113,8 +113,9 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         return UIBarPosition.TopAttached
     }
     
-    // Remove the selected date and selected opponent class from NSUserDefaults and dismissed the screen    
+    
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
+        // Remove the selected date and selected opponent class from NSUserDefaults and dismissed the screen
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey("Saved Date")
         defaults.removeObjectForKey("Opponent Class")
@@ -124,8 +125,9 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
     }
     
     
-    // Get today's date
+    
     func dateToday() -> String {
+        // Get today's date as a String
         let now = NSDate()
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.ShortStyle
@@ -133,8 +135,9 @@ class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelega
         return dateString
     }
     
-    // Removes the selected date, opponent class and selected tags from NSUserDefaults and sends all the info to the Game List
+    
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
+        // Removes the selected date, opponent class and selected tags from NSUserDefaults and sends all the info to the Game List
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
 
         
