@@ -22,17 +22,9 @@ class SelectOpponentWatch: WKInterfaceController {
     @IBOutlet var mageButton: WKInterfaceButton!
     @IBOutlet var priestButton: WKInterfaceButton!
     
-    
-    
-
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
         // Configure interface objects here.
-        
-
-        
-        
     }
 
     override func willActivate() {
@@ -99,6 +91,4 @@ class SelectOpponentWatch: WKInterfaceController {
         NSUserDefaults.standardUserDefaults().synchronize()
         self.popController()
     }
-    
-
 }

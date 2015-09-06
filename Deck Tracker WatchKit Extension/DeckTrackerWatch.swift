@@ -11,6 +11,7 @@ import Foundation
 
 
 class DeckTrackerWatch: WKInterfaceController {
+    // This is the main screen of the watch.
     
     @IBOutlet var selectDeckButton: WKInterfaceButton!
     @IBOutlet var selectOpponentButton: WKInterfaceButton!
@@ -28,14 +29,13 @@ class DeckTrackerWatch: WKInterfaceController {
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
         // Configure interface objects here.
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        
+        // Populates the "Selected Deck", "Opponent Class" and "Tags" buttons
         println("Watch app started")
         setSelectedDeckButton()
         setOpponentClassButton()
@@ -45,14 +45,15 @@ class DeckTrackerWatch: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("Watch Opponent Class")
     }
 
+    
     @IBAction func saveButtonPressed() {
         
-        // Gathers the data to make the dict
+        // Gathers the data to make the dict to send the info to the phone
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         var dict = NSMutableDictionary()
+        // Gets selected deck and selected class associated with the deck
         if let checkSelectedDeckName = defaults.stringForKey("Selected Deck Name") {
             selectedDeckName = defaults.stringForKey("Selected Deck Name")!
             selectedDeckClass = defaults.stringForKey("Selected Deck Class")!
@@ -60,9 +61,11 @@ class DeckTrackerWatch: WKInterfaceController {
             dict.setValue(selectedDeckClass, forKey: "selectedDeckClass")
         }
         
+        // Gets the Opponent Class
         let opponentClass = NSUserDefaults.standardUserDefaults().stringForKey("Watch Opponent Class")
         dict.setValue(opponentClass, forKey: "watchOpponentClass")
         
+        // Gets if user had coin or not
         var coin:Bool = false
         if coinSwitchInt == 0 {
             coin = false
@@ -71,6 +74,7 @@ class DeckTrackerWatch: WKInterfaceController {
         }
         dict.setValue(coin, forKey: "coin")
         
+        // Gets if user won or not
         var win:Bool = true
         if winSwitchInt == 0 {
             win = false
@@ -79,14 +83,13 @@ class DeckTrackerWatch: WKInterfaceController {
         }
         dict.setValue(win, forKey: "win")
         
+        // Gets the selected tags
         if let checkSelectedTags: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") {
             selectedTags = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") as! [String]
         } else {
             selectedTags = [""]
         }
         dict.setValue(selectedTags, forKey: "watchSelectedTags")
-        
-        println(selectedDeckName)
         
         // Saves the dictionary and sends the info to the phone
         if opponentClass != nil {
@@ -108,12 +111,13 @@ class DeckTrackerWatch: WKInterfaceController {
         // Remove saved settings
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Watch Opponent Class")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Tags Watch")
-        setOpponentClassBUttonBackgroundToBlack()
+        setOpponentClassButtonBackgroundToBlack()
         willActivate()
     }
     
-    // Transforms RGB colors to UI Color
+    
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        // Transforms RGB colors to UI Color
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
@@ -122,8 +126,9 @@ class DeckTrackerWatch: WKInterfaceController {
         )
     }
     
-    // Populates the selected deck button
+    
     func setSelectedDeckButton() {
+        // Populates the selected deck button
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         if let selectedDeckID = defaults.integerForKey("Selected Deck ID") as Int! {
             if let selectedDeckName = defaults.stringForKey("Selected Deck Name") as String! {
@@ -134,8 +139,9 @@ class DeckTrackerWatch: WKInterfaceController {
         }
     }
     
-    // Populates the opponent class button
+    
     func setOpponentClassButton() {
+        // Populates the opponent class button
         if let opponentClass = NSUserDefaults.standardUserDefaults().stringForKey("Watch Opponent Class") {
             //selectOpponentButton.setTitle("Opponent: " + String(opponentClass))
             colorCell(opponentClass, button: selectOpponentButton, opponent: true, deckName: "")
@@ -146,14 +152,15 @@ class DeckTrackerWatch: WKInterfaceController {
         }
     }
     
-    // Sets the opponent class button to black
-    func setOpponentClassBUttonBackgroundToBlack() {
+    
+    func setOpponentClassButtonBackgroundToBlack() {
+        // Sets the opponent class button to black
         selectOpponentButton.setBackgroundColor(UIColorFromRGB(0x333333))
     }
     
-    // Colors the cell according to the Class specified
+    
     func colorCell (classToBeColored:String, button:WKInterfaceButton, opponent:Bool, deckName:String) {
-        
+        // Colors the cell according to the Class specified
         if classToBeColored == "Warrior" {
             button.setBackgroundColor(UIColorFromRGB(0xCC0000))
             var boldFont = UIFont(name: "Helvetica Neue", size: 15.0)!
@@ -266,8 +273,9 @@ class DeckTrackerWatch: WKInterfaceController {
     }
     
     
-    // Keep track of coin switch
+    
     @IBAction func coinSwitchToggled(value: Bool) {
+        // Keep track of coin switch
         if value {
             coinSwitchInt = 1
         } else {
@@ -275,8 +283,9 @@ class DeckTrackerWatch: WKInterfaceController {
         }
     }
     
-    // Keep track of win switch
+    
     @IBAction func winSwitchToggled(value: Bool) {
+        // Keep track of win switch
         if value {
             winSwitchInt = 1
         } else {
@@ -285,13 +294,14 @@ class DeckTrackerWatch: WKInterfaceController {
     }
     
     func setTagsButton() {
-        if let tags: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") {
-            selectedTags = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") as! [String]!
+        // Populates the tags button
+        if let testSelectedTags: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") {
+            selectedTags = testSelectedTags as! [String]
             tagsButton.setTitle("Tags Added")
         } else {
             tagsButton.setTitle("Add Tags")
         }
-        println(selectedTags)
+        //println(selectedTags)
     }
     
     

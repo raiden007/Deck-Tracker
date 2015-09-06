@@ -35,8 +35,9 @@ class SelectDeckWatch: WKInterfaceController {
         super.didDeactivate()
     }
     
-    // Loads data from NSUserDefaults
+    
     func loadData() {
+        // Loads data from NSUserDefaults
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
         if let dict:[NSDictionary] = defaults.objectForKey("List of decks dictionary") as? [NSDictionary] {
             extractDictToArrayOfDecks(dict)
@@ -44,8 +45,9 @@ class SelectDeckWatch: WKInterfaceController {
         
     }
     
-    // Takes the saved dictionary and transforms it into a Deck array
+    
     func extractDictToArrayOfDecks(dict:[NSDictionary]) {
+        // Takes the saved dictionary and transforms it into a Deck array
         for var i = 0; i < dict.count; i++ {
             var deckName: String = dict[i]["deckName"] as! String
             var deckClass: String = dict[i]["deckClass"] as! String
@@ -55,9 +57,9 @@ class SelectDeckWatch: WKInterfaceController {
         }
     }
     
-    // Populates the table
+    
     func reloadTable() {
-        
+        // Populates the table
         deckTable.setNumberOfRows(deckList.count, withRowType: "DeckRow")
         
         if deckList.count == 0 {
@@ -94,8 +96,9 @@ class SelectDeckWatch: WKInterfaceController {
 
     }
     
-    // Saves the selected deck and returns to Main View
+    
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+        // Saves the selected deck and returns to Main View
         let row = table.rowControllerAtIndex(rowIndex) as? DeckRow
         var selectedDeck = deckList[rowIndex]
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
@@ -108,8 +111,9 @@ class SelectDeckWatch: WKInterfaceController {
         self.popController()
     }
     
-    // Converts the color from RGB
+    
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        // Converts the color from RGB
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,

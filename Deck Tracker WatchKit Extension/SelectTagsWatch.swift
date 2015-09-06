@@ -36,50 +36,63 @@ class SelectTagsWatch: WKInterfaceController {
         super.didDeactivate()
     }
     
-    // Loads data from NSUserDefaults
+    
     func loadData() {
+        // Loads all saved tags and then the already selected by user
         var defaults = NSUserDefaults(suiteName: "group.Decks")!
         if let testTags: AnyObject = defaults.objectForKey("All Notes") {
             tagsList = testTags as! [String]
         }
-        println(tagsList)
+        if let testSelectedTags: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") {
+            selectedTagsArray = testSelectedTags as! [String]
+        }
+        //println(tagsList)
+        //println("Selected tags: " + String(stringInterpolationSegment: selectedTagsArray))
     }
     
-    // Populates the table
+    
     func reloadTable() {
-        
+        // Populates the table
         tagsTable.setNumberOfRows(tagsList.count, withRowType: "TagRow")
-        //tagsTable.setNumberOfRows(2, withRowType: "TagsRow")
-        
         if tagsList.count == 0 {
             noTagsLabel.setHidden(false)
         } else {
+            // Sets the labels text
             for var i = 0; i < tagsList.count; i++ {
                 if let row = tagsTable.rowControllerAtIndex(i) as? TagsRow {
                     row.tagLabel.setText(tagsList[i])
-                    //row.tagLabel.setText("a")
-                    //row.tagLabel.setTextColor(UIColor.blackColor())
+                }
+                // Set background color to the selected tags
+                for var j = 0; j < selectedTagsArray.count; j++ {
+                    if tagsList[i] == selectedTagsArray[j] {
+                        if let row = tagsTable.rowControllerAtIndex(i) as? TagsRow {
+                            row.groupTable.setBackgroundColor(UIColor.greenColor())
+                            row.tagLabel.setTextColor(UIColor.blackColor())
+                        }
+                    }
                 }
             }
         }
     }
     
-    // Saves the selected tag and colors the row
+    
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+        // Saves the selected tag and colors the row
         let row = table.rowControllerAtIndex(rowIndex) as? TagsRow
         
         wasAlreadySelected = false
         
+        // Check to see if the button user pressed was selected already or not
         var selectedTag = tagsList[rowIndex]
         for var i = 0; i < selectedTagsArray.count; i++ {
             if selectedTag == selectedTagsArray[i] {
                 wasAlreadySelected = true
-            } else {
-                //wasAlreadySelected = false
             }
         }
         
+        
         if wasAlreadySelected == true {
+            // If it was already selected then remove the tag from array and color the row
             for var i = 0; i < selectedTagsArray.count; i++ {
                 if selectedTag == selectedTagsArray[i] {
                     selectedTagsArray.removeAtIndex(i)
@@ -88,15 +101,16 @@ class SelectTagsWatch: WKInterfaceController {
             row!.groupTable.setBackgroundColor(UIColor.blackColor())
             row?.tagLabel.setTextColor(UIColor.whiteColor())
         } else {
+            // If it was not already selected then add it to array and color the row
             selectedTagsArray.append(selectedTag)
             row!.groupTable.setBackgroundColor(UIColor.greenColor())
             row?.tagLabel.setTextColor(UIColor.blackColor())
         }
-        println(selectedTag)
-        println(selectedTagsArray)
-        println(wasAlreadySelected)
-        
+        println("Selected Tag: " + selectedTag)
 
+        //println(wasAlreadySelected)
+        
+        // Save selected tags array
         var defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(selectedTagsArray, forKey: "Selected Tags Watch")
         defaults.synchronize()

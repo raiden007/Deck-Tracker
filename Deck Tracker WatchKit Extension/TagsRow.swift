@@ -10,7 +10,7 @@ import Foundation
 import WatchKit
 
 class TagsRow: NSObject {
-    
+    // Label and table for rows in Tags screen
     @IBOutlet weak var groupTable: WKInterfaceGroup!
     @IBOutlet weak var tagLabel: WKInterfaceLabel!
 
