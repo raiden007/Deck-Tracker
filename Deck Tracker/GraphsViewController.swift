@@ -58,10 +58,10 @@ class GraphsViewController: UIViewController, PiechartDelegate {
             createOpponentsPlayedPieChart(dateIndex, deckName: deckName!)
             bottomLabel.text = "Tap the graph for more information"
         } else if self.titleLabel.text == "Going first win rate" {
-            createCoinWinRatePieChart(dateIndex, deckName: deckName)
+            createWithoutCoinWinRatePieChart(dateIndex, deckName: deckName)
             bottomLabel.text = "Total Games: " + String(Data.sharedInstance.coinWinRateCount())
         } else if self.titleLabel.text == "Going second win rate" {
-            createWithoutCoinWinRatePieChart(dateIndex, deckName: deckName)
+            createCoinWinRatePieChart(dateIndex, deckName: deckName)
             bottomLabel.text = "Total Games: " + String(Data.sharedInstance.coinWinRateCount())
         } else {
             assert(true, "Wrong page")
