@@ -1294,10 +1294,23 @@
                         <sections>
                             <tableViewSection headerTitle="Settings" id="J5c-8y-Y6i" userLabel="Settings">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="n2t-cv-qX8">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fq0-Em-PO0">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n2t-cv-qX8" id="Edy-Dh-ipb">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fq0-Em-PO0" id="EzE-Qf-hWR">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Reset all !" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQq-Om-cbD">
+                                                    <rect key="frame" x="8" y="11" width="242" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="TQq-Om-cbD" firstAttribute="top" secondItem="EzE-Qf-hWR" secondAttribute="topMargin" constant="3" id="BBB-ZE-Xih"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TQq-Om-cbD" secondAttribute="bottom" constant="3.5" id="FbK-lh-juS"/>
+                                                <constraint firstItem="TQq-Om-cbD" firstAttribute="leading" secondItem="EzE-Qf-hWR" secondAttribute="leadingMargin" id="qbg-ki-G3R"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>

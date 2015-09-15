@@ -1,4 +1,4 @@
-//
+ //
 //  Graphs.swift
 //  Deck Tracker
 //
@@ -28,7 +28,12 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         super.viewDidLoad()
         
         getInitialStatus()
+        setPageTitles()
+
         
+    }
+    
+    func setPageTitles() {
         // Sets the page titles and size of graphs
         self.pageTitles = NSArray(objects: "Win rate", "Heroes played", "Opponents faced", "Going first win rate", "Going second win rate")
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
@@ -42,13 +47,13 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
-        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
         getInitialStatus()
+        setPageTitles()
         
     }
     

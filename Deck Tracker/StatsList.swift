@@ -30,6 +30,7 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         statsTable.tableFooterView = UIView(frame: CGRectZero)
     }
     
+    
     // Cleans stuff up
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -120,7 +121,7 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     // Reads the games array
     func readData() {
         if Data.sharedInstance.readGameData() == nil {
-            
+            gamesList = []
         } else {
             gamesList = Data.sharedInstance.listOfGames
         }

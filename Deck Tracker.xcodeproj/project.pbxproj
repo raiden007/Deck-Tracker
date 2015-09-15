@@ -185,9 +185,7 @@
 		6D2F2B521B4278D300B267C9 /* Decks View */ = {
 			isa = PBXGroup;
 			children = (
-				6DDD44891AEF87B700A4B5D2 /* DecksList.swift */,
 				6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */,
-				6DDD448B1AEF87B700A4B5D2 /* StatsList.swift */,
 			);
 			name = "Decks View";
 			sourceTree = "<group>";
@@ -219,7 +217,6 @@
 		6D2F2B551B4278F400B267C9 /* Graphs */ = {
 			isa = PBXGroup;
 			children = (
-				6D9538421B09E22400B4ED66 /* Graphs.swift */,
 				6DC3201F1B0F65D20098F60A /* GraphsViewController.swift */,
 				6D9538401B09E1C100B4ED66 /* Piechart.swift */,
 			);
@@ -297,6 +294,9 @@
 			children = (
 				6D7C5B531B20273400E18252 /* Deck Tracker.entitlements */,
 				6DDD44871AEF87B700A4B5D2 /* AppDelegate.swift */,
+				6DDD44891AEF87B700A4B5D2 /* DecksList.swift */,
+				6DDD448B1AEF87B700A4B5D2 /* StatsList.swift */,
+				6D9538421B09E22400B4ED66 /* Graphs.swift */,
 				6D2F2B511B4278BD00B267C9 /* Data */,
 				6D2F2B521B4278D300B267C9 /* Decks View */,
 				6D2F2B531B4278E400B267C9 /* Add New Game */,

@@ -124,7 +124,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     // Reads the data from Data file
     func readData() {
         if Data.sharedInstance.readDeckData() == nil {
-            
+            decksList = []
         } else {
             decksList = Data.sharedInstance.listOfDecks
         }
