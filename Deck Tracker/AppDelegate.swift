@@ -11,7 +11,7 @@ import Fabric
 import Crashlytics
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder,     UIApplicationDelegate {
 
     var window: UIWindow?
     var deckListForPhone:[NSDictionary] = []
@@ -48,13 +48,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
         
         var infoFromWatch: NSDictionary = userInfo!
-        println(infoFromWatch)
+        print(infoFromWatch)
 
         // Depending on what screen this function is called do stuff
         if let val: AnyObject = infoFromWatch["Save New Game"] {
             saveGameFromWatch()
         } else  {
-            println("test")
+            print("test")
             saveSelectedDeckFromWatch()
         }
     }

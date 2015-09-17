@@ -84,7 +84,7 @@ class EditTags: UITableViewController {
         } else {
             selectedTags = []
         }
-        println("Selected tags Tags screen: " + String(stringInterpolationSegment: selectedTags))
+        print("Selected tags Tags screen: " + String(stringInterpolationSegment: selectedTags))
     }
     
     func readData() {
@@ -104,9 +104,8 @@ class EditTags: UITableViewController {
         //3. Grab the value from the text field, and adds it to the array when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Finish", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as! UITextField
-            self.allTags.append(textField.text)
-            var sortedtags = sorted(self.allTags, <)
-            self.allTags = sortedtags
+            self.allTags.append(textField.text!)
+            self.allTags.sort()
             self.saveAllTags()
             self.readTags()
             self.tagsTable.reloadData()

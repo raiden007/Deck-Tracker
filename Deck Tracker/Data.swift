@@ -29,17 +29,17 @@ public class Data {
         
         // Check at first install if the game/deck database is empty
         if self.readGameData() == nil {
-            println("Game database empty")
+            print("Game database empty")
             if (self.readDeckData() == nil) {
-                println("Decks database empty")
+                print("Decks database empty")
             } else {
                 listOfDecks = self.readDeckData()!
             }
         
         } else if self.readDeckData() == nil {
-            println("Decks database empty")
+            print("Decks database empty")
             if (self.readGameData() == nil) {
-                println("Game database empty")
+                print("Game database empty")
             } else {
                 listOfGames = self.readGameData()!
             }
@@ -55,7 +55,7 @@ public class Data {
         listOfGames.append(newGame)
         listOfGames.sort({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
         saveGame()
-        println("Game added")
+        print("Game added")
     }
     
     // Saves the games array
@@ -79,7 +79,7 @@ public class Data {
     // Prints all the games in the array
     func printGameData() {
         for (var i=0; i<listOfGames.count; i++) {
-            println(listOfGames[i].toString())
+            print(listOfGames[i].toString())
         }
     }
     
@@ -88,7 +88,7 @@ public class Data {
         listOfDecks.append(newDeck)
         saveDict()
         saveDeck()
-        println("Deck added")
+        print("Deck added")
     }
     
     // Creates a new dict to use with phone
@@ -125,7 +125,7 @@ public class Data {
     // Prints all the decks in the array
     func printDeckData () {
         for (var i=0; i<listOfDecks.count; i++) {
-            println(listOfDecks[i].toString())
+            print(listOfDecks[i].toString())
         }
     }
     
@@ -133,7 +133,7 @@ public class Data {
     func deleteDeck(id:Int) {
         listOfDecks.removeAtIndex(id)
         saveDeck()
-        println("Deck deleted")
+        print("Deck deleted")
         
     }
     
@@ -141,7 +141,7 @@ public class Data {
     func deleteGame(id:Int) {
         listOfGames.removeAtIndex(id)
         saveGame()
-        println("Game deleted")
+        print("Game deleted")
     }
     
     // Replaces a game from the array
@@ -157,7 +157,7 @@ public class Data {
                 saveGame()
             }
         }
-        println("Game Edited")
+        print("Game Edited")
     }
     
     
@@ -220,7 +220,7 @@ public class Data {
                     dateArray.append(listOfGames[i])
                 }
             }
-            println("Count for the last 7 days: " + String(dateArray.count))
+            print("Count for the last 7 days: " + String(dateArray.count))
             return dateArray
             // If date is last month
         } else if date == 1 {
@@ -231,15 +231,15 @@ public class Data {
                     dateArray.append(listOfGames[i])
                 }
             }
-            println("Count for the last month: " + String(dateArray.count))
+            print("Count for the last month: " + String(dateArray.count))
             return dateArray
             // If date is all
         } else if date == 2 {
             dateArray = listOfGames
-            println("Count for all dates: " + String(dateArray.count))
+            print("Count for all dates: " + String(dateArray.count))
             return dateArray
         } else {
-            println("ERROR!!! Date selection is wrong")
+            print("ERROR!!! Date selection is wrong")
             return dateArray
         }
     }
@@ -373,9 +373,9 @@ public class Data {
             return winRate
         } else {
             winRate =  Double(gamesWon) / Double(totalGames) * 100
-            println("Coin Total Games: " + String(totalGames))
-            println("Coin Games Won: " + gamesWon.description)
-            println("Coin Win Rate: " + winRate.description)
+            print("Coin Total Games: " + String(totalGames))
+            print("Coin Games Won: " + gamesWon.description)
+            print("Coin Win Rate: " + winRate.description)
             return winRate
         }
     }
@@ -432,9 +432,9 @@ public class Data {
             return winRate
         } else {
             winRate =  Double(gamesWon) / Double(totalGames) * 100
-            println("Coin Total Games: " + String(totalGames))
-            println("Coin Games Won: " + gamesWon.description)
-            println("Coin Win Rate: " + winRate.description)
+            print("Coin Total Games: " + String(totalGames))
+            print("Coin Games Won: " + gamesWon.description)
+            print("Coin Win Rate: " + winRate.description)
             return winRate
         }
     }

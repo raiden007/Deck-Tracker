@@ -45,8 +45,8 @@ class GraphsViewController: UIViewController, PiechartDelegate {
         
         var dateIndex = NSUserDefaults.standardUserDefaults().integerForKey("Date Index")
         var deckName = NSUserDefaults.standardUserDefaults().stringForKey("Deck Name") as String!
-        println("Date Index: " + String(dateIndex))
-        println("Deck Name: " + String(stringInterpolationSegment: deckName))
+        print("Date Index: " + String(dateIndex))
+        print("Deck Name: " + String(stringInterpolationSegment: deckName))
         
         if self.titleLabel.text == "Win rate" {
             createWinRatePieChart(dateIndex, deckName: deckName!)
@@ -82,7 +82,7 @@ class GraphsViewController: UIViewController, PiechartDelegate {
         var views: [String: UIView] = [:]
         
         var winRate:CGFloat = CGFloat(Data.sharedInstance.generalWinRate(dateIndex, deckName: deckName))
-        println("Win Rate: " + String(stringInterpolationSegment: winRate))
+        print("Win Rate: " + String(stringInterpolationSegment: winRate))
         var loseRate:CGFloat = 100 - winRate
         
         var winSlice = Piechart.Slice()
@@ -259,7 +259,7 @@ class GraphsViewController: UIViewController, PiechartDelegate {
         var views: [String: UIView] = [:]
         
         var winRate:CGFloat = CGFloat(Data.sharedInstance.withCoinWinRate(dateIndex, deckName: deckName))
-        println("Win Rate: " + String(stringInterpolationSegment: winRate))
+        print("Win Rate: " + String(stringInterpolationSegment: winRate))
         var loseRate:CGFloat = 100 - winRate
         
         var winSlice = Piechart.Slice()
@@ -293,7 +293,7 @@ class GraphsViewController: UIViewController, PiechartDelegate {
         var views: [String: UIView] = [:]
         
         var winRate:CGFloat = CGFloat(Data.sharedInstance.withoutCoinWinRate(dateIndex, deckName: deckName))
-        println("Win Rate: " + String(stringInterpolationSegment: winRate))
+        print("Win Rate: " + String(stringInterpolationSegment: winRate))
         var loseRate:CGFloat = 100 - winRate
         
         var winSlice = Piechart.Slice()

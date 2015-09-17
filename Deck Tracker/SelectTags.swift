@@ -104,9 +104,10 @@ class SelectTags: UITableViewController {
         //3. Grab the value from the text field, and adds it to the array when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Finish", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as! UITextField
-            self.allTags.append(textField.text)
-            var sortedtags = sorted(self.allTags, <)
-            self.allTags = sortedtags
+            self.allTags.append(textField.text!)
+            //let sortedtags = sorted(self.allTags, <)
+            self.allTags.sort()
+            //self.allTags = sortedtags
             self.saveAllTags()
             self.readTags()
             self.tagsTable.reloadData()

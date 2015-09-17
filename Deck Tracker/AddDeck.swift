@@ -52,7 +52,7 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         
         // Get the atributes from the user
-        var deckName:String = deckNameTxtField.text
+        var deckName:String = deckNameTxtField.text!
         var deckSelected = selectedDeck()
         var deckCount = NSUserDefaults.standardUserDefaults().integerForKey("Deck Count");
         deckCount++
@@ -174,7 +174,7 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     }
     
     // Hide keyboard when taping outside of it
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        self.view.endEditing(true)
-    }
+    //override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    //   self.view.endEditing(true)
+    //}
 }

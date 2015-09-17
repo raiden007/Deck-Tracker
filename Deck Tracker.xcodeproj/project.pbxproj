@@ -14,7 +14,6 @@
 		6D61AA431AF784E20013EB04 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D61AA421AF784E20013EB04 /* Game.swift */; };
 		6D6B21E71B1F276500B973B8 /* SelectDeckWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B21E61B1F276500B973B8 /* SelectDeckWatch.swift */; };
 		6D6B21E91B1F281400B973B8 /* DeckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B21E81B1F281400B973B8 /* DeckRow.swift */; };
-		6D9538411B09E1C100B4ED66 /* Piechart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9538401B09E1C100B4ED66 /* Piechart.swift */; };
 		6D9538431B09E22400B4ED66 /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9538421B09E22400B4ED66 /* Graphs.swift */; };
 		6DB50E1B1B009B1D0000F97B /* GamesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB50E1A1B009B1D0000F97B /* GamesCell.swift */; };
 		6DB67A621B188890000A8E54 /* DeckTrackerWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB67A611B188890000A8E54 /* DeckTrackerWatch.swift */; };
@@ -27,7 +26,6 @@
 		6DBB739D1B04840000005B5E /* EditDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBB739C1B04840000005B5E /* EditDate.swift */; };
 		6DBB73A51B04C99E00005B5E /* EditSelectedDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBB73A41B04C99E00005B5E /* EditSelectedDeck.swift */; };
 		6DBB73A71B04CDCE00005B5E /* EditOpponentClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBB73A61B04CDCE00005B5E /* EditOpponentClass.swift */; };
-		6DC320201B0F65D20098F60A /* GraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC3201F1B0F65D20098F60A /* GraphsViewController.swift */; };
 		6DD844CB1AF8A86F00CF9C80 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CA1AF8A86F00CF9C80 /* Data.swift */; };
 		6DD844CD1AF8EFB300CF9C80 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Deck.swift */; };
 		6DD844CF1AFA306500CF9C80 /* DecksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CE1AFA306500CF9C80 /* DecksCell.swift */; };
@@ -99,7 +97,6 @@
 		6D6B21E81B1F281400B973B8 /* DeckRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckRow.swift; sourceTree = "<group>"; };
 		6D7C5B531B20273400E18252 /* Deck Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Deck Tracker.entitlements"; sourceTree = "<group>"; };
 		6D7C5B541B20278C00E18252 /* Deck Tracker WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Deck Tracker WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		6D9538401B09E1C100B4ED66 /* Piechart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piechart.swift; sourceTree = "<group>"; };
 		6D9538421B09E22400B4ED66 /* Graphs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		6DB50E1A1B009B1D0000F97B /* GamesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesCell.swift; sourceTree = "<group>"; };
 		6DB67A5D1B188890000A8E54 /* Deck Tracker WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Deck Tracker WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,7 +113,6 @@
 		6DBB73A61B04CDCE00005B5E /* EditOpponentClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditOpponentClass.swift; sourceTree = "<group>"; };
 		6DBDB9981B2091C00034B1BE /* Deck Tracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Deck Tracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		6DBDB9991B2091C00034B1BE /* Deck Tracker WatchKit Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Deck Tracker WatchKit Extension-Bridging-Header.h"; sourceTree = "<group>"; };
-		6DC3201F1B0F65D20098F60A /* GraphsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsViewController.swift; sourceTree = "<group>"; };
 		6DD844CA1AF8A86F00CF9C80 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		6DD844CC1AF8EFB300CF9C80 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		6DD844CE1AFA306500CF9C80 /* DecksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecksCell.swift; sourceTree = "<group>"; };
@@ -217,8 +213,6 @@
 		6D2F2B551B4278F400B267C9 /* Graphs */ = {
 			isa = PBXGroup;
 			children = (
-				6DC3201F1B0F65D20098F60A /* GraphsViewController.swift */,
-				6D9538401B09E1C100B4ED66 /* Piechart.swift */,
 			);
 			name = Graphs;
 			sourceTree = "<group>";
@@ -427,6 +421,7 @@
 		6DDD447A1AEF87B700A4B5D2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Andrei Joghiu";
 				TargetAttributes = {
@@ -560,7 +555,6 @@
 				6DDD448C1AEF87B700A4B5D2 /* StatsList.swift in Sources */,
 				6D5960571AFCD7880039EE47 /* SelectOpponentClass.swift in Sources */,
 				6D5960551AFCD45E0039EE47 /* SelectDeck.swift in Sources */,
-				6D9538411B09E1C100B4ED66 /* Piechart.swift in Sources */,
 				6DBB73A51B04C99E00005B5E /* EditSelectedDeck.swift in Sources */,
 				6D2F2B4F1B412D5C00B267C9 /* EditTags.swift in Sources */,
 				6DBB739D1B04840000005B5E /* EditDate.swift in Sources */,
@@ -573,7 +567,6 @@
 				8BEDCD4E1BA61C3A0026AEFD /* Settings.swift in Sources */,
 				6DE566961B15C2220026FBF5 /* About.swift in Sources */,
 				6DDD448A1AEF87B700A4B5D2 /* DecksList.swift in Sources */,
-				6DC320201B0F65D20098F60A /* GraphsViewController.swift in Sources */,
 				6DBB73A71B04CDCE00005B5E /* EditOpponentClass.swift in Sources */,
 				6DF363001AFB702600A5B507 /* AddGame.swift in Sources */,
 			);

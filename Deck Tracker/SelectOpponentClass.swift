@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectOpponentClass: UITableViewController, UITableViewDelegate {
+class SelectOpponentClass: UITableViewController {
     
     @IBOutlet var opponentClasses: UITableView!
     

@@ -50,7 +50,7 @@ class Deck : NSObject, NSCoding {
     func getID() -> Int {
         return deckID
     }
-    
+                            
     // Returns a string containing all the proprierties of the object
     func toString() -> String {
         var deckIDString = String(deckID)

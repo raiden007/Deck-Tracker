@@ -36,7 +36,7 @@ class DeckTrackerWatch: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         // Populates the "Selected Deck", "Opponent Class" and "Tags" buttons
-        println("Watch app started")
+        print("Watch app started")
         setSelectedDeckButton()
         setOpponentClassButton()
         setTagsButton()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddGame: UITableViewController, UINavigationBarDelegate, UITableViewDelegate  {
+class AddGame: UITableViewController, UINavigationBarDelegate  {
     
     @IBOutlet var addGameList: UITableView!
     @IBOutlet var saveButton: UIBarButtonItem!

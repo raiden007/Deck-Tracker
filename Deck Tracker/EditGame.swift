@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDelegate {
+class EditGame: UITableViewController, UINavigationBarDelegate {
     
     @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet var saveButton: UIBarButtonItem!
@@ -92,13 +92,13 @@ class EditGame: UITableViewController, UINavigationBarDelegate, UITableViewDeleg
     func putSavedTagsOnLabel() {
         
         selectedTags = selectedGame.getTags()
-        println("Selected Tags Edit Screen with default tags: " + String(stringInterpolationSegment: selectedTags))
+        print("Selected Tags Edit Screen with default tags: " + String(stringInterpolationSegment: selectedTags))
         if let testSavedTags = defaults.arrayForKey("Edited Selected Tags") as? [String] {
             selectedTags = defaults.arrayForKey("Edited Selected Tags") as! [String]
         }
         defaults.setObject(selectedTags, forKey: "Edited Selected Tags")
         defaults.synchronize()
-        println("Selected Tags Edit Screen after loading Edited Tags: " + String(stringInterpolationSegment: selectedTags))
+        print("Selected Tags Edit Screen after loading Edited Tags: " + String(stringInterpolationSegment: selectedTags))
 
         if selectedTags.isEmpty {
             tagsLabel.text = "Tags: "

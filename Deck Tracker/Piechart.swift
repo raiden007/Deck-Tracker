@@ -72,7 +72,7 @@ public class Piechart: UIControl {
      * methods
      */
     required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     override public init(frame: CGRect) {
