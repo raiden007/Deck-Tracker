@@ -45,9 +45,9 @@ class EditOpponentClass: UITableViewController {
     
     // Selects the row and saves the info so we can add a checkmark
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
-        var selectedClass = classes[indexPath.row]
+        let selectedClass = classes[indexPath.row]
         saveEditedOpponentClass(selectedClass)
         //readEditedOpponentClass()
         navigationController?.popViewControllerAnimated(true)
@@ -55,7 +55,7 @@ class EditOpponentClass: UITableViewController {
     
     // Deselects the row if you select another
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = UITableViewCellAccessoryType.None
     }
     

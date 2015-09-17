@@ -53,11 +53,11 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         //cell.textLabel?.text = gamesList[indexPath.row].toString()
         let cell:GamesCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! GamesCell
         cell.dateLabel.text = gamesList[indexPath.row].getDate()
-        var playerImage = gamesList[indexPath.row].getPlayerDeckClass()
-        var playerImageName = getImage(playerImage)
+        let playerImage = gamesList[indexPath.row].getPlayerDeckClass()
+        let playerImageName = getImage(playerImage)
         cell.playerImage.image = UIImage(named: playerImageName)
-        var opponentImage = gamesList[indexPath.row].getOpponentDeck()
-        var opponentImageName = getImage(opponentImage)
+        let opponentImage = gamesList[indexPath.row].getOpponentDeck()
+        let opponentImageName = getImage(opponentImage)
         cell.opponentImage.image = UIImage(named: opponentImageName)
         //cell.coinLabel.text = gamesList[indexPath.row].getCoin()
         cell.winLabel.text = gamesList[indexPath.row].getWinString()
@@ -66,7 +66,7 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     
     // Saves the selected Game so it can display it's info in the next screen
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var selectedGame = gamesList[indexPath.row]
+        let selectedGame = gamesList[indexPath.row]
         selectedGameArray.append(selectedGame)
         saveSelectedGame()
         readSelectedGame()
@@ -141,7 +141,7 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     // Deletes the row
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            var index = indexPath.row
+            let index = indexPath.row
             Data.sharedInstance.deleteGame(index)
             readData()
             self.statsTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)

@@ -52,15 +52,15 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         
         // Get the atributes from the user
-        var deckName:String = deckNameTxtField.text!
-        var deckSelected = selectedDeck()
+        let deckName:String = deckNameTxtField.text!
+        let deckSelected = selectedDeck()
         var deckCount = NSUserDefaults.standardUserDefaults().integerForKey("Deck Count");
         deckCount++
         NSUserDefaults.standardUserDefaults().setInteger(deckCount, forKey: "Deck Count");
         NSUserDefaults.standardUserDefaults().synchronize()
         // Create a new Deck object and add it to the deck array
         if deckName != "" && deckSelected != "" {
-            var newDeck = Deck(newDeckID: deckCount, newDeckName: deckName, newDeckClass: deckSelected)
+            let newDeck = Deck(newDeckID: deckCount, newDeckName: deckName, newDeckClass: deckSelected)
             //println("Added: " + newDeck.toString())
             Data.sharedInstance.addDeck(newDeck)
             self.dismissViewControllerAnimated(true, completion: {})

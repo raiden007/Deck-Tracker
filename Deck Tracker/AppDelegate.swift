@@ -29,7 +29,7 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
         Data.sharedInstance.printDeckData()
         
         // Show page UI for graphs
-        var pageControl = UIPageControl.appearance()
+        let pageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
         pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
         pageControl.backgroundColor = UIColor.whiteColor()
@@ -45,16 +45,16 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
     }
     
     // Executes the code when the watch sends a request
-    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
+    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]?) -> Void)) {
         
-        var infoFromWatch: NSDictionary = userInfo!
-        print(infoFromWatch)
+        let infoFromWatch: NSDictionary = userInfo!
+        print(infoFromWatch, terminator: "")
 
         // Depending on what screen this function is called do stuff
         if let val: AnyObject = infoFromWatch["Save New Game"] {
             saveGameFromWatch()
         } else  {
-            print("test")
+            print("test", terminator: "")
             saveSelectedDeckFromWatch()
         }
     }
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
     func saveGameFromWatch() {
         // Fetches the saved dictionary
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        var dict: NSDictionary = defaults.objectForKey("Add Game Watch") as! NSDictionary
+        let dict: NSDictionary = defaults.objectForKey("Add Game Watch") as! NSDictionary
         
         // Gets the values needed from the dictionary and adds a New Game
         let gameID = AddGame().newGameGetID()
@@ -74,7 +74,7 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
         let win = dict["win"] as! Bool
         let tags = dict["watchSelectedTags"] as! [String]
         
-        var newGame = Game(newID: gameID, newDate: date, newPlayerDeckName: playerDeckName, newPlayerDeckClass: playerDeckClass, newOpponentDeck: opponentClass, newCoin: coin, newWin: win, newTags: tags)
+        let newGame = Game(newID: gameID, newDate: date, newPlayerDeckName: playerDeckName, newPlayerDeckClass: playerDeckClass, newOpponentDeck: opponentClass, newCoin: coin, newWin: win, newTags: tags)
         Data.sharedInstance.addGame(newGame)
         
         // Posts a notification for another screen (Games List)

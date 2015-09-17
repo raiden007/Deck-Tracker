@@ -23,7 +23,7 @@ class Deck : NSObject, NSCoding {
     }
     
     // Encode and decode so we can store this object in NSUserDefaults
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         deckName = aDecoder.decodeObjectForKey("deckName") as! String
         deckClass = aDecoder.decodeObjectForKey("deckClass") as! String
         deckID = aDecoder.decodeObjectForKey("deckID") as! Int
@@ -53,13 +53,13 @@ class Deck : NSObject, NSCoding {
                             
     // Returns a string containing all the proprierties of the object
     func toString() -> String {
-        var deckIDString = String(deckID)
+        let deckIDString = String(deckID)
         return ("Deck ID: " + deckIDString + " ,name: " + deckName + " ,class : " + deckClass)
     }
     
     // Returns a dictionary with all properties in it
     func getDict() -> NSMutableDictionary {
-        var dict = NSMutableDictionary()
+        let dict = NSMutableDictionary()
         dict.setValue(self.deckName, forKey: "deckName")
         dict.setValue(self.deckClass, forKey: "deckClass")
         dict.setValue(self.deckID, forKey: "deckID")

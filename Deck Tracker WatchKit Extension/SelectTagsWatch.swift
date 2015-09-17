@@ -39,7 +39,7 @@ class SelectTagsWatch: WKInterfaceController {
     
     func loadData() {
         // Loads all saved tags and then the already selected by user
-        var defaults = NSUserDefaults(suiteName: "group.Decks")!
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         if let testTags: AnyObject = defaults.objectForKey("All Tags") {
             tagsList = testTags as! [String]
         }
@@ -84,7 +84,7 @@ class SelectTagsWatch: WKInterfaceController {
         wasAlreadySelected = false
         
         // Check to see if the button user pressed was selected already or not
-        var selectedTag = tagsList[rowIndex]
+        let selectedTag = tagsList[rowIndex]
         for var i = 0; i < selectedTagsArray.count; i++ {
             if selectedTag == selectedTagsArray[i] {
                 wasAlreadySelected = true
@@ -107,12 +107,12 @@ class SelectTagsWatch: WKInterfaceController {
             row!.groupTable.setBackgroundColor(UIColor.greenColor())
             row?.tagLabel.setTextColor(UIColor.blackColor())
         }
-        print("Selected Tag: " + selectedTag)
+        print("Selected Tag: " + selectedTag, terminator: "")
 
         //println(wasAlreadySelected)
         
         // Save selected tags array
-        var defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(selectedTagsArray, forKey: "Selected Tags Watch")
         defaults.synchronize()
     }

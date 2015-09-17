@@ -38,7 +38,7 @@ class SelectDeckWatch: WKInterfaceController {
     
     func loadData() {
         // Loads data from NSUserDefaults
-        var defaults = NSUserDefaults(suiteName: "group.Decks")!
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         if let dict:[NSDictionary] = defaults.objectForKey("List of decks dictionary") as? [NSDictionary] {
             extractDictToArrayOfDecks(dict)
         }
@@ -49,10 +49,10 @@ class SelectDeckWatch: WKInterfaceController {
     func extractDictToArrayOfDecks(dict:[NSDictionary]) {
         // Takes the saved dictionary and transforms it into a Deck array
         for var i = 0; i < dict.count; i++ {
-            var deckName: String = dict[i]["deckName"] as! String
-            var deckClass: String = dict[i]["deckClass"] as! String
-            var deckID: Int = dict[i]["deckID"] as! Int
-            var newDeck = Deck(newDeckID: deckID, newDeckName: deckName, newDeckClass: deckClass)
+            let deckName: String = dict[i]["deckName"] as! String
+            let deckClass: String = dict[i]["deckClass"] as! String
+            let deckID: Int = dict[i]["deckID"] as! Int
+            let newDeck = Deck(newDeckID: deckID, newDeckName: deckName, newDeckClass: deckClass)
             deckList.append(newDeck)
         }
     }
@@ -100,8 +100,8 @@ class SelectDeckWatch: WKInterfaceController {
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
         // Saves the selected deck and returns to Main View
         let row = table.rowControllerAtIndex(rowIndex) as? DeckRow
-        var selectedDeck = deckList[rowIndex]
-        var defaults = NSUserDefaults(suiteName: "group.Decks")!
+        let selectedDeck = deckList[rowIndex]
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setInteger(selectedDeck.getID(), forKey: "Selected Deck ID")
         defaults.setObject(selectedDeck.getName(), forKey: "Selected Deck Name")
         defaults.setObject(selectedDeck.getClass(), forKey: "Selected Deck Class")

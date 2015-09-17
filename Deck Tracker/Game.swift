@@ -33,7 +33,7 @@ class Game : NSObject, NSCoding {
     }
     
     // Encode and decode the object so it can be stored in NSUserDefaults
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         id = aDecoder.decodeObjectForKey("id") as! Int
         playerDeckName = aDecoder.decodeObjectForKey("playerDeckName") as! String
         playerDeckClass = aDecoder.decodeObjectForKey("playerDeckClass") as! String
@@ -133,9 +133,9 @@ class Game : NSObject, NSCoding {
     // Returns a string containing all the proprierties of the object
     func toString() -> String {
         
-        var coinString = String(stringInterpolationSegment: coin)
-        var winString = String(stringInterpolationSegment: win)
-        var idString = String(id)
+        let coinString = String(stringInterpolationSegment: coin)
+        let winString = String(stringInterpolationSegment: win)
+        let idString = String(id)
         var tagsString = ""
         for var i = 0; i < tags.count; i++ {
             tagsString += tags[i] + ", "

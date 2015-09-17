@@ -38,7 +38,7 @@ class SelectTags: UITableViewController {
         // Configures the cells
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = allTags[indexPath.row]
-        var cellLabel = cell.textLabel?.text as String!
+        let cellLabel = cell.textLabel?.text as String!
         for var i = 0; i < selectedTags.count; i++ {
             if cellLabel == selectedTags[i] {
                 cell.accessoryType = UITableViewCellAccessoryType.Checkmark
@@ -54,7 +54,7 @@ class SelectTags: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         if cell?.accessoryType == UITableViewCellAccessoryType.None {
             cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
-            var cellLabel = cell?.textLabel?.text as String!
+            let cellLabel = cell?.textLabel?.text as String!
             selectedTags.append(cellLabel)
             saveSelectedTags(selectedTags)
         } else {
@@ -80,7 +80,7 @@ class SelectTags: UITableViewController {
     func readSelectedTags() -> [String] {
         // Reads the selected tags from NSUserDefaults
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let tagsTest = defaults.arrayForKey("Selected Tags") {
+        if let _ = defaults.arrayForKey("Selected Tags") {
             selectedTags = defaults.arrayForKey("Selected Tags") as! [String]
         }
         return selectedTags
@@ -94,7 +94,7 @@ class SelectTags: UITableViewController {
     @IBAction func plusButtonPressed(sender: UIBarButtonItem) {
         
         //1. Create the alert controller.
-        var alert = UIAlertController(title: "New Tag", message: "Enter Tag", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "New Tag", message: "Enter Tag", preferredStyle: .Alert)
         
         //2. Add the text field. You can configure it however you need.
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
@@ -103,10 +103,10 @@ class SelectTags: UITableViewController {
         
         //3. Grab the value from the text field, and adds it to the array when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Finish", style: .Default, handler: { (action) -> Void in
-            let textField = alert.textFields![0] as! UITextField
+            let textField = alert.textFields![0] 
             self.allTags.append(textField.text!)
             //let sortedtags = sorted(self.allTags, <)
-            self.allTags.sort()
+            self.allTags.sortInPlace()
             //self.allTags = sortedtags
             self.saveAllTags()
             self.readTags()
@@ -136,7 +136,7 @@ class SelectTags: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         // Deletes the row
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            var index = indexPath.row
+            let index = indexPath.row
             allTags.removeAtIndex(index)
             saveAllTags()
             readData()

@@ -35,10 +35,10 @@ class Settings: UITableViewController {
         
         if indexPath.row == 0 {
             // Create the alert controller
-            var alertController = UIAlertController(title: "Full reset", message: "What do you want to delete ?", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Full reset", message: "What do you want to delete ?", preferredStyle: .Alert)
             
             // Create the actions
-            var resetAllAction = UIAlertAction(title: "Reset everything", style: UIAlertActionStyle.Destructive) {
+            let resetAllAction = UIAlertAction(title: "Reset everything", style: UIAlertActionStyle.Destructive) {
                 UIAlertAction in
                 
                 // Delete from NSUserDefaults
@@ -55,7 +55,7 @@ class Settings: UITableViewController {
                 NSLog("Reset everything pressed")
             }
             
-            var resetGamesAction = UIAlertAction(title: "Reset all games", style: UIAlertActionStyle.Destructive) {
+            let resetGamesAction = UIAlertAction(title: "Reset all games", style: UIAlertActionStyle.Destructive) {
                 UIAlertAction in
                 
                 // Delete from NSUserDefaults
@@ -68,7 +68,7 @@ class Settings: UITableViewController {
                 
             }
             
-            var resetGamesAndDecksAction = UIAlertAction(title: "Reset all games AND all decks", style: UIAlertActionStyle.Destructive) {
+            let resetGamesAndDecksAction = UIAlertAction(title: "Reset all games AND all decks", style: UIAlertActionStyle.Destructive) {
                 UIAlertAction in
                 
                 // Delete from NSUserDefaults
@@ -83,7 +83,7 @@ class Settings: UITableViewController {
                 NSLog("Reset all games AND decks pressed")
             }
             
-            var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
                 UIAlertAction in
                 NSLog("Cancel Pressed")
             }

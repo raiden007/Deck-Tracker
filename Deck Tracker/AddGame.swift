@@ -32,7 +32,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Puts today date on the date label
-        var today = dateToday()
+        let today = dateToday()
         dateCellLabel.text = "Date: " + today
         putSelectedDeckNameOnLabel()
         
@@ -49,9 +49,9 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     
     func putSelectedDateOnLabel() {
         // Puts the selected date on the date label
-        var x = SelectDate()
-        var newDate = x.readDate()
-        var newDateString = x.dateToString(newDate)
+        let x = SelectDate()
+        let newDate = x.readDate()
+        let newDateString = x.dateToString(newDate)
         dateCellLabel.text = "Date: " + newDateString
     }
     
@@ -70,7 +70,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     
     func putSelectedDeckNameOnLabel() {
         // Gets the selected deck from NSUserDefaults and puts it on the label
-        var selectedDeck = readSelectedDeckName()
+        let selectedDeck = readSelectedDeckName()
         if selectedDeck == "" {
             playerDeckLabel.text = "You need to select a deck first"
         } else {
@@ -81,7 +81,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     
     func putSelectedOpponentClassOnLabel() {
         // Puts opponent's class in NSUserDefaults
-        var selectedOpponentClass = readSelectedOpponentClass()
+        let selectedOpponentClass = readSelectedOpponentClass()
         if selectedOpponentClass == "" {
             opponentDeckLabel.text = "Select Opponent's Class"
         } else {
@@ -142,22 +142,22 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
 
         
         // Gets all the atributes for a new Game
-        var newGameID = newGameGetID()
+        let newGameID = newGameGetID()
         //var x = SelectDate()
-        var newGameDate = SelectDate().readDate()
+        let newGameDate = SelectDate().readDate()
         //var newGameDateString = x.dateToString(newGameDate)
-        var newGamePlayerDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String?
-        var newGamePlayerDeckClass = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Class") as String?
-        var newGameOpponentClass = defaults.stringForKey("Opponent Class") as String?
-        var newGameCoin = coinCellSwitch.on
-        var newGameWin = winCellSwitch.on
-        var newGameTag = allTags
+        let newGamePlayerDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String?
+        let newGamePlayerDeckClass = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Class") as String?
+        let newGameOpponentClass = defaults.stringForKey("Opponent Class") as String?
+        let newGameCoin = coinCellSwitch.on
+        let newGameWin = winCellSwitch.on
+        let newGameTag = allTags
 
         
         if newGamePlayerDeckName != nil && newGameOpponentClass != nil {
             
             // Adds a new game
-            var newGame = Game(newID: newGameID, newDate: newGameDate, newPlayerDeckName: newGamePlayerDeckName!, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin, newTags: newGameTag)
+            let newGame = Game(newID: newGameID, newDate: newGameDate, newPlayerDeckName: newGamePlayerDeckName!, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin, newTags: newGameTag)
             // Add to Data class file
             Data.sharedInstance.addGame(newGame)
             self.dismissViewControllerAnimated(true, completion: {})

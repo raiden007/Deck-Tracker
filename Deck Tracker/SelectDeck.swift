@@ -22,7 +22,7 @@ class SelectDeck: UITableViewController {
         readData()
         
         // If there is a deck selected get it's index
-        var savedUserDefaults = readSelectedDeckID()
+        let savedUserDefaults = readSelectedDeckID()
         for var i = 0; i < decksList.count; i++ {
             if savedUserDefaults == decksList[i].getID() {
                 indexOfSelectedDeck = i
@@ -46,8 +46,8 @@ class SelectDeck: UITableViewController {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         //let cell:CustomCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! CustomCell
         cell.textLabel?.text = decksList[indexPath.row].getName()
-        var image = decksList[indexPath.row].getClass()
-        var imageName = getImage(image)
+        let image = decksList[indexPath.row].getClass()
+        let imageName = getImage(image)
         cell.imageView?.image = UIImage(named: imageName)
         //cell.accessoryType = UITableViewCellAccessoryType.None
         // If there is a selected deck put a checkmark on it
@@ -61,9 +61,9 @@ class SelectDeck: UITableViewController {
     
     // Selects the row and saves the info so we can add a checkmark
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
-        var selectedDeck = decksList[indexPath.row]
+        let selectedDeck = decksList[indexPath.row]
         saveSelectedDeckID(selectedDeck)
         readSelectedDeckID()
         saveSelectedDeckName(selectedDeck)
@@ -76,7 +76,7 @@ class SelectDeck: UITableViewController {
     
     // Saves the selected deck ID in NSUserDefaults
     func saveSelectedDeckID(deck : Deck) {
-        var defaults = NSUserDefaults(suiteName: "group.Decks")!
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setInteger(deck.getID(), forKey: "Selected Deck ID")
         defaults.synchronize()
     }
@@ -115,7 +115,7 @@ class SelectDeck: UITableViewController {
     
     // Deselects the row if you select another
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = UITableViewCellAccessoryType.None
     }
     
@@ -138,7 +138,7 @@ class SelectDeck: UITableViewController {
     // Deletes the row
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            var index = indexPath.row
+            let index = indexPath.row
             Data.sharedInstance.deleteDeck(index)
             readData()
             self.decksTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)

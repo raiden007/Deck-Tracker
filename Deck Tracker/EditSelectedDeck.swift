@@ -24,7 +24,7 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
         readData()
         
         // If there is a deck selected get it's index
-        var savedUserDefaults = readEditedDeckID()
+        let savedUserDefaults = readEditedDeckID()
         for var i = 0; i < decksList.count; i++ {
             if savedUserDefaults == decksList[i].getID() {
                 indexOfSelectedDeck = i
@@ -48,8 +48,8 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
         //let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let cell:CustomCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! CustomCell
         cell.customLabel.text = decksList[indexPath.row].getName()
-        var image = decksList[indexPath.row].getClass()
-        var imageName = getImage(image)
+        let image = decksList[indexPath.row].getClass()
+        let imageName = getImage(image)
         cell.customImage.image = UIImage(named: imageName)
         //cell.accessoryType = UITableViewCellAccessoryType.None
         // If there is a selected deck put a checkmark on it
@@ -63,9 +63,9 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
     
     // Selects the row and saves the info so we can add a checkmark
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
-        var selectedDeck = decksList[indexPath.row]
+        let selectedDeck = decksList[indexPath.row]
         saveEditedDeckID(selectedDeck)
         readEditedDeckID()
         saveEditedDeckName(selectedDeck)
@@ -78,7 +78,7 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
     
     // Saves the selected deck ID in NSUserDefaults
     func saveEditedDeckID(deck : Deck) {
-        var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setInteger(deck.getID(), forKey: "Edited Deck ID")
         defaults.synchronize()
     }
@@ -118,7 +118,7 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
     
     // Deselects the row if you select another
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = UITableViewCellAccessoryType.None
     }
     
@@ -129,7 +129,7 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
         decksTable.reloadData()
         
         // If there is a deck selected get it's index
-        var savedUserDefaults = readEditedDeckID()
+        let savedUserDefaults = readEditedDeckID()
         for var i = 0; i < decksList.count; i++ {
             if savedUserDefaults == decksList[i].getID() {
                 indexOfSelectedDeck = i
@@ -150,7 +150,7 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
     // Deletes the row
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            var index = indexPath.row
+            let index = indexPath.row
             Data.sharedInstance.deleteDeck(index)
             readData()
             self.decksTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)

@@ -60,31 +60,31 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
     
     // Puts saved date on label
     func putSavedDateOnLabel() {
-        var savedDate = selectedGame.getDate()
+        let savedDate = selectedGame.getDate()
         dateLabel.text = "Date: " + savedDate
     }
     
     // Puts selected deck on label
     func putSavedPlayerDeckOnLabel() {
-        var savedPlayedDeck = selectedGame.getPlayerDeckName()
+        let savedPlayedDeck = selectedGame.getPlayerDeckName()
         playerDeckLabel.text = "Your deck: " + savedPlayedDeck
     }
     
     // Puts opponent class on label
     func putSavedOpponentClassOnLabel() {
-        var savedOpponentDeck = selectedGame.getOpponentDeck()
+        let savedOpponentDeck = selectedGame.getOpponentDeck()
         opponentDeckLabel.text = "Opponent's Class: " + savedOpponentDeck
     }
     
     // Puts the coin status
     func putSavedCoinStatusOnSwitch() {
-        var savedCoin = selectedGame.getCoin()
+        let savedCoin = selectedGame.getCoin()
         coinSwitch.setOn(savedCoin, animated: true)
     }
     
     // Puts the win status
     func putSavedWinStatusOnSwitch() {
-        var savedWin = selectedGame.getWin()
+        let savedWin = selectedGame.getWin()
         winSwitch.setOn(savedWin, animated: true)
     }
     
@@ -92,13 +92,13 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
     func putSavedTagsOnLabel() {
         
         selectedTags = selectedGame.getTags()
-        print("Selected Tags Edit Screen with default tags: " + String(stringInterpolationSegment: selectedTags))
+        print("Selected Tags Edit Screen with default tags: " + String(stringInterpolationSegment: selectedTags), terminator: "")
         if let testSavedTags = defaults.arrayForKey("Edited Selected Tags") as? [String] {
             selectedTags = defaults.arrayForKey("Edited Selected Tags") as! [String]
         }
         defaults.setObject(selectedTags, forKey: "Edited Selected Tags")
         defaults.synchronize()
-        print("Selected Tags Edit Screen after loading Edited Tags: " + String(stringInterpolationSegment: selectedTags))
+        print("Selected Tags Edit Screen after loading Edited Tags: " + String(stringInterpolationSegment: selectedTags), terminator: "")
 
         if selectedTags.isEmpty {
             tagsLabel.text = "Tags: "
@@ -120,7 +120,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
     
     // Puts the selected date on the date label
     func putSelectedDateOnLabel() {
-        var editedDate = EditDate.sharedInstance.readDate()
+        let editedDate = EditDate.sharedInstance.readDate()
         var savedDate = selectedGame.getNSDate()
         //println("Saved Date:")
         //println(savedDate)
@@ -135,8 +135,8 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
     
     // Puts edited deck name on label
     func putSelectedPlayerDeckOnLabel() {
-        var savedDeck = selectedGame.getPlayerDeckName()
-        var editedDeck = defaults.stringForKey("Edited Deck Name")
+        let savedDeck = selectedGame.getPlayerDeckName()
+        let editedDeck = defaults.stringForKey("Edited Deck Name")
         if editedDeck == nil {
             playerDeckLabel.text = "Your deck: " + savedDeck
         } else {
@@ -146,9 +146,9 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
     
     // Puts edited opponent class on label
     func putSelectedOpponentClassOnLabel() {
-        var savedOpponentClass = selectedGame.getOpponentDeck()
+        let savedOpponentClass = selectedGame.getOpponentDeck()
         //println(savedOpponentClass)
-        var editedOpponentClass = defaults.stringForKey("Edited Opponent Class")
+        let editedOpponentClass = defaults.stringForKey("Edited Opponent Class")
         //println(editedOpponentClass)
         if editedOpponentClass == nil {
             opponentDeckLabel.text = "Opponent's Class: " + savedOpponentClass
@@ -203,14 +203,14 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
             editedOpponentClass = selectedGame.getOpponentDeck()
         }
         
-        var editedCoin = coinSwitch.on
+        let editedCoin = coinSwitch.on
         
-        var editedWin = winSwitch.on
+        let editedWin = winSwitch.on
         
-        var editedTags = defaults.arrayForKey("Edited Selected Tags") as! [String]
+        let editedTags = defaults.arrayForKey("Edited Selected Tags") as! [String]
        
         // Create a new Game object
-        var editedGame = Game(newID: editedID, newDate: editedDate!, newPlayerDeckName: editedPlayerDeckName!, newPlayerDeckClass: editedPlayerDeckClass!, newOpponentDeck: editedOpponentClass!, newCoin: editedCoin, newWin: editedWin, newTags: editedTags)
+        let editedGame = Game(newID: editedID, newDate: editedDate!, newPlayerDeckName: editedPlayerDeckName!, newPlayerDeckClass: editedPlayerDeckClass!, newOpponentDeck: editedOpponentClass!, newCoin: editedCoin, newWin: editedWin, newTags: editedTags)
         
         Data.sharedInstance.editGame(editedID, oldGame: selectedGame, newGame: editedGame)
         
