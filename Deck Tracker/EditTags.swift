@@ -79,7 +79,7 @@ class EditTags: UITableViewController {
     func readSelectedTags() {
         // Reads the selected tags from NSUserDefaults
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let tagsTest = defaults.arrayForKey("Edited Selected Tags") {
+        if let _ = defaults.arrayForKey("Edited Selected Tags") {
             selectedTags = defaults.arrayForKey("Edited Selected Tags") as! [String]
         } else {
             selectedTags = []
@@ -123,7 +123,7 @@ class EditTags: UITableViewController {
     
     func readTags() -> [String] {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        if let allTagsTest = defaults.arrayForKey("All Tags") {
+        if let _ = defaults.arrayForKey("All Tags") {
             allTags = defaults.arrayForKey("All Tags") as! [String]
         }
         return allTags

@@ -51,7 +51,7 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
         print(infoFromWatch, terminator: "")
 
         // Depending on what screen this function is called do stuff
-        if let val: AnyObject = infoFromWatch["Save New Game"] {
+        if let _: AnyObject = infoFromWatch["Save New Game"] {
             saveGameFromWatch()
         } else  {
             print("test", terminator: "")

@@ -93,7 +93,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
         
         selectedTags = selectedGame.getTags()
         print("Selected Tags Edit Screen with default tags: " + String(stringInterpolationSegment: selectedTags), terminator: "")
-        if let testSavedTags = defaults.arrayForKey("Edited Selected Tags") as? [String] {
+        if let _ = defaults.arrayForKey("Edited Selected Tags") as? [String] {
             selectedTags = defaults.arrayForKey("Edited Selected Tags") as! [String]
         }
         defaults.setObject(selectedTags, forKey: "Edited Selected Tags")
@@ -121,7 +121,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
     // Puts the selected date on the date label
     func putSelectedDateOnLabel() {
         let editedDate = EditDate.sharedInstance.readDate()
-        var savedDate = selectedGame.getNSDate()
+        //var savedDate = selectedGame.getNSDate()
         //println("Saved Date:")
         //println(savedDate)
         //println("Edited Date:")

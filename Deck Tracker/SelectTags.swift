@@ -126,7 +126,7 @@ class SelectTags: UITableViewController {
     
     func readTags() -> [String]{
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        if let testAllTags = defaults.arrayForKey("All Tags") {
+        if let _ = defaults.arrayForKey("All Tags") {
             allTags = defaults.arrayForKey("All Tags") as! [String]
         }
         return allTags

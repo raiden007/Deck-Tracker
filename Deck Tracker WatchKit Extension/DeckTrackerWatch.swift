@@ -54,7 +54,7 @@ class DeckTrackerWatch: WKInterfaceController {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         let dict = NSMutableDictionary()
         // Gets selected deck and selected class associated with the deck
-        if let checkSelectedDeckName = defaults.stringForKey("Selected Deck Name") {
+        if let _ = defaults.stringForKey("Selected Deck Name") {
             selectedDeckName = defaults.stringForKey("Selected Deck Name")!
             selectedDeckClass = defaults.stringForKey("Selected Deck Class")!
             dict.setValue(selectedDeckName, forKey: "selectedDeckName")
@@ -84,7 +84,7 @@ class DeckTrackerWatch: WKInterfaceController {
         dict.setValue(win, forKey: "win")
         
         // Gets the selected tags
-        if let checkSelectedTags: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") {
+        if let _: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") {
             selectedTags = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") as! [String]
         } else {
             selectedTags = [""]
@@ -93,7 +93,7 @@ class DeckTrackerWatch: WKInterfaceController {
         
         // Saves the dictionary and sends the info to the phone
         if opponentClass != nil {
-            if let checkSelectedDeckName = defaults.stringForKey("Selected Deck Name") {
+            if let _ = defaults.stringForKey("Selected Deck Name") {
                 defaults.setObject(dict, forKey: "Add Game Watch")
                 defaults.synchronize()
                 
@@ -130,7 +130,7 @@ class DeckTrackerWatch: WKInterfaceController {
     func setSelectedDeckButton() {
         // Populates the selected deck button
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        if let selectedDeckID = defaults.integerForKey("Selected Deck ID") as Int! {
+        if let _ = defaults.integerForKey("Selected Deck ID") as Int! {
             if let selectedDeckName = defaults.stringForKey("Selected Deck Name") as String! {
                 let selectedDeckClass = defaults.stringForKey("Selected Deck Class")!
                 selectDeckButton.setTitle(selectedDeckName)

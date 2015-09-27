@@ -210,7 +210,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     // Puts the tags on the Tags Label
     func putTagLabel() {
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let allTagsTest = defaults.arrayForKey("Selected Tags") {
+        if let _ = defaults.arrayForKey("Selected Tags") {
             allTags = defaults.arrayForKey("Selected Tags") as! [String]!
         }
         if allTags.isEmpty {

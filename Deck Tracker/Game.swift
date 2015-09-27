@@ -42,7 +42,7 @@ class Game : NSObject, NSCoding {
         win = aDecoder.decodeObjectForKey("win") as! Bool
         date = aDecoder.decodeObjectForKey("date") as! NSDate
         tags = []
-        if let testTags = aDecoder.decodeObjectForKey("tags") as? [String] {
+        if let _ = aDecoder.decodeObjectForKey("tags") as? [String] {
             tags = aDecoder.decodeObjectForKey("tags") as! [String]
         }
     }
