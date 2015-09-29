@@ -107,7 +107,7 @@ class SelectTagsWatch: WKInterfaceController {
             row!.groupTable.setBackgroundColor(UIColor.greenColor())
             row?.tagLabel.setTextColor(UIColor.blackColor())
         }
-        print("Selected Tag: " + selectedTag, terminator: "")
+        print("Selected Tag: " + selectedTag)
 
         //println(wasAlreadySelected)
         

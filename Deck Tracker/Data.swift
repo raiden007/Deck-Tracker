@@ -29,17 +29,17 @@ public class Data {
         
         // Check at first install if the game/deck database is empty
         if self.readGameData() == nil {
-            print("Game database empty", terminator: "")
+            print("Game database empty")
             if (self.readDeckData() == nil) {
-                print("Decks database empty", terminator: "")
+                print("Decks database empty")
             } else {
                 listOfDecks = self.readDeckData()!
             }
         
         } else if self.readDeckData() == nil {
-            print("Decks database empty", terminator: "")
+            print("Decks database empty")
             if (self.readGameData() == nil) {
-                print("Game database empty", terminator: "")
+                print("Game database empty")
             } else {
                 listOfGames = self.readGameData()!
             }
@@ -55,7 +55,7 @@ public class Data {
         listOfGames.append(newGame)
         listOfGames.sortInPlace({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
         saveGame()
-        print("Game added", terminator: "")
+        print("Game added")
     }
     
     // Saves the games array
@@ -79,7 +79,7 @@ public class Data {
     // Prints all the games in the array
     func printGameData() {
         for (var i=0; i<listOfGames.count; i++) {
-            print(listOfGames[i].toString(), terminator: "")
+            print(listOfGames[i].toString())
         }
     }
     
@@ -88,7 +88,7 @@ public class Data {
         listOfDecks.append(newDeck)
         saveDict()
         saveDeck()
-        print("Deck added", terminator: "")
+        print("Deck added")
     }
     
     // Creates a new dict to use with phone
@@ -125,7 +125,7 @@ public class Data {
     // Prints all the decks in the array
     func printDeckData () {
         for (var i=0; i<listOfDecks.count; i++) {
-            print(listOfDecks[i].toString(), terminator: "")
+            print(listOfDecks[i].toString())
         }
     }
     
@@ -133,7 +133,7 @@ public class Data {
     func deleteDeck(id:Int) {
         listOfDecks.removeAtIndex(id)
         saveDeck()
-        print("Deck deleted", terminator: "")
+        print("Deck deleted")
         
     }
     
@@ -141,7 +141,7 @@ public class Data {
     func deleteGame(id:Int) {
         listOfGames.removeAtIndex(id)
         saveGame()
-        print("Game deleted", terminator: "")
+        print("Game deleted")
     }
     
     // Replaces a game from the array
@@ -157,7 +157,7 @@ public class Data {
                 saveGame()
             }
         }
-        print("Game Edited", terminator: "")
+        print("Game Edited")
     }
     
     
@@ -167,11 +167,11 @@ public class Data {
         
         var gamesWon = 0
         var dateArray = getDateArray(date)
-        var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
-        if selectedDeckName == nil {
-            selectedDeckName = ""
+        var selectedDeckName = ""
+        if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String! {
+            selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
         }
-        
+
         // If current deck is selected
         if deckName == selectedDeckName {
             generalWinRateArray = []
@@ -220,7 +220,7 @@ public class Data {
                     dateArray.append(listOfGames[i])
                 }
             }
-            print("Count for the last 7 days: " + String(dateArray.count), terminator: "")
+            print("Count for the last 7 days: " + String(dateArray.count))
             return dateArray
             // If date is last month
         } else if date == 1 {
@@ -231,15 +231,15 @@ public class Data {
                     dateArray.append(listOfGames[i])
                 }
             }
-            print("Count for the last month: " + String(dateArray.count), terminator: "")
+            print("Count for the last month: " + String(dateArray.count))
             return dateArray
             // If date is all
         } else if date == 2 {
             dateArray = listOfGames
-            print("Count for all dates: " + String(dateArray.count), terminator: "")
+            print("Count for all dates: " + String(dateArray.count))
             return dateArray
         } else {
-            print("ERROR!!! Date selection is wrong", terminator: "")
+            print("ERROR!!! Date selection is wrong")
             return dateArray
         }
     }
@@ -373,9 +373,9 @@ public class Data {
             return winRate
         } else {
             winRate =  Double(gamesWon) / Double(totalGames) * 100
-            print("Coin Total Games: " + String(totalGames), terminator: "")
-            print("Coin Games Won: " + gamesWon.description, terminator: "")
-            print("Coin Win Rate: " + winRate.description, terminator: "")
+            print("Coin Total Games: " + String(totalGames))
+            print("Coin Games Won: " + gamesWon.description)
+            print("Coin Win Rate: " + winRate.description)
             return winRate
         }
     }
@@ -432,9 +432,9 @@ public class Data {
             return winRate
         } else {
             winRate =  Double(gamesWon) / Double(totalGames) * 100
-            print("Coin Total Games: " + String(totalGames), terminator: "")
-            print("Coin Games Won: " + gamesWon.description, terminator: "")
-            print("Coin Win Rate: " + winRate.description, terminator: "")
+            print("Coin Total Games: " + String(totalGames))
+            print("Coin Games Won: " + gamesWon.description)
+            print("Coin Win Rate: " + winRate.description)
             return winRate
         }
     }

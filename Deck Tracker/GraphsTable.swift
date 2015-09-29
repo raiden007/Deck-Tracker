@@ -10,17 +10,22 @@ import UIKit
 
 class GraphsTable: UITableViewController {
 
-    @IBOutlet weak var winRateLabel: UILabel!
+    @IBOutlet var graphsTable: UITableView!
+    
+    
+    var numberOfRows = 0
+    var deckName = ""
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-     
-        //winRateLabel.text = "Win Rate TBD"
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        getNumberOfRows()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        getNumberOfRows()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,8 +40,8 @@ class GraphsTable: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        
+        return numberOfRows
     }
 
     
@@ -53,7 +58,25 @@ class GraphsTable: UITableViewController {
         return cell
     }
     
-
+    func reloadData() {
+        //self.graphsTable.reloadData()
+        dispatch_async(dispatch_get_main_queue()) {
+            self.graphsTable.reloadData()
+        }
+    }
+    
+    func getNumberOfRows() {
+        if let _ = NSUserDefaults.standardUserDefaults().stringForKey("Deck Name") {
+            deckName = NSUserDefaults.standardUserDefaults().stringForKey("Deck Name") as String!
+        }
+        print(deckName)
+        if deckName == "All" {
+            numberOfRows = 10
+        } else {
+            numberOfRows = 2
+        }
+        reloadData()
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

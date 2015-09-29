@@ -84,7 +84,7 @@ class EditTags: UITableViewController {
         } else {
             selectedTags = []
         }
-        print("Selected tags Tags screen: " + String(stringInterpolationSegment: selectedTags), terminator: "")
+        print("Selected tags Tags screen: " + String(stringInterpolationSegment: selectedTags))
     }
     
     func readData() {

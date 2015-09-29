@@ -48,13 +48,13 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
     func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]?) -> Void)) {
         
         let infoFromWatch: NSDictionary = userInfo!
-        print(infoFromWatch, terminator: "")
+        print(infoFromWatch)
 
         // Depending on what screen this function is called do stuff
         if let _: AnyObject = infoFromWatch["Save New Game"] {
             saveGameFromWatch()
         } else  {
-            print("test", terminator: "")
+            print("test")
             saveSelectedDeckFromWatch()
         }
     }
