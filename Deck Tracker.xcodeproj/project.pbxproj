@@ -43,8 +43,10 @@
 		6DFFCD9D1B1DAC75005218D8 /* SelectOpponentWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */; };
 		8B10AFCD1B0310A100D33C29 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCB1B0310A100D33C29 /* Fabric.framework */; };
 		8B10AFCE1B0310A100D33C29 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */; };
+		8B44AA621BBAC0CD00A8E8B0 /* GraphsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B44AA611BBAC0CD00A8E8B0 /* GraphsCell.swift */; settings = {ASSET_TAGS = (); }; };
 		8B4507C91B88B95500B0D12E /* SelectTagsWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4507C81B88B95500B0D12E /* SelectTagsWatch.swift */; };
 		8B4507CB1B88BBA600B0D12E /* TagsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4507CA1B88BBA500B0D12E /* TagsRow.swift */; };
+		8BA7D2081BB86B78002B95CC /* GraphsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D2071BB86B78002B95CC /* GraphsTable.swift */; settings = {ASSET_TAGS = (); }; };
 		8BD870E51B223042008398B8 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Deck.swift */; };
 		8BEDCD4E1BA61C3A0026AEFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4D1BA61C3A0026AEFD /* Settings.swift */; };
 /* End PBXBuildFile section */
@@ -134,8 +136,10 @@
 		6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOpponentWatch.swift; sourceTree = "<group>"; };
 		8B10AFCB1B0310A100D33C29 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		8B44AA611BBAC0CD00A8E8B0 /* GraphsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsCell.swift; sourceTree = "<group>"; };
 		8B4507C81B88B95500B0D12E /* SelectTagsWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTagsWatch.swift; sourceTree = "<group>"; };
 		8B4507CA1B88BBA500B0D12E /* TagsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsRow.swift; sourceTree = "<group>"; };
+		8BA7D2071BB86B78002B95CC /* GraphsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsTable.swift; sourceTree = "<group>"; };
 		8BEDCD4D1BA61C3A0026AEFD /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +178,7 @@
 				6DD844CA1AF8A86F00CF9C80 /* Data.swift */,
 				6DD844CE1AFA306500CF9C80 /* DecksCell.swift */,
 				6DB50E1A1B009B1D0000F97B /* GamesCell.swift */,
+				8B44AA611BBAC0CD00A8E8B0 /* GraphsCell.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 		6D2F2B551B4278F400B267C9 /* Graphs */ = {
 			isa = PBXGroup;
 			children = (
+				8BA7D2071BB86B78002B95CC /* GraphsTable.swift */,
 			);
 			name = Graphs;
 			sourceTree = "<group>";
@@ -548,7 +554,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B44AA621BBAC0CD00A8E8B0 /* GraphsCell.swift in Sources */,
 				6DD844CD1AF8EFB300CF9C80 /* Deck.swift in Sources */,
+				8BA7D2081BB86B78002B95CC /* GraphsTable.swift in Sources */,
 				6DDD44AA1AEFB1B300A4B5D2 /* AddDeck.swift in Sources */,
 				6DD844CB1AF8A86F00CF9C80 /* Data.swift in Sources */,
 				6DD866691B3D7E0F002E5D82 /* SelectTags.swift in Sources */,

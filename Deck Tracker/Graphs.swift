@@ -8,13 +8,10 @@
 
 import UIKit
 
-class Graphs: UIViewController  {
+class Graphs: UIViewController {
     
     @IBOutlet var dateSegment: UISegmentedControl!
     @IBOutlet var deckSegment: UISegmentedControl!
-    
-    var pageViewController: UIPageViewController!
-    var pageTitles:NSArray!
     
     var total: CGFloat = 100
     var dateIndex = -1
@@ -24,8 +21,11 @@ class Graphs: UIViewController  {
     static let sharedInstance = Graphs()
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         
         //getInitialStatus()
         //setPageTitles()
@@ -202,5 +202,7 @@ class Graphs: UIViewController  {
 //    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
 //        return 0
 //    }
+    
+
 
 }
