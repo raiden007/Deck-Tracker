@@ -45,7 +45,10 @@ class GraphsTable: UITableViewController {
         let cell:GraphsCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! GraphsCell
 
         // Configure the cell...
-        cell.playerDeck.text = "test"
+        cell.playerDeckLabel.text = "Get in here !!!"
+        cell.winPercentLabel.text = "80%"
+        cell.gamesListLabel.text = "21-10"
+        cell.opponentLabel.text = "Paladin"
 
         return cell
     }

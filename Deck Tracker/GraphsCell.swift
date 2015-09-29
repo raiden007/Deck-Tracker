@@ -11,11 +11,11 @@ import UIKit
 class GraphsCell : UITableViewCell {
     
     
-    @IBOutlet weak var playerDeck: UILabel!
-    @IBOutlet weak var playerWinPercent: UILabel!
-    @IBOutlet weak var graphImage: UIImageView!
-    @IBOutlet weak var opponentWinPercent: UILabel!
-    @IBOutlet weak var opponentDeck: UILabel!
+
+    @IBOutlet weak var playerDeckLabel: UILabel!
+    @IBOutlet weak var winPercentLabel: UILabel!
+    @IBOutlet weak var gamesListLabel: UILabel!
+    @IBOutlet weak var opponentLabel: UILabel!
     
     
     
