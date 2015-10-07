@@ -12,6 +12,8 @@ class Graphs: UIViewController {
     
     @IBOutlet var dateSegment: UISegmentedControl!
     @IBOutlet var deckSegment: UISegmentedControl!
+    @IBOutlet weak var viewContainer: UIView!
+    
     
     var total: CGFloat = 100
     var dateIndex = -1
@@ -58,6 +60,9 @@ class Graphs: UIViewController {
         NSUserDefaults.standardUserDefaults().synchronize()
         
         printStatus()
+        
+        //Notifies the container that a change occured
+        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
 
     }
     
@@ -80,6 +85,9 @@ class Graphs: UIViewController {
         NSUserDefaults.standardUserDefaults().setInteger(dateIndex, forKey: "Date Index")
         NSUserDefaults.standardUserDefaults().synchronize()
         printStatus()
+        
+        //Notifies the container that a change occured
+        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
 
     }
     
@@ -106,12 +114,19 @@ class Graphs: UIViewController {
         NSUserDefaults.standardUserDefaults().synchronize()
         printStatus()
         
+        //Notifies the container that a change occured
+        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+        
     }
     
     func printStatus() {
         print("Date Index: " + String(dateIndex))
         print("Deck Index: " + String(deckIndex))
         print("Deck Name: " + String(deckName))
+        
+        
     }
+    
+
 
 }
