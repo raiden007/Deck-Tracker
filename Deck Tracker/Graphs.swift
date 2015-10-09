@@ -84,7 +84,7 @@ class Graphs: UIViewController {
         
         NSUserDefaults.standardUserDefaults().setInteger(dateIndex, forKey: "Date Index")
         NSUserDefaults.standardUserDefaults().synchronize()
-        printStatus()
+        //printStatus()
         
         //Notifies the container that a change occured
         NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
@@ -112,7 +112,7 @@ class Graphs: UIViewController {
         //NSUserDefaults.standardUserDefaults().setInteger(deckIndex, forKey: "Deck Index")
         NSUserDefaults.standardUserDefaults().setObject(deckName, forKey: "Deck Name")
         NSUserDefaults.standardUserDefaults().synchronize()
-        printStatus()
+        //printStatus()
         
         //Notifies the container that a change occured
         NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
@@ -123,10 +123,7 @@ class Graphs: UIViewController {
         print("Date Index: " + String(dateIndex))
         print("Deck Index: " + String(deckIndex))
         print("Deck Name: " + String(deckName))
-        
-        
     }
     
-
 
 }

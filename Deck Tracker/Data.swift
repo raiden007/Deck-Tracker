@@ -244,101 +244,23 @@ public class Data {
         }
     }
     
-    
-    // Returns the heroes played by the user
-    func heroesPlayed (date:Int) -> [Int] {
-        var heroesPlayed:[Int] = [0,0,0,0,0,0,0,0,0]
-        var dateArray = getDateArray(date)
-        for var i = 0; i < dateArray.count; i++ {
-            let playerClass = dateArray[i].getPlayerDeckClass()
-            if playerClass == "Warrior" {
-                heroesPlayed[0]++
-            } else if playerClass == "Paladin" {
-                heroesPlayed[1]++
-            } else if playerClass == "Shaman" {
-                heroesPlayed[2]++
-            } else if playerClass == "Hunter" {
-                heroesPlayed[3]++
-            } else if playerClass == "Druid" {
-                heroesPlayed[4]++
-            } else if playerClass == "Rogue" {
-                heroesPlayed[5]++
-            } else if playerClass == "Mage" {
-                heroesPlayed[6]++
-            } else if playerClass == "Warlock" {
-                heroesPlayed[7]++
-            } else if playerClass == "Priest" {
-                heroesPlayed[8]++
-            } else {
-                assert(true, "Player Class Unknown")
+    func convertDataFromVersion1ToVersion2() {
+        for var i = 0; i < listOfGames.count; i++ {
+            let game:Game = listOfGames[i]
+            if game.tags.isEmpty {
+                game.setTagAsEmpty([])
             }
         }
-        return heroesPlayed
     }
     
-    // Gets the number of game
-    
-    
-    // Returns the opponents class encountered by the user
-    func opponentsPlayed (date:Int, deckName:String) -> [Int] {
-        var opponentsPlayed:[Int] = [0,0,0,0,0,0,0,0,0]
-        var dateArray = getDateArray(date)
-        var opponentsPlayedArray:[Game] = []
-        
-        var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
-        if selectedDeckName == nil {
-            selectedDeckName = ""
-        }
-        
-        if deckName == selectedDeckName {
-            for var i = 0; i < dateArray.count; i++ {
-                if deckName == dateArray[i].getPlayerDeckName() {
-                    opponentsPlayedArray.append(dateArray[i])
-                }
-            }
-        } else {
-            opponentsPlayedArray = dateArray
-        }
+    func getNumberOfRows(date:Int, deckName:String) -> Int {
 
-        for var i = 0; i < opponentsPlayedArray.count; i++ {
-            let opponentClass = opponentsPlayedArray[i].getOpponentDeck()
-            if opponentClass == "Warrior" {
-                opponentsPlayed[0]++
-            } else if opponentClass == "Paladin" {
-                opponentsPlayed[1]++
-            } else if opponentClass == "Shaman" {
-                opponentsPlayed[2]++
-            } else if opponentClass == "Hunter" {
-                opponentsPlayed[3]++
-            } else if opponentClass == "Druid" {
-                opponentsPlayed[4]++
-            } else if opponentClass == "Rogue" {
-                opponentsPlayed[5]++
-            } else if opponentClass == "Mage" {
-                opponentsPlayed[6]++
-            } else if opponentClass == "Warlock" {
-                opponentsPlayed[7]++
-            } else if opponentClass == "Priest" {
-                opponentsPlayed[8]++
-            } else {
-                assert(true, "Opponent Class Unknown")
-            }
-        }
-        return opponentsPlayed
-    }
-    
-    
-    // Calculates the win rate when going first
-    func withCoinWinRate(date:Int, deckName:String) -> Double {
-        
-        var gamesWon = 0
         var dateArray = getDateArray(date)
-        coinArray = []
-        var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
-        if selectedDeckName == nil {
-            selectedDeckName = ""
-        }
+        var selectedDeckName = ""
         
+        if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String! {
+            selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
+        }
         
         // If current deck is selected
         if deckName == selectedDeckName {
@@ -348,105 +270,12 @@ public class Data {
                     generalWinRateArray.append(dateArray[i])
                 }
             }
-            //println("Count for selected Deck: " + String(generalWinRateArray.count))
             // If all decks are selected
         } else {
             generalWinRateArray = dateArray
-            //println("Count for all decks: " + String(generalWinRateArray.count))
         }
         
-        for (var i=0; i<generalWinRateArray.count ; i++) {
-            if generalWinRateArray[i].coin == true {
-                coinArray.append(generalWinRateArray[i])
-            }
-        }
-        
-        for (var i=0; i<coinArray.count ; i++) {
-            if coinArray[i].win == true {
-                gamesWon++
-            }
-        }
-        
-        let totalGames = coinArray.count
-        var winRate = 0.0
-        if totalGames == 0 {
-            return winRate
-        } else {
-            winRate =  Double(gamesWon) / Double(totalGames) * 100
-            print("Coin Total Games: " + String(totalGames))
-            print("Coin Games Won: " + gamesWon.description)
-            print("Coin Win Rate: " + winRate.description)
-            return winRate
-        }
-    }
-    
-    func coinWinRateCount () -> Int {
-        return coinArray.count
-    }
-    
-    
-    // Calculates the win rate when going second
-    func withoutCoinWinRate(date:Int, deckName:String) -> Double {
-        
-        var gamesWon = 0
-        var dateArray = getDateArray(date)
-        coinArray = []
-        
-        var selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
-        if selectedDeckName == nil {
-            selectedDeckName = ""
-        }
-        
-        
-        if deckName == selectedDeckName {
-            // If current deck is selected
-            generalWinRateArray = []
-            for var i = 0; i < dateArray.count; i++ {
-                if deckName == dateArray[i].getPlayerDeckName() {
-                    generalWinRateArray.append(dateArray[i])
-                }
-            }
-            //println("Count for selected Deck: " + String(generalWinRateArray.count))
-            
-        } else {
-            // If all decks are selected
-            generalWinRateArray = dateArray
-            //println("Count for all decks: " + String(generalWinRateArray.count))
-        }
-        
-        for (var i=0; i<generalWinRateArray.count ; i++) {
-            if generalWinRateArray[i].coin == false {
-                coinArray.append(generalWinRateArray[i])
-            }
-        }
-        
-        for (var i=0; i<coinArray.count ; i++) {
-            if coinArray[i].win == true {
-                gamesWon++
-            }
-        }
-        
-        let totalGames = coinArray.count
-        var winRate = 0.0
-        if totalGames == 0 {
-            return winRate
-        } else {
-            winRate =  Double(gamesWon) / Double(totalGames) * 100
-            print("Coin Total Games: " + String(totalGames))
-            print("Coin Games Won: " + gamesWon.description)
-            print("Coin Win Rate: " + winRate.description)
-            return winRate
-        }
-    }
-    
-    
-    func convertDataFromVersion1ToVersion2() {
-        for var i = 0; i < listOfGames.count; i++ {
-            let game:Game = listOfGames[i]
-            if game.tags.isEmpty {
-                game.setTagAsEmpty([])
-            }
-        }
+        return generalWinRateArray.count
     }
     
 }

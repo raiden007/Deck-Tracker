@@ -962,36 +962,36 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="80%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiA-xo-WsR" userLabel="Win Percent">
-                                            <rect key="frame" x="223" y="11" width="34" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deck" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Etg-7e-Oc8" userLabel="playerDeck">
+                                            <rect key="frame" x="23" y="11" width="39.5" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(13-5)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFY-WK-Fkb" userLabel="Games List">
-                                            <rect key="frame" x="309.5" y="11" width="47" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vs." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eY-48-Js6">
+                                            <rect key="frame" x="70" y="11" width="22" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Opponent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Tk-MB-h8t">
-                                            <rect key="frame" x="364.5" y="11" width="76.5" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opponent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Tk-MB-h8t">
+                                            <rect key="frame" x="99" y="11" width="76.5" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vI-VR-bZX">
-                                            <rect key="frame" x="265" y="11.5" width="36.5" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiA-xo-WsR" userLabel="Win Percent">
+                                            <rect key="frame" x="183" y="11" width="34" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Deck" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Etg-7e-Oc8" userLabel="playerDeck">
-                                            <rect key="frame" x="175.5" y="11" width="39.5" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(13-5)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFY-WK-Fkb" userLabel="Games List">
+                                            <rect key="frame" x="225" y="11" width="47" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1002,33 +1002,44 @@
                                     <constraints>
                                         <constraint firstItem="FFY-WK-Fkb" firstAttribute="top" secondItem="xHx-04-9G2" secondAttribute="topMargin" constant="3" id="0QM-ma-VdJ"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="FFY-WK-Fkb" secondAttribute="bottom" constant="3.5" id="52z-zt-pYw"/>
+                                        <constraint firstItem="7eY-48-Js6" firstAttribute="leading" secondItem="Etg-7e-Oc8" secondAttribute="trailing" constant="7.5" id="7CR-EZ-SKu"/>
                                         <constraint firstItem="9Tk-MB-h8t" firstAttribute="top" secondItem="xHx-04-9G2" secondAttribute="topMargin" constant="3" id="8Mq-df-cX6"/>
                                         <constraint firstItem="FFY-WK-Fkb" firstAttribute="leading" secondItem="yiA-xo-WsR" secondAttribute="trailing" constant="8" id="8SQ-wX-DpR"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="7eY-48-Js6" secondAttribute="bottom" constant="3.5" id="94b-Vt-REt"/>
+                                        <constraint firstItem="yiA-xo-WsR" firstAttribute="leading" secondItem="9Tk-MB-h8t" secondAttribute="trailing" constant="7.5" id="C0S-O3-18f"/>
                                         <constraint firstItem="yiA-xo-WsR" firstAttribute="top" secondItem="xHx-04-9G2" secondAttribute="topMargin" constant="3" id="E00-xm-ldS"/>
-                                        <constraint firstItem="FFY-WK-Fkb" firstAttribute="leading" secondItem="8vI-VR-bZX" secondAttribute="trailing" constant="8" id="EGM-UQ-CA7"/>
-                                        <constraint firstItem="8vI-VR-bZX" firstAttribute="centerY" secondItem="xHx-04-9G2" secondAttribute="centerY" id="JvQ-ZG-inZ"/>
                                         <constraint firstItem="9Tk-MB-h8t" firstAttribute="trailing" secondItem="xHx-04-9G2" secondAttribute="trailingMargin" id="MJr-oq-yAL"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Etg-7e-Oc8" secondAttribute="bottom" constant="3.5" id="MuC-Qb-NM9"/>
+                                        <constraint firstItem="Etg-7e-Oc8" firstAttribute="leading" secondItem="xHx-04-9G2" secondAttribute="leadingMargin" constant="15" id="TyI-vI-yPC"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="yiA-xo-WsR" secondAttribute="bottom" constant="3.5" id="XHA-Ga-wAr"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="9Tk-MB-h8t" secondAttribute="bottom" constant="3.5" id="Ygm-ku-fWl"/>
                                         <constraint firstItem="Etg-7e-Oc8" firstAttribute="top" secondItem="xHx-04-9G2" secondAttribute="topMargin" constant="3" id="ZP5-CL-e7X"/>
+                                        <constraint firstItem="7eY-48-Js6" firstAttribute="top" secondItem="xHx-04-9G2" secondAttribute="topMargin" constant="3" id="a2I-AL-3yp"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="9Tk-MB-h8t" secondAttribute="trailing" id="bYq-w4-MMi"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="yiA-xo-WsR" secondAttribute="bottom" constant="3.5" id="cCS-F6-t9x"/>
-                                        <constraint firstItem="8vI-VR-bZX" firstAttribute="centerX" secondItem="xHx-04-9G2" secondAttribute="centerX" id="eKN-j2-hKb"/>
-                                        <constraint firstItem="8vI-VR-bZX" firstAttribute="leading" secondItem="yiA-xo-WsR" secondAttribute="trailing" constant="8" id="ecM-RA-cpW"/>
                                         <constraint firstItem="yiA-xo-WsR" firstAttribute="top" secondItem="xHx-04-9G2" secondAttribute="topMargin" constant="3" id="gAu-Fj-eqc"/>
                                         <constraint firstItem="yiA-xo-WsR" firstAttribute="leading" secondItem="Etg-7e-Oc8" secondAttribute="trailing" constant="8" id="img-zH-CfP"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="FFY-WK-Fkb" secondAttribute="bottom" constant="3.5" id="kVB-31-Suy"/>
                                         <constraint firstItem="9Tk-MB-h8t" firstAttribute="leading" secondItem="FFY-WK-Fkb" secondAttribute="trailing" constant="8" id="oWM-BJ-80p"/>
                                         <constraint firstItem="Etg-7e-Oc8" firstAttribute="leading" secondItem="xHx-04-9G2" secondAttribute="leadingMargin" id="obh-hM-Z88"/>
+                                        <constraint firstItem="9Tk-MB-h8t" firstAttribute="leading" secondItem="7eY-48-Js6" secondAttribute="trailing" constant="7.5" id="qVz-c5-qhu"/>
                                         <constraint firstItem="FFY-WK-Fkb" firstAttribute="top" secondItem="xHx-04-9G2" secondAttribute="topMargin" constant="3" id="rxV-rJ-lBx"/>
+                                        <constraint firstItem="FFY-WK-Fkb" firstAttribute="leading" secondItem="yiA-xo-WsR" secondAttribute="trailing" constant="8" id="vGD-sE-9eI"/>
                                         <constraint firstItem="yiA-xo-WsR" firstAttribute="leading" secondItem="Etg-7e-Oc8" secondAttribute="trailing" constant="8" id="vYe-UD-The"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="obh-hM-Z88"/>
-                                            <exclude reference="img-zH-CfP"/>
-                                            <exclude reference="8SQ-wX-DpR"/>
                                             <exclude reference="MJr-oq-yAL"/>
+                                            <exclude reference="bYq-w4-MMi"/>
+                                            <exclude reference="oWM-BJ-80p"/>
+                                            <exclude reference="E00-xm-ldS"/>
+                                            <exclude reference="cCS-F6-t9x"/>
+                                            <exclude reference="img-zH-CfP"/>
+                                            <exclude reference="vYe-UD-The"/>
+                                            <exclude reference="0QM-ma-VdJ"/>
+                                            <exclude reference="52z-zt-pYw"/>
+                                            <exclude reference="8SQ-wX-DpR"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

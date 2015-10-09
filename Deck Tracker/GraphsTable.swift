@@ -14,7 +14,9 @@ class GraphsTable: UITableViewController {
     
     
     var numberOfRows = 0
+    var dateIndex = -1
     var deckName = ""
+    var playerDeckLabelArray:[String] = []
     
     
     
@@ -52,7 +54,7 @@ class GraphsTable: UITableViewController {
         let cell:GraphsCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! GraphsCell
 
         // Configure the cell...
-        cell.playerDeckLabel.text = "Get in here !!!"
+        cell.playerDeckLabel.text = playerDeckLabelArray[indexPath.row]
         cell.winPercentLabel.text = "80%"
         cell.gamesListLabel.text = "21-10"
         cell.opponentLabel.text = "Paladin"
@@ -63,28 +65,51 @@ class GraphsTable: UITableViewController {
     func loadList(notification: NSNotification){
         //Gets info on rows and reloads the table view
         loadData()
-        self.graphsTable.reloadData()
+        
     }
     
     
     func getNumberOfRows() {
-        if let _ = NSUserDefaults.standardUserDefaults().stringForKey("Deck Name") {
-            deckName = NSUserDefaults.standardUserDefaults().stringForKey("Deck Name") as String!
-        }
-        print(deckName)
-        if deckName == "All" {
-            numberOfRows = 10
-        } else {
-            numberOfRows = 2
-        }
+
+        numberOfRows = Data.sharedInstance.getNumberOfRows(dateIndex, deckName: deckName)
         
         print("Number of rows to be displayed: " + String(numberOfRows))
-        //reloadData()
     }
     
     func loadData() {
         //TODO: Load all data needed to display the table view
+        getDateIndex()
+        getDeckName()
         getNumberOfRows()
+        getPlayerDeckLabel()
+        self.graphsTable.reloadData()
+    }
+    
+    func getDateIndex() {
+        dateIndex = NSUserDefaults.standardUserDefaults().integerForKey("Date Index")
+        print("Date Index is: " + String(dateIndex))
+    }
+    
+    func getDeckName() {
+        if let _ =  NSUserDefaults.standardUserDefaults().stringForKey("Deck Name") as String! {
+            deckName = NSUserDefaults.standardUserDefaults().stringForKey("Deck Name") as String!
+        } else {
+            deckName = ""
+        }
+        print("Deck Name is: " + deckName)
+    }
+    
+    func getPlayerDeckLabel() {
+        playerDeckLabelArray = []
+        if deckName == "All" {
+            for var i = 0; i < numberOfRows; i++ {
+                playerDeckLabelArray.append("All Decks")
+            }
+        } else {
+            for var i = 0; i < numberOfRows; i++ {
+                playerDeckLabelArray.append(deckName)
+            }
+        }
     }
 
 }
