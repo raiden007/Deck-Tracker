@@ -15,7 +15,8 @@ class GraphsCell : UITableViewCell {
     @IBOutlet weak var playerDeckLabel: UILabel!
     @IBOutlet weak var winPercentLabel: UILabel!
     @IBOutlet weak var gamesListLabel: UILabel!
-    @IBOutlet weak var opponentLabel: UILabel!
+    @IBOutlet weak var playerDeckIcon: UIImageView!
+    @IBOutlet weak var opponentClassIcon: UIImageView!
     
     
     

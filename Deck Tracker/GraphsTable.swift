@@ -13,10 +13,11 @@ class GraphsTable: UITableViewController {
     @IBOutlet var graphsTable: UITableView!
     
     
-    var numberOfRows = 0
     var dateIndex = -1
     var deckName = ""
     var playerDeckLabelArray:[String] = []
+    var playerDeckIcon = ""
+    var opponentClasses = ["GenericSmall", "WarriorSmall", "PaladinSmall", "ShamanSmall", "HunterSmall", "DruidSmall", "RogueSmall", "MageSmall", "WarlockSmall", "PriestSmall"]
     
     
     
@@ -45,7 +46,7 @@ class GraphsTable: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return numberOfRows
+        return 10
     }
 
     
@@ -54,10 +55,12 @@ class GraphsTable: UITableViewController {
         let cell:GraphsCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! GraphsCell
 
         // Configure the cell...
+        cell.playerDeckIcon.image = UIImage(named: playerDeckIcon)
         cell.playerDeckLabel.text = playerDeckLabelArray[indexPath.row]
+        cell.opponentClassIcon.image = UIImage(named: opponentClasses[indexPath.row])
         cell.winPercentLabel.text = "80%"
         cell.gamesListLabel.text = "21-10"
-        cell.opponentLabel.text = "Paladin"
+        
 
         return cell
     }
@@ -68,20 +71,12 @@ class GraphsTable: UITableViewController {
         
     }
     
-    
-    func getNumberOfRows() {
-
-        numberOfRows = Data.sharedInstance.getNumberOfRows(dateIndex, deckName: deckName)
-        
-        print("Number of rows to be displayed: " + String(numberOfRows))
-    }
-    
     func loadData() {
         //TODO: Load all data needed to display the table view
         getDateIndex()
         getDeckName()
-        getNumberOfRows()
         getPlayerDeckLabel()
+        getPlayerDeckIcon()
         self.graphsTable.reloadData()
     }
     
@@ -102,12 +97,29 @@ class GraphsTable: UITableViewController {
     func getPlayerDeckLabel() {
         playerDeckLabelArray = []
         if deckName == "All" {
-            for var i = 0; i < numberOfRows; i++ {
+            for var i = 0; i < 10; i++ {
                 playerDeckLabelArray.append("All Decks")
             }
         } else {
-            for var i = 0; i < numberOfRows; i++ {
+            for var i = 0; i < 10; i++ {
                 playerDeckLabelArray.append(deckName)
+            }
+        }
+    }
+    
+    func getPlayerDeckIcon() {
+        if deckName == "All" {
+            playerDeckIcon = "GenericSmall"
+        } else {
+            var selectedDeckClass = ""
+            if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Class") as String! {
+                selectedDeckClass = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Class") as String!
+            }
+            
+            if selectedDeckClass == "" {
+               playerDeckIcon = "GenericSmall"
+            } else {
+                playerDeckIcon = DecksList().getImage(selectedDeckClass)
             }
         }
     }
