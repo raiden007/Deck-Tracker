@@ -59,7 +59,7 @@ class Graphs: UIViewController {
         NSUserDefaults.standardUserDefaults().setObject(deckName, forKey: "Deck Name")
         NSUserDefaults.standardUserDefaults().synchronize()
         
-        printStatus()
+        //printStatus()
         
         //Notifies the container that a change occured
         NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)

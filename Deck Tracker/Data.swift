@@ -21,8 +21,9 @@ public class Data {
     var deckListForPhone:[NSDictionary] = []
     
     // Objects needed to be updated in different functions
-    var generalWinRateArray:[Game] = []
+    var filteredGames:[Game] = []
     var coinArray:[Game] = []
+    
     
     // We initialize the data structure
     init() {
@@ -174,24 +175,24 @@ public class Data {
 
         // If current deck is selected
         if deckName == selectedDeckName {
-            generalWinRateArray = []
+            filteredGames = []
             for var i = 0; i < dateArray.count; i++ {
                 if deckName == dateArray[i].getPlayerDeckName() {
-                    generalWinRateArray.append(dateArray[i])
+                    filteredGames.append(dateArray[i])
                 }
             }
         // If all decks are selected
         } else {
-            generalWinRateArray = dateArray
+            filteredGames = dateArray
         }
         
-        for (var i=0; i<generalWinRateArray.count ; i++) {
-            if (generalWinRateArray[i].win == true) {
+        for (var i=0; i<filteredGames.count ; i++) {
+            if (filteredGames[i].win == true) {
                 gamesWon++
             }
         }
         
-        let totalGames = generalWinRateArray.count
+        let totalGames = filteredGames.count
         var winRate = 0.0
         if totalGames == 0 {
             return winRate
@@ -203,7 +204,7 @@ public class Data {
     }
     
     func generalWinRateCount() -> Int {
-        return generalWinRateArray.count
+        return filteredGames.count
     }
     
     
@@ -220,7 +221,7 @@ public class Data {
                     dateArray.append(listOfGames[i])
                 }
             }
-            print("Count for the last 7 days: " + String(dateArray.count))
+            //print("Count for the last 7 days: " + String(dateArray.count))
             return dateArray
             // If date is last month
         } else if date == 1 {
@@ -231,12 +232,12 @@ public class Data {
                     dateArray.append(listOfGames[i])
                 }
             }
-            print("Count for the last month: " + String(dateArray.count))
+            //print("Count for the last month: " + String(dateArray.count))
             return dateArray
             // If date is all
         } else if date == 2 {
             dateArray = listOfGames
-            print("Count for all dates: " + String(dateArray.count))
+            //print("Count for all dates: " + String(dateArray.count))
             return dateArray
         } else {
             print("ERROR!!! Date selection is wrong")
@@ -253,29 +254,42 @@ public class Data {
         }
     }
     
-    func getNumberOfRows(date:Int, deckName:String) -> Int {
-
-        var dateArray = getDateArray(date)
+    func getStatisticsGamesTotal(date:Int, deck:String, opponent:String) -> [Game] {
+        var filteredGamesByDate = getDateArray(date)
         var selectedDeckName = ""
+        var filteredGamesBySelectedDeck:[Game] = []
+        var filteredGamesByOpponent:[Game] = []
         
         if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String! {
             selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
         }
         
         // If current deck is selected
-        if deckName == selectedDeckName {
-            generalWinRateArray = []
-            for var i = 0; i < dateArray.count; i++ {
-                if deckName == dateArray[i].getPlayerDeckName() {
-                    generalWinRateArray.append(dateArray[i])
+        if deck == selectedDeckName {
+            for var i = 0; i < filteredGamesByDate.count; i++ {
+                if deck == filteredGamesByDate[i].getPlayerDeckName() {
+                    filteredGamesBySelectedDeck.append(filteredGamesByDate[i])
                 }
             }
             // If all decks are selected
         } else {
-            generalWinRateArray = dateArray
+            filteredGamesBySelectedDeck = filteredGamesByDate
+        }
+
+        for game in filteredGamesBySelectedDeck {
+            if opponent == "All" {
+                filteredGamesByOpponent = filteredGamesBySelectedDeck
+            } else if opponent == game.getOpponentDeck() {
+                filteredGamesByOpponent.append(game)
+            }
         }
         
-        return generalWinRateArray.count
+        //print("Count for date filter: " + String(filteredGamesByDate.count))
+        //print("Count for deck filter: " + String(filteredGamesBySelectedDeck.count))
+        //print("Count for opponent filter: " + String(filteredGamesByOpponent.count))
+        
+        
+        return filteredGamesByOpponent
     }
     
 }
