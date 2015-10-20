@@ -910,27 +910,53 @@
                                     <action selector="deckChanged:" destination="Hyd-dH-te2" eventType="valueChanged" id="5mW-Uh-h9k"/>
                                 </connections>
                             </segmentedControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQN-ze-cHG">
-                                <rect key="frame" x="0.0" y="144" width="600" height="407"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ega-Nh-XUE">
+                                <rect key="frame" x="16" y="144" width="568" height="407"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jwx-x4-dXk">
+                                        <rect key="frame" x="0.0" y="0.0" width="283" height="128"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.3411764706" green="0.85490196080000003" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o3B-em-2vu">
+                                        <rect key="frame" x="283" y="0.0" width="285" height="128"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.93333333330000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
                                 <animations/>
-                                <connections>
-                                    <segue destination="B3P-sL-1sG" kind="embed" id="bmB-XM-qf9"/>
-                                </connections>
-                            </containerView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="o3B-em-2vu" firstAttribute="top" secondItem="ega-Nh-XUE" secondAttribute="top" id="6Oy-DL-iKS"/>
+                                    <constraint firstAttribute="trailing" secondItem="o3B-em-2vu" secondAttribute="trailing" id="aML-tG-7hc"/>
+                                    <constraint firstItem="o3B-em-2vu" firstAttribute="leading" secondItem="Jwx-x4-dXk" secondAttribute="trailing" id="dhm-Eu-T9n"/>
+                                    <constraint firstItem="Jwx-x4-dXk" firstAttribute="top" secondItem="ega-Nh-XUE" secondAttribute="top" id="eQc-5E-KRD"/>
+                                    <constraint firstItem="Jwx-x4-dXk" firstAttribute="leading" secondItem="ega-Nh-XUE" secondAttribute="leading" id="zjS-es-Nv7"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="eQc-5E-KRD"/>
+                                        <exclude reference="zjS-es-Nv7"/>
+                                        <exclude reference="6Oy-DL-iKS"/>
+                                        <exclude reference="aML-tG-7hc"/>
+                                        <exclude reference="dhm-Eu-T9n"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="WQN-ze-cHG" secondAttribute="trailing" constant="-20" id="1eR-8c-SRB"/>
                             <constraint firstItem="6K2-uo-HRb" firstAttribute="leading" secondItem="NQ1-rW-FJ9" secondAttribute="leadingMargin" id="DxQ-zH-t5Z"/>
-                            <constraint firstItem="WQN-ze-cHG" firstAttribute="leading" secondItem="NQ1-rW-FJ9" secondAttribute="leadingMargin" constant="-20" id="KfW-1h-3x8"/>
                             <constraint firstItem="6K2-uo-HRb" firstAttribute="top" secondItem="eUu-Z9-GXl" secondAttribute="bottom" constant="8" id="LOY-uy-BRe"/>
+                            <constraint firstItem="ega-Nh-XUE" firstAttribute="top" secondItem="6K2-uo-HRb" secondAttribute="bottom" constant="8" id="Mdv-tq-Rfe"/>
+                            <constraint firstItem="ega-Nh-XUE" firstAttribute="leading" secondItem="NQ1-rW-FJ9" secondAttribute="leadingMargin" constant="-4" id="N4b-p8-obe"/>
                             <constraint firstItem="eUu-Z9-GXl" firstAttribute="top" secondItem="JKB-ib-cwg" secondAttribute="bottom" constant="8" id="UrV-u8-7gJ"/>
-                            <constraint firstItem="kcC-9g-Swm" firstAttribute="top" secondItem="WQN-ze-cHG" secondAttribute="bottom" id="VQx-vD-UFL"/>
+                            <constraint firstItem="kcC-9g-Swm" firstAttribute="top" secondItem="ega-Nh-XUE" secondAttribute="bottom" id="b2c-xR-rVv"/>
                             <constraint firstItem="eUu-Z9-GXl" firstAttribute="leading" secondItem="NQ1-rW-FJ9" secondAttribute="leadingMargin" id="cGW-Jr-Tg8"/>
                             <constraint firstItem="eUu-Z9-GXl" firstAttribute="trailing" secondItem="NQ1-rW-FJ9" secondAttribute="trailingMargin" id="hzJ-tc-44n"/>
-                            <constraint firstItem="WQN-ze-cHG" firstAttribute="top" secondItem="6K2-uo-HRb" secondAttribute="bottom" constant="8" id="i6F-2G-2WU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ega-Nh-XUE" secondAttribute="trailing" constant="-4" id="iiG-FV-pHC"/>
                             <constraint firstItem="6K2-uo-HRb" firstAttribute="trailing" secondItem="NQ1-rW-FJ9" secondAttribute="trailingMargin" id="lkP-Bt-lI7"/>
                         </constraints>
                     </view>
@@ -938,7 +964,8 @@
                     <connections>
                         <outlet property="dateSegment" destination="eUu-Z9-GXl" id="8aM-9p-vjC"/>
                         <outlet property="deckSegment" destination="6K2-uo-HRb" id="uKT-u1-3Qz"/>
-                        <outlet property="viewContainer" destination="WQN-ze-cHG" id="Kyk-nd-69a"/>
+                        <outlet property="view1" destination="Jwx-x4-dXk" id="vna-zW-mlf"/>
+                        <outlet property="view2" destination="o3B-em-2vu" id="rff-nu-yaL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Xu-F1-y3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -950,7 +977,7 @@
             <objects>
                 <tableViewController id="B3P-sL-1sG" customClass="GraphsTable" customModule="Deck_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ody-O1-7zo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="407"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1077,7 +1104,7 @@
             <objects>
                 <tableViewController title="Tags" id="D1j-dR-SEM" customClass="TagsTable" customModule="Deck_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dgT-Ep-h1S">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="407"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
