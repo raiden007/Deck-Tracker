@@ -54,11 +54,19 @@ class GraphsCollectionView: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! GraphsCollectionCell
-        cell.backgroundColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.redColor()
         cell.cellLabel.text = "test"
         // Configure the cell
         
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let width = collectionView.bounds.size.width
+        
+        return CGSizeMake(width / 2 - 5 , width / 2 - 5)
+            
     }
 
     // MARK: UICollectionViewDelegate

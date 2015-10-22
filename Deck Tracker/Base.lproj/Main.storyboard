@@ -991,7 +991,6 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <animations/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="85D-vc-WHL" firstAttribute="leading" secondItem="ITZ-nf-5Ig" secondAttribute="leadingMargin" constant="46" id="Fxf-uQ-sXz"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="85D-vc-WHL" secondAttribute="trailing" constant="46" id="boZ-TA-vPd"/>
