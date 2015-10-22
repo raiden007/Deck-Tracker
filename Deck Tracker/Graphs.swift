@@ -31,19 +31,6 @@ class Graphs: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let x = self.view.frame.width / 2 - 20
-        print(x)
-        let screenSize:CGRect = UIScreen.mainScreen().bounds
-        let width = screenSize.width / 2
-        print(width)
-        view1.frame = CGRectMake(0, 0, x, x)
-        view2.frame = CGRectMake(width, 0, x, x)
-   
-        //view1.frame = CGRectMake(<#T##x: CGFloat##CGFloat#>, <#T##y: CGFloat##CGFloat#>, <#T##width: CGFloat##CGFloat#>, <#T##height: CGFloat##CGFloat#>)
-        
-        
-        
         getInitialStatus()
     }
     
