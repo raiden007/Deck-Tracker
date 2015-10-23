@@ -979,11 +979,25 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85D-vc-WHL">
-                                            <rect key="frame" x="54" y="8" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vs All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czx-WW-Pff">
+                                            <rect key="frame" x="55" y="8" width="40.5" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipZ-8u-Oo5">
+                                            <rect key="frame" x="54" y="64.5" width="42" height="20.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZD1-46-0Hz">
+                                            <rect key="frame" x="54" y="129" width="42" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -992,12 +1006,17 @@
                                 </view>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstItem="85D-vc-WHL" firstAttribute="leading" secondItem="ITZ-nf-5Ig" secondAttribute="leadingMargin" constant="46" id="Fxf-uQ-sXz"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="85D-vc-WHL" secondAttribute="trailing" constant="46" id="boZ-TA-vPd"/>
-                                    <constraint firstItem="85D-vc-WHL" firstAttribute="top" secondItem="ITZ-nf-5Ig" secondAttribute="topMargin" id="ltu-dy-Poz"/>
+                                    <constraint firstItem="ipZ-8u-Oo5" firstAttribute="centerX" secondItem="ITZ-nf-5Ig" secondAttribute="centerX" id="58r-67-yzM"/>
+                                    <constraint firstItem="czx-WW-Pff" firstAttribute="centerX" secondItem="ITZ-nf-5Ig" secondAttribute="centerX" id="9my-iN-clx"/>
+                                    <constraint firstItem="ZD1-46-0Hz" firstAttribute="centerX" secondItem="ITZ-nf-5Ig" secondAttribute="centerX" id="AXE-Ab-ulD"/>
+                                    <constraint firstItem="ipZ-8u-Oo5" firstAttribute="centerY" secondItem="ITZ-nf-5Ig" secondAttribute="centerY" id="Pnn-qo-vSx"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="ZD1-46-0Hz" secondAttribute="bottom" constant="-8" id="Qzu-I4-hrg"/>
+                                    <constraint firstItem="czx-WW-Pff" firstAttribute="top" secondItem="ITZ-nf-5Ig" secondAttribute="topMargin" id="tfN-j9-cP2"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="cellLabel" destination="85D-vc-WHL" id="6yn-ag-B7H"/>
+                                    <outlet property="graphsLabel" destination="ipZ-8u-Oo5" id="rtc-sQ-8CI"/>
+                                    <outlet property="versusLabel" destination="czx-WW-Pff" id="MbN-dY-9uY"/>
+                                    <outlet property="winInfoLabel" destination="ZD1-46-0Hz" id="R3J-Sn-F3c"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -1006,6 +1025,9 @@
                             <outlet property="delegate" destination="sFK-R8-uvP" id="a8V-z8-MvQ"/>
                         </connections>
                     </collectionView>
+                    <connections>
+                        <outlet property="collectionView" destination="2MZ-Oh-bNL" id="fYU-Sr-QcH"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Li-yg-Ccl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

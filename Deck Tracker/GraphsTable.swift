@@ -77,7 +77,6 @@ class GraphsTable: UITableViewController {
     }
     
     func loadData() {
-        //TODO: Load all data needed to display the table view
         getDateIndex()
         getDeckName()
         getPlayerDeckLabel()
@@ -140,17 +139,6 @@ class GraphsTable: UITableViewController {
         for opponent in data {
             getStatisticsVs(opponent)
         }
-        
-//        getStatisticsVs("All")
-//        getStatisticsVs("Warrior")
-//        getStatisticsVs("Paladin")
-//        getStatisticsVs("Shaman")
-//        getStatisticsVs("Hunter")
-//        getStatisticsVs("Druid")
-//        getStatisticsVs("Rogue")
-//        getStatisticsVs("Mage")
-//        getStatisticsVs("Warlock")
-//        getStatisticsVs("Priest")
     }
     
     func getStatisticsVs(opponent:String) {

@@ -9,6 +9,11 @@
 import UIKit
 
 class GraphsCollectionCell: UICollectionViewCell {
-    @IBOutlet weak var cellLabel: UILabel!
+    
+    @IBOutlet weak var versusLabel: UILabel!
+    @IBOutlet weak var graphsLabel: UILabel!
+    @IBOutlet weak var winInfoLabel: UILabel!
+    
+    
     
 }
