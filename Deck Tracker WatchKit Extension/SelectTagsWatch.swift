@@ -45,7 +45,7 @@ class SelectTagsWatch: WKInterfaceController {
         }
         
         if let _ = NSUserDefaults.standardUserDefaults().stringForKey("Selected Tag Watch") {
-            selectedTag = NSUserDefaults.standardUserDefaults().stringForKey("Selected Tag Watch") as! String!
+            selectedTag = NSUserDefaults.standardUserDefaults().stringForKey("Selected Tag Watch") as String!
         }
         //println(tagsList)
         //println("Selected tag: " + String(stringInterpolationSegment: selectedTagsArray))
@@ -86,6 +86,7 @@ class SelectTagsWatch: WKInterfaceController {
             wasAlreadySelected = true
         }
         
+        selectedTag = tagsList[rowIndex]
         
         if wasAlreadySelected == true {
             // If it was already selected then remove the tag from array and color the row
@@ -104,6 +105,7 @@ class SelectTagsWatch: WKInterfaceController {
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(selectedTag, forKey: "Selected Tag Watch")
         defaults.synchronize()
+        self.popController()
     }
 
 }
