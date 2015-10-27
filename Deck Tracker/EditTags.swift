@@ -105,7 +105,7 @@ class EditTags: UITableViewController {
         alert.addAction(UIAlertAction(title: "Finish", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] 
             self.allTags.append(textField.text!)
-            self.allTags.sort()
+            self.allTags.sortInPlace()
             self.saveAllTags()
             self.readTags()
             self.tagsTable.reloadData()

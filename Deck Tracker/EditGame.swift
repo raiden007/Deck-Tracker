@@ -92,13 +92,13 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
     func putSavedTagsOnLabel() {
         
         selectedTags = selectedGame.getTags()
-        print("Selected Tags Edit Screen with default tags: " + String(stringInterpolationSegment: selectedTags))
+        //print("Selected Tags Edit Screen with default tags: " + String(stringInterpolationSegment: selectedTags))
         if let _ = defaults.arrayForKey("Edited Selected Tags") as? [String] {
             selectedTags = defaults.arrayForKey("Edited Selected Tags") as! [String]
         }
         defaults.setObject(selectedTags, forKey: "Edited Selected Tags")
         defaults.synchronize()
-        print("Selected Tags Edit Screen after loading Edited Tags: " + String(stringInterpolationSegment: selectedTags))
+        //print("Selected Tags Edit Screen after loading Edited Tags: " + String(stringInterpolationSegment: selectedTags))
 
         if selectedTags.isEmpty {
             tagsLabel.text = "Tags: "

@@ -13,6 +13,7 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var tagLabel: UILabel!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var winInfoLabel: UILabel!
     
     
 }

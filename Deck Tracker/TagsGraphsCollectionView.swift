@@ -17,6 +17,8 @@ class TagsGraphsCollectionView: UICollectionViewController {
     var indexOfSelectedGraph = -1
     let data = ["All", "Warrior", "Paladin", "Shaman", "Hunter", "Druid", "Rogue", "Mage", "Warlock", "Priest"]
     var filteredGames:[Game] = []
+    var filteredTags:[String] = []
+    var gamesFilteredByTag = [String: Game]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,13 +36,14 @@ class TagsGraphsCollectionView: UICollectionViewController {
         getDateIndex()
         getDeckName()
         getGraphsClicked()
-        //getStatistics()
+        getTagName()
+        setupGamesFilteredByTag()
         self.collectionView!.reloadData()
     }
     
     func getDateIndex() {
         dateIndex = NSUserDefaults.standardUserDefaults().integerForKey("Date Index")
-        print("Date Index is: " + String(dateIndex))
+        //print("Date Index is: " + String(dateIndex))
     }
     
     func getDeckName() {
@@ -49,7 +52,7 @@ class TagsGraphsCollectionView: UICollectionViewController {
         } else {
             deckName = ""
         }
-        print("Deck Name is: " + deckName)
+        //print("Deck Name is: " + deckName)
     }
     
     func getGraphsClicked() {
@@ -58,10 +61,28 @@ class TagsGraphsCollectionView: UICollectionViewController {
         }
         
         let opponentSelected = data[indexOfSelectedGraph]
-        //print(opponentSelected)
         
         filteredGames = Data.sharedInstance.getStatisticsGamesTotal(dateIndex, deck: deckName, opponent: opponentSelected)
-        print(filteredGames)
+    }
+    
+    func getTagName() {
+
+        var allTags:[String] = []
+        
+        for game in filteredGames {
+            let gameTags = game.getTags()
+            for tag in gameTags {
+                allTags.append(tag)
+            }
+            
+        }
+        
+        filteredTags = Array(Set(allTags))
+        filteredTags.sortInPlace()
+    }
+    
+    func setupGamesFilteredByTag() {
+        
     }
 
     /*
@@ -84,10 +105,10 @@ class TagsGraphsCollectionView: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        if filteredGames.count == 0 {
+        if filteredTags.count == 0 {
             return 1
         } else {
-            return filteredGames.count
+            return filteredTags.count
         }
         
     }
@@ -97,8 +118,10 @@ class TagsGraphsCollectionView: UICollectionViewController {
         if filteredGames.count == 0 {
             cell.tagLabel.hidden = true
             cell.label.text = "No data"
+            cell.winInfoLabel.hidden = true
         } else {
-           cell.label.text = "aaa"
+            cell.tagLabel.text = "Tag: " + String(filteredTags[indexPath.row])
+            //cell.label.text = "aaa"
         }
         cell.backgroundColor = UIColor.grayColor()
         

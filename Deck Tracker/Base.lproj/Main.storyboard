@@ -993,6 +993,13 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJq-kb-cns">
+                                            <rect key="frame" x="54" y="121" width="42" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1000,13 +1007,16 @@
                                 <animations/>
                                 <constraints>
                                     <constraint firstItem="XTj-l8-Iuo" firstAttribute="top" secondItem="TH9-V0-h1B" secondAttribute="topMargin" id="0D9-xG-Hef"/>
+                                    <constraint firstItem="cJq-kb-cns" firstAttribute="bottom" secondItem="TH9-V0-h1B" secondAttribute="bottomMargin" id="9eE-ck-vi5"/>
                                     <constraint firstItem="XTj-l8-Iuo" firstAttribute="centerX" secondItem="TH9-V0-h1B" secondAttribute="centerX" id="dys-Q5-7m9"/>
                                     <constraint firstItem="kJx-BU-XKZ" firstAttribute="centerY" secondItem="TH9-V0-h1B" secondAttribute="centerY" id="eHA-hj-mJd"/>
+                                    <constraint firstItem="cJq-kb-cns" firstAttribute="centerX" secondItem="TH9-V0-h1B" secondAttribute="centerX" id="sVF-ws-35S"/>
                                     <constraint firstItem="kJx-BU-XKZ" firstAttribute="centerX" secondItem="TH9-V0-h1B" secondAttribute="centerX" id="xHL-PR-IPy"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="label" destination="kJx-BU-XKZ" id="E0x-2E-f1S"/>
                                     <outlet property="tagLabel" destination="XTj-l8-Iuo" id="g4R-ev-EeO"/>
+                                    <outlet property="winInfoLabel" destination="cJq-kb-cns" id="Rh3-p6-4WK"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

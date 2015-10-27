@@ -184,10 +184,10 @@ class GraphsCollectionView: UICollectionViewController {
     */
 
     
-    //Uncomment this method to specify if the specified item should be selected
     override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        //Save the index of the selected graph
         let indexOfSelectedGraph = indexPath.row
-        print(indexOfSelectedGraph)
+        //print(indexOfSelectedGraph)
         NSUserDefaults.standardUserDefaults().setInteger(indexOfSelectedGraph, forKey: "Index Of Selected Graph")
         return true
     }
