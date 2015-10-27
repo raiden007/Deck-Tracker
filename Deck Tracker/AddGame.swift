@@ -27,7 +27,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     @IBOutlet var winCellSwitch: UISwitch!
     @IBOutlet weak var tagsLabel: UILabel!
 
-    var allTags:[String] = []
+    var tag = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +119,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey("Saved Date")
         defaults.removeObjectForKey("Opponent Class")
-        defaults.removeObjectForKey("Selected Tags")
+        defaults.removeObjectForKey("Selected Tag")
         defaults.synchronize()
         self.dismissViewControllerAnimated(true, completion: {})
     }
@@ -137,7 +137,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     
     
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
-        // Removes the selected date, opponent class and selected tags from NSUserDefaults and sends all the info to the Game List
+        // Removes the selected date, opponent class and selected tag from NSUserDefaults and sends all the info to the Game List
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
 
         
@@ -151,13 +151,13 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
         let newGameOpponentClass = defaults.stringForKey("Opponent Class") as String?
         let newGameCoin = coinCellSwitch.on
         let newGameWin = winCellSwitch.on
-        let newGameTag = allTags
+        let newGameTag = tag
 
         
         if newGamePlayerDeckName != nil && newGameOpponentClass != nil {
             
             // Adds a new game
-            let newGame = Game(newID: newGameID, newDate: newGameDate, newPlayerDeckName: newGamePlayerDeckName!, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin, newTags: newGameTag)
+            let newGame = Game(newID: newGameID, newDate: newGameDate, newPlayerDeckName: newGamePlayerDeckName!, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin, newTag: newGameTag)
             // Add to Data class file
             Data.sharedInstance.addGame(newGame)
             self.dismissViewControllerAnimated(true, completion: {})
@@ -191,10 +191,10 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
 
         }
         
-        // Deletes the date, opponent class and selected tags so the user needs to select again
+        // Deletes the date, opponent class and selected tag so the user needs to select again
         defaults.removeObjectForKey("Saved Date")
         defaults.removeObjectForKey("Opponent Class")
-        defaults.removeObjectForKey("Selected Tags")
+        defaults.removeObjectForKey("Selected Tag")
         defaults.synchronize()
     }
     
@@ -210,21 +210,13 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     // Puts the tags on the Tags Label
     func putTagLabel() {
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let _ = defaults.arrayForKey("Selected Tags") {
-            allTags = defaults.arrayForKey("Selected Tags") as! [String]!
+        if let _ = defaults.stringForKey("Selected Tag") {
+            tag = defaults.stringForKey("Selected Tag") as String!
         }
-        if allTags.isEmpty {
+        if tag.isEmpty {
             tagsLabel.text = "Add Tags"
         } else {
-            var str = "";
-            for var i = 0; i < allTags.count; i++ {
-                if i == allTags.count - 1 {
-                    str += allTags[i]
-                } else {
-                    str += allTags[i] + ", "
-                }
-            }
-            tagsLabel.text = "Tags: " + str
+            tagsLabel.text = "Tags: " + tag
         }
     }
 }

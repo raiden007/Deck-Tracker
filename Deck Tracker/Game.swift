@@ -18,10 +18,10 @@ class Game : NSObject, NSCoding {
     var coin:Bool
     var win:Bool
     var date:NSDate
-    var tags:[String]
+    var tag:String
 
     // Initialize an Game object with the following arguments
-    init (newID:Int, newDate:NSDate, newPlayerDeckName:String, newPlayerDeckClass:String, newOpponentDeck:String, newCoin:Bool, newWin:Bool, newTags:[String]) {
+    init (newID:Int, newDate:NSDate, newPlayerDeckName:String, newPlayerDeckClass:String, newOpponentDeck:String, newCoin:Bool, newWin:Bool, newTag:String) {
         self.id = newID
         self.playerDeckName = newPlayerDeckName
         self.playerDeckClass = newPlayerDeckClass
@@ -29,7 +29,7 @@ class Game : NSObject, NSCoding {
         self.coin = newCoin
         self.win = newWin
         self.date = newDate
-        self.tags = newTags
+        self.tag = newTag
     }
     
     // Encode and decode the object so it can be stored in NSUserDefaults
@@ -41,9 +41,10 @@ class Game : NSObject, NSCoding {
         coin = aDecoder.decodeObjectForKey("coin") as! Bool
         win = aDecoder.decodeObjectForKey("win") as! Bool
         date = aDecoder.decodeObjectForKey("date") as! NSDate
-        tags = []
-        if let _ = aDecoder.decodeObjectForKey("tags") as? [String] {
-            tags = aDecoder.decodeObjectForKey("tags") as! [String]
+        if let _ = aDecoder.decodeObjectForKey("tag") as? String {
+            tag = aDecoder.decodeObjectForKey("tag") as! String
+        } else {
+            tag = ""
         }
     }
     
@@ -56,7 +57,7 @@ class Game : NSObject, NSCoding {
         aCoder.encodeObject(coin, forKey: "coin")
         aCoder.encodeObject(win, forKey: "win")
         aCoder.encodeObject(date, forKey: "date")
-        aCoder.encodeObject(tags, forKey: "tags")
+        aCoder.encodeObject(tag, forKey: "tag")
     }
     
     // Returns deck name
@@ -121,13 +122,8 @@ class Game : NSObject, NSCoding {
     }
     
     // Returns the tag
-    func getTags() -> [String] {
-        return tags
-    }
-    
-    // Sets tags
-    func setTagAsEmpty(newTags:[String]) {
-        tags = newTags
+    func getTag() -> String {
+        return tag
     }
     
     // Returns a string containing all the proprierties of the object
@@ -136,12 +132,8 @@ class Game : NSObject, NSCoding {
         let coinString = String(stringInterpolationSegment: coin)
         let winString = String(stringInterpolationSegment: win)
         let idString = String(id)
-        var tagsString = ""
-        for var i = 0; i < tags.count; i++ {
-            tagsString += tags[i] + ", "
-        }
         
-        return ("Game number: " + idString + ", date: " + getDate() + ", Player Deck Name: " + playerDeckName + ", Opponent Deck: " + opponentDeck + ", Coin: " + coinString + ", Win: " + winString + ", Tags: " + tagsString)
+        return ("Game number: " + idString + ", date: " + getDate() + ", Player Deck Name: " + playerDeckName + ", Opponent Deck: " + opponentDeck + ", Coin: " + coinString + ", Win: " + winString + ", Tag: " + tag)
         
     }
 }

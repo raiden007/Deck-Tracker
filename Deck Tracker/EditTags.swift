@@ -15,7 +15,7 @@ class EditTags: UITableViewController {
     
 
     var allTags:[String] = []
-    var selectedTags:[String] = []
+    var selectedTag:String = ""
     
     
     override func viewDidLoad() {
@@ -42,10 +42,9 @@ class EditTags: UITableViewController {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = allTags[indexPath.row]
         let cellLabel = cell.textLabel?.text as String!
-        for var i = 0; i < selectedTags.count; i++ {
-            if cellLabel == selectedTags[i] {
-                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-            }
+        if cellLabel == selectedTag {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        
         }
         return cell
     }
@@ -53,43 +52,32 @@ class EditTags: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Selects the row and saves the info so we can add a checkmark
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        if cell?.accessoryType == UITableViewCellAccessoryType.None {
-            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
-            let cellLabel = cell?.textLabel?.text as String!
-            selectedTags.append(cellLabel)
-            saveSelectedTags(selectedTags)
-        } else {
-            cell?.accessoryType = UITableViewCellAccessoryType.None
-            for var i = 0; i < selectedTags.count; i++ {
-                if selectedTags[i] == cell?.textLabel?.text {
-                    selectedTags.removeAtIndex(i)
-                }
-            }
-            saveSelectedTags(selectedTags)
-        }
+        let cellLabel = cell?.textLabel?.text as String!
+        saveSelectedTag(cellLabel)
+        navigationController?.popViewControllerAnimated(true)
     }
     
-    func saveSelectedTags(selectedTags:[String]) {
-        // Saves the selected tags as an array
+    func saveSelectedTag(selectedTag:String) {
+        // Saves the selected tag as an array
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(selectedTags, forKey: "Edited Selected Tags")
+        defaults.setObject(selectedTag, forKey: "Edited Selected Tag")
         defaults.synchronize()
     }
     
-    func readSelectedTags() {
-        // Reads the selected tags from NSUserDefaults
+    func readSelectedTag() {
+        // Reads the selected tag from NSUserDefaults
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let _ = defaults.arrayForKey("Edited Selected Tags") {
-            selectedTags = defaults.arrayForKey("Edited Selected Tags") as! [String]
+        if let _ = defaults.stringForKey("Edited Selected Tag") {
+            selectedTag = defaults.stringForKey("Edited Selected Tag") as String!
         } else {
-            selectedTags = []
+            selectedTag = ""
         }
-        print("Selected tags Tags screen: " + String(stringInterpolationSegment: selectedTags))
+        print("Selected tag Tag screen: " + String(stringInterpolationSegment: selectedTag))
     }
     
     func readData() {
         allTags = readTags()
-        readSelectedTags()
+        readSelectedTag()
     }
     
     @IBAction func plusButtonPressed(sender: UIBarButtonItem) {

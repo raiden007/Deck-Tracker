@@ -245,14 +245,7 @@ public class Data {
         }
     }
     
-    func convertDataFromVersion1ToVersion2() {
-        for var i = 0; i < listOfGames.count; i++ {
-            let game:Game = listOfGames[i]
-            if game.tags.isEmpty {
-                game.setTagAsEmpty([])
-            }
-        }
-    }
+    
     
     func getStatisticsGamesTotal(date:Int, deck:String, opponent:String) -> [Game] {
         var filteredGamesByDate = getDateArray(date)

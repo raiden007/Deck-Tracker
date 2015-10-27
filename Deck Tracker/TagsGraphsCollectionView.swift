@@ -70,11 +70,7 @@ class TagsGraphsCollectionView: UICollectionViewController {
         var allTags:[String] = []
         
         for game in filteredGames {
-            let gameTags = game.getTags()
-            for tag in gameTags {
-                allTags.append(tag)
-            }
-            
+            allTags.append(game.getTag())
         }
         
         filteredTags = Array(Set(allTags))

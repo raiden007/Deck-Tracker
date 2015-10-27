@@ -24,7 +24,7 @@ class DeckTrackerWatch: WKInterfaceController {
     var winSwitchInt:Int = 1
     var selectedDeckName: String = ""
     var selectedDeckClass: String = ""
-    var selectedTags:[String] = []
+    var selectedTag:String = ""
 
 
     override func awakeWithContext(context: AnyObject?) {
@@ -39,7 +39,7 @@ class DeckTrackerWatch: WKInterfaceController {
         print("Watch app started")
         setSelectedDeckButton()
         setOpponentClassButton()
-        setTagsButton()
+        setTagButton()
     }
 
     override func didDeactivate() {
@@ -83,13 +83,13 @@ class DeckTrackerWatch: WKInterfaceController {
         }
         dict.setValue(win, forKey: "win")
         
-        // Gets the selected tags
-        if let _: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") {
-            selectedTags = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") as! [String]
+        // Gets the selected tag
+        if let _: AnyObject = NSUserDefaults.standardUserDefaults().stringForKey("Selected Tag Watch") {
+            selectedTag = NSUserDefaults.standardUserDefaults().stringForKey("Selected Tag Watch") as String!
         } else {
-            selectedTags = [""]
+            selectedTag = ""
         }
-        dict.setValue(selectedTags, forKey: "watchSelectedTags")
+        dict.setValue(selectedTag, forKey: "watchSelectedTag")
         
         // Saves the dictionary and sends the info to the phone
         if opponentClass != nil {
@@ -110,7 +110,7 @@ class DeckTrackerWatch: WKInterfaceController {
         
         // Remove saved settings
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Watch Opponent Class")
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Tags Watch")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Tag Watch")
         setOpponentClassButtonBackgroundToBlack()
         willActivate()
     }
@@ -293,15 +293,15 @@ class DeckTrackerWatch: WKInterfaceController {
         }
     }
     
-    func setTagsButton() {
+    func setTagButton() {
         // Populates the tags button
-        if let testSelectedTags: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Tags Watch") {
-            selectedTags = testSelectedTags as! [String]
-            tagsButton.setTitle("Tags Added")
+        if let _ = NSUserDefaults.standardUserDefaults().stringForKey("Selected Tag Watch") {
+            selectedTag = NSUserDefaults.standardUserDefaults().stringForKey("Selected Tag Watch") as String!
+            tagsButton.setTitle("Tag: " + selectedTag)
         } else {
-            tagsButton.setTitle("Add Tags")
+            tagsButton.setTitle("Add Tag")
         }
-        //println(selectedTags)
+        //println(selectedTag)
     }
     
     

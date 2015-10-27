@@ -24,7 +24,7 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
         
         // Initialize the data structure and print it to the console at app launch
         Data.init()
-        Data.sharedInstance.convertDataFromVersion1ToVersion2()
+        //Data.sharedInstance.convertDataFromVersion1ToVersion2()
         Data.sharedInstance.printGameData()
         Data.sharedInstance.printDeckData()
         
@@ -72,9 +72,9 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
         let opponentClass = dict["watchOpponentClass"] as! String
         let coin = dict["coin"] as! Bool
         let win = dict["win"] as! Bool
-        let tags = dict["watchSelectedTags"] as! [String]
+        let tag = dict["watchSelectedTag"] as! String
         
-        let newGame = Game(newID: gameID, newDate: date, newPlayerDeckName: playerDeckName, newPlayerDeckClass: playerDeckClass, newOpponentDeck: opponentClass, newCoin: coin, newWin: win, newTags: tags)
+        let newGame = Game(newID: gameID, newDate: date, newPlayerDeckName: playerDeckName, newPlayerDeckClass: playerDeckClass, newOpponentDeck: opponentClass, newCoin: coin, newWin: win, newTag: tag)
         Data.sharedInstance.addGame(newGame)
         
         // Posts a notification for another screen (Games List)
