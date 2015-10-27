@@ -14,6 +14,7 @@ class GraphsCollectionCell: UICollectionViewCell {
     @IBOutlet weak var graphsLabel: UILabel!
     @IBOutlet weak var winInfoLabel: UILabel!
     
+    @IBOutlet weak var testLabel: UILabel!
     
     
 }

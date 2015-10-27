@@ -21,6 +21,7 @@ class GraphsCollectionView: UICollectionViewController {
     var winRateArray:[Int] = []
     var gamesWonArray:[Int] = []
     var gamesLostArray:[Int] = []
+    var gamesFilteredByOpponent:[[Game]] = []
     
 
     override func viewDidLoad() {
@@ -65,11 +66,18 @@ class GraphsCollectionView: UICollectionViewController {
         winRateArray = []
         gamesWonArray = []
         gamesLostArray = []
+        gamesFilteredByOpponent = []
         
         let data = ["All", "Warrior", "Paladin", "Shaman", "Hunter", "Druid", "Rogue", "Mage", "Warlock", "Priest"]
         for opponent in data {
             getStatisticsVs(opponent)
         }
+        
+        // Saves all games in an array filtered by: What the user selected in the buttons + each opponent
+        //print(gamesFilteredByOpponent.count)
+        //print(gamesFilteredByOpponent)
+        //NSUserDefaults.standardUserDefaults().setObject(gamesFilteredByOpponent, forKey: "Games Filtered By Opponent")
+        //NSUserDefaults.standardUserDefaults().synchronize()
     }
     
     func getStatisticsVs(opponent:String) {
@@ -80,6 +88,9 @@ class GraphsCollectionView: UICollectionViewController {
         
         filteredGames = Data.sharedInstance.getStatisticsGamesTotal(dateIndex, deck: deckName, opponent: opponent)
         totalGames = filteredGames.count
+        
+        //gamesFilteredByOpponent.append(filteredGames)
+        
         
         for game in filteredGames {
             if game.getWin() == true {
@@ -135,9 +146,16 @@ class GraphsCollectionView: UICollectionViewController {
         cell.backgroundColor = UIColor.grayColor()
         // Configure the cell
         cell.versusLabel.text = "vs. " + graphsTitle[indexPath.row]
-        cell.graphsLabel.text = String(winRateArray[indexPath.row]) + " %"
-        cell.winInfoLabel.text = String(gamesWonArray[indexPath.row]) + " - "
- + String(gamesLostArray[indexPath.row])
+
+        if gamesWonArray[indexPath.row] == 0 && gamesLostArray[indexPath.row] == 0 {
+            cell.graphsLabel.text = "No Data"
+            cell.winInfoLabel.hidden = true
+        } else {
+            cell.winInfoLabel.hidden = false
+            cell.graphsLabel.text = String(winRateArray[indexPath.row]) + " %"
+            cell.winInfoLabel.text = String(gamesWonArray[indexPath.row]) + " - " + String(gamesLostArray[indexPath.row])
+        }
+
         return cell
     }
     
@@ -154,6 +172,7 @@ class GraphsCollectionView: UICollectionViewController {
         return CGSizeMake(cellWidth, cellWidth)
             
     }
+    
 
     // MARK: UICollectionViewDelegate
 
@@ -164,12 +183,15 @@ class GraphsCollectionView: UICollectionViewController {
     }
     */
 
-    /*
-    // Uncomment this method to specify if the specified item should be selected
+    
+    //Uncomment this method to specify if the specified item should be selected
     override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        let indexOfSelectedGraph = indexPath.row
+        print(indexOfSelectedGraph)
+        NSUserDefaults.standardUserDefaults().setInteger(indexOfSelectedGraph, forKey: "Index Of Selected Graph")
         return true
     }
-    */
+    
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
