@@ -54,6 +54,7 @@
 		8BEDCD4E1BA61C3A0026AEFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4D1BA61C3A0026AEFD /* Settings.swift */; };
 		8BFC2F0D1BDF7D7700A7BD23 /* TagsGraphsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC2F0C1BDF7D7700A7BD23 /* TagsGraphsCollectionView.swift */; };
 		8BFC2F0F1BDF7E5000A7BD23 /* TagsGraphsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC2F0E1BDF7E5000A7BD23 /* TagsGraphsCollectionCell.swift */; };
+		8BFEA6F01BE0F091005DBC04 /* Deck_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEA6EF1BE0F091005DBC04 /* Deck_TrackerUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,13 @@
 			remoteInfo = "Deck Tracker WatchKit Extension";
 		};
 		6DDD449A1AEF87B700A4B5D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DDD447A1AEF87B700A4B5D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DDD44811AEF87B700A4B5D2;
+			remoteInfo = "Deck Tracker";
+		};
+		8BFEA6F21BE0F091005DBC04 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6DDD447A1AEF87B700A4B5D2 /* Project object */;
 			proxyType = 1;
@@ -151,6 +159,9 @@
 		8BEDCD4D1BA61C3A0026AEFD /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		8BFC2F0C1BDF7D7700A7BD23 /* TagsGraphsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsGraphsCollectionView.swift; sourceTree = "<group>"; };
 		8BFC2F0E1BDF7E5000A7BD23 /* TagsGraphsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsGraphsCollectionCell.swift; sourceTree = "<group>"; };
+		8BFEA6ED1BE0F091005DBC04 /* Deck TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Deck TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BFEA6EF1BE0F091005DBC04 /* Deck_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck_TrackerUITests.swift; sourceTree = "<group>"; };
+		8BFEA6F11BE0F091005DBC04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +182,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6DDD44961AEF87B700A4B5D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BFEA6EA1BE0F091005DBC04 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,6 +305,7 @@
 				6DDD449C1AEF87B700A4B5D2 /* Deck TrackerTests */,
 				6DB67A5E1B188890000A8E54 /* Deck Tracker WatchKit Extension */,
 				6DB67A6D1B188891000A8E54 /* Deck Tracker WatchKit App */,
+				8BFEA6EE1BE0F091005DBC04 /* Deck TrackerUITests */,
 				6DDD44831AEF87B700A4B5D2 /* Products */,
 				8B10AFCB1B0310A100D33C29 /* Fabric.framework */,
 				8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */,
@@ -300,6 +319,7 @@
 				6DDD44991AEF87B700A4B5D2 /* Deck TrackerTests.xctest */,
 				6DB67A5D1B188890000A8E54 /* Deck Tracker WatchKit Extension.appex */,
 				6DB67A691B188891000A8E54 /* Deck Tracker WatchKit App.app */,
+				8BFEA6ED1BE0F091005DBC04 /* Deck TrackerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -360,6 +380,15 @@
 				6DE566951B15C2220026FBF5 /* About.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		8BFEA6EE1BE0F091005DBC04 /* Deck TrackerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8BFEA6EF1BE0F091005DBC04 /* Deck_TrackerUITests.swift */,
+				8BFEA6F11BE0F091005DBC04 /* Info.plist */,
+			);
+			path = "Deck TrackerUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +465,24 @@
 			productReference = 6DDD44991AEF87B700A4B5D2 /* Deck TrackerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		8BFEA6EC1BE0F091005DBC04 /* Deck TrackerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BFEA6F61BE0F091005DBC04 /* Build configuration list for PBXNativeTarget "Deck TrackerUITests" */;
+			buildPhases = (
+				8BFEA6E91BE0F091005DBC04 /* Sources */,
+				8BFEA6EA1BE0F091005DBC04 /* Frameworks */,
+				8BFEA6EB1BE0F091005DBC04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8BFEA6F31BE0F091005DBC04 /* PBXTargetDependency */,
+			);
+			name = "Deck TrackerUITests";
+			productName = "Deck TrackerUITests";
+			productReference = 8BFEA6ED1BE0F091005DBC04 /* Deck TrackerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -443,7 +490,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Andrei Joghiu";
 				TargetAttributes = {
@@ -473,6 +520,10 @@
 						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = 6DDD44811AEF87B700A4B5D2;
 					};
+					8BFEA6EC1BE0F091005DBC04 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 6DDD44811AEF87B700A4B5D2;
+					};
 				};
 			};
 			buildConfigurationList = 6DDD447D1AEF87B700A4B5D2 /* Build configuration list for PBXProject "Deck Tracker" */;
@@ -492,6 +543,7 @@
 				6DDD44981AEF87B700A4B5D2 /* Deck TrackerTests */,
 				6DB67A5C1B188890000A8E54 /* Deck Tracker WatchKit Extension */,
 				6DB67A681B188891000A8E54 /* Deck Tracker WatchKit App */,
+				8BFEA6EC1BE0F091005DBC04 /* Deck TrackerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -526,6 +578,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6DDD44971AEF87B700A4B5D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BFEA6EB1BE0F091005DBC04 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -609,6 +668,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BFEA6E91BE0F091005DBC04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BFEA6F01BE0F091005DBC04 /* Deck_TrackerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -626,6 +693,11 @@
 			isa = PBXTargetDependency;
 			target = 6DDD44811AEF87B700A4B5D2 /* Deck Tracker */;
 			targetProxy = 6DDD449A1AEF87B700A4B5D2 /* PBXContainerItemProxy */;
+		};
+		8BFEA6F31BE0F091005DBC04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DDD44811AEF87B700A4B5D2 /* Deck Tracker */;
+			targetProxy = 8BFEA6F21BE0F091005DBC04 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -892,6 +964,34 @@
 			};
 			name = Release;
 		};
+		8BFEA6F41BE0F091005DBC04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = "Deck TrackerUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "andrei.joghiu.Deck-TrackerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Deck Tracker";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		8BFEA6F51BE0F091005DBC04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Deck TrackerUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "andrei.joghiu.Deck-TrackerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Deck Tracker";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -939,6 +1039,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8BFEA6F61BE0F091005DBC04 /* Build configuration list for PBXNativeTarget "Deck TrackerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BFEA6F41BE0F091005DBC04 /* Debug */,
+				8BFEA6F51BE0F091005DBC04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

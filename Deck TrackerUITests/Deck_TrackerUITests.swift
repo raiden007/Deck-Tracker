@@ -2,7 +2,7 @@
 //  Deck_TrackerUITests.swift
 //  Deck TrackerUITests
 //
-//  Created by Andrei Joghiu on 22/10/15.
+//  Created by Andrei Joghiu on 28/10/15.
 //  Copyright © 2015 Andrei Joghiu. All rights reserved.
 //
 
@@ -19,7 +19,6 @@ class Deck_TrackerUITests: XCTestCase {
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
-        ResetEverything()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -28,75 +27,103 @@ class Deck_TrackerUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-        
-    func ResetEverything() {
+    
+    func testExample() {
+        // Use recording to get started writing UI tests.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testResetAll() {
+        resetAll()
+    }
+    
+    func resetAll() {
         
         let app = XCUIApplication()
         app.navigationBars["Games List"].buttons["More Info"].tap()
         app.tables.staticTexts["Reset all !"].tap()
         app.alerts["Full reset"].collectionViews.buttons["Reset everything"].tap()
-        XCUIApplication().navigationBars["Settings"].buttons["Games List"].tap()
+        app.navigationBars["Settings"].buttons["Games List"].tap()
         
     }
     
-    func testAddAllDecks() {
-        let app = XCUIApplication()
-        app.tabBars.buttons["Decks"].tap()
-        AddWarriorDeck()
-        SelectWarriorDeck()
-        AddPaladinDeck()
-        SelectPaladinDeck()
+    func testDecks() {
+        let decks = ["Warrior", "Paladin", "Shaman", "Hunter", "Druid", "Rogue", "Mage", "Warlock", "Priest"]
+        
+        for deck in decks {
+            addNewDeck(deck)
+            selectDeck(deck)
+        }
+        
+        
+        
+        
     }
     
-    func AddWarriorDeck() {
-        XCUIDevice.sharedDevice().orientation = .Portrait
+    func addNewDeck(deckClass:String) {
         
         let app = XCUIApplication()
         app.tabBars.buttons["Decks"].tap()
         app.navigationBars["Decks"].buttons["Add"].tap()
-        app.buttons["WarriorSmall"].tap()
+        app.buttons[deckClass + "Small"].tap()
         
         let enterDeckNameTextField = app.textFields["Enter deck name"]
         enterDeckNameTextField.tap()
-        enterDeckNameTextField.typeText("Warrior")
+        enterDeckNameTextField.typeText(deckClass)
         app.navigationBars["Add Deck"].buttons["Save"].tap()
-        XCTAssert(app.tables.childrenMatchingType(.Cell).staticTexts["Warrior"].exists)
+        XCTAssert(app.tables.staticTexts[deckClass].exists)
+        
     }
     
-    func SelectWarriorDeck() {
-        XCUIDevice.sharedDevice().orientation = .Portrait
-        let app = XCUIApplication()
-        if app.tables.childrenMatchingType(.Cell).staticTexts["Warrior"].exists {
-            let app = XCUIApplication()
-            app.tabBars.buttons["Decks"].tap()
-            app.tables.staticTexts["Warrior"].tap()
+    func selectDeck(deck:String) {
+        
+        var index:UInt = 0
+        
+        if deck == "Warrior" {
+            index = 0
+        } else if deck == "Paladin" {
+            index = 1
+        } else if deck == "Shaman" {
+            index = 2
+        } else if deck == "Hunter" {
+            index = 3
+        } else if deck == "Druid" {
+            index = 4
+        } else if deck == "Rogue" {
+            index = 5
+        } else if deck == "Mage" {
+            index = 6
+        } else if deck == "Warlock" {
+            index = 7
+        } else if deck == "Priest" {
+            index = 8
         }
-
-    }
-    
-    func AddPaladinDeck() {
+        
         let app = XCUIApplication()
         app.tabBars.buttons["Decks"].tap()
-        app.navigationBars["Decks"].buttons["Add"].tap()
-        app.buttons["PaladinSmall"].tap()
+        app.tables.cells.elementBoundByIndex(index).tap()
+        app.tables.cells.elementBoundByIndex(index)
         
-        let enterDeckNameTextField = app.textFields["Enter deck name"]
-        enterDeckNameTextField.tap()
-        enterDeckNameTextField.typeText("Paladin")
-        app.navigationBars["Add Deck"].buttons["Save"].tap()
-        XCTAssert(app.tables.childrenMatchingType(.Cell).staticTexts["Paladin"].exists)
+        
     }
     
-    func SelectPaladinDeck() {
+    func testTestssss() {
+        
         let app = XCUIApplication()
-        if app.tables.childrenMatchingType(.Cell).staticTexts["Paladin"].exists {
-            app.tabBars.buttons["Decks"].tap()
-            app.tables.staticTexts["Paladin"].tap()
-        }
+        app.tabBars.buttons["Decks"].tap()
+        
+        let tablesQuery = app.tables
 
-    }
-    
-    func AddShamanDeck() {
+        
+        let paladinStaticText = tablesQuery.cells.elementBoundByIndex(1)
+        paladinStaticText.tap()
+        paladinStaticText.tap()
+        paladinStaticText.tap()
+        paladinStaticText.tap()
+        paladinStaticText.tap()
+        paladinStaticText.tap()
+        paladinStaticText.tap()
         
     }
+    
 }
