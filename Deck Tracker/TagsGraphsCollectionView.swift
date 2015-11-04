@@ -18,8 +18,13 @@ class TagsGraphsCollectionView: UICollectionViewController {
     let data = ["All", "Warrior", "Paladin", "Shaman", "Hunter", "Druid", "Rogue", "Mage", "Warlock", "Priest"]
     var filteredGames:[Game] = []
     var filteredTags:[String] = []
-    var gamesFilteredByTag = [String: Game]()
-
+    var gamesBreakedDownByTags:[[Game]] = []
+    var winRateArray:[Int] = []
+    var gamesWonArray:[Int] = []
+    var gamesLostArray:[Int] = []
+    var filteredGamesAndTags:[Game] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -73,12 +78,83 @@ class TagsGraphsCollectionView: UICollectionViewController {
             allTags.append(game.getTag())
         }
         
+        
         filteredTags = Array(Set(allTags))
         filteredTags.sortInPlace()
+        
+        print(filteredTags)
+        
+        var indexOfEmptyTag = -1
+        
+        for var i = 0; i < filteredTags.count; i++ {
+            if filteredTags[i] == "" {
+                indexOfEmptyTag = i
+            }
+        }
+        
+        if indexOfEmptyTag != -1 {
+            filteredTags[indexOfEmptyTag] = "Not selected"
+        }
+        
+        print(filteredTags)
+        
     }
     
     func setupGamesFilteredByTag() {
         
+        winRateArray = []
+        gamesWonArray = []
+        gamesLostArray = []
+        
+        for var i = 0; i < filteredTags.count; i++ {
+        // Create an array with only the relevant games
+            filteredGamesAndTags = []
+            
+            for game in filteredGames {
+                if filteredTags[i] == game.getTag() {
+                    filteredGamesAndTags.append(game)
+                }
+            }
+            
+            getStatistics()
+            
+        }
+        // Add Stats for when you have no tags
+        filteredGamesAndTags = []
+        for game in filteredGames {
+            if game.getTag() == "" {
+                filteredGamesAndTags.append(game)
+            }
+        }
+        
+        getStatistics()
+        
+    }
+    
+    func getStatistics () {
+        var gamesWon = 0
+        for game in filteredGamesAndTags {
+            if game.win == true {
+                gamesWon++
+            }
+        }
+        
+        let totalGames = filteredGamesAndTags.count
+        var winRate = 0.0
+        if totalGames != 0 {
+            winRate =  Double(gamesWon) / Double(totalGames) * 100
+        }
+        let winRateInt = Int(winRate)
+        
+        winRateArray.append(winRateInt)
+        gamesWonArray.append(gamesWon)
+        let gamesLost = filteredGamesAndTags.count - gamesWon
+        gamesLostArray.append(gamesLost)
+        
+        //print(winRateArray)
+        //print(gamesWonArray)
+        //print(gamesLostArray)
+
     }
 
     /*
@@ -111,13 +187,14 @@ class TagsGraphsCollectionView: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TagsGraphsCollectionCell
-        if filteredGames.count == 0 {
+        if filteredTags.count == 0 {
             cell.tagLabel.hidden = true
             cell.label.text = "No data"
             cell.winInfoLabel.hidden = true
         } else {
             cell.tagLabel.text = "Tag: " + String(filteredTags[indexPath.row])
-            //cell.label.text = "aaa"
+            cell.label.text = String(winRateArray[indexPath.row]) + " %"
+            cell.winInfoLabel.text = String(gamesWonArray[indexPath.row]) + " - " + String(gamesLostArray[indexPath.row])
         }
         cell.backgroundColor = UIColor.grayColor()
         

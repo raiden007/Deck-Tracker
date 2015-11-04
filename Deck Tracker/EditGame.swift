@@ -195,7 +195,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
         
         let editedWin = winSwitch.on
         
-        let editedTag = defaults.arrayForKey("Edited Selected Tag") as! String
+        let editedTag = defaults.stringForKey("Edited Selected Tag") as String!
        
         // Create a new Game object
         let editedGame = Game(newID: editedID, newDate: editedDate!, newPlayerDeckName: editedPlayerDeckName!, newPlayerDeckClass: editedPlayerDeckClass!, newOpponentDeck: editedOpponentClass!, newCoin: editedCoin, newWin: editedWin, newTag: editedTag)
