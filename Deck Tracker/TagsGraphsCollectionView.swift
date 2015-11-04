@@ -12,13 +12,17 @@ private let reuseIdentifier = "TagsGraphsCollectionCell"
 
 class TagsGraphsCollectionView: UICollectionViewController {
     
+    // Date selected by the user and if it's the current deck or all decks
     var dateIndex = -1
     var deckName = ""
+    // Index of the selected graph, so we can get all relevant games from the whole list
     var indexOfSelectedGraph = -1
     let data = ["All", "Warrior", "Paladin", "Shaman", "Hunter", "Druid", "Rogue", "Mage", "Warlock", "Priest"]
+    // Array of decks filtered by Date / Deck name / Opponent
     var filteredGames:[Game] = []
+    // Array of tags sorted alphabetically
     var filteredTags:[String] = []
-    var gamesBreakedDownByTags:[[Game]] = []
+    // Arrays needed to populate the cells in the collection view
     var winRateArray:[Int] = []
     var gamesWonArray:[Int] = []
     var gamesLostArray:[Int] = []
@@ -68,6 +72,16 @@ class TagsGraphsCollectionView: UICollectionViewController {
         let opponentSelected = data[indexOfSelectedGraph]
         
         filteredGames = Data.sharedInstance.getStatisticsGamesTotal(dateIndex, deck: deckName, opponent: opponentSelected)
+        
+        // Set games without tag as tag:None
+        for game in filteredGames {
+            if game.getTag() == "" {
+                game.setNewTag("None")
+            }
+            print(game.getTag())
+        }
+        
+        //print("Fitered Games: " + String(filteredGames.count))
     }
     
     func getTagName() {
@@ -83,21 +97,6 @@ class TagsGraphsCollectionView: UICollectionViewController {
         filteredTags.sortInPlace()
         
         print(filteredTags)
-        
-        var indexOfEmptyTag = -1
-        
-        for var i = 0; i < filteredTags.count; i++ {
-            if filteredTags[i] == "" {
-                indexOfEmptyTag = i
-            }
-        }
-        
-        if indexOfEmptyTag != -1 {
-            filteredTags[indexOfEmptyTag] = "Not selected"
-        }
-        
-        print(filteredTags)
-        
     }
     
     func setupGamesFilteredByTag() {
@@ -119,15 +118,6 @@ class TagsGraphsCollectionView: UICollectionViewController {
             getStatistics()
             
         }
-        // Add Stats for when you have no tags
-        filteredGamesAndTags = []
-        for game in filteredGames {
-            if game.getTag() == "" {
-                filteredGamesAndTags.append(game)
-            }
-        }
-        
-        getStatistics()
         
     }
     
@@ -151,9 +141,10 @@ class TagsGraphsCollectionView: UICollectionViewController {
         let gamesLost = filteredGamesAndTags.count - gamesWon
         gamesLostArray.append(gamesLost)
         
-        //print(winRateArray)
-        //print(gamesWonArray)
-        //print(gamesLostArray)
+        //print("Filtered Games And Tags: " + String(filteredGamesAndTags))
+        //print("Win Rate Array: " + String(winRateArray))
+        //print("Games Won Array: " + String(gamesWonArray))
+        //print("Games Lost Array: " + String(gamesLostArray))
 
     }
 

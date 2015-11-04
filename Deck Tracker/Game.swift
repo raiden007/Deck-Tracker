@@ -126,6 +126,11 @@ class Game : NSObject, NSCoding {
         return tag
     }
     
+    // Sets the tag
+    func setNewTag(newTag:String) {
+        tag = newTag
+    }
+    
     // Returns a string containing all the proprierties of the object
     func toString() -> String {
         
