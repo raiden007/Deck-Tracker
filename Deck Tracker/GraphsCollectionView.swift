@@ -143,7 +143,10 @@ class GraphsCollectionView: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! GraphsCollectionCell
-        cell.backgroundColor = UIColor.grayColor()
+        //cell.backgroundColor = UIColor.grayColor()
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 8
+        
         // Configure the cell
         cell.versusLabel.text = "vs. " + graphsTitle[indexPath.row]
 
@@ -155,7 +158,10 @@ class GraphsCollectionView: UICollectionViewController {
             cell.graphsLabel.text = String(winRateArray[indexPath.row]) + " %"
             cell.winInfoLabel.text = String(gamesWonArray[indexPath.row]) + " - " + String(gamesLostArray[indexPath.row])
         }
-
+        
+        let rectangle = CGRect(x: 0, y: 0, width: 100, height: 100)
+        cell.drawRectangle(rectangle, winRate: winRateArray[indexPath.row])
+        
         return cell
     }
     
