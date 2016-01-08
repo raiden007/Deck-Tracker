@@ -12,32 +12,20 @@ class GraphsCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var versusLabel: UILabel!
     @IBOutlet weak var winInfoLabel: UILabel!
-    @IBOutlet weak var classImage: UIImageView!
+    @IBOutlet weak var opponentClassImage: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        //setup("setup from cell")
-    }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
+    var per = -1
     
-    func setup(information: String) {
-        print(information)
-    }
     
-    func drawRectangle(rect: CGRect, winRate:Int) {
-    
-        print(winRate)
+    override func drawRect(rect: CGRect) {
         let path = UIBezierPath(ovalInRect: rect)
-
-        if winRate > 50 {
-            UIColor.greenColor().setFill()
+        //UIColor.redColor().setFill()
+        if per <= 50 {
+            UIColor.blackColor().setFill()
         } else {
-            UIColor.redColor().setFill()
+            UIColor.greenColor().setFill()
         }
-        UIColor.yellowColor().setFill()
         path.fill()
     }
 

@@ -151,7 +151,7 @@ class GraphsCollectionView: UICollectionViewController {
         
         // Configure the cell
         cell.versusLabel.text = "vs. " + graphsTitle[indexPath.row]
-        cell.classImage.image = UIImage(named: opponentClasses[indexPath.row])
+        cell.opponentClassImage.image = UIImage(named: opponentClasses[indexPath.row])
 
         if gamesWonArray[indexPath.row] == 0 && gamesLostArray[indexPath.row] == 0 {
             //cell.graphsLabel.text = "No Data"
@@ -162,8 +162,7 @@ class GraphsCollectionView: UICollectionViewController {
             cell.winInfoLabel.text = String(gamesWonArray[indexPath.row]) + " - " + String(gamesLostArray[indexPath.row])
         }
         
-        let rectangle = CGRect(x: 0, y: 0, width: 100, height: 100)
-        cell.drawRectangle(rectangle, winRate: winRateArray[indexPath.row])
+        cell.per = winRateArray[indexPath.row]
         cell.setNeedsDisplay()
         
         return cell

@@ -989,37 +989,38 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vs All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czx-WW-Pff">
-                                            <rect key="frame" x="55" y="3" width="40.5" height="20.5"/>
+                                            <rect key="frame" x="55" y="8" width="40.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10-3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZD1-46-0Hz">
-                                            <rect key="frame" x="57" y="129" width="36" height="20.5"/>
+                                            <rect key="frame" x="57" y="121" width="36" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DruidSmall" translatesAutoresizingMaskIntoConstraints="NO" id="x0B-zX-z2l">
-                                            <rect key="frame" x="56" y="56" width="37.5" height="37.5"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DruidSmall" translatesAutoresizingMaskIntoConstraints="NO" id="Fcg-hI-nOO">
+                                            <rect key="frame" x="53" y="53" width="45" height="45"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="x0B-zX-z2l" secondAttribute="height" multiplier="1:1" id="L1I-2B-fip"/>
+                                                <constraint firstAttribute="width" secondItem="Fcg-hI-nOO" secondAttribute="height" multiplier="1:1" id="73C-cF-Ozp"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="czx-WW-Pff" firstAttribute="centerX" secondItem="ITZ-nf-5Ig" secondAttribute="centerX" id="9my-iN-clx"/>
-                                    <constraint firstItem="ZD1-46-0Hz" firstAttribute="centerX" secondItem="ITZ-nf-5Ig" secondAttribute="centerX" id="AXE-Ab-ulD"/>
-                                    <constraint firstItem="x0B-zX-z2l" firstAttribute="centerY" secondItem="ITZ-nf-5Ig" secondAttribute="centerY" id="N9I-XG-n91"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="ZD1-46-0Hz" secondAttribute="bottom" constant="-8" id="Qzu-I4-hrg"/>
-                                    <constraint firstItem="x0B-zX-z2l" firstAttribute="centerX" secondItem="ITZ-nf-5Ig" secondAttribute="centerX" id="rc8-Hw-Gku"/>
-                                    <constraint firstItem="x0B-zX-z2l" firstAttribute="width" secondItem="ITZ-nf-5Ig" secondAttribute="width" multiplier="0.25" id="seW-Tk-2AC"/>
-                                    <constraint firstItem="czx-WW-Pff" firstAttribute="top" secondItem="ITZ-nf-5Ig" secondAttribute="topMargin" constant="-5" id="tfN-j9-cP2"/>
+                                    <constraint firstItem="Fcg-hI-nOO" firstAttribute="centerY" secondItem="ITZ-nf-5Ig" secondAttribute="centerY" id="7rL-f7-mD5"/>
+                                    <constraint firstItem="ZD1-46-0Hz" firstAttribute="bottom" secondItem="ITZ-nf-5Ig" secondAttribute="bottomMargin" id="9np-Dg-aGj"/>
+                                    <constraint firstItem="Fcg-hI-nOO" firstAttribute="width" secondItem="ITZ-nf-5Ig" secondAttribute="width" multiplier="0.3" id="Hkr-Nu-7jW"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="ZD1-46-0Hz" secondAttribute="bottom" id="Lqp-JI-nEE"/>
+                                    <constraint firstItem="Fcg-hI-nOO" firstAttribute="centerX" secondItem="ITZ-nf-5Ig" secondAttribute="centerX" id="Vco-zq-lcu"/>
+                                    <constraint firstItem="ZD1-46-0Hz" firstAttribute="centerX" secondItem="ITZ-nf-5Ig" secondAttribute="centerX" id="gwR-8C-a8y"/>
+                                    <constraint firstItem="czx-WW-Pff" firstAttribute="centerX" secondItem="ITZ-nf-5Ig" secondAttribute="centerX" id="ldV-da-DOf"/>
+                                    <constraint firstItem="czx-WW-Pff" firstAttribute="top" secondItem="ITZ-nf-5Ig" secondAttribute="topMargin" id="wAm-rN-rb3"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="classImage" destination="x0B-zX-z2l" id="ypv-xi-iH1"/>
+                                    <outlet property="opponentClassImage" destination="Fcg-hI-nOO" id="wQA-mX-xlY"/>
                                     <outlet property="versusLabel" destination="czx-WW-Pff" id="MbN-dY-9uY"/>
                                     <outlet property="winInfoLabel" destination="ZD1-46-0Hz" id="R3J-Sn-F3c"/>
                                     <segue destination="xi1-ux-M0I" kind="show" id="wBm-Ru-qdn"/>
@@ -1758,6 +1759,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFj-Ms-enh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-282" y="1044"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="cLa-Uj-vbX">
+            <objects>
+                <viewController id="fgi-I0-pUb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TVc-3e-Zcs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fMg-rf-EZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
