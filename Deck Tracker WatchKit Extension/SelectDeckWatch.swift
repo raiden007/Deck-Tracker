@@ -99,7 +99,7 @@ class SelectDeckWatch: WKInterfaceController {
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
         // Saves the selected deck and returns to Main View
-        let row = table.rowControllerAtIndex(rowIndex) as? DeckRow
+        //let row = table.rowControllerAtIndex(rowIndex) as? DeckRow
         let selectedDeck = deckList[rowIndex]
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setInteger(selectedDeck.getID(), forKey: "Selected Deck ID")

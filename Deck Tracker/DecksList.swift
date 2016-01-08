@@ -15,7 +15,6 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     var decksList:[Deck] = []
     var indexOfSelectedDeck:Int = -1
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -26,6 +25,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         
         // Removes the empty rows from view
         decksTable.tableFooterView = UIView(frame: CGRectZero)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +53,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
         }
+        
         return cell
     }
     
@@ -178,7 +179,6 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
                 break
             }
         }
-        
     }
 }
 

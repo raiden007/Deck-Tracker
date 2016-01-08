@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Deck Tracker/GraphsCollectionCell.swift"
-            timestampString = "473854464.528873"
+            timestampString = "473941883.927768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "drawRect(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Deck Tracker/GraphsCollectionCell.swift"
-            timestampString = "473854492.379111"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "drawRect(_:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "drawRectangle(_:winRate:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

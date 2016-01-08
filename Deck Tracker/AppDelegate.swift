@@ -24,7 +24,7 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
         Fabric.with([Crashlytics()])
         
         // Initialize the data structure and print it to the console at app launch
-        Data.init()
+        //Data.init()
         //Data.sharedInstance.convertDataFromVersion1ToVersion2()
         Data.sharedInstance.printGameData()
         Data.sharedInstance.printDeckData()

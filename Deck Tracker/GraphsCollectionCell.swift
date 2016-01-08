@@ -11,36 +11,34 @@ import UIKit
 class GraphsCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var versusLabel: UILabel!
-    @IBOutlet weak var graphsLabel: UILabel!
     @IBOutlet weak var winInfoLabel: UILabel!
-    @IBOutlet weak var graph: GraphsGraph!
-    var per: Int = -1
+    @IBOutlet weak var classImage: UIImageView!
     
-    
-    
-//    func drawRectangle(rect: CGRect, winRate:Int) {
-//        
-//        print(winRate)
-//        let path = UIBezierPath(ovalInRect: rect)
-//        
-////        if winRate > 50 {
-////            UIColor.greenColor().setFill()
-////        } else {
-////            UIColor.redColor().setFill()
-////        }
-//        UIColor.yellowColor().setFill()
-//        path.fill()
-//    }
-    
-    override func drawRect(rect: CGRect) {
-        let path = UIBezierPath(ovalInRect: rect)
-        if per <= 50 {
-            UIColor.redColor().setFill()
-        } else {
-            UIColor.greenColor().setFill()
-        }
-        
-        path.fill()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //setup("setup from cell")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    func setup(information: String) {
+        print(information)
+    }
+    
+    func drawRectangle(rect: CGRect, winRate:Int) {
+    
+        print(winRate)
+        let path = UIBezierPath(ovalInRect: rect)
+
+        if winRate > 50 {
+            UIColor.greenColor().setFill()
+        } else {
+            UIColor.redColor().setFill()
+        }
+        UIColor.yellowColor().setFill()
+        path.fill()
+    }
+
 }

@@ -10,6 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "GraphsCollectionCell"
 
+@IBDesignable
 class GraphsCollectionView: UICollectionViewController {
     
     var graphsTitle:[String] = ["All", "Warrior", "Paladin", "Shaman", "Hunter", "Druid", "Rogue", "Mage", "Warlock", "Priest"]
@@ -145,26 +146,25 @@ class GraphsCollectionView: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! GraphsCollectionCell
         //cell.backgroundColor = UIColor.grayColor()
         cell.layer.borderWidth = 2
-        cell.layer.cornerRadius = CGRectGetHeight(cell.bounds) / 2
-        cell.layer.masksToBounds = true
+        //cell.layer.cornerRadius = CGRectGetHeight(cell.bounds) / 2
+        //cell.layer.masksToBounds = true
         
         // Configure the cell
         cell.versusLabel.text = "vs. " + graphsTitle[indexPath.row]
+        cell.classImage.image = UIImage(named: opponentClasses[indexPath.row])
 
         if gamesWonArray[indexPath.row] == 0 && gamesLostArray[indexPath.row] == 0 {
-            cell.graphsLabel.text = "No Data"
+            //cell.graphsLabel.text = "No Data"
             cell.winInfoLabel.hidden = true
         } else {
             cell.winInfoLabel.hidden = false
-            cell.graphsLabel.text = String(winRateArray[indexPath.row]) + " %"
+            //cell.graphsLabel.text = String(winRateArray[indexPath.row]) + " %"
             cell.winInfoLabel.text = String(gamesWonArray[indexPath.row]) + " - " + String(gamesLostArray[indexPath.row])
         }
         
-        cell.per = winRateArray[indexPath.row]
-        
         let rectangle = CGRect(x: 0, y: 0, width: 100, height: 100)
-        //cell.drawRectangle(rectangle, winRate: winRateArray[indexPath.row])
-        cell.graph.drawRect(rectangle)
+        cell.drawRectangle(rectangle, winRate: winRateArray[indexPath.row])
+        cell.setNeedsDisplay()
         
         return cell
     }
