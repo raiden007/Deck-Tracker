@@ -143,27 +143,22 @@ class GraphsCollectionView: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! GraphsCollectionCell
-        //cell.backgroundColor = UIColor.grayColor()
-        cell.layer.borderWidth = 2
-        //cell.layer.cornerRadius = CGRectGetHeight(cell.bounds) / 2
-        //cell.layer.masksToBounds = true
         
         // Configure the cell
+        
         cell.versusLabel.text = "vs. " + graphsTitle[indexPath.row]
         cell.opponentClassImage.image = UIImage(named: opponentClasses[indexPath.row])
 
         if gamesWonArray[indexPath.row] == 0 && gamesLostArray[indexPath.row] == 0 {
-            //cell.graphsLabel.text = "No Data"
-            cell.winInfoLabel.hidden = true
+            cell.winInfoLabel.text = "No Data"
+            cell.per = -1
         } else {
             cell.winInfoLabel.hidden = false
-            //cell.graphsLabel.text = String(winRateArray[indexPath.row]) + " %"
             cell.winInfoLabel.text = String(gamesWonArray[indexPath.row]) + " - " + String(gamesLostArray[indexPath.row])
+            cell.per = winRateArray[indexPath.row]
         }
-        
-        cell.per = winRateArray[indexPath.row]
-        cell.setNeedsDisplay()
         
         return cell
     }
