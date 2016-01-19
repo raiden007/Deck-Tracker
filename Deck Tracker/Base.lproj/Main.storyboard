@@ -1006,21 +1006,30 @@
                                                 <constraint firstAttribute="width" secondItem="Fcg-hI-nOO" secondAttribute="height" multiplier="1:1" id="73C-cF-Ozp"/>
                                             </constraints>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNv-9A-wyk">
+                                            <rect key="frame" x="97" y="55" width="45" height="40"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
+                                    <constraint firstAttribute="bottomMargin" secondItem="ZNv-9A-wyk" secondAttribute="bottom" constant="47" id="1bI-hc-wkx"/>
+                                    <constraint firstItem="ZNv-9A-wyk" firstAttribute="leading" secondItem="ITZ-nf-5Ig" secondAttribute="leadingMargin" constant="89" id="7cz-JT-GdB"/>
                                     <constraint firstItem="Fcg-hI-nOO" firstAttribute="centerY" secondItem="ITZ-nf-5Ig" secondAttribute="centerY" id="7rL-f7-mD5"/>
                                     <constraint firstItem="ZD1-46-0Hz" firstAttribute="bottom" secondItem="ITZ-nf-5Ig" secondAttribute="bottomMargin" id="9np-Dg-aGj"/>
                                     <constraint firstItem="Fcg-hI-nOO" firstAttribute="width" secondItem="ITZ-nf-5Ig" secondAttribute="width" multiplier="0.3" id="Hkr-Nu-7jW"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="ZD1-46-0Hz" secondAttribute="bottom" id="Lqp-JI-nEE"/>
                                     <constraint firstItem="Fcg-hI-nOO" firstAttribute="centerX" secondItem="ITZ-nf-5Ig" secondAttribute="centerX" id="Vco-zq-lcu"/>
+                                    <constraint firstItem="ZNv-9A-wyk" firstAttribute="top" secondItem="ITZ-nf-5Ig" secondAttribute="topMargin" constant="47" id="e3J-yU-WP0"/>
                                     <constraint firstItem="ZD1-46-0Hz" firstAttribute="centerX" secondItem="ITZ-nf-5Ig" secondAttribute="centerX" id="gwR-8C-a8y"/>
                                     <constraint firstItem="czx-WW-Pff" firstAttribute="centerX" secondItem="ITZ-nf-5Ig" secondAttribute="centerX" id="ldV-da-DOf"/>
                                     <constraint firstItem="czx-WW-Pff" firstAttribute="top" secondItem="ITZ-nf-5Ig" secondAttribute="topMargin" id="wAm-rN-rb3"/>
+                                    <constraint firstItem="ZNv-9A-wyk" firstAttribute="trailing" secondItem="ITZ-nf-5Ig" secondAttribute="trailingMargin" id="xdG-el-W2x"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="opponentClassImage" destination="Fcg-hI-nOO" id="wQA-mX-xlY"/>
+                                    <outlet property="pieChart" destination="ZNv-9A-wyk" id="Z2C-gv-pDx"/>
                                     <outlet property="versusLabel" destination="czx-WW-Pff" id="MbN-dY-9uY"/>
                                     <outlet property="winInfoLabel" destination="ZD1-46-0Hz" id="R3J-Sn-F3c"/>
                                     <segue destination="xi1-ux-M0I" kind="show" id="wBm-Ru-qdn"/>

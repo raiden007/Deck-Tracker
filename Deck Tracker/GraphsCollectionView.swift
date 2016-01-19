@@ -25,11 +25,12 @@ class GraphsCollectionView: UICollectionViewController {
     var gamesFilteredByOpponent:[[Game]] = []
     
 
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:",name:"load", object: nil)
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -160,6 +161,10 @@ class GraphsCollectionView: UICollectionViewController {
             cell.per = winRateArray[indexPath.row]
         }
         
+        
+        cell.numberOfSlicesInPieChart(cell.pieChart)
+        cell.pieChart.reloadData()
+        
         return cell
     }
     
@@ -211,5 +216,7 @@ class GraphsCollectionView: UICollectionViewController {
     
     }
     */
+    
+
 
 }

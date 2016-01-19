@@ -8,11 +8,12 @@
 
 import UIKit
 
-class GraphsCollectionCell: UICollectionViewCell {
+class GraphsCollectionCell: UICollectionViewCell, ARPieChartDataSource, ARPieChartDelegate {
     
     @IBOutlet weak var versusLabel: UILabel!
     @IBOutlet weak var winInfoLabel: UILabel!
     @IBOutlet weak var opponentClassImage: UIImageView!
+    @IBOutlet weak var pieChart: ARPieChart!
     
     let bgLayer = CAShapeLayer()
     var bgColor: UIColor = UIColor.redColor()
@@ -22,30 +23,40 @@ class GraphsCollectionCell: UICollectionViewCell {
     
     let π = CGFloat(M_PI)
     var per = 0
+    
+    var outerRadius: CGFloat = 5.0
+    
+    var innerRadius: CGFloat = 2.0
+    
+    var selectedPieOffset: CGFloat = 1.0
+    
+    var labelFont: UIFont = UIFont.systemFontOfSize(10)
+    
+    var showDescriptionText: Bool = false
+    
+    var animationDuration: Double = 1.0
 
     
     
     override func drawRect(rect: CGRect) {
         
-        layer.borderWidth = 2
-        
-        if per != -1 {
-            // Setup background layer
-            bgLayer.strokeColor = bgColor.CGColor
-            bgLayer.lineWidth = 20.0
-            bgLayer.fillColor = nil
-            bgLayer.strokeEnd = 1
-            layer.addSublayer(bgLayer)
-            
-            // Setup foreground layer
-            fgLayer.strokeColor = fgColor.CGColor
-            fgLayer.lineWidth = 20.0
-            fgLayer.fillColor = nil
-            fgLayer.strokeEnd = CGFloat(per)
-            layer.addSublayer(fgLayer)
-        }
-        
-
+//        layer.borderWidth = 2
+//        
+//        if per != -1 {
+//            // Setup background layer
+//            bgLayer.strokeColor = bgColor.CGColor
+//            bgLayer.lineWidth = 20.0
+//            bgLayer.fillColor = nil
+//            bgLayer.strokeEnd = 1
+//            layer.addSublayer(bgLayer)
+//            
+//            // Setup foreground layer
+//            fgLayer.strokeColor = fgColor.CGColor
+//            fgLayer.lineWidth = 20.0
+//            fgLayer.fillColor = nil
+//            fgLayer.strokeEnd = CGFloat(per)
+//            layer.addSublayer(fgLayer)
+//        }
 
         
     }
@@ -72,6 +83,31 @@ class GraphsCollectionCell: UICollectionViewCell {
     
     func RadiansToDegrees (value:CGFloat) -> CGFloat {
         return value * 180.0 / π
+    }
+    
+    
+    func numberOfSlicesInPieChart(pieChart: ARPieChart) -> Int {
+        return 2
+    }
+    
+    func pieChart(pieChart: ARPieChart, valueForSliceAtIndex index: Int) -> CGFloat {
+        return 5.0
+    }
+    
+    func pieChart(pieChart: ARPieChart, colorForSliceAtIndex index: Int) -> UIColor {
+        return UIColor.redColor()
+    }
+    
+    func pieChart(pieChart: ARPieChart, descriptionForSliceAtIndex index: Int) -> String {
+        return "a"
+    }
+    
+    func pieChart(pieChart: ARPieChart, itemSelectedAtIndex index: Int) {
+        
+    }
+    
+    func pieChart(pieChart: ARPieChart, itemDeselectedAtIndex index: Int) {
+        
     }
 
 }
