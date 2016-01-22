@@ -160,8 +160,6 @@ class GraphsCollectionView: UICollectionViewController {
             cell.per = CGFloat(winRateArray[indexPath.row])
         }
         
-        //cell.pieChart.reloadData()
-        
         return cell
     }
     

@@ -27,6 +27,8 @@ class GraphsCollectionCell: UICollectionViewCell {
             animate()
         }
     }
+    
+    var noData = false
 
     private func setup() {
         
@@ -35,7 +37,12 @@ class GraphsCollectionCell: UICollectionViewCell {
         let width = bgLayer.bounds.width
         
         // Setup background layer
-        bgLayer.strokeColor = bgColor.CGColor
+        if per != -1 {
+            bgLayer.strokeColor = bgColor.CGColor
+        } else {
+            bgLayer.strokeColor = UIColor.whiteColor().CGColor
+        }
+        
         bgLayer.lineWidth = width / 5.5
         bgLayer.fillColor = nil
         bgLayer.strokeEnd = 1
