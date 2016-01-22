@@ -156,13 +156,10 @@ class GraphsCollectionView: UICollectionViewController {
             cell.winInfoLabel.text = "No Data"
             cell.per = -1
         } else {
-            cell.winInfoLabel.hidden = false
-            cell.winInfoLabel.text = String(gamesWonArray[indexPath.row]) + " - " + String(gamesLostArray[indexPath.row])
+            cell.winInfoLabel.text = String(winRateArray[indexPath.row]) + "% : " + "(" + String(gamesWonArray[indexPath.row]) + "-" + String(gamesLostArray[indexPath.row]) + ")"
             cell.per = CGFloat(winRateArray[indexPath.row])
         }
         
-        
-        cell.numberOfSlicesInPieChart(cell.pieChart)
         //cell.pieChart.reloadData()
         
         return cell
