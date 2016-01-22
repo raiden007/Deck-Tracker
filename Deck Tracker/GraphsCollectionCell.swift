@@ -81,6 +81,7 @@ class GraphsCollectionCell: UICollectionViewCell {
     }
     
     private func animate() {
+        
         var fromValue = fgLayer.strokeEnd
         let toValue = per/100
         let percentChange = abs(fromValue - toValue)
@@ -89,12 +90,16 @@ class GraphsCollectionCell: UICollectionViewCell {
         animation.fromValue = fromValue
         animation.toValue = toValue
         
-        //animation.duration = CFTimeInterval(percentChange * 4000)
-        animation.duration = CFTimeInterval(1)
+        animation.duration = CFTimeInterval(percentChange * 4000)
 
         
         fgLayer.removeAnimationForKey("stroke")
         fgLayer.addAnimation(animation, forKey: "stroke")
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        fgLayer.strokeEnd = toValue
+        CATransaction.commit()
     }
 
 }
