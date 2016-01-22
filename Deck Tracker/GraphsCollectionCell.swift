@@ -22,7 +22,11 @@ class GraphsCollectionCell: UICollectionViewCell, ARPieChartDataSource, ARPieCha
     var fgColor: UIColor = UIColor.greenColor()
     
     let π = CGFloat(M_PI)
-    var per = 0
+    var per : CGFloat = 0 {
+        didSet {
+            setup()
+        }
+    }
     
     var outerRadius: CGFloat = 5.0
     
@@ -38,24 +42,24 @@ class GraphsCollectionCell: UICollectionViewCell, ARPieChartDataSource, ARPieCha
 
     
     
-    override func drawRect(rect: CGRect) {
+    private func setup() {
         
 //        layer.borderWidth = 2
 //        
 //        if per != -1 {
-//            // Setup background layer
-//            bgLayer.strokeColor = bgColor.CGColor
-//            bgLayer.lineWidth = 20.0
-//            bgLayer.fillColor = nil
-//            bgLayer.strokeEnd = 1
-//            layer.addSublayer(bgLayer)
-//            
-//            // Setup foreground layer
-//            fgLayer.strokeColor = fgColor.CGColor
-//            fgLayer.lineWidth = 20.0
-//            fgLayer.fillColor = nil
-//            fgLayer.strokeEnd = CGFloat(per)
-//            layer.addSublayer(fgLayer)
+            // Setup background layer
+            bgLayer.strokeColor = bgColor.CGColor
+            bgLayer.lineWidth = 20.0
+            bgLayer.fillColor = nil
+            bgLayer.strokeEnd = 1
+            layer.addSublayer(bgLayer)
+            
+            // Setup foreground layer
+            fgLayer.strokeColor = fgColor.CGColor
+            fgLayer.lineWidth = 20.0
+            fgLayer.fillColor = nil
+            fgLayer.strokeEnd = per/100
+            layer.addSublayer(fgLayer)
 //        }
 
         

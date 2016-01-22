@@ -158,12 +158,12 @@ class GraphsCollectionView: UICollectionViewController {
         } else {
             cell.winInfoLabel.hidden = false
             cell.winInfoLabel.text = String(gamesWonArray[indexPath.row]) + " - " + String(gamesLostArray[indexPath.row])
-            cell.per = winRateArray[indexPath.row]
+            cell.per = CGFloat(winRateArray[indexPath.row])
         }
         
         
         cell.numberOfSlicesInPieChart(cell.pieChart)
-        cell.pieChart.reloadData()
+        //cell.pieChart.reloadData()
         
         return cell
     }
