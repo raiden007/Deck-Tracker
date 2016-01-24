@@ -52,6 +52,8 @@
 		8BA7D2081BB86B78002B95CC /* GraphsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D2071BB86B78002B95CC /* GraphsTable.swift */; };
 		8BD870E51B223042008398B8 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Deck.swift */; };
 		8BD8C95D1BCADD680046F635 /* TagsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8C95C1BCADD680046F635 /* TagsTable.swift */; };
+		8BEA7B411C55659D00912CBD /* Piechart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA7B401C55659D00912CBD /* Piechart.swift */; };
+		8BEA7B431C55667400912CBD /* GraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA7B421C55667400912CBD /* GraphsViewController.swift */; };
 		8BEDCD4E1BA61C3A0026AEFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4D1BA61C3A0026AEFD /* Settings.swift */; };
 		8BFC2F0D1BDF7D7700A7BD23 /* TagsGraphsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC2F0C1BDF7D7700A7BD23 /* TagsGraphsCollectionView.swift */; };
 		8BFC2F0F1BDF7E5000A7BD23 /* TagsGraphsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC2F0E1BDF7E5000A7BD23 /* TagsGraphsCollectionCell.swift */; };
@@ -158,6 +160,8 @@
 		8B811C431C4E75930009E2E4 /* ARPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARPieChart.swift; sourceTree = "<group>"; };
 		8BA7D2071BB86B78002B95CC /* GraphsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsTable.swift; sourceTree = "<group>"; };
 		8BD8C95C1BCADD680046F635 /* TagsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsTable.swift; sourceTree = "<group>"; };
+		8BEA7B401C55659D00912CBD /* Piechart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piechart.swift; sourceTree = "<group>"; };
+		8BEA7B421C55667400912CBD /* GraphsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsViewController.swift; sourceTree = "<group>"; };
 		8BEDCD4D1BA61C3A0026AEFD /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		8BFC2F0C1BDF7D7700A7BD23 /* TagsGraphsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsGraphsCollectionView.swift; sourceTree = "<group>"; };
 		8BFC2F0E1BDF7E5000A7BD23 /* TagsGraphsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsGraphsCollectionCell.swift; sourceTree = "<group>"; };
@@ -248,6 +252,7 @@
 		6D2F2B551B4278F400B267C9 /* Graphs */ = {
 			isa = PBXGroup;
 			children = (
+				8BEA7B421C55667400912CBD /* GraphsViewController.swift */,
 				8BA7D2071BB86B78002B95CC /* GraphsTable.swift */,
 				8BD8C95C1BCADD680046F635 /* TagsTable.swift */,
 				8B634F661BD92184003B95E5 /* GraphsCollectionView.swift */,
@@ -330,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				8B811C431C4E75930009E2E4 /* ARPieChart.swift */,
+				8BEA7B401C55659D00912CBD /* Piechart.swift */,
 				6D7C5B531B20273400E18252 /* Deck Tracker.entitlements */,
 				6DDD44871AEF87B700A4B5D2 /* AppDelegate.swift */,
 				6DDD44891AEF87B700A4B5D2 /* DecksList.swift */,
@@ -650,11 +656,13 @@
 				6DBB739D1B04840000005B5E /* EditDate.swift in Sources */,
 				6DB50E1B1B009B1D0000F97B /* GamesCell.swift in Sources */,
 				6D9538431B09E22400B4ED66 /* Graphs.swift in Sources */,
+				8BEA7B411C55659D00912CBD /* Piechart.swift in Sources */,
 				6DBB739B1B0209FD00005B5E /* EditGame.swift in Sources */,
 				6DDD44881AEF87B700A4B5D2 /* AppDelegate.swift in Sources */,
 				8BFC2F0D1BDF7D7700A7BD23 /* TagsGraphsCollectionView.swift in Sources */,
 				6D61AA431AF784E20013EB04 /* Game.swift in Sources */,
 				6DD844CF1AFA306500CF9C80 /* DecksCell.swift in Sources */,
+				8BEA7B431C55667400912CBD /* GraphsViewController.swift in Sources */,
 				8BEDCD4E1BA61C3A0026AEFD /* Settings.swift in Sources */,
 				6DE566961B15C2220026FBF5 /* About.swift in Sources */,
 				6DDD448A1AEF87B700A4B5D2 /* DecksList.swift in Sources */,

@@ -854,39 +854,17 @@
                                     <action selector="deckChanged:" destination="Hyd-dH-te2" eventType="valueChanged" id="5mW-Uh-h9k"/>
                                 </connections>
                             </segmentedControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNM-37-Gpo">
-                                <rect key="frame" x="20" y="144" width="560" height="399"/>
-                                <connections>
-                                    <segue destination="sFK-R8-uvP" kind="embed" id="vnx-XH-ZkM"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="eNM-37-Gpo" firstAttribute="top" secondItem="6K2-uo-HRb" secondAttribute="bottom" constant="8" id="1RG-Qo-GQ4"/>
-                            <constraint firstItem="kcC-9g-Swm" firstAttribute="top" secondItem="eNM-37-Gpo" secondAttribute="bottom" constant="163" id="3gm-Dd-OvI"/>
                             <constraint firstItem="6K2-uo-HRb" firstAttribute="leading" secondItem="NQ1-rW-FJ9" secondAttribute="leadingMargin" id="DxQ-zH-t5Z"/>
                             <constraint firstItem="6K2-uo-HRb" firstAttribute="top" secondItem="eUu-Z9-GXl" secondAttribute="bottom" constant="8" id="LOY-uy-BRe"/>
-                            <constraint firstItem="eNM-37-Gpo" firstAttribute="leading" secondItem="NQ1-rW-FJ9" secondAttribute="leadingMargin" id="NcZ-Jb-3Cx"/>
                             <constraint firstItem="eUu-Z9-GXl" firstAttribute="top" secondItem="JKB-ib-cwg" secondAttribute="bottom" constant="8" id="UrV-u8-7gJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="eNM-37-Gpo" secondAttribute="trailing" constant="160" id="WIT-zb-b6Q"/>
-                            <constraint firstItem="eNM-37-Gpo" firstAttribute="trailing" secondItem="NQ1-rW-FJ9" secondAttribute="trailingMargin" id="WkQ-ch-FoO"/>
                             <constraint firstItem="eUu-Z9-GXl" firstAttribute="leading" secondItem="NQ1-rW-FJ9" secondAttribute="leadingMargin" id="cGW-Jr-Tg8"/>
-                            <constraint firstItem="eNM-37-Gpo" firstAttribute="top" secondItem="6K2-uo-HRb" secondAttribute="bottom" constant="124" id="ed2-W3-CXT"/>
-                            <constraint firstItem="kcC-9g-Swm" firstAttribute="top" secondItem="eNM-37-Gpo" secondAttribute="bottom" constant="8" id="hvV-gc-Evr"/>
                             <constraint firstItem="eUu-Z9-GXl" firstAttribute="trailing" secondItem="NQ1-rW-FJ9" secondAttribute="trailingMargin" id="hzJ-tc-44n"/>
                             <constraint firstItem="6K2-uo-HRb" firstAttribute="trailing" secondItem="NQ1-rW-FJ9" secondAttribute="trailingMargin" id="lkP-Bt-lI7"/>
-                            <constraint firstItem="eNM-37-Gpo" firstAttribute="leading" secondItem="NQ1-rW-FJ9" secondAttribute="leadingMargin" constant="160" id="vBY-1J-QKI"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="WIT-zb-b6Q"/>
-                                <exclude reference="ed2-W3-CXT"/>
-                                <exclude reference="vBY-1J-QKI"/>
-                                <exclude reference="3gm-Dd-OvI"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Graphs" id="g1E-3B-Xk2"/>
                     <connections>
@@ -898,12 +876,30 @@
             </objects>
             <point key="canvasLocation" x="-304" y="1853"/>
         </scene>
+        <!--Graphs View Controller-->
+        <scene sceneID="ZjO-4y-Z9O">
+            <objects>
+                <viewController id="bx7-wa-ciC" customClass="GraphsViewController" customModule="Deck_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6i3-2Q-4iJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="dW2-k0-6bJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Unv-z2-adn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lHf-II-rBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="390" y="1860"/>
+        </scene>
         <!--Tags Graphs-->
         <scene sceneID="HWF-rk-3ah">
             <objects>
                 <collectionViewController title="Tags Graphs" id="xi1-ux-M0I" customClass="TagsGraphsCollectionView" customModule="Deck_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="9hS-UN-qop">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="399"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5SP-7D-UJR">
@@ -971,7 +967,7 @@
             <objects>
                 <collectionViewController id="sFK-R8-uvP" customClass="GraphsCollectionView" customModule="Deck_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2MZ-Oh-bNL">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="399"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7dJ-Pu-ECl">
@@ -1776,6 +1772,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fMg-rf-EZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="527" y="1074"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="7kB-5e-qVt">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="gU8-3P-vez" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fos-7d-wSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1268" y="1333"/>
         </scene>
     </scenes>
     <resources>
