@@ -29,7 +29,7 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
         Data.sharedInstance.printGameData()
         Data.sharedInstance.printDeckData()
         
-        // Show page UI for graphs
+        // Show page UI for graphs  
         let pageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
         pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
