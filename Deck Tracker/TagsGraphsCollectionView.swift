@@ -182,16 +182,17 @@ class TagsGraphsCollectionView: UICollectionViewController {
             cell.tagLabel.hidden = true
             cell.label.text = "No data"
             cell.winInfoLabel.hidden = true
+            cell.layer.borderWidth = 2
         } else {
             cell.tagLabel.text = "Tag: " + String(filteredTags[indexPath.row])
             cell.label.text = String(winRateArray[indexPath.row]) + " %"
             cell.winInfoLabel.text = String(gamesWonArray[indexPath.row]) + " - " + String(gamesLostArray[indexPath.row])
+            cell.per = CGFloat(winRateArray[indexPath.row])
         }
-        cell.backgroundColor = UIColor.grayColor()
-        
-    
+            
         // Configure the cell
     
+        
         return cell
     }
 

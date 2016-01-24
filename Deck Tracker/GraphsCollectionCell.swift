@@ -28,8 +28,6 @@ class GraphsCollectionCell: UICollectionViewCell {
         }
     }
     
-    var noData = false
-
     private func setup() {
         
         layer.borderWidth = 2
@@ -52,24 +50,30 @@ class GraphsCollectionCell: UICollectionViewCell {
         fgLayer.strokeColor = fgColor.CGColor
         fgLayer.lineWidth = width / 5.7
         fgLayer.fillColor = nil
-        fgLayer.strokeEnd = per/100
+        fgLayer.strokeEnd = 1
         layer.addSublayer(fgLayer)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         setupShapeLayer(bgLayer)
-        setupShapeLayer(fgLayer)
+        //setupShapeLayer(fgLayer)
     }
     
     private func setupShapeLayer(shapeLayer: CAShapeLayer) {
         shapeLayer.frame = self.bounds
         let startAngle = DegreesToRadians(90.0)
-        let endAngle = DegreesToRadians(89.999999)
+        let calculatedEndAngle = getAngleFromWinRate()
+        let endAngle = DegreesToRadians(calculatedEndAngle)
         let center = opponentClassImage.center
         let radius = CGRectGetWidth(self.bounds) * 0.25
         let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         shapeLayer.path = path.CGPath
+    }
+    
+    private func getAngleFromWinRate() -> CGFloat {
+        let angle = (per * 3.6) + 90
+        return angle
     }
     
     func DegreesToRadians (value:CGFloat) -> CGFloat {
@@ -82,8 +86,12 @@ class GraphsCollectionCell: UICollectionViewCell {
     
     private func animate() {
         
-        var fromValue = fgLayer.strokeEnd
-        let toValue = per/100
+        //var fromValue = fgLayer.strokeEnd
+        //let toValue = per/100
+        
+        var fromValue = per/100
+        let toValue = fgLayer.strokeEnd
+        
         let percentChange = abs(fromValue - toValue)
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
