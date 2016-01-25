@@ -43,7 +43,7 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
         pieChart.outerRadius = pieChart.bounds.height / 3
         pieChart.innerRadius = pieChart.bounds.height / 10
 
-        pieChart.reloadData()
+        updateCharts()
 
     }
     

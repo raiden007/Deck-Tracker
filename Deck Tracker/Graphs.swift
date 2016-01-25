@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate {
+class Graphs: UIViewController, UIPageViewControllerDataSource {
     
     @IBOutlet var dateSegment: UISegmentedControl!
     @IBOutlet var deckSegment: UISegmentedControl!
@@ -20,9 +20,6 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
     var pageViewController: UIPageViewController!
     var pageTitles:NSArray!
 
-    
-    
-    
     var total: CGFloat = 100
     var dateIndex = -1
     var deckIndex = -1
@@ -37,7 +34,7 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         getInitialStatus()
         
         // Sets the page titles and size of graphs
-        self.pageTitles = NSArray(objects: "Win rate", "Heroes played", "Opponents faced", "Going first win rate", "Going second win rate")
+        self.pageTitles = NSArray(objects: "Win rate", "Heroes played", "Opponents faced")
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
         
@@ -161,14 +158,7 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         print("Deck Name: " + String(deckName))
     }
     
-    func setSubtitle(slice: Piechart.Slice) -> String {
-        return "\(Int(slice.value * 100))% \(slice.text)"
-    }
-    
-    func setInfo(slice: Piechart.Slice) -> String {
-        //return "\(Int(slice.value * total))/\(Int(total))"
-        return ""
-    }
+
     
     // Shows relevant graphs depending on page
     func viewControllerAtIndex(index: Int) -> GraphsViewController {
