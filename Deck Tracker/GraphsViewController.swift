@@ -22,11 +22,9 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
     
     static let sharedInstance = GraphsViewController()
     
-    var pieChart: ARPieChart!
+    public var outerRadius: CGFloat = 20.0
     
-    public var outerRadius: CGFloat = 0.0
-    
-    public var innerRadius: CGFloat = 0.0
+    public var innerRadius: CGFloat = 10.0
     
     public var selectedPieOffset: CGFloat = 0.0
     
@@ -35,6 +33,9 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
     public var showDescriptionText: Bool = false
     
     public var animationDuration: Double = 1.0
+    @IBOutlet var pieChart: ARPieChart!
+    
+    var dataItems: NSMutableArray = []
     
     
     override func viewDidLoad() {
@@ -42,14 +43,29 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
 
         self.titleLabel.text = self.titleText
 
-        drawPieChart()
+        //drawPieChart()
+        
+        pieChart.delegate = self
+        pieChart.dataSource = self
+        pieChart.showDescriptionText = true
+        
+        //        // Random Default Value
+        //        let defaultItemCount = randomInteger(1, upper: 10)
+        //        for _ in 1...defaultItemCount {
+        //            dataItems.addObject(randomItem())
+        //        }
+        
+        let itemOne = PieChartItem(value: 30.0, color: UIColor.redColor(), description: "item 1")
+        let itemTwo = PieChartItem(value: 20.0, color: UIColor.greenColor(), description: "item 2")
+        dataItems.addObject(itemOne)
+        dataItems.addObject(itemTwo)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         self.titleLabel.text = self.titleText
-        drawPieChart()
+        pieChart.reloadData()
 
     }
     
@@ -124,21 +140,31 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
 //        //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[piechart]-|", options: nil, metrics: nil, views: views))
 //        //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-25-[piechart(==200)]", options: nil, metrics: nil, views: views))
         
-
-        
-        outerRadius = 30.0
-        
-        innerRadius = 20.0
-        
-        selectedPieOffset = 0.0
-        
-        labelFont = UIFont.systemFontOfSize(10)
-        
-        showDescriptionText = false
-        
-        animationDuration = 1.0
+//        if let _ = pieChart.delegate {
+//            pieChart.delegate = self
+//        }
+//        
+//        pieChart.dataSource = self
+//        pieChart.showDescriptionText = true
+//        
+//        outerRadius = 30.0
+//        
+//        innerRadius = 20.0
+//        
+//        selectedPieOffset = 0.0
+//        
+//        labelFont = UIFont.systemFontOfSize(10)
+//        
+//        showDescriptionText = false
+//        
+//        animationDuration = 1.0
         
         //pieChart.reloadData()
+        
+        
+        
+        
+        
     }
     
 //    // Creates the Heroes Played Chart
@@ -355,31 +381,44 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
     func updateCharts() {
 
         drawPieChart()
-        pieChart.reloadData()
+        //pieChart.reloadData()
     }
     
-    func numberOfSlicesInPieChart(pieChart: ARPieChart) -> Int {
-        return 2
-    }
-    
-    func pieChart(pieChart: ARPieChart, valueForSliceAtIndex index: Int) -> CGFloat {
-        return 1
-    }
-    
-    func pieChart(pieChart: ARPieChart, colorForSliceAtIndex index: Int) -> UIColor {
-        return UIColor.redColor()
-    }
-    
-    func pieChart(pieChart: ARPieChart, descriptionForSliceAtIndex index: Int) -> String {
-        return "test"
-    }
-    
+    /**
+     *  MARK: ARPieChartDelegate
+     */
     func pieChart(pieChart: ARPieChart, itemSelectedAtIndex index: Int) {
-        
+        let itemSelected: PieChartItem = dataItems[index] as! PieChartItem
+        bottomLabel.text = "Value: \(itemSelected.value)"
+        bottomLabel.textColor = itemSelected.color
     }
     
     func pieChart(pieChart: ARPieChart, itemDeselectedAtIndex index: Int) {
-        
+        bottomLabel.text = "No Selection"
+        bottomLabel.textColor = UIColor.blackColor()
+    }
+    
+    
+    /**
+     *   MARK: ARPieChartDataSource
+     */
+    func numberOfSlicesInPieChart(pieChart: ARPieChart) -> Int {
+        return dataItems.count
+    }
+    
+    func pieChart(pieChart: ARPieChart, valueForSliceAtIndex index: Int) -> CGFloat {
+        let item: PieChartItem = dataItems[index] as! PieChartItem
+        return item.value
+    }
+    
+    func pieChart(pieChart: ARPieChart, colorForSliceAtIndex index: Int) -> UIColor {
+        let item: PieChartItem = dataItems[index] as! PieChartItem
+        return item.color
+    }
+    
+    func pieChart(pieChart: ARPieChart, descriptionForSliceAtIndex index: Int) -> String {
+        let item: PieChartItem = dataItems[index] as! PieChartItem
+        return item.description ?? ""
     }
 
     /*
@@ -391,5 +430,26 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
         // Pass the selected object to the new view controller.
     }
     */
+    
+    /**
+    *  MARK: Pie chart data item
+    */
+    public class PieChartItem {
+        
+        /// Data value
+        public var value: CGFloat = 0.0
+        
+        /// Color displayed on chart
+        public var color: UIColor = UIColor.blackColor()
+        
+        /// Description text
+        public var description: String?
+        
+        public init(value: CGFloat, color: UIColor, description: String?) {
+            self.value = value
+            self.color = color
+            self.description = description
+        }
+    }
 
 }

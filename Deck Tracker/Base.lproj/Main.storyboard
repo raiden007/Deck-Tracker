@@ -884,7 +884,7 @@
                         <viewControllerLayoutGuide type="top" id="6i3-2Q-4iJ"/>
                         <viewControllerLayoutGuide type="bottom" id="dW2-k0-6bJ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Unv-z2-adn">
+                    <view key="view" contentMode="scaleToFill" id="Unv-z2-adn" customClass="ARPieChart" customModule="Deck_Tracker" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -923,6 +923,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomLabel" destination="VGF-cC-Ctp" id="wjn-NS-3s6"/>
+                        <outlet property="pieChart" destination="Unv-z2-adn" id="9lT-25-quk"/>
                         <outlet property="titleLabel" destination="5Ak-YX-ZZY" id="tFd-Xc-irC"/>
                     </connections>
                 </viewController>
