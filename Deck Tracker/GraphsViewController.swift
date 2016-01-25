@@ -40,6 +40,9 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
         super.viewDidAppear(animated)
         
         self.titleLabel.text = self.titleText
+        pieChart.outerRadius = pieChart.bounds.height / 3
+        pieChart.innerRadius = pieChart.bounds.height / 10
+
         pieChart.reloadData()
 
     }
@@ -58,17 +61,17 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
             createWinRatePieChart(dateIndex, deckName: deckName!)
             bottomLabel.text = "Total Games: " + String(Data.sharedInstance.generalWinRateCount())
         } else if self.titleLabel.text == "Heroes played" {
-            //createHeroesPlayedPieChart(dateIndex)
+            createHeroesPlayedPieChart(dateIndex)
             bottomLabel.text = "Tap the graph for more information"
         } else if self.titleLabel.text == "Opponents faced" {
-            //createOpponentsPlayedPieChart(dateIndex, deckName: deckName!)
+            createOpponentsPlayedPieChart(dateIndex, deckName: deckName!)
             bottomLabel.text = "Tap the graph for more information"
         } else if self.titleLabel.text == "Going first win rate" {
             //createWithoutCoinWinRatePieChart(dateIndex, deckName: deckName)
-            //bottomLabel.text = "Total Games: " + String(Data.sharedInstance.coinWinRateCount())
+            bottomLabel.text = "Total Games: " + String(Data.sharedInstance.coinWinRateCount())
         } else if self.titleLabel.text == "Going second win rate" {
             //createCoinWinRatePieChart(dateIndex, deckName: deckName)
-            //bottomLabel.text = "Total Games: " + String(Data.sharedInstance.coinWinRateCount())
+            bottomLabel.text = "Total Games: " + String(Data.sharedInstance.coinWinRateCount())
         } else {
             assert(true, "Wrong page")
         }
@@ -85,57 +88,8 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
     // Creates Win Rate chart
     func createWinRatePieChart(dateIndex:Int, deckName:String) {
         
-//        var views: [String: UIView] = [:]
-//        
-//        print("Win Rate: " + String(stringInterpolationSegment: winRate))
-//        var loseRate:CGFloat = 100 - winRate
-//        
-//        var winSlice = Piechart.Slice()
-//        winSlice.value = winRate / total
-//        winSlice.color = UIColor.greenColor()
-//        winSlice.text = "Win"
-//        
-//        var loseSlice = Piechart.Slice()
-//        loseSlice.value = loseRate / total
-//        loseSlice.color = UIColor.redColor()
-//        loseSlice.text = "Loss"
-//        
-//        
-//        var piechart = Piechart()
-//        piechart.delegate = self
-//        piechart.title = "% Win"
-//        piechart.activeSlice = 0
-//        piechart.layer.borderWidth = 1
-//        piechart.slices = [winSlice, loseSlice]
-//        
-//        //piechart.setTranslatesAutoresizingMaskIntoConstraints(false)
-//        view.addSubview(piechart)
-//        views["piechart"] = piechart
-//        //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[piechart]-|", options: nil, metrics: nil, views: views))
-//        //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-25-[piechart(==200)]", options: nil, metrics: nil, views: views))
-        
-//        if let _ = pieChart.delegate {
-//            pieChart.delegate = self
-//        }
-//        
-//        pieChart.dataSource = self
-//        pieChart.showDescriptionText = true
-//        
-//        outerRadius = 30.0
-//        
-//        innerRadius = 20.0
-//        
-//        selectedPieOffset = 0.0
-//        
-//        labelFont = UIFont.systemFontOfSize(10)
-//        
-//        showDescriptionText = false
-//        
-//        animationDuration = 1.0
-        
         dataItems = []
 
-        
         pieChart.outerRadius = pieChart.bounds.height / 3
         pieChart.innerRadius = pieChart.bounds.height / 10
         
@@ -154,181 +108,119 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
         
     }
     
-//    // Creates the Heroes Played Chart
-//    func createHeroesPlayedPieChart(dateIndex:Int) {
-//        var views: [String: UIView] = [:]
-//        
-//        var heroesPlayed:[Int] = []
-//        //heroesPlayed = Data.sharedInstance.heroesPlayed(dateIndex)
-//        var totalGames = heroesPlayed[0] + heroesPlayed[1] + heroesPlayed[2] + heroesPlayed[3] + heroesPlayed[4] + heroesPlayed[5] + heroesPlayed[6] + heroesPlayed[7] + heroesPlayed[8]
-//        
-//        if totalGames == 0 {
-//            totalGames = 1
-//        }
-//        
-//        
-//        var warriorSlice = Piechart.Slice()
-//        warriorSlice.value = CGFloat(heroesPlayed[0]) / CGFloat(totalGames)
-//        warriorSlice.color = UIColor.redColor()
-//        warriorSlice.text = "Warrior"
-//        
-//        var paladinSlice = Piechart.Slice()
-//        paladinSlice.value = CGFloat(heroesPlayed[1]) / CGFloat(totalGames)
-//        paladinSlice.color = UIColor.yellowColor()
-//        paladinSlice.text = "Paladin"
-//        
-//        var shamanSlice = Piechart.Slice()
-//        shamanSlice.value = CGFloat(heroesPlayed[2]) / CGFloat(totalGames)
-//        shamanSlice.color = UIColor.blueColor()
-//        shamanSlice.text = "Shaman"
-//        
-//        var hunterSlice = Piechart.Slice()
-//        hunterSlice.value = CGFloat(heroesPlayed[3]) / CGFloat(totalGames)
-//        hunterSlice.color = UIColor.greenColor()
-//        hunterSlice.text = "Hunter"
-//        
-//        var druidSlice = Piechart.Slice()
-//        druidSlice.value = CGFloat(heroesPlayed[4]) / CGFloat(totalGames)
-//        druidSlice.color = UIColor.brownColor()
-//        druidSlice.text = "Druid"
-//        
-//        var rogueSlice = Piechart.Slice()
-//        rogueSlice.value = CGFloat(heroesPlayed[5]) / CGFloat(totalGames)
-//        rogueSlice.color = UIColor.darkGrayColor()
-//        rogueSlice.text = "Rogue"
-//        
-//        var mageSlice = Piechart.Slice()
-//        mageSlice.value = CGFloat(heroesPlayed[6]) / CGFloat(totalGames)
-//        mageSlice.color = UIColor.cyanColor()
-//        mageSlice.text = "Mage"
-//        
-//        var warlockSlice = Piechart.Slice()
-//        warlockSlice.value = CGFloat(heroesPlayed[7]) / CGFloat(totalGames)
-//        warlockSlice.color = UIColor.purpleColor()
-//        warlockSlice.text = "Warlock"
-//        
-//        var priestSlice = Piechart.Slice()
-//        priestSlice.value = CGFloat(heroesPlayed[8]) / CGFloat(totalGames)
-//        priestSlice.color = UIColor.lightGrayColor()
-//        priestSlice.text = "Priest"
-//        
-//        
-//        var piechart = Piechart()
-//        piechart.delegate = self
-//        piechart.title = "Heroes"
-//        piechart.activeSlice = 0
-//        piechart.layer.borderWidth = 1
-//        piechart.slices = [warriorSlice, paladinSlice, shamanSlice, hunterSlice, druidSlice, rogueSlice, mageSlice, warlockSlice, priestSlice]
-//        
-//        //piechart.setTranslatesAutoresizingMaskIntoConstraints(false)
-//        view.addSubview(piechart)
-//        views["piechart"] = piechart
-//        //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[piechart]-|", options: nil, metrics: nil, views: views))
-//        //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-25-[piechart(==200)]", options: nil, metrics: nil, views: views))
-//    }
+    // Creates the Heroes Played Chart
+    func createHeroesPlayedPieChart(dateIndex:Int) {
+        
+        var heroesPlayed:[Int] = []
+        heroesPlayed = Data.sharedInstance.heroesPlayed(dateIndex)
+        var totalGames = heroesPlayed[0] + heroesPlayed[1] + heroesPlayed[2] + heroesPlayed[3] + heroesPlayed[4] + heroesPlayed[5] + heroesPlayed[6] + heroesPlayed[7] + heroesPlayed[8]
+        
+        if totalGames == 0 {
+            totalGames = 1
+        }
+        
+        dataItems = []
+        
+        pieChart.outerRadius = pieChart.bounds.height / 3
+        pieChart.innerRadius = pieChart.bounds.height / 10
+        
+        let warrior = PieChartItem(value: CGFloat(heroesPlayed[0]) / CGFloat(totalGames), color: UIColor.redColor(), description: "Warrior")
+        dataItems.addObject(warrior)
+        
+        let paladin = PieChartItem(value: CGFloat(heroesPlayed[1]) / CGFloat(totalGames), color: UIColor.yellowColor(), description: "Paladin")
+        dataItems.addObject(paladin)
+        
+        let shaman = PieChartItem(value: CGFloat(heroesPlayed[2]) / CGFloat(totalGames), color: UIColor.blueColor(), description: "Shaman")
+        dataItems.addObject(shaman)
+        
+        let hunter = PieChartItem(value: CGFloat(heroesPlayed[3]) / CGFloat(totalGames), color: UIColor.greenColor(), description: "Hunter")
+        dataItems.addObject(hunter)
+        
+        let druid = PieChartItem(value: CGFloat(heroesPlayed[4]) / CGFloat(totalGames), color: UIColor.brownColor(), description: "Druid")
+        dataItems.addObject(druid)
+        
+        let rogue = PieChartItem(value: CGFloat(heroesPlayed[5]) / CGFloat(totalGames), color: UIColor.darkGrayColor(), description: "Rogue")
+        dataItems.addObject(rogue)
+        
+        let mage = PieChartItem(value: CGFloat(heroesPlayed[6]) / CGFloat(totalGames), color: UIColor.cyanColor(), description: "Mage")
+        dataItems.addObject(mage)
+        
+        let warlock = PieChartItem(value: CGFloat(heroesPlayed[7]) / CGFloat(totalGames), color: UIColor.purpleColor(), description: "Warlock")
+        dataItems.addObject(warlock)
+        
+        let priest = PieChartItem(value: CGFloat(heroesPlayed[8]) / CGFloat(totalGames), color: UIColor.lightGrayColor(), description: "Priest")
+        dataItems.addObject(priest)
+        
+        pieChart.reloadData()
+    }
     
-//    // Creates the opponents played chart
-//    func createOpponentsPlayedPieChart(dateIndex:Int, deckName:String) {
-//        var views: [String: UIView] = [:]
-//        
-//        //var opponentsPlayed:[Int] = Data.sharedInstance.opponentsPlayed(dateIndex, deckName: deckName)
-//        var totalGames = opponentsPlayed[0] + opponentsPlayed[1] + opponentsPlayed[2] + opponentsPlayed[3] + opponentsPlayed[4] + opponentsPlayed[5] + opponentsPlayed[6] + opponentsPlayed[7] + opponentsPlayed[8]
-//        if totalGames == 0 {
-//            totalGames = 1
-//        }
-//        
-//        var warriorSlice = Piechart.Slice()
-//        warriorSlice.value = CGFloat(opponentsPlayed[0]) / CGFloat(totalGames)
-//        warriorSlice.color = UIColor.redColor()
-//        warriorSlice.text = "Warrior"
-//        
-//        var paladinSlice = Piechart.Slice()
-//        paladinSlice.value = CGFloat(opponentsPlayed[1]) / CGFloat(totalGames)
-//        paladinSlice.color = UIColor.yellowColor()
-//        paladinSlice.text = "Paladin"
-//        
-//        var shamanSlice = Piechart.Slice()
-//        shamanSlice.value = CGFloat(opponentsPlayed[2]) / CGFloat(totalGames)
-//        shamanSlice.color = UIColor.blueColor()
-//        shamanSlice.text = "Shaman"
-//        
-//        var hunterSlice = Piechart.Slice()
-//        hunterSlice.value = CGFloat(opponentsPlayed[3]) / CGFloat(totalGames)
-//        hunterSlice.color = UIColor.greenColor()
-//        hunterSlice.text = "Hunter"
-//        
-//        var druidSlice = Piechart.Slice()
-//        druidSlice.value = CGFloat(opponentsPlayed[4]) / CGFloat(totalGames)
-//        druidSlice.color = UIColor.brownColor()
-//        druidSlice.text = "Druid"
-//        
-//        var rogueSlice = Piechart.Slice()
-//        rogueSlice.value = CGFloat(opponentsPlayed[5]) / CGFloat(totalGames)
-//        rogueSlice.color = UIColor.darkGrayColor()
-//        rogueSlice.text = "Rogue"
-//        
-//        var mageSlice = Piechart.Slice()
-//        mageSlice.value = CGFloat(opponentsPlayed[6]) / CGFloat(totalGames)
-//        mageSlice.color = UIColor.cyanColor()
-//        mageSlice.text = "Mage"
-//        
-//        var warlockSlice = Piechart.Slice()
-//        warlockSlice.value = CGFloat(opponentsPlayed[7]) / CGFloat(totalGames)
-//        warlockSlice.color = UIColor.purpleColor()
-//        warlockSlice.text = "Warlock"
-//        
-//        var priestSlice = Piechart.Slice()
-//        priestSlice.value = CGFloat(opponentsPlayed[8]) / CGFloat(totalGames)
-//        priestSlice.color = UIColor.lightGrayColor()
-//        priestSlice.text = "Priest"
-//        
-//        
-//        var piechart = Piechart()
-//        piechart.delegate = self
-//        piechart.title = "Opponent"
-//        piechart.activeSlice = 0
-//        piechart.layer.borderWidth = 1
-//        piechart.slices = [warriorSlice, paladinSlice, shamanSlice, hunterSlice, druidSlice, rogueSlice, mageSlice, warlockSlice, priestSlice]
-//        
-//        //piechart.setTranslatesAutoresizingMaskIntoConstraints(false)
-//        view.addSubview(piechart)
-//        views["piechart"] = piechart
-//        //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[piechart]-|", options: nil, metrics: nil, views: views))
-//        //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-25-[piechart(==200)]", options: nil, metrics: nil, views: views))
-//    }
+    // Creates the opponents played chart
+    func createOpponentsPlayedPieChart(dateIndex:Int, deckName:String) {
+        
+        var opponentsPlayed:[Int] = Data.sharedInstance.opponentsPlayed(dateIndex, deckName: deckName)
+        var totalGames = opponentsPlayed[0] + opponentsPlayed[1] + opponentsPlayed[2] + opponentsPlayed[3] + opponentsPlayed[4] + opponentsPlayed[5] + opponentsPlayed[6] + opponentsPlayed[7] + opponentsPlayed[8]
+        if totalGames == 0 {
+            totalGames = 1
+        }
+        
+        dataItems = []
+        
+        pieChart.outerRadius = pieChart.bounds.height / 3
+        pieChart.innerRadius = pieChart.bounds.height / 10
+        
+        let warrior = PieChartItem(value: CGFloat(opponentsPlayed[0]) / CGFloat(totalGames), color: UIColor.redColor(), description: "Warrior")
+        dataItems.addObject(warrior)
+        
+        let paladin = PieChartItem(value: CGFloat(opponentsPlayed[1]) / CGFloat(totalGames), color: UIColor.yellowColor(), description: "Paladin")
+        dataItems.addObject(paladin)
+        
+        let shaman = PieChartItem(value: CGFloat(opponentsPlayed[2]) / CGFloat(totalGames), color: UIColor.blueColor(), description: "Shaman")
+        dataItems.addObject(shaman)
+        
+        let hunter = PieChartItem(value: CGFloat(opponentsPlayed[3]) / CGFloat(totalGames), color: UIColor.greenColor(), description: "Hunter")
+        dataItems.addObject(hunter)
+        
+        let druid = PieChartItem(value: CGFloat(opponentsPlayed[4]) / CGFloat(totalGames), color: UIColor.brownColor(), description: "Druid")
+        dataItems.addObject(druid)
+        
+        let rogue = PieChartItem(value: CGFloat(opponentsPlayed[5]) / CGFloat(totalGames), color: UIColor.darkGrayColor(), description: "Rogue")
+        dataItems.addObject(rogue)
+        
+        let mage = PieChartItem(value: CGFloat(opponentsPlayed[6]) / CGFloat(totalGames), color: UIColor.cyanColor(), description: "Mage")
+        dataItems.addObject(mage)
+        
+        let warlock = PieChartItem(value: CGFloat(opponentsPlayed[7]) / CGFloat(totalGames), color: UIColor.purpleColor(), description: "Warlock")
+        dataItems.addObject(warlock)
+        
+        let priest = PieChartItem(value: CGFloat(opponentsPlayed[8]) / CGFloat(totalGames), color: UIColor.lightGrayColor(), description: "Priest")
+        dataItems.addObject(priest)
+        
+        pieChart.reloadData()
+
+    }
     
 //    // Creates going first chart
 //    func createCoinWinRatePieChart(dateIndex:Int, deckName:String) {
 //        
-//        var views: [String: UIView] = [:]
+//        dataItems = []
 //        
-//        //var winRate:CGFloat = CGFloat(Data.sharedInstance.withCoinWinRate(dateIndex, deckName: deckName))
+//        var winRate:CGFloat = CGFloat(Data.sharedInstance.withCoinWinRate(dateIndex, deckName: deckName))
 //        print("Win Rate: " + String(stringInterpolationSegment: winRate))
-//        var loseRate:CGFloat = 100 - winRate
-//        
-//        var winSlice = Piechart.Slice()
-//        winSlice.value = winRate / total
-//        winSlice.color = UIColor.greenColor()
-//        winSlice.text = "Win"
-//        
-//        var loseSlice = Piechart.Slice()
-//        loseSlice.value = loseRate / total
-//        loseSlice.color = UIColor.redColor()
-//        loseSlice.text = "Loss"
 //        
 //        
-//        var piechart = Piechart()
-//        piechart.delegate = self
-//        piechart.title = "% Win"
-//        piechart.activeSlice = 0
-//        piechart.layer.borderWidth = 1
-//        piechart.slices = [winSlice, loseSlice]
 //        
-//        //piechart.setTranslatesAutoresizingMaskIntoConstraints(false)
-//        view.addSubview(piechart)
-//        views["piechart"] = piechart
-//        //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[piechart]-|", options: nil, metrics: nil, views: views))
-//        //view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-25-[piechart(==200)]", options: nil, metrics: nil, views: views))
+//        pieChart.outerRadius = pieChart.bounds.height / 3
+//        pieChart.innerRadius = pieChart.bounds.height / 10
+//        
+//        let loseRate: CGFloat = 100 - winRate
+//        let winRateDescription = NSString(format: "%.2f", winRate)
+//        let loseRateDescription = NSString(format: "%.2f", loseRate)
+//        
+//        let itemOne = PieChartItem(value: winRate, color: UIColor.greenColor(), description: String(winRateDescription))
+//        let itemTwo = PieChartItem(value: loseRate, color: UIColor.redColor(), description: String(loseRateDescription))
+//        dataItems.addObject(itemOne)
+//        dataItems.addObject(itemTwo)
+//        pieChart.reloadData()
 //    }
     
     // Creates going second chart
@@ -421,7 +313,7 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
     /**
     *  MARK: Pie chart data item
     */
-    public class PieChartItem {
+    class PieChartItem {
         
         /// Data value
         public var value: CGFloat = 0.0

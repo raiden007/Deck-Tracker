@@ -49,6 +49,8 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
+        
+        
     }
     
     
@@ -176,6 +178,12 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         let vc: GraphsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as! GraphsViewController
         vc.titleText = self.pageTitles[index] as! String
         vc.pageIndex = index
+        
+        for gvc in self.pageViewController.viewControllers as! [GraphsViewController] {
+            gvc.updateCharts()
+        }
+        
+        
         return vc
     }
     
@@ -190,6 +198,12 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         }
         
         index--
+        
+        for gvc in self.pageViewController.viewControllers as! [GraphsViewController] {
+            gvc.updateCharts()
+        }
+        
+        
         return self.viewControllerAtIndex(index)
     }
     
@@ -207,6 +221,10 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
         
         if index == self.pageTitles.count {
             return nil
+        }
+        
+        for gvc in self.pageViewController.viewControllers as! [GraphsViewController] {
+            gvc.updateCharts()
         }
         
         return self.viewControllerAtIndex(index)
