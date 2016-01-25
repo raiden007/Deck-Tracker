@@ -13,28 +13,13 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bottomLabel: UILabel!
+    @IBOutlet weak var pieChart: ARPieChart!
     
     var pageIndex: Int!
     var titleText: String!
     var total: CGFloat = 100
     var deckName = ""
-
-    
     static let sharedInstance = GraphsViewController()
-    
-    public var outerRadius: CGFloat = 20.0
-    
-    public var innerRadius: CGFloat = 10.0
-    
-    public var selectedPieOffset: CGFloat = 0.0
-    
-    public var labelFont: UIFont = UIFont.systemFontOfSize(10)
-    
-    public var showDescriptionText: Bool = false
-    
-    public var animationDuration: Double = 1.0
-    @IBOutlet var pieChart: ARPieChart!
-    
     var dataItems: NSMutableArray = []
     
     
@@ -42,23 +27,13 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
         super.viewDidLoad()
 
         self.titleLabel.text = self.titleText
-
-        //drawPieChart()
         
         pieChart.delegate = self
         pieChart.dataSource = self
         pieChart.showDescriptionText = true
+        pieChart.layer.borderWidth = 1
+        pieChart.reloadData()
         
-        //        // Random Default Value
-        //        let defaultItemCount = randomInteger(1, upper: 10)
-        //        for _ in 1...defaultItemCount {
-        //            dataItems.addObject(randomItem())
-        //        }
-        
-        let itemOne = PieChartItem(value: 30.0, color: UIColor.redColor(), description: "item 1")
-        let itemTwo = PieChartItem(value: 20.0, color: UIColor.greenColor(), description: "item 2")
-        dataItems.addObject(itemOne)
-        dataItems.addObject(itemTwo)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -112,7 +87,6 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
         
 //        var views: [String: UIView] = [:]
 //        
-//        var winRate:CGFloat = CGFloat(Data.sharedInstance.generalWinRate(dateIndex, deckName: deckName))
 //        print("Win Rate: " + String(stringInterpolationSegment: winRate))
 //        var loseRate:CGFloat = 100 - winRate
 //        
@@ -159,9 +133,22 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
 //        
 //        animationDuration = 1.0
         
-        //pieChart.reloadData()
+        dataItems = []
+
         
+        pieChart.outerRadius = pieChart.bounds.height / 3
+        pieChart.innerRadius = pieChart.bounds.height / 10
         
+        let winRate: CGFloat = CGFloat(Data.sharedInstance.generalWinRate(dateIndex, deckName: deckName))
+        let loseRate: CGFloat = 100 - winRate
+        let winRateDescription = NSString(format: "%.2f", winRate)
+        let loseRateDescription = NSString(format: "%.2f", loseRate)
+
+        let itemOne = PieChartItem(value: winRate, color: UIColor.greenColor(), description: String(winRateDescription))
+        let itemTwo = PieChartItem(value: loseRate, color: UIColor.redColor(), description: String(loseRateDescription))
+        dataItems.addObject(itemOne)
+        dataItems.addObject(itemTwo)
+        pieChart.reloadData()
         
         
         
@@ -381,7 +368,7 @@ class GraphsViewController: UIViewController, ARPieChartDelegate, ARPieChartData
     func updateCharts() {
 
         drawPieChart()
-        //pieChart.reloadData()
+        pieChart.reloadData()
     }
     
     /**

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -884,7 +884,7 @@
                         <viewControllerLayoutGuide type="top" id="6i3-2Q-4iJ"/>
                         <viewControllerLayoutGuide type="bottom" id="dW2-k0-6bJ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Unv-z2-adn" customClass="ARPieChart" customModule="Deck_Tracker" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Unv-z2-adn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -895,22 +895,30 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGF-cC-Ctp" userLabel="Bottom">
-                                <rect key="frame" x="279" y="559" width="42" height="21"/>
+                                <rect key="frame" x="279" y="560" width="42" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2b-LN-YP1" customClass="ARPieChart" customModule="Deck_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="20" y="70" width="560" height="470"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="5Ak-YX-ZZY" secondAttribute="trailing" constant="259" id="RP2-YD-gZd"/>
                             <constraint firstItem="VGF-cC-Ctp" firstAttribute="centerX" secondItem="Unv-z2-adn" secondAttribute="centerX" id="WxX-Lt-oJw"/>
+                            <constraint firstItem="VGF-cC-Ctp" firstAttribute="top" secondItem="M2b-LN-YP1" secondAttribute="bottom" constant="20" id="Xb8-RS-9BD"/>
+                            <constraint firstItem="M2b-LN-YP1" firstAttribute="leading" secondItem="Unv-z2-adn" secondAttribute="leadingMargin" id="bs8-r2-fOL"/>
                             <constraint firstItem="dW2-k0-6bJ" firstAttribute="top" secondItem="VGF-cC-Ctp" secondAttribute="bottom" constant="20" id="cva-5T-hD8"/>
                             <constraint firstItem="VGF-cC-Ctp" firstAttribute="leading" secondItem="Unv-z2-adn" secondAttribute="leadingMargin" constant="259" id="dqg-23-x8i"/>
+                            <constraint firstItem="M2b-LN-YP1" firstAttribute="trailing" secondItem="Unv-z2-adn" secondAttribute="trailingMargin" id="sX1-R3-yQV"/>
                             <constraint firstItem="5Ak-YX-ZZY" firstAttribute="centerX" secondItem="Unv-z2-adn" secondAttribute="centerX" id="tad-Vs-PaC"/>
                             <constraint firstItem="5Ak-YX-ZZY" firstAttribute="top" secondItem="Unv-z2-adn" secondAttribute="topMargin" constant="8" id="v2T-Pu-okG"/>
                             <constraint firstItem="5Ak-YX-ZZY" firstAttribute="leading" secondItem="Unv-z2-adn" secondAttribute="leadingMargin" constant="259" id="wpV-wu-5FR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VGF-cC-Ctp" secondAttribute="trailing" constant="259" id="zJG-xh-ODa"/>
+                            <constraint firstItem="M2b-LN-YP1" firstAttribute="top" secondItem="6i3-2Q-4iJ" secondAttribute="bottom" constant="50" id="zzE-ZD-9jh"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -923,7 +931,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomLabel" destination="VGF-cC-Ctp" id="wjn-NS-3s6"/>
-                        <outlet property="pieChart" destination="Unv-z2-adn" id="9lT-25-quk"/>
+                        <outlet property="pieChart" destination="M2b-LN-YP1" id="MIH-MF-cCi"/>
                         <outlet property="titleLabel" destination="5Ak-YX-ZZY" id="tFd-Xc-irC"/>
                     </connections>
                 </viewController>

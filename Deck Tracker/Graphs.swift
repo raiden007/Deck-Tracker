@@ -55,6 +55,10 @@ class Graphs: UIViewController, UIPageViewControllerDataSource, PiechartDelegate
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         getInitialStatus()
+        
+        for gvc in self.pageViewController.viewControllers as! [GraphsViewController] {
+            gvc.updateCharts()
+        }
     }
     
     override func didReceiveMemoryWarning() {
