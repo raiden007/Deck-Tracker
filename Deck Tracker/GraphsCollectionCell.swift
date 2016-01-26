@@ -28,43 +28,61 @@ class GraphsCollectionCell: UICollectionViewCell {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configure()
+        setup()
+    }
+    
     private func setup() {
         
-        layer.borderWidth = 2
+        layer.borderWidth = 1
         
         let width = bgLayer.bounds.width
         
         // Setup background layer
-        if per != -1 {
-            bgLayer.strokeColor = bgColor.CGColor
-        } else {
-            bgLayer.strokeColor = UIColor.whiteColor().CGColor
-        }
-        
         bgLayer.lineWidth = width / 5.5
         bgLayer.fillColor = nil
         bgLayer.strokeEnd = 1
         layer.addSublayer(bgLayer)
         
         // Setup foreground layer
-        fgLayer.strokeColor = fgColor.CGColor
         fgLayer.lineWidth = width / 5.7
         fgLayer.fillColor = nil
         fgLayer.strokeEnd = 1
         layer.addSublayer(fgLayer)
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupShapeLayer(bgLayer)
-        //setupShapeLayer(fgLayer)
+    func configure() {
+        bgLayer.strokeColor = bgColor.CGColor
+        fgLayer.strokeColor = fgColor.CGColor
     }
     
-    private func setupShapeLayer(shapeLayer: CAShapeLayer) {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupBGShapeLayer(bgLayer)
+        setupFGShapeLayer(fgLayer)
+    }
+    
+    private func setupFGShapeLayer(shapeLayer: CAShapeLayer) {
         shapeLayer.frame = self.bounds
         let startAngle = DegreesToRadians(90.0)
         let calculatedEndAngle = getAngleFromWinRate()
         let endAngle = DegreesToRadians(calculatedEndAngle)
+        let center = opponentClassImage.center
+        let radius = CGRectGetWidth(self.bounds) * 0.25
+        let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        shapeLayer.path = path.CGPath
+    }
+    
+    private func setupBGShapeLayer(shapeLayer: CAShapeLayer) {
+        shapeLayer.frame = self.bounds
+        let calculatedEndAngle = getAngleFromWinRate()
+        var startAngle = DegreesToRadians(calculatedEndAngle) + 0.00001
+        if winInfoLabel.text == "No Data" {
+            startAngle = DegreesToRadians(calculatedEndAngle)
+        }
+        let endAngle = DegreesToRadians(90.0)
         let center = opponentClassImage.center
         let radius = CGRectGetWidth(self.bounds) * 0.25
         let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
@@ -86,28 +104,36 @@ class GraphsCollectionCell: UICollectionViewCell {
     
     private func animate() {
         
-        //var fromValue = fgLayer.strokeEnd
-        //let toValue = per/100
-        
-        var fromValue = per/100
-        let toValue = fgLayer.strokeEnd
+        var fromValue = fgLayer.strokeEnd
+        var toValue = per/100
+//        if let presentationLayer = fgLayer.presentationLayer() as? CAShapeLayer {
+//            fromValue = presentationLayer.strokeEnd
+//        }
+
+        print(String(fromValue) + " -> " + String(toValue))
         
         let percentChange = abs(fromValue - toValue)
         
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.fromValue = fromValue
-        animation.toValue = toValue
+        //print(percentChange)
         
-        animation.duration = CFTimeInterval(percentChange * 4000)
+        if toValue >= fromValue {
+            // 1
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            animation.fromValue = fromValue
+            animation.toValue = toValue
+            // 2
+            animation.duration = CFTimeInterval(1000000)
+            // 3
+            fgLayer.removeAnimationForKey("stroke")
+            fgLayer.addAnimation(animation, forKey: "stroke")
+            
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            fgLayer.strokeEnd = toValue
+            CATransaction.commit()
+        }
+        
 
-        
-        fgLayer.removeAnimationForKey("stroke")
-        fgLayer.addAnimation(animation, forKey: "stroke")
-        
-        CATransaction.begin()
-        CATransaction.setDisableActions(true)
-        fgLayer.strokeEnd = toValue
-        CATransaction.commit()
     }
 
 }

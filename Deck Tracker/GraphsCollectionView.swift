@@ -154,11 +154,11 @@ class GraphsCollectionView: UICollectionViewController {
 
         if gamesWonArray[indexPath.row] == 0 && gamesLostArray[indexPath.row] == 0 {
             cell.winInfoLabel.text = "No Data"
-            cell.per = -1
         } else {
             cell.winInfoLabel.text = String(winRateArray[indexPath.row]) + "% : " + "(" + String(gamesWonArray[indexPath.row]) + "-" + String(gamesLostArray[indexPath.row]) + ")"
-            cell.per = CGFloat(winRateArray[indexPath.row])
         }
+        
+        cell.per = CGFloat(winRateArray[indexPath.row])
         
         return cell
     }
