@@ -34,7 +34,7 @@ class GraphsCollectionCell: UICollectionViewCell {
         setup()
     }
     
-    private func setup() {
+    func setup() {
         
         layer.borderWidth = 1
         
@@ -102,7 +102,7 @@ class GraphsCollectionCell: UICollectionViewCell {
         return value * 180.0 / π
     }
     
-    private func animate() {
+    func animate() {
         
         var fromValue = fgLayer.strokeEnd
         var toValue = per/100
@@ -110,7 +110,7 @@ class GraphsCollectionCell: UICollectionViewCell {
 //            fromValue = presentationLayer.strokeEnd
 //        }
 
-        print(String(fromValue) + " -> " + String(toValue))
+        //print(String(fromValue) + " -> " + String(toValue))
         
         let percentChange = abs(fromValue - toValue)
         

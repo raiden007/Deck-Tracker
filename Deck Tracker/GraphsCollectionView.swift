@@ -160,7 +160,24 @@ class GraphsCollectionView: UICollectionViewController {
         
         cell.per = CGFloat(winRateArray[indexPath.row])
         
+        print(indexPath.row)
+        
+        if indexPath.row == 6 {
+            cell.configure()
+            cell.setup()
+            cell.animate()
+            self.reloadCollectionViewDataAtIndexPath(indexPath)
+            //self.collectionView!.reloadData()
+        }
+        
+        
         return cell
+    }
+    
+    func reloadCollectionViewDataAtIndexPath(indexPath:NSIndexPath){
+        let indexArray = NSArray(object: indexPath)
+        
+        self.collectionView!.reloadItemsAtIndexPaths(indexArray as! [NSIndexPath])
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -212,6 +229,12 @@ class GraphsCollectionView: UICollectionViewController {
     }
     */
     
+    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        
+        //self.collectionView!.reloadData()
+    }
+    
+
 
 
 }
