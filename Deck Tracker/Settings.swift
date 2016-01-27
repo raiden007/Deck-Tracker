@@ -10,9 +10,9 @@ import UIKit
 
 class Settings: UITableViewController {
 
+    @IBOutlet weak var resetButton: UIButton!
     
     
-    @IBOutlet weak var resetAllButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,75 +27,71 @@ class Settings: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // Selects the row and saves the info so we can add a checkmark
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //var cell = tableView.cellForRowAtIndexPath(indexPath)
-        //cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+    
+    @IBAction func resetButtonPressed(sender: UIButton) {
+        // Create the alert controller
+        let alertController = UIAlertController(title: "Full reset", message: "What do you want to delete ?", preferredStyle: .Alert)
         
-        if indexPath.row == 0 {
-            // Create the alert controller
-            let alertController = UIAlertController(title: "Full reset", message: "What do you want to delete ?", preferredStyle: .Alert)
+        // Create the actions
+        let resetAllAction = UIAlertAction(title: "Reset everything", style: UIAlertActionStyle.Destructive) {
+            UIAlertAction in
             
-            // Create the actions
-            let resetAllAction = UIAlertAction(title: "Reset everything", style: UIAlertActionStyle.Destructive) {
-                UIAlertAction in
-                
-                // Delete from NSUserDefaults
-                NSUserDefaults.standardUserDefaults().removeObjectForKey("List of games")
-                NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("List of decks")
-                NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("Selected Deck Name")
-                NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("All Tags")
-                Data.sharedInstance.listOfGames = []
-                Data.sharedInstance.listOfDecks = []
-                
-                // Sync
-                NSUserDefaults.standardUserDefaults().synchronize()
-                
-                NSLog("Reset everything pressed")
-            }
+            // Delete from NSUserDefaults
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("List of games")
+            NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("List of decks")
+            NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("Selected Deck Name")
+            NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("All Tags")
+            Data.sharedInstance.listOfGames = []
+            Data.sharedInstance.listOfDecks = []
             
-            let resetGamesAction = UIAlertAction(title: "Reset all games", style: UIAlertActionStyle.Destructive) {
-                UIAlertAction in
-                
-                // Delete from NSUserDefaults
-                NSUserDefaults.standardUserDefaults().removeObjectForKey("List of games")
-                Data.sharedInstance.listOfGames = []
-                // Sync
-                NSUserDefaults.standardUserDefaults().synchronize()
-                
-                NSLog("Reset all games pressed")
-                
-            }
+            // Sync
+            NSUserDefaults.standardUserDefaults().synchronize()
             
-            let resetGamesAndDecksAction = UIAlertAction(title: "Reset all games AND all decks", style: UIAlertActionStyle.Destructive) {
-                UIAlertAction in
-                
-                // Delete from NSUserDefaults
-                NSUserDefaults.standardUserDefaults().removeObjectForKey("List of games")
-                NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("List of decks")
-                NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("Selected Deck Name")
-                Data.sharedInstance.listOfGames = []
-                Data.sharedInstance.listOfDecks = []
-                // Sync
-                NSUserDefaults.standardUserDefaults().synchronize()
-                
-                NSLog("Reset all games AND decks pressed")
-            }
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
-                UIAlertAction in
-                NSLog("Cancel Pressed")
-            }
-            
-            // Add the actions
-            alertController.addAction(resetAllAction)
-            alertController.addAction(resetGamesAction)
-            alertController.addAction(resetGamesAndDecksAction)
-            alertController.addAction(cancelAction)
-            
-            // Present the controller
-            self.presentViewController(alertController, animated: true, completion: nil)
+            NSLog("Reset everything pressed")
         }
+        
+        let resetGamesAction = UIAlertAction(title: "Reset all games", style: UIAlertActionStyle.Destructive) {
+            UIAlertAction in
+            
+            // Delete from NSUserDefaults
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("List of games")
+            Data.sharedInstance.listOfGames = []
+            // Sync
+            NSUserDefaults.standardUserDefaults().synchronize()
+            
+            NSLog("Reset all games pressed")
+            
+        }
+        
+        let resetGamesAndDecksAction = UIAlertAction(title: "Reset all games AND all decks", style: UIAlertActionStyle.Destructive) {
+            UIAlertAction in
+            
+            // Delete from NSUserDefaults
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("List of games")
+            NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("List of decks")
+            NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("Selected Deck Name")
+            Data.sharedInstance.listOfGames = []
+            Data.sharedInstance.listOfDecks = []
+            // Sync
+            NSUserDefaults.standardUserDefaults().synchronize()
+            
+            NSLog("Reset all games AND decks pressed")
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        // Add the actions
+        alertController.addAction(resetAllAction)
+        alertController.addAction(resetGamesAction)
+        alertController.addAction(resetGamesAndDecksAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the controller
+        self.presentViewController(alertController, animated: true, completion: nil)
+
     }
+    
 }

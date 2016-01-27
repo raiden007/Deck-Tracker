@@ -1451,17 +1451,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset all !" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQq-Om-cbD">
-                                                    <rect key="frame" x="8" y="11" width="74" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9V-hy-MFP">
+                                                    <rect key="frame" x="8" y="7" width="60" height="30"/>
+                                                    <state key="normal" title="Reset All"/>
+                                                    <connections>
+                                                        <action selector="resetButtonPressed:" destination="qku-hA-dAJ" eventType="touchUpInside" id="mIJ-If-UWt"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="TQq-Om-cbD" firstAttribute="top" secondItem="EzE-Qf-hWR" secondAttribute="topMargin" constant="3" id="BBB-ZE-Xih"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="TQq-Om-cbD" secondAttribute="bottom" constant="3.5" id="FbK-lh-juS"/>
-                                                <constraint firstItem="TQq-Om-cbD" firstAttribute="leading" secondItem="EzE-Qf-hWR" secondAttribute="leadingMargin" id="qbg-ki-G3R"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="g9V-hy-MFP" secondAttribute="bottom" constant="-1.5" id="2Pf-jn-swI"/>
+                                                <constraint firstItem="g9V-hy-MFP" firstAttribute="top" secondItem="EzE-Qf-hWR" secondAttribute="topMargin" constant="-1" id="Zx0-oy-KIn"/>
+                                                <constraint firstItem="g9V-hy-MFP" firstAttribute="leading" secondItem="EzE-Qf-hWR" secondAttribute="leadingMargin" id="sUb-IA-kEo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1501,6 +1502,9 @@
                             <outlet property="delegate" destination="qku-hA-dAJ" id="Xqw-Nx-oBp"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="resetButton" destination="g9V-hy-MFP" id="v74-h9-EUK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZe-f3-pPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
