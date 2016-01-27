@@ -55,8 +55,8 @@ class GraphsCollectionCell: UICollectionViewCell {
     }
     
     func configure() {
-        bgLayer.strokeColor = bgColor.CGColor
-        fgLayer.strokeColor = fgColor.CGColor
+        bgLayer.strokeColor = UIColorFromRGB(0xC40233).CGColor
+        fgLayer.strokeColor = UIColorFromRGB(0x009F6B).CGColor
     }
     
     override func layoutSubviews() {
@@ -122,5 +122,15 @@ class GraphsCollectionCell: UICollectionViewCell {
         CATransaction.setDisableActions(true)
         fgLayer.strokeEnd = toValue
         CATransaction.commit()
+    }
+    
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        // Transforms RGB colors to UI Color
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }

@@ -36,14 +36,14 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
         let width = self.bounds.width
         
         // Setup background layer
-        bgLayer.strokeColor = bgColor.CGColor
+        bgLayer.strokeColor = UIColorFromRGB(0xC40233).CGColor
         bgLayer.lineWidth = width / 5.5
         bgLayer.fillColor = nil
         bgLayer.strokeEnd = 1
         layer.addSublayer(bgLayer)
         
         // Setup foreground layer
-        fgLayer.strokeColor = fgColor.CGColor
+        fgLayer.strokeColor = UIColorFromRGB(0x009F6B).CGColor
         fgLayer.lineWidth = width / 5.7
         fgLayer.fillColor = nil
         fgLayer.strokeEnd = per/100
@@ -74,5 +74,14 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
         return value * 180.0 / π
     }
     
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        // Transforms RGB colors to UI Color
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
     
 }
