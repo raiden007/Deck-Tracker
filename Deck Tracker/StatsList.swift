@@ -15,7 +15,6 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     var gamesList:[Game] = []
     var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var selectedGameArray:[Game] = []
-    
     static let sharedInstance = StatsList()
 
     override func viewDidLoad() {
@@ -29,7 +28,6 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         // Removes the empty rows from view
         statsTable.tableFooterView = UIView(frame: CGRectZero)
     }
-    
     
     // Cleans stuff up
     deinit {
@@ -49,8 +47,6 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     
     // Populates the table with data
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        //cell.textLabel?.text = gamesList[indexPath.row].toString()
         let cell:GamesCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! GamesCell
         cell.dateLabel.text = gamesList[indexPath.row].getDate()
         let playerImage = gamesList[indexPath.row].getPlayerDeckClass()
@@ -59,7 +55,6 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         let opponentImage = gamesList[indexPath.row].getOpponentDeck()
         let opponentImageName = getImage(opponentImage)
         cell.opponentImage.image = UIImage(named: opponentImageName)
-        //cell.coinLabel.text = gamesList[indexPath.row].getCoin()
         cell.winLabel.text = gamesList[indexPath.row].getWinString()
         return cell
     }
@@ -85,7 +80,6 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     
     // Reads the game data and returns a Game object
     func readSelectedGame() -> [Game]? {
-        //println("Data read")
         if let unarchivedObject = NSUserDefaults.standardUserDefaults().objectForKey("Selected Game") as? NSData {
             return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Game]
         }
@@ -149,4 +143,3 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
     }
 
 }
-

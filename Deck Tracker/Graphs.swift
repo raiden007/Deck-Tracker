@@ -17,16 +17,11 @@ class Graphs: UIViewController {
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
 
-    
-    
-    
     var total: CGFloat = 100
     var dateIndex = -1
     var deckIndex = -1
     var deckName = ""
-    
     static let sharedInstance = Graphs()
-    
     
     
     override func viewDidLoad() {
@@ -49,7 +44,6 @@ class Graphs: UIViewController {
         dateIndex = dateSegment.selectedSegmentIndex
         deckIndex = deckSegment.selectedSegmentIndex
         if deckIndex == 0 {
-            //println(deckName)
             if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String! {
                 deckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
             } else {
@@ -64,8 +58,6 @@ class Graphs: UIViewController {
         NSUserDefaults.standardUserDefaults().setObject(deckName, forKey: "Deck Name")
         NSUserDefaults.standardUserDefaults().synchronize()
         
-        //printStatus()
-        
         //Notifies the container that a change occured
         NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
 
@@ -75,22 +67,20 @@ class Graphs: UIViewController {
     @IBAction func dateChanged(sender: UISegmentedControl) {
         switch dateSegment.selectedSegmentIndex {
         case 0:
+            // Last 7 days
             dateIndex = 0
-            //println("Last 7 days")
         case 1:
+            // Last mont
             dateIndex = 1
-            //println("Last Month")
         case 2:
+            // All games
             dateIndex = 2
-            //println("All games")
         default:
             break
         }
         
         NSUserDefaults.standardUserDefaults().setInteger(dateIndex, forKey: "Date Index")
         NSUserDefaults.standardUserDefaults().synchronize()
-        //printStatus()
-        
         //Notifies the container that a change occured
         NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
 
@@ -99,26 +89,22 @@ class Graphs: UIViewController {
     // Updates when the deck button is changed
     @IBAction func deckChanged(sender: UISegmentedControl) {
         switch deckSegment.selectedSegmentIndex {
+        // Selected deck
         case 0:
             if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String! {
                 deckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
             } else {
                 deckName = ""
             }
-
-            //println("Selected Deck")
+        // All decks
         case 1:
             deckName = "All"
-            //println("All decks")
         default:
             break
         }
         
-        //NSUserDefaults.standardUserDefaults().setInteger(deckIndex, forKey: "Deck Index")
         NSUserDefaults.standardUserDefaults().setObject(deckName, forKey: "Deck Name")
         NSUserDefaults.standardUserDefaults().synchronize()
-        //printStatus()
-        
         //Notifies the container that a change occured
         NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
         
@@ -129,6 +115,4 @@ class Graphs: UIViewController {
         print("Deck Index: " + String(deckIndex))
         print("Deck Name: " + String(deckName))
     }
-    
-
 }

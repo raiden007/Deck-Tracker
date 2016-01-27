@@ -15,17 +15,13 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
 
     var window: UIWindow?
     var deckListForPhone:[NSDictionary] = []
-    let graphsImageFromGoogle = "https://www.google.com/imgres?imgurl=http://leaguethoughts.files.wordpress.com/2014/04/mid-lane-most-picked-champions-graph.png&imgrefurl=http://leaguethoughts.com/category/analysis-statistics/mid-laners-statistics/&h=421&w=387&tbnid=Psox8usLfKCZkM:&docid=3fQRhAvD36oZGM&ei=9S6OVpS1LIGvUaytldgB&tbm=isch&client=safari&ved=0ahUKEwjUg7TgsJfKAhWBVxQKHaxWBRs4ZBAzCBEoDjAO"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch
         
         // Crashlytics
         Fabric.with([Crashlytics()])
         
         // Initialize the data structure and print it to the console at app launch
-        //Data.init()
-        //Data.sharedInstance.convertDataFromVersion1ToVersion2()
         Data.sharedInstance.printGameData()
         Data.sharedInstance.printDeckData()
         
@@ -40,8 +36,6 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
             tabBarController.selectedIndex = 1
         }
         
-
-        
         return true
     }
     
@@ -55,7 +49,6 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
         if let _: AnyObject = infoFromWatch["Save New Game"] {
             saveGameFromWatch()
         } else  {
-            print("test")
             saveSelectedDeckFromWatch()
         }
     }
@@ -109,9 +102,5 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-
-
-
 }
 

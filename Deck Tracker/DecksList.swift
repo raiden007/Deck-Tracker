@@ -25,7 +25,6 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         
         // Removes the empty rows from view
         decksTable.tableFooterView = UIView(frame: CGRectZero)
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,20 +39,17 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     
     // Populates the table with data
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let cell:CustomCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! CustomCell
         cell.customLabel.text = decksList[indexPath.row].getName()
         let image = decksList[indexPath.row].getClass()
         let imageName = getImage(image)
         cell.customImage.image = UIImage(named: imageName)
-        //cell.accessoryType = UITableViewCellAccessoryType.None
         // If there is a selected deck put a checkmark on it
         if indexPath.row == indexOfSelectedDeck {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
         }
-        
         return cell
     }
     

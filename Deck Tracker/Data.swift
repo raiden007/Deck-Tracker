@@ -24,10 +24,8 @@ public class Data {
     var filteredGames:[Game] = []
     var coinArray:[Game] = []
     
-    
     // We initialize the data structure
     init() {
-        
         // Check at first install if the game/deck database is empty
         if self.readGameData() == nil {
             print("Game database empty")
@@ -44,7 +42,6 @@ public class Data {
             } else {
                 listOfGames = self.readGameData()!
             }
-            
         } else {
             listOfGames = self.readGameData()!
             listOfDecks = self.readDeckData()!
@@ -56,7 +53,6 @@ public class Data {
         listOfGames.append(newGame)
         listOfGames.sortInPlace({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
         saveGame()
-        print("Game added")
     }
     
     // Saves the games array
@@ -70,7 +66,6 @@ public class Data {
     
     // Reads the game data and returns a Game object
     func readGameData() -> [Game]? {
-        //println("Data read")
         if let unarchivedObject = NSUserDefaults.standardUserDefaults().objectForKey("List of games") as? NSData {
             return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Game]
         }
@@ -116,8 +111,6 @@ public class Data {
     func readDeckData() -> [Deck]? {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         if let unarchivedObject = defaults.objectForKey("List of decks") as? NSData {
-            //NSKeyedUnarchiver.setClass(Deck.self, forClassName: "Deck")
-            //NSKeyedArchiver.setClassName("Deck", forClass: Deck.self)
             return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Deck]
         }
         return nil
@@ -134,34 +127,26 @@ public class Data {
     func deleteDeck(id:Int) {
         listOfDecks.removeAtIndex(id)
         saveDeck()
-        print("Deck deleted")
-        
     }
     
     // Deletes a game from the array and updates the array
     func deleteGame(id:Int) {
         listOfGames.removeAtIndex(id)
         saveGame()
-        print("Game deleted")
     }
     
     // Replaces a game from the array
     func editGame (id:Int, oldGame:Game, newGame:Game) {
         for var i = 0; i < listOfGames.count; i++ {
             if listOfGames[i].getID() == id {
-                //printGameData()
                 listOfGames.removeAtIndex(i)
-                //printGameData()
                 listOfGames.insert(newGame, atIndex: i)
-                //printGameData()
                 listOfGames.sortInPlace({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
                 saveGame()
             }
         }
         print("Game Edited")
     }
-    
-    
     
     // Calculates the general win rate of the user (all games)
     func generalWinRate(date:Int, deckName:String) -> Double {
@@ -221,7 +206,6 @@ public class Data {
                     dateArray.append(listOfGames[i])
                 }
             }
-            //print("Count for the last 7 days: " + String(dateArray.count))
             return dateArray
             // If date is last month
         } else if date == 1 {
@@ -232,19 +216,16 @@ public class Data {
                     dateArray.append(listOfGames[i])
                 }
             }
-            //print("Count for the last month: " + String(dateArray.count))
             return dateArray
             // If date is all
         } else if date == 2 {
             dateArray = listOfGames
-            //print("Count for all dates: " + String(dateArray.count))
             return dateArray
         } else {
             print("ERROR!!! Date selection is wrong")
             return dateArray
         }
     }
-    
     
     
     func getStatisticsGamesTotal(date:Int, deck:String, opponent:String) -> [Game] {
@@ -276,13 +257,6 @@ public class Data {
                 filteredGamesByOpponent.append(game)
             }
         }
-        
-        //print("Count for date filter: " + String(filteredGamesByDate.count))
-        //print("Count for deck filter: " + String(filteredGamesBySelectedDeck.count))
-        //print("Count for opponent filter: " + String(filteredGamesByOpponent.count))
-        
-        
         return filteredGamesByOpponent
     }
-    
 }

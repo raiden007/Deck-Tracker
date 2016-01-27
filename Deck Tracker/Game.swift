@@ -139,6 +139,5 @@ class Game : NSObject, NSCoding {
         let idString = String(id)
         
         return ("Game number: " + idString + ", date: " + getDate() + ", Player Deck Name: " + playerDeckName + ", Opponent Deck: " + opponentDeck + ", Coin: " + coinString + ", Win: " + winString + ", Tag: " + tag)
-        
     }
 }

@@ -160,24 +160,12 @@ class GraphsCollectionView: UICollectionViewController {
         }
         
         cell.per = CGFloat(winRateArray[indexPath.row])
-        
-        print(indexPath.row)
-        
-//        if indexPath.row == 6 {
-//            cell.configure()
-//            //cell.setup()
-//           // cell.animate()
-//            self.reloadCollectionViewDataAtIndexPath(indexPath)
-//            //self.collectionView!.reloadData()
-//        }
-        
-        
+
         return cell
     }
     
     func reloadCollectionViewDataAtIndexPath(indexPath:NSIndexPath){
         let indexArray = NSArray(object: indexPath)
-        
         self.collectionView!.reloadItemsAtIndexPaths(indexArray as! [NSIndexPath])
     }
     
