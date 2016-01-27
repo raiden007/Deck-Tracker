@@ -25,7 +25,6 @@ class SelectDate: UIViewController {
     }
     
     @IBAction func datePickerChanged(sender: UIDatePicker) {
-        
         let newDate = datePicker.date
         dateToString(newDate)
         saveDate(newDate)

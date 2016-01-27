@@ -27,6 +27,7 @@ class EditDate: UIViewController {
     // Saves edited date
     @IBAction func dateChanged(sender: UIDatePicker) {
         let newDate = datePicker.date
+        print(newDate)
         dateToString(newDate)
         saveEditedDate(newDate)
         readDate()

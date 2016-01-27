@@ -60,20 +60,41 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
     
     // Puts saved date on label
     func putSavedDateOnLabel() {
-        let savedDate = selectedGame.getDate()
-        dateLabel.text = "Date: " + savedDate
+        let editedDate:NSDate! = defaults.objectForKey("Saved Edited Date") as? NSDate
+        if editedDate != nil {
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+            let dateString = formatter.stringFromDate(editedDate)
+            dateLabel.text = "Date: " + dateString
+        } else {
+            let savedDate = selectedGame.getDate()
+            dateLabel.text = "Date: " + savedDate
+        }
+
     }
     
     // Puts selected deck on label
     func putSavedPlayerDeckOnLabel() {
-        let savedPlayedDeck = selectedGame.getPlayerDeckName()
-        playerDeckLabel.text = "Your deck: " + savedPlayedDeck
+        let editedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Edited Deck Name") as String!
+        if editedDeckName != nil {
+            playerDeckLabel.text = "Your deck: " + editedDeckName
+        } else {
+            let savedPlayedDeck = selectedGame.getPlayerDeckName()
+            playerDeckLabel.text = "Your deck: " + savedPlayedDeck
+        }
+
     }
     
     // Puts opponent class on label
     func putSavedOpponentClassOnLabel() {
-        let savedOpponentDeck = selectedGame.getOpponentDeck()
-        opponentDeckLabel.text = "Opponent's Class: " + savedOpponentDeck
+        let editedOpponentClass = defaults.stringForKey("Edited Opponent Class") as String!
+        if editedOpponentClass != nil {
+            opponentDeckLabel.text = "Opponent's Class: " + editedOpponentClass
+        } else {
+            let savedOpponentDeck = selectedGame.getOpponentDeck()
+            opponentDeckLabel.text = "Opponent's Class: " + savedOpponentDeck
+        }
+
     }
     
     // Puts the coin status
@@ -158,7 +179,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
         // Remove all edited stats
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Selected Game")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Saved Edited Date")
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Name")
+        NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("Edited Deck Name")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Deck Class")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Opponent Class")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("Edited Selected Tag")
@@ -176,12 +197,12 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
             editedDate = selectedGame.getNSDate()
         }
         
-        var editedPlayerDeckName = defaults.stringForKey("Edited Deck Name")
+        var editedPlayerDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Edited Deck Name")
         if editedPlayerDeckName == nil {
             editedPlayerDeckName = selectedGame.getPlayerDeckName()
         }
         
-        var editedPlayerDeckClass = defaults.stringForKey("Edited Deck Class") as String?
+        var editedPlayerDeckClass = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Edited Deck Class") as String?
         if editedPlayerDeckClass == nil {
             editedPlayerDeckClass = selectedGame.getPlayerDeckClass()
         }
