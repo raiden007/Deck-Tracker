@@ -23,21 +23,21 @@ class GraphsCollectionCell: UICollectionViewCell {
     let π = CGFloat(M_PI)
     var per : CGFloat = 0 {
         didSet {
-            setup()
-            animate()
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.setup()
+                self.setNeedsLayout()
+            }
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         configure()
-        setup()
     }
     
     func setup() {
         
         layer.borderWidth = 1
-        
         let width = bgLayer.bounds.width
         
         // Setup background layer
@@ -51,6 +51,7 @@ class GraphsCollectionCell: UICollectionViewCell {
         fgLayer.fillColor = nil
         fgLayer.strokeEnd = 1
         layer.addSublayer(fgLayer)
+        
     }
     
     func configure() {
@@ -63,6 +64,7 @@ class GraphsCollectionCell: UICollectionViewCell {
         setupBGShapeLayer(bgLayer)
         setupFGShapeLayer(fgLayer)
     }
+
     
     private func setupFGShapeLayer(shapeLayer: CAShapeLayer) {
         shapeLayer.frame = self.bounds
@@ -104,36 +106,21 @@ class GraphsCollectionCell: UICollectionViewCell {
     
     func animate() {
         
-        var fromValue = fgLayer.strokeEnd
-        var toValue = per/100
-//        if let presentationLayer = fgLayer.presentationLayer() as? CAShapeLayer {
-//            fromValue = presentationLayer.strokeEnd
-//        }
-
-        //print(String(fromValue) + " -> " + String(toValue))
+        let fromValue = fgLayer.strokeEnd
+        let toValue = per/100
         
-        let percentChange = abs(fromValue - toValue)
-        
-        //print(percentChange)
-        
-        if toValue >= fromValue {
-            // 1
-            let animation = CABasicAnimation(keyPath: "strokeEnd")
-            animation.fromValue = fromValue
-            animation.toValue = toValue
-            // 2
-            animation.duration = CFTimeInterval(1000000)
-            // 3
-            fgLayer.removeAnimationForKey("stroke")
-            fgLayer.addAnimation(animation, forKey: "stroke")
-            
-            CATransaction.begin()
-            CATransaction.setDisableActions(true)
-            fgLayer.strokeEnd = toValue
-            CATransaction.commit()
-        }
-        
-
+        // 1
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = fromValue
+        animation.toValue = toValue
+        // 2
+        animation.duration = CFTimeInterval(1000000)
+        // 3
+        fgLayer.removeAnimationForKey("stroke")
+        fgLayer.addAnimation(animation, forKey: "stroke")
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        fgLayer.strokeEnd = toValue
+        CATransaction.commit()
     }
-
 }

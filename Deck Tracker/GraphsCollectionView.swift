@@ -47,6 +47,7 @@ class GraphsCollectionView: UICollectionViewController {
         getDeckName()
         getStatistics()
         self.collectionView!.reloadData()
+        self.collectionView?.collectionViewLayout.invalidateLayout()
     }
     
     func getDateIndex() {
@@ -162,13 +163,13 @@ class GraphsCollectionView: UICollectionViewController {
         
         print(indexPath.row)
         
-        if indexPath.row == 6 {
-            cell.configure()
-            cell.setup()
-            cell.animate()
-            self.reloadCollectionViewDataAtIndexPath(indexPath)
-            //self.collectionView!.reloadData()
-        }
+//        if indexPath.row == 6 {
+//            cell.configure()
+//            //cell.setup()
+//           // cell.animate()
+//            self.reloadCollectionViewDataAtIndexPath(indexPath)
+//            //self.collectionView!.reloadData()
+//        }
         
         
         return cell
