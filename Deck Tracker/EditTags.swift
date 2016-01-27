@@ -87,6 +87,7 @@ class EditTags: UITableViewController {
         //2. Add the text field. You can configure it however you need.
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
             textField.placeholder = "Tag name"
+            textField.autocapitalizationType = UITextAutocapitalizationType.Sentences
         })
         
         //3. Grab the value from the text field, and adds it to the array when the user clicks OK.

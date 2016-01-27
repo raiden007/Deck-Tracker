@@ -87,11 +87,12 @@ class SelectTags: UITableViewController {
         //2. Add the text field. You can configure it however you need.
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
             textField.placeholder = "Tag name"
+            textField.autocapitalizationType = UITextAutocapitalizationType.Sentences
         })
         
         //3. Grab the value from the text field, and adds it to the array when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Finish", style: .Default, handler: { (action) -> Void in
-            let textField = alert.textFields![0] 
+            let textField = alert.textFields![0]
             self.allTags.append(textField.text!)
             //let sortedtags = sorted(self.allTags, <)
             self.allTags.sortInPlace()
