@@ -39,15 +39,22 @@ class GraphsCollectionCell: UICollectionViewCell {
         
         layer.borderWidth = 1
         let width = bgLayer.bounds.width
+        //print(width)
+        
+        var lineWidth = width / 5.5
+        // For iPhone 4S
+        if width == 139.0 {
+            lineWidth = 25
+        }
         
         // Setup background layer
-        bgLayer.lineWidth = width / 5.5
+        bgLayer.lineWidth = lineWidth
         bgLayer.fillColor = nil
         bgLayer.strokeEnd = 1
         layer.addSublayer(bgLayer)
         
         // Setup foreground layer
-        fgLayer.lineWidth = width / 5.7
+        fgLayer.lineWidth = lineWidth
         fgLayer.fillColor = nil
         fgLayer.strokeEnd = 1
         layer.addSublayer(fgLayer)
@@ -67,17 +74,36 @@ class GraphsCollectionCell: UICollectionViewCell {
 
     
     private func setupFGShapeLayer(shapeLayer: CAShapeLayer) {
+        
+        let width = bgLayer.bounds.width
+        print(width)
+        var radiusFactor: CGFloat = 0.25
+        // For iPhone 4S
+        if width == 139.0 {
+            radiusFactor = 0.23
+        }
+        
+        
         shapeLayer.frame = self.bounds
         let startAngle = DegreesToRadians(90.0)
         let calculatedEndAngle = getAngleFromWinRate()
         let endAngle = DegreesToRadians(calculatedEndAngle)
         let center = opponentClassImage.center
-        let radius = CGRectGetWidth(self.bounds) * 0.25
+        let radius = CGRectGetWidth(self.bounds) * radiusFactor
         let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         shapeLayer.path = path.CGPath
     }
     
     private func setupBGShapeLayer(shapeLayer: CAShapeLayer) {
+        
+        let width = bgLayer.bounds.width
+        print(width)
+        var radiusFactor: CGFloat = 0.25
+        // For iPhone 4S
+        if width == 139.0 {
+            radiusFactor = 0.23
+        }
+        
         shapeLayer.frame = self.bounds
         let calculatedEndAngle = getAngleFromWinRate()
         var startAngle = DegreesToRadians(calculatedEndAngle) + 0.00001
@@ -86,7 +112,7 @@ class GraphsCollectionCell: UICollectionViewCell {
         }
         let endAngle = DegreesToRadians(90.0)
         let center = opponentClassImage.center
-        let radius = CGRectGetWidth(self.bounds) * 0.25
+        let radius = CGRectGetWidth(self.bounds) * radiusFactor
         let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         shapeLayer.path = path.CGPath
     }

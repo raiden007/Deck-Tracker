@@ -25,45 +25,104 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
     // This updates the graph every time it's changed
     var per : CGFloat = 0 {
         didSet {
-            setup()
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.setup()
+                self.setNeedsLayout()
+            }
         }
     }
     
-    private func setup() {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configure()
+    }
+    
+    func setup() {
         
         layer.borderWidth = 2
         
         let width = self.bounds.width
         
+        print(width)
+        
+        var lineWidth = width / 5.5
+        // For iPhone 4S
+        if width == 155.0 {
+            lineWidth = 25
+        }
+        
         // Setup background layer
-        bgLayer.strokeColor = UIColorFromRGB(0xC40233).CGColor
-        bgLayer.lineWidth = width / 5.5
+        bgLayer.lineWidth = lineWidth
         bgLayer.fillColor = nil
         bgLayer.strokeEnd = 1
         layer.addSublayer(bgLayer)
         
         // Setup foreground layer
-        fgLayer.strokeColor = UIColorFromRGB(0x009F6B).CGColor
-        fgLayer.lineWidth = width / 5.7
+        fgLayer.lineWidth = lineWidth
         fgLayer.fillColor = nil
-        fgLayer.strokeEnd = per/100
+        fgLayer.strokeEnd = 1
         layer.addSublayer(fgLayer)
+    }
+    
+    func configure() {
+        bgLayer.strokeColor = UIColorFromRGB(0xC40233).CGColor
+        fgLayer.strokeColor = UIColorFromRGB(0x009F6B).CGColor
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setupShapeLayer(bgLayer)
-        setupShapeLayer(fgLayer)
+        setupBGShapeLayer(bgLayer)
+        setupFGShapeLayer(fgLayer)
     }
     
-    private func setupShapeLayer(shapeLayer: CAShapeLayer) {
+    private func setupFGShapeLayer(shapeLayer: CAShapeLayer) {
+        
+        let width = bgLayer.bounds.width
+        print(width)
+        var radiusFactor: CGFloat = 0.25
+        // For iPhone 4S
+        if width == 155.0 {
+            radiusFactor = 0.25
+        }
+        
+        
         shapeLayer.frame = self.bounds
         let startAngle = DegreesToRadians(90.0)
-        let endAngle = DegreesToRadians(89.999999)
-        let center = CGPoint(x: shapeLayer.frame.width / 2, y: shapeLayer.frame.height / 2)
-        let radius = CGRectGetWidth(self.bounds) * 0.25
+        let calculatedEndAngle = getAngleFromWinRate()
+        let endAngle = DegreesToRadians(calculatedEndAngle)
+        let center = label.center
+        let radius = CGRectGetWidth(self.bounds) * radiusFactor
         let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         shapeLayer.path = path.CGPath
+    }
+    
+    private func setupBGShapeLayer(shapeLayer: CAShapeLayer) {
+        
+        let width = bgLayer.bounds.width
+        print(width)
+        var radiusFactor: CGFloat = 0.25
+        // For iPhone 4S
+        if width == 155.0 {
+            radiusFactor = 0.25
+        }
+        
+        
+        shapeLayer.frame = self.bounds
+        let calculatedEndAngle = getAngleFromWinRate()
+        var startAngle = DegreesToRadians(calculatedEndAngle) + 0.00001
+        if winInfoLabel.text == "No Data" {
+            startAngle = DegreesToRadians(calculatedEndAngle)
+        }
+        let endAngle = DegreesToRadians(90.0)
+        let center = label.center
+        let radius = CGRectGetWidth(self.bounds) * radiusFactor
+        let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        shapeLayer.path = path.CGPath
+    }
+    
+    private func getAngleFromWinRate() -> CGFloat {
+        let angle = (per * 3.6) + 90
+        return angle
     }
     
     func DegreesToRadians (value:CGFloat) -> CGFloat {
@@ -72,6 +131,26 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
     
     func RadiansToDegrees (value:CGFloat) -> CGFloat {
         return value * 180.0 / π
+    }
+    
+    func animate() {
+        
+        let fromValue = fgLayer.strokeEnd
+        let toValue = per/100
+        
+        // 1
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = fromValue
+        animation.toValue = toValue
+        // 2
+        animation.duration = CFTimeInterval(1000000)
+        // 3
+        fgLayer.removeAnimationForKey("stroke")
+        fgLayer.addAnimation(animation, forKey: "stroke")
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        fgLayer.strokeEnd = toValue
+        CATransaction.commit()
     }
     
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {

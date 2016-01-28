@@ -78,7 +78,7 @@ class TagsGraphsCollectionView: UICollectionViewController {
             if game.getTag() == "" {
                 game.setNewTag("None")
             }
-            print(game.getTag())
+            //print(game.getTag())
         }
         
         //print("Fitered Games: " + String(filteredGames.count))
@@ -96,7 +96,7 @@ class TagsGraphsCollectionView: UICollectionViewController {
         filteredTags = Array(Set(allTags))
         filteredTags.sortInPlace()
         
-        print(filteredTags)
+        //print(filteredTags)
     }
     
     func setupGamesFilteredByTag() {
@@ -161,13 +161,11 @@ class TagsGraphsCollectionView: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         if filteredTags.count == 0 {
             return 1
         } else {
@@ -178,6 +176,8 @@ class TagsGraphsCollectionView: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TagsGraphsCollectionCell
+        
+        // Configure the cell
         if filteredTags.count == 0 {
             cell.tagLabel.hidden = true
             cell.label.text = "No data"
@@ -189,9 +189,6 @@ class TagsGraphsCollectionView: UICollectionViewController {
             cell.winInfoLabel.text = String(gamesWonArray[indexPath.row]) + " - " + String(gamesLostArray[indexPath.row])
             cell.per = CGFloat(winRateArray[indexPath.row])
         }
-            
-        // Configure the cell
-    
         
         return cell
     }
