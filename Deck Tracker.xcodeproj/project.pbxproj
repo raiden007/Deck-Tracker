@@ -43,6 +43,7 @@
 		6DFFCD9D1B1DAC75005218D8 /* SelectOpponentWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */; };
 		8B10AFCD1B0310A100D33C29 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCB1B0310A100D33C29 /* Fabric.framework */; };
 		8B10AFCE1B0310A100D33C29 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */; };
+		8B3E9DCA1C5B70F900480479 /* Decks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E9DC91C5B70F900480479 /* Decks.swift */; };
 		8B44AA621BBAC0CD00A8E8B0 /* GraphsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B44AA611BBAC0CD00A8E8B0 /* GraphsCell.swift */; };
 		8B4507C91B88B95500B0D12E /* SelectTagsWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4507C81B88B95500B0D12E /* SelectTagsWatch.swift */; };
 		8B4507CB1B88BBA600B0D12E /* TagsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4507CA1B88BBA500B0D12E /* TagsRow.swift */; };
@@ -149,6 +150,7 @@
 		6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOpponentWatch.swift; sourceTree = "<group>"; };
 		8B10AFCB1B0310A100D33C29 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		8B3E9DC91C5B70F900480479 /* Decks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decks.swift; sourceTree = "<group>"; };
 		8B44AA611BBAC0CD00A8E8B0 /* GraphsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsCell.swift; sourceTree = "<group>"; };
 		8B4507C81B88B95500B0D12E /* SelectTagsWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTagsWatch.swift; sourceTree = "<group>"; };
 		8B4507CA1B88BBA500B0D12E /* TagsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsRow.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				8BFEA6EF1BE0F091005DBC04 /* Deck_TrackerUITests.swift */,
+				8B3E9DC91C5B70F900480479 /* Decks.swift */,
 				8BFEA6F11BE0F091005DBC04 /* Info.plist */,
 			);
 			path = "Deck TrackerUITests";
@@ -672,6 +675,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3E9DCA1C5B70F900480479 /* Decks.swift in Sources */,
 				8BFEA6F01BE0F091005DBC04 /* Deck_TrackerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
