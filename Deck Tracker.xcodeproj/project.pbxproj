@@ -52,10 +52,11 @@
 		8BA7D2081BB86B78002B95CC /* GraphsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D2071BB86B78002B95CC /* GraphsTable.swift */; };
 		8BD870E51B223042008398B8 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Deck.swift */; };
 		8BD8C95D1BCADD680046F635 /* TagsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8C95C1BCADD680046F635 /* TagsTable.swift */; };
+		8BE734481C634A59003253A5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE734471C634A59003253A5 /* Settings.swift */; };
+		8BE7344A1C634D0F003253A5 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE734491C634D0F003253A5 /* About.swift */; };
 		8BEDCD4E1BA61C3A0026AEFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4D1BA61C3A0026AEFD /* Settings.swift */; };
 		8BFC2F0D1BDF7D7700A7BD23 /* TagsGraphsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC2F0C1BDF7D7700A7BD23 /* TagsGraphsCollectionView.swift */; };
 		8BFC2F0F1BDF7E5000A7BD23 /* TagsGraphsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC2F0E1BDF7E5000A7BD23 /* TagsGraphsCollectionCell.swift */; };
-		8BFEA6F01BE0F091005DBC04 /* Deck_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEA6EF1BE0F091005DBC04 /* Deck_TrackerUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,11 +159,12 @@
 		8B634F681BD924B4003B95E5 /* GraphsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsCollectionCell.swift; sourceTree = "<group>"; };
 		8BA7D2071BB86B78002B95CC /* GraphsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsTable.swift; sourceTree = "<group>"; };
 		8BD8C95C1BCADD680046F635 /* TagsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsTable.swift; sourceTree = "<group>"; };
+		8BE734471C634A59003253A5 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		8BE734491C634D0F003253A5 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		8BEDCD4D1BA61C3A0026AEFD /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		8BFC2F0C1BDF7D7700A7BD23 /* TagsGraphsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsGraphsCollectionView.swift; sourceTree = "<group>"; };
 		8BFC2F0E1BDF7E5000A7BD23 /* TagsGraphsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsGraphsCollectionCell.swift; sourceTree = "<group>"; };
 		8BFEA6ED1BE0F091005DBC04 /* Deck TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Deck TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BFEA6EF1BE0F091005DBC04 /* Deck_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck_TrackerUITests.swift; sourceTree = "<group>"; };
 		8BFEA6F11BE0F091005DBC04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -387,8 +389,9 @@
 		8BFEA6EE1BE0F091005DBC04 /* Deck TrackerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				8BFEA6EF1BE0F091005DBC04 /* Deck_TrackerUITests.swift */,
 				8B3E9DC91C5B70F900480479 /* Decks.swift */,
+				8BE734471C634A59003253A5 /* Settings.swift */,
+				8BE734491C634D0F003253A5 /* About.swift */,
 				8BFEA6F11BE0F091005DBC04 /* Info.plist */,
 			);
 			path = "Deck TrackerUITests";
@@ -675,8 +678,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BE734481C634A59003253A5 /* Settings.swift in Sources */,
+				8BE7344A1C634D0F003253A5 /* About.swift in Sources */,
 				8B3E9DCA1C5B70F900480479 /* Decks.swift in Sources */,
-				8BFEA6F01BE0F091005DBC04 /* Deck_TrackerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

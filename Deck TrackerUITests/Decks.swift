@@ -53,10 +53,6 @@ public class Decks: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        
-    }
-    
     func testElementsOnDecksPage() {
         XCTAssert(addDeckButton.exists, "Add New Deck button does not exist")
         XCTAssert(deckScreenTitle.exists, "Deck screen title does not exist")
