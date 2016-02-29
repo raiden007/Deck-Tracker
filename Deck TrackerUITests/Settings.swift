@@ -17,6 +17,8 @@ class Settings: XCTestCase {
     let aboutLabel = XCUIApplication().tables.childrenMatchingType(.Other).elementBoundByIndex(1).otherElements["ABOUT"]
     let aboutButton = XCUIApplication().tables.staticTexts["About"]
     let backButton = XCUIApplication().navigationBars["Settings"].buttons["Games List"]
+    
+    let resetEverything = XCUIApplication().alerts["Full reset"].collectionViews.buttons["Reset everything"]
         
     override func setUp() {
         super.setUp()
@@ -39,6 +41,15 @@ class Settings: XCTestCase {
         XCTAssert(resetAllButton.exists)
         XCTAssert(aboutLabel.exists)
         XCTAssert(aboutButton.exists)
+    }
+    
+    func resetAll() {
+        
+        app.navigationBars["Games List"].buttons["More Info"].tap()
+        resetAllButton.tap()
+        resetEverything.tap()
+        backButton.tap()
+        
     }
     
     
