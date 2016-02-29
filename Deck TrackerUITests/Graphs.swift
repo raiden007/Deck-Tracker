@@ -11,6 +11,18 @@ import XCTest
 class Graphs: XCTestCase {
     
     let graphsTab = XCUIApplication().tabBars.buttons["Graphs"]
+    let graphsTitle = XCUIApplication().navigationBars["Graphs"].staticTexts["Graphs"]
+    let sevenDaysButton = XCUIApplication().buttons["Last 7 Days"]
+    let lastMonthButton = XCUIApplication().buttons["Last Month"]
+    let allGamesButton = XCUIApplication().buttons["All Games"]
+    let currentDeckButton = XCUIApplication().buttons["Current Deck"]
+    let allDecksButton = XCUIApplication().buttons["All Decks"]
+    
+    let allCellTitle = XCUIApplication().collectionViews.staticTexts["vs. All"]
+    let allCellImage = XCUIApplication().collectionViews.images["GenericSmall"]
+    let allCellWin = XCUIApplication().collectionViews
+    
+    
         
     override func setUp() {
         super.setUp()
@@ -33,7 +45,26 @@ class Graphs: XCTestCase {
     
     func testExample() {
         // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+//        let app = app2
+//
+        
+        let app = XCUIApplication()
+        app.tabBars.buttons["Graphs"].tap()
+        app.collectionViews.images["GenericSmall"].tap()
+        
+    }
+    
+    func testElements() {
+        XCTAssert(graphsTitle.exists)
+        XCTAssert(sevenDaysButton.exists)
+        XCTAssert(lastMonthButton.exists)
+        XCTAssert(allGamesButton.exists)
+        XCTAssert(currentDeckButton.exists)
+        XCTAssert(allDecksButton.exists)
+        
+        XCTAssert(allCellTitle.exists)
+        XCTAssert(allCellImage.exists)
     }
     
 }
