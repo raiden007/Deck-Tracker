@@ -52,6 +52,7 @@
 		8B8B53991C8182CE0048126E /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B53981C8182CE0048126E /* Games.swift */; };
 		8B8B539B1C81844E0048126E /* AddNewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B539A1C81844E0048126E /* AddNewGame.swift */; };
 		8BA7D2081BB86B78002B95CC /* GraphsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D2071BB86B78002B95CC /* GraphsTable.swift */; };
+		8BC58F681C8842B100BF1CDE /* TODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC58F671C8842B100BF1CDE /* TODO.swift */; };
 		8BD7B46D1C8474D10017443D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7B46C1C8474D10017443D /* Utils.swift */; };
 		8BD7B46F1C847BE60017443D /* Graphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7B46E1C847BE60017443D /* Graphs.swift */; };
 		8BD870E51B223042008398B8 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD844CC1AF8EFB300CF9C80 /* Deck.swift */; };
@@ -164,6 +165,7 @@
 		8B8B53981C8182CE0048126E /* Games.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
 		8B8B539A1C81844E0048126E /* AddNewGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewGame.swift; sourceTree = "<group>"; };
 		8BA7D2071BB86B78002B95CC /* GraphsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsTable.swift; sourceTree = "<group>"; };
+		8BC58F671C8842B100BF1CDE /* TODO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TODO.swift; sourceTree = "<group>"; };
 		8BD7B46C1C8474D10017443D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8BD7B46E1C847BE60017443D /* Graphs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graphs.swift; sourceTree = "<group>"; };
 		8BD8C95C1BCADD680046F635 /* TagsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsTable.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				8B3E9DC91C5B70F900480479 /* Decks.swift */,
+				8BC58F671C8842B100BF1CDE /* TODO.swift */,
 				8B8B53981C8182CE0048126E /* Games.swift */,
 				8B8B539A1C81844E0048126E /* AddNewGame.swift */,
 				8BD7B46E1C847BE60017443D /* Graphs.swift */,
@@ -693,6 +696,7 @@
 				8BE734481C634A59003253A5 /* Settings.swift in Sources */,
 				8BD7B46F1C847BE60017443D /* Graphs.swift in Sources */,
 				8B8B539B1C81844E0048126E /* AddNewGame.swift in Sources */,
+				8BC58F681C8842B100BF1CDE /* TODO.swift in Sources */,
 				8BE7344A1C634D0F003253A5 /* About.swift in Sources */,
 				8B3E9DCA1C5B70F900480479 /* Decks.swift in Sources */,
 				8B8B53991C8182CE0048126E /* Games.swift in Sources */,

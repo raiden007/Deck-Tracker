@@ -23,15 +23,8 @@ class Settings: XCTestCase {
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
-
         XCUIApplication().launch()
         app.navigationBars["Games List"].buttons["More Info"].tap()
-        
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
     }
         
     func testAllElementsSettingsPage() {
@@ -44,20 +37,11 @@ class Settings: XCTestCase {
     }
     
     func resetAll() {
-        
         app.navigationBars["Games List"].buttons["More Info"].tap()
         resetAllButton.tap()
         resetEverything.tap()
         backButton.tap()
         
     }
-    
-    
-    
-    //TODO: Reset test all elements
-    //TODO: Reset everything flow
-    //TODO: Reset all games flow
-    //TODO: Reset all games and decks flow
-    //TODO: Reset press cancel and check nothing was deleted
         
 }

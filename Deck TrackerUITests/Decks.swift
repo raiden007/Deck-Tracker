@@ -42,15 +42,9 @@ public class Decks: XCTestCase {
         
     override public func setUp() {
         super.setUp()
-    
         continueAfterFailure = false
         app.launch()
         decksTab.tap()
-    }
-    
-    override public func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
     }
     
     func testElementsOnDecksPage() {
@@ -110,10 +104,6 @@ public class Decks: XCTestCase {
         deckName.swipeLeft()
         XCUIApplication().tables.buttons["Delete"].tap()
         XCTAssertFalse(deckName.exists)
-    }
-    
-    func deleteDeck() {
-        
     }
     
     func addWarriorDeck() {

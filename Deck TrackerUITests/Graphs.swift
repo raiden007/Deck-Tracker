@@ -20,39 +20,51 @@ class Graphs: XCTestCase {
     
     let allCellTitle = XCUIApplication().collectionViews.staticTexts["vs. All"]
     let allCellImage = XCUIApplication().collectionViews.images["GenericSmall"]
-    let allCellWin = XCUIApplication().collectionViews
+    let allCellWinLabel = XCUIApplication().collectionViews
+    
+    let warriorTitle = XCUIApplication().collectionViews.staticTexts["vs. Warrior"]
+    let warriorCellImage = XCUIApplication().collectionViews.images["WarriorSmall"]
+    let warriorCellWinLabel = XCUIApplication().collectionViews
+    
+    let paladinCellTitle = XCUIApplication().collectionViews.staticTexts["vs. Paladin"]
+    let paladinCellImage = XCUIApplication().collectionViews.images["PaladinSmall"]
+    let paladinCellWinLabel = XCUIApplication().collectionViews
+    
+    let shamanCellTitle = XCUIApplication().collectionViews.staticTexts["vs. Shaman"]
+    let shamanCellImage = XCUIApplication().collectionViews.images["ShamanSmall"]
+    let shamanCellWinLabel = XCUIApplication().collectionViews
+    
+    let hunterCellTitle = XCUIApplication().collectionViews.staticTexts["vs. Hunter"]
+    let hunterCellImage = XCUIApplication().collectionViews.images["HunterSmall"]
+    let hunterCellWinLabel = XCUIApplication().collectionViews
+    
+    let druidCellTitle = XCUIApplication().collectionViews.staticTexts["vs. Druid"]
+    let druidCellImage = XCUIApplication().collectionViews.images["DruidSmall"]
+    let druidCellWinLabel = XCUIApplication().collectionViews
+    
+    let rogueCellTitle = XCUIApplication().collectionViews.staticTexts["vs. Rogue"]
+    let rogueCellImage = XCUIApplication().collectionViews.images["RogueSmall"]
+    let rogueCellWinLabel = XCUIApplication().collectionViews
+    
+    let mageCellTitle = XCUIApplication().collectionViews.staticTexts["vs. Mage"]
+    let mageCellImage = XCUIApplication().collectionViews.images["MageSmall"]
+    let mageCellWinLabel = XCUIApplication().collectionViews
+    
+    let warlockCellTitle = XCUIApplication().collectionViews.staticTexts["vs. Warlock"]
+    let warlockCellImage = XCUIApplication().collectionViews.images["WarlockSmall"]
+    let warlockCellWinLabel = XCUIApplication().collectionViews
+    
+    let priestCellTitle = XCUIApplication().collectionViews.staticTexts["vs. Priest"]
+    let priestCellImage = XCUIApplication().collectionViews.images["PriestSmall"]
+    let priestCellWinLabel = XCUIApplication().collectionViews
     
     
         
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
         graphsTab.tap()
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        
-//        let app = app2
-//
-        
-        let app = XCUIApplication()
-        app.tabBars.buttons["Graphs"].tap()
-        app.collectionViews.images["GenericSmall"].tap()
-        
     }
     
     func testElements() {
@@ -65,6 +77,45 @@ class Graphs: XCTestCase {
         
         XCTAssert(allCellTitle.exists)
         XCTAssert(allCellImage.exists)
+        
+        XCTAssert(warriorTitle.exists)
+        XCTAssert(warriorCellImage.exists)
+        
+        XCTAssert(paladinCellTitle.exists)
+        XCTAssert(paladinCellImage.exists)
+        
+        XCTAssert(shamanCellTitle.exists)
+        XCTAssert(shamanCellImage.exists)
+        
+        while !hunterCellImage.exists {
+            XCUIApplication().swipeUp()
+        }
+        
+        XCTAssert(hunterCellTitle.exists)
+        XCTAssert(hunterCellImage.exists)
+        
+        XCTAssert(druidCellTitle.exists)
+        XCTAssert(druidCellImage.exists)
+        
+        while !rogueCellImage.exists {
+            XCUIApplication().swipeUp()
+        }
+        
+        XCTAssert(rogueCellTitle.exists)
+        XCTAssert(rogueCellImage.exists)
+        
+        XCTAssert(mageCellTitle.exists)
+        XCTAssert(mageCellImage.exists)
+        
+        while !warlockCellImage.exists {
+            XCUIApplication().swipeUp()
+        }
+        
+        XCTAssert(warlockCellTitle.exists)
+        XCTAssert(warlockCellImage.exists)
+        
+        XCTAssert(priestCellTitle.exists)
+        XCTAssert(priestCellImage.exists)
     }
     
 }

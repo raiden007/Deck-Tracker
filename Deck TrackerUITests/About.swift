@@ -17,20 +17,16 @@ class About: XCTestCase {
     let createdByLabel = XCUIApplication().staticTexts["Created by: Andrei Joghiu"]
     let emailButton = XCUIApplication().buttons["raiden007@gmail.com"]
     let nounIconsLabel = XCUIApplication().staticTexts["Icons created by: SuperAtic LABS, Muneer A.Safiah, Harrison MacRae, Vicons Design from the Noun Project"]
+    
+    let settingsTitle = XCUIApplication().navigationBars["Settings"]
         
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
-
         XCUIApplication().launch()
         let app = XCUIApplication()
         app.navigationBars["Games List"].buttons["More Info"].tap()
         app.tables.staticTexts["About"].tap()
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
     }
     
     func testElementsOnScreen() {
@@ -44,8 +40,6 @@ class About: XCTestCase {
     }
     
     func testPressBackButton() {
-        let settingsTitle = XCUIApplication().navigationBars["Settings"]
-        
         backButton.tap()
         XCTAssert(settingsTitle.exists, "After pressing back from About the screen should be the Settings Screen")
     }

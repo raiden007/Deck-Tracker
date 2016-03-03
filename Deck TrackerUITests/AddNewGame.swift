@@ -27,13 +27,8 @@ class AddNewGame: XCTestCase {
     override func setUp() {
         super.setUp()
         XCUIApplication().launch()
-        
         Settings().resetAll()
         Games().addGameButton.tap()
-    }
-    
-    func testExample() {
-        
     }
     
     func testElements() {
@@ -54,7 +49,6 @@ class AddNewGame: XCTestCase {
     }
     
     func testCancelButton() {
-        
         cancelButton.tap()
         XCTAssert(Games().gamesListScreenTitle.exists)
     }
