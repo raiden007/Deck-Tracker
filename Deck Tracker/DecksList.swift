@@ -130,10 +130,41 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     // Deletes the row
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
+            
             let index = indexPath.row
-            Data.sharedInstance.deleteDeck(index)
-            readData()
-            self.decksTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            
+            
+            
+            // Alert to also delete the games with the deck in them
+            // Create the alert controller
+            var alertController = UIAlertController(title: "Delete games?", message: "Do you want also to delete all the games recorded with this deck ?", preferredStyle: .Alert)
+            
+            // Create the actions
+            var okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive) {
+                UIAlertAction in
+                NSLog("Yes Pressed")
+                
+                let deckName = self.decksList[index].getName()
+                Data.sharedInstance.deleteAllGamesAssociatedWithADeck(deckName)
+                
+            }
+            var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+                UIAlertAction in
+                NSLog("Cancel Pressed")
+                //Delete the deck
+                Data.sharedInstance.deleteDeck(index)
+                self.readData()
+                self.decksTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+            
+            // Add the actions
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+            
+            // Present the controller
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+
         }
     }
     

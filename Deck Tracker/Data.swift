@@ -148,6 +148,22 @@ public class Data {
         print("Game Edited")
     }
     
+    // Deletes all games associated with a certain deck
+    func deleteAllGamesAssociatedWithADeck( deckName: String) {
+        print(deckName)
+        print("Before:")
+        print(listOfGames)
+        
+        for var i = 0; i < listOfGames.count; i++ {
+            if listOfGames[i].getPlayerDeckName() == deckName {
+                listOfGames.removeAtIndex(i)
+                saveGame()
+            }
+        }
+        print("After:")
+        print(listOfGames)
+    }
+    
     // Calculates the general win rate of the user (all games)
     func generalWinRate(date:Int, deckName:String) -> Double {
         
