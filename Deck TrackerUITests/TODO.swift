@@ -23,7 +23,9 @@ class TODO: XCTestCase {
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
-    //TODO: Tags screen elements
+    //TODO:
+    // Games lists elements (date, deck vs opponent image, WIN/LOSS etc)
+    // Tags screen elements
     // When no data appears it looks different than with data
     // Add new game screens :
     // Date + back button
@@ -72,5 +74,8 @@ class TODO: XCTestCase {
     // add game + validate. edit coin and validate
     // add game + validate. edit win and validate
     // add game + validate. edit tag and validate
+    
+    // add game: tags screen: flow where you add a tag with the same name of an existing tag (done for decks with the same name)
+    // same for edit game tags screen
     
 }

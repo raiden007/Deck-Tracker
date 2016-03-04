@@ -43,27 +43,40 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
         self.dismissViewControllerAnimated(true, completion: {})
     }
     
-   
-    @IBAction func deck1Pressed(sender: UIButton) {
-        self.deselectAll()
-        deck1.selected = true
-    }
-    
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         
         // Get the atributes from the user
         let deckName:String = deckNameTxtField.text!
         let deckSelected = selectedDeck()
-        var deckCount = NSUserDefaults.standardUserDefaults().integerForKey("Deck Count");
-        deckCount++
-        NSUserDefaults.standardUserDefaults().setInteger(deckCount, forKey: "Deck Count");
+        // Create unique deck ID
+        var deckID = NSUserDefaults.standardUserDefaults().integerForKey("Deck Count");
+        deckID++
+        NSUserDefaults.standardUserDefaults().setInteger(deckID, forKey: "Deck Count");
         NSUserDefaults.standardUserDefaults().synchronize()
         // Create a new Deck object and add it to the deck array
         if deckName != "" && deckSelected != "" {
-            let newDeck = Deck(newDeckID: deckCount, newDeckName: deckName, newDeckClass: deckSelected)
-            //println("Added: " + newDeck.toString())
-            Data.sharedInstance.addDeck(newDeck)
-            self.dismissViewControllerAnimated(true, completion: {})
+            var deckNameAlreadyExists = false
+            let deckList = Data.sharedInstance.listOfDecks
+            
+            for deck in deckList {
+                if deck.deckName.lowercaseString == deckName.lowercaseString {
+                    deckNameAlreadyExists = true
+                }
+            }
+            
+            if deckNameAlreadyExists == true {
+                let alert = UIAlertView()
+                alert.title = "Deck already exists"
+                alert.message = "Deck name already exists"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            } else {
+                let newDeck = Deck(newDeckID: deckID, newDeckName: deckName, newDeckClass: deckSelected)
+                //println("Added: " + newDeck.toString())
+                Data.sharedInstance.addDeck(newDeck)
+                self.dismissViewControllerAnimated(true, completion: {})
+            }
+
         } else {
             if deckName == "" && deckSelected == "" {
                 let alert = UIAlertView()
@@ -86,6 +99,13 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
             }
         }
     }
+    
+   
+    @IBAction func deck1Pressed(sender: UIButton) {
+        self.deselectAll()
+        deck1.selected = true
+    }
+    
     
     @IBAction func deck2Pressed(sender: UIButton) {
         self.deselectAll()

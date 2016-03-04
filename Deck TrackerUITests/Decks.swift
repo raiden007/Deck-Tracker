@@ -20,6 +20,7 @@ public class Decks: XCTestCase {
     let saveButton = XCUIApplication().navigationBars["Add Deck"].buttons["Save"]
     let textField = XCUIApplication().textFields["Enter deck name"]
     let selectClassLabel = XCUIApplication().staticTexts["Select class:"]
+    
     let warriorButton = XCUIApplication().buttons["WarriorSmall"]
     let paladinButton = XCUIApplication().buttons["PaladinSmall"]
     let shamanButton = XCUIApplication().buttons["ShamanSmall"]
@@ -71,15 +72,20 @@ public class Decks: XCTestCase {
     }
     
     func testAddAllDecks() {
-        addWarriorDeck()
-        addPaladinDeck()
-        addShamanDeck()
-        addHunterDeck()
-        addDruidDeck()
-        addRogueDeck()
-        addMageDeck()
-        addWarlockDeck()
-        addPriestDeck()
+        Settings().resetAll()
+        decksTab.tap()
+        
+        addDeck("Control Warrior", deckClass: "Warrior")
+        tapDeck("Control Warrior")
+        addDeck("Secrets", deckClass: "Paladin")
+        addDeck("Aggro", deckClass: "Shaman")
+        addDeck("Face Hunter", deckClass: "Hunter")
+        addDeck("Midrange", deckClass: "Druid")
+        tapDeck("Midrange")
+        addDeck("Miracle", deckClass: "Rogue")
+        addDeck("Tempo", deckClass: "Mage")
+        addDeck("Zoo", deckClass: "Warlock")
+        addDeck("Golden Monkey", deckClass: "Priest")
     }
     
     func testCancelButton() {
@@ -93,6 +99,9 @@ public class Decks: XCTestCase {
     }
     
     func testDeleteDeck() {
+        Settings().resetAll()
+        decksTab.tap()
+        
         let deckName = XCUIApplication().tables.staticTexts["Delete Deck"]
         addDeckButton.tap()
         textField.tap()
@@ -106,103 +115,35 @@ public class Decks: XCTestCase {
         XCTAssertFalse(deckName.exists)
     }
     
-    func addWarriorDeck() {
+    func addDeck(deckTitle: String, deckClass: String) {
         addDeckButton.tap()
         textField.tap()
-        textField.typeText("Warrior")
-        warriorButton.tap()
+        textField.typeText(deckTitle)
+        let deckButton = deckClass + "Small"
+        XCUIApplication().buttons[deckButton].tap()
         saveButton.tap()
-        XCTAssert(deckScreenTitle.exists)
-        XCTAssert(warriorDeck.exists)
-        warriorDeck.tap()
     }
     
-    func addPaladinDeck() {
-        addDeckButton.tap()
-        textField.tap()
-        textField.typeText("Paladin")
-        paladinButton.tap()
-        saveButton.tap()
+    func tapDeck(deckTitle: String) {
         XCTAssert(deckScreenTitle.exists)
-        XCTAssert(paladinDeck.exists)
-        paladinDeck.tap()
+        let deckCell = XCUIApplication().tables.staticTexts[deckTitle]
+        XCTAssert(deckCell.exists)
+        deckCell.tap()
     }
     
-    func addShamanDeck() {
-        addDeckButton.tap()
-        textField.tap()
-        textField.typeText("Shaman")
-        shamanButton.tap()
-        saveButton.tap()
-        XCTAssert(deckScreenTitle.exists)
-        XCTAssert(shamanDeck.exists)
-        shamanDeck.tap()
-    }
-    
-    func addHunterDeck() {
-        addDeckButton.tap()
-        textField.tap()
-        textField.typeText("Hunter")
-        hunterButton.tap()
-        saveButton.tap()
-        XCTAssert(deckScreenTitle.exists)
-        XCTAssert(hunterDeck.exists)
-        hunterDeck.tap()
-    }
-    
-    func addDruidDeck() {
-        addDeckButton.tap()
-        textField.tap()
-        textField.typeText("Druid")
-        druidButton.tap()
-        saveButton.tap()
-        XCTAssert(deckScreenTitle.exists)
-        XCTAssert(druidDeck.exists)
-        druidDeck.tap()
-    }
-    
-    func addRogueDeck() {
-        addDeckButton.tap()
-        textField.tap()
-        textField.typeText("Rogue")
-        rogueButton.tap()
-        saveButton.tap()
-        XCTAssert(deckScreenTitle.exists)
-        XCTAssert(rogueDeck.exists)
-        rogueDeck.tap()
-    }
-    
-    func addMageDeck() {
-        addDeckButton.tap()
-        textField.tap()
-        textField.typeText("Mage")
-        mageButton.tap()
-        saveButton.tap()
-        XCTAssert(deckScreenTitle.exists)
-        XCTAssert(mageDeck.exists)
-        mageDeck.tap()
-    }
-    
-    func addWarlockDeck() {
-        addDeckButton.tap()
-        textField.tap()
-        textField.typeText("Warlock")
-        warlockButton.tap()
-        saveButton.tap()
-        XCTAssert(deckScreenTitle.exists)
-        XCTAssert(warlockDeck.exists)
-        warlockDeck.tap()
-    }
-    
-    func addPriestDeck() {
-        addDeckButton.tap()
-        textField.tap()
-        textField.typeText("Priest")
-        priestButton.tap()
-        saveButton.tap()
-        XCTAssert(deckScreenTitle.exists)
-        XCTAssert(priestDeck.exists)
-        priestDeck.tap()
+    func testDeckNameAlreadyExists() {
+        Settings().resetAll()
+        decksTab.tap()
+        
+        addDeck("Midrange", deckClass: "Druid")
+        addDeck("Midrange", deckClass: "Hunter")
+        
+        XCUIApplication().alerts["Deck already exists"].staticTexts["Deck already exists"].exists
+        XCUIApplication().alerts["Deck already exists"].staticTexts["Deck name already exists"].exists
+        XCUIApplication().alerts["Deck already exists"].collectionViews.buttons["OK"].exists
+        XCUIApplication().alerts["Deck already exists"].collectionViews.buttons["OK"].tap()
+
+        
     }
     
     func sleep() {

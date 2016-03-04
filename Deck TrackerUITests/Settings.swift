@@ -37,6 +37,7 @@ class Settings: XCTestCase {
     }
     
     func resetAll() {
+        XCUIApplication().tabBars.buttons["Stats"].tap()
         app.navigationBars["Games List"].buttons["More Info"].tap()
         resetAllButton.tap()
         resetEverything.tap()

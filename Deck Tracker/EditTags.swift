@@ -92,12 +92,31 @@ class EditTags: UITableViewController {
         
         //3. Grab the value from the text field, and adds it to the array when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Finish", style: .Default, handler: { (action) -> Void in
-            let textField = alert.textFields![0] 
-            self.allTags.append(textField.text!)
-            self.allTags.sortInPlace()
-            self.saveAllTags()
-            self.readTags()
-            self.tagsTable.reloadData()
+            let textField = alert.textFields![0]
+            // Check the tag is not already in the list
+            var tagAlreadyExists = false
+            
+            for tag in self.allTags {
+                if tag.lowercaseString == textField.text?.lowercaseString {
+                    tagAlreadyExists = true
+                }
+            }
+            
+            if tagAlreadyExists == true {
+                let alert = UIAlertView()
+                alert.title = "Tag already exists"
+                alert.message = "Tag already exists"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            } else {
+                self.allTags.append(textField.text!)
+                //let sortedtags = sorted(self.allTags, <)
+                self.allTags.sortInPlace()
+                //self.allTags = sortedtags
+                self.saveAllTags()
+                self.readTags()
+                self.tagsTable.reloadData()
+            }
         }))
         
         // 4. Present the alert.
