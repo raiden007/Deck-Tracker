@@ -99,10 +99,16 @@ public class Decks: XCTestCase {
     }
     
     func testDeleteDeck() {
+        
+        let alertTitle = app.alerts["Delete games?"].staticTexts["Delete games?"]
+        let alertText = app.alerts["Delete games?"].staticTexts["Do you want also to delete all the games recorded with this deck ?"]
+        let alertCancelButton = app.alerts["Delete games?"].collectionViews.buttons["Cancel"]
+        let alertYesButton = app.alerts["Delete games?"].collectionViews.buttons["Cancel"]
+        
         Settings().resetAll()
         decksTab.tap()
         
-        let deckName = XCUIApplication().tables.staticTexts["Delete Deck"]
+        let deckName = app.tables.staticTexts["Delete Deck"]
         addDeckButton.tap()
         textField.tap()
         textField.typeText("Delete Deck")
@@ -111,8 +117,19 @@ public class Decks: XCTestCase {
         XCTAssert(deckScreenTitle.exists)
         XCTAssert(deckName.exists)
         deckName.swipeLeft()
-        XCUIApplication().tables.buttons["Delete"].tap()
+        app.tables.buttons["Delete"].tap()
+        
+        // Check alert
+        XCTAssert(alertTitle.exists)
+        XCTAssert(alertText.exists)
+        XCTAssert(alertCancelButton.exists)
+        XCTAssert(alertYesButton.exists)
+        
+        alertCancelButton.tap()
+        
+        // Check deck does not exist anymore
         XCTAssertFalse(deckName.exists)
+        
     }
     
     func addDeck(deckTitle: String, deckClass: String) {

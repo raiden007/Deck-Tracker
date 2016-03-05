@@ -150,18 +150,14 @@ public class Data {
     
     // Deletes all games associated with a certain deck
     func deleteAllGamesAssociatedWithADeck( deckName: String) {
-        print(deckName)
-        print("Before:")
-        print(listOfGames)
         
-        for var i = 0; i < listOfGames.count; i++ {
+        for var i = listOfGames.count - 1; i >= 0; i-- {
+            print(listOfGames[i].getPlayerDeckName())
             if listOfGames[i].getPlayerDeckName() == deckName {
                 listOfGames.removeAtIndex(i)
-                saveGame()
             }
         }
-        print("After:")
-        print(listOfGames)
+        saveGame()
     }
     
     // Calculates the general win rate of the user (all games)

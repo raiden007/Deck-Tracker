@@ -78,4 +78,7 @@ class TODO: XCTestCase {
     // add game: tags screen: flow where you add a tag with the same name of an existing tag (done for decks with the same name)
     // same for edit game tags screen
     
+    // When deleting a deck - choose cancel for alert - check that the recorded games are still there
+    // same but choose YES - check the recorded games are deleted
+    
 }

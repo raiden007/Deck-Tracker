@@ -137,21 +137,27 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
             
             // Alert to also delete the games with the deck in them
             // Create the alert controller
-            var alertController = UIAlertController(title: "Delete games?", message: "Do you want also to delete all the games recorded with this deck ?", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Delete games?", message: "Do you want also to delete all the games recorded with this deck ?", preferredStyle: .Alert)
             
             // Create the actions
-            var okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive) {
+            let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive) {
                 UIAlertAction in
                 NSLog("Yes Pressed")
                 
+                // Delete the games
                 let deckName = self.decksList[index].getName()
                 Data.sharedInstance.deleteAllGamesAssociatedWithADeck(deckName)
                 
+                // Delete the deck
+                Data.sharedInstance.deleteDeck(index)
+                self.readData()
+                self.decksTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                
             }
-            var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
                 UIAlertAction in
                 NSLog("Cancel Pressed")
-                //Delete the deck
+                // Delete the deck
                 Data.sharedInstance.deleteDeck(index)
                 self.readData()
                 self.decksTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
