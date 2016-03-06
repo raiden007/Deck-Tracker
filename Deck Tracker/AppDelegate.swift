@@ -71,6 +71,30 @@ class AppDelegate: UIResponder,     UIApplicationDelegate {
         let newGame = Game(newID: gameID, newDate: date, newPlayerDeckName: playerDeckName, newPlayerDeckClass: playerDeckClass, newOpponentDeck: opponentClass, newCoin: coin, newWin: win, newTag: tag)
         Data.sharedInstance.addGame(newGame)
         
+        // Crashlytics custom events
+        var winString = ""
+        if win == true {
+            winString = "Win"
+        } else {
+            winString = "Loss"
+        }
+        
+        var tagString = ""
+        if tag == "" {
+            tagString = "No tag"
+        } else {
+            tagString = tag
+        }
+        Answers.logCustomEventWithName("New game added",
+            customAttributes: [
+                "Deck Name": playerDeckName,
+                "Deck Class": playerDeckClass,
+                "Opponent Class": opponentClass,
+                "Win": winString,
+                "Tag": tagString,
+                "Added from": "Apple Watch"
+            ])
+        
         // Posts a notification for another screen (Games List)
         NSNotificationCenter.defaultCenter().postNotificationName("GameAdded", object: nil)
     }

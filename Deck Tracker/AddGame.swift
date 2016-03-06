@@ -178,13 +178,17 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
             } else {
                 tagString = newGameTag
             }
+            
+            let device = UIDevice.currentDevice().model
+            
             Answers.logCustomEventWithName("New game added",
                 customAttributes: [
                     "Deck Name": newGamePlayerDeckName!,
                     "Deck Class": newGamePlayerDeckClass!,
                     "Opponent Class": newGameOpponentClass!,
                     "Win": winString,
-                    "Tag": tagString
+                    "Tag": tagString,
+                    "Added from": device
                 ])
             
         } else {
