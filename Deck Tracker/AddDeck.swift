@@ -75,6 +75,8 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
                 //println("Added: " + newDeck.toString())
                 Data.sharedInstance.addDeck(newDeck)
                 self.dismissViewControllerAnimated(true, completion: {})
+                
+                
             }
 
         } else {
