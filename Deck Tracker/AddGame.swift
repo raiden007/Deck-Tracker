@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 
 class AddGame: UITableViewController, UINavigationBarDelegate  {
     
@@ -161,6 +163,29 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
             // Add to Data class file
             Data.sharedInstance.addGame(newGame)
             self.dismissViewControllerAnimated(true, completion: {})
+            
+            // Crashlytics custom events
+            var winString = ""
+            if newGameWin == true {
+                winString = "Win"
+            } else {
+                winString = "Loss"
+            }
+            
+            var tagString = ""
+            if newGameTag == "" {
+                tagString = "No tag"
+            } else {
+                tagString = newGameTag
+            }
+            Answers.logCustomEventWithName("New game added",
+                customAttributes: [
+                    "Deck Name": newGamePlayerDeckName!,
+                    "Deck Class": newGamePlayerDeckClass!,
+                    "Opponent Class": newGameOpponentClass!,
+                    "Win": winString,
+                    "Tag": tagString
+                ])
             
         } else {
             if newGamePlayerDeckName == "" && newGameOpponentClass == nil {

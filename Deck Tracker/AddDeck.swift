@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 
 class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
 
@@ -76,7 +78,11 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
                 Data.sharedInstance.addDeck(newDeck)
                 self.dismissViewControllerAnimated(true, completion: {})
                 
-                
+                Answers.logCustomEventWithName("New deck added",
+                    customAttributes: [
+                        "Deck Name": deckName,
+                        "Deck Class": deckSelected
+                    ])
             }
 
         } else {
