@@ -76,7 +76,7 @@ class GraphsCollectionCell: UICollectionViewCell {
     private func setupFGShapeLayer(shapeLayer: CAShapeLayer) {
         
         let width = bgLayer.bounds.width
-        print(width)
+        //print(width)
         var radiusFactor: CGFloat = 0.25
         // For iPhone 4S
         if width == 139.0 {
@@ -97,7 +97,7 @@ class GraphsCollectionCell: UICollectionViewCell {
     private func setupBGShapeLayer(shapeLayer: CAShapeLayer) {
         
         let width = bgLayer.bounds.width
-        print(width)
+        //print(width)
         var radiusFactor: CGFloat = 0.25
         // For iPhone 4S
         if width == 139.0 {

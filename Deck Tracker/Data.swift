@@ -24,8 +24,15 @@ public class Data {
     var filteredGames:[Game] = []
     var coinArray:[Game] = []
     
+    // Save to iCloud
+    var iCloudKeyStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
+    
     // We initialize the data structure
     init() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyValueStoreDidChange:", name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudKeyStore)
+        iCloudKeyStore.synchronize()
+            
         // Check at first install if the game/deck database is empty
         if self.readGameData() == nil {
             print("Game database empty")
@@ -48,6 +55,13 @@ public class Data {
         }
     }
     
+    func keyValueStoreDidChange(notification: NSNotification) {
+        if let iCloudUnarchivedObject = iCloudKeyStore.objectForKey("iCloud list of decks") as? NSData {
+            print("iCloud decks loaded")
+            listOfDecks = NSKeyedUnarchiver.unarchiveObjectWithData(iCloudUnarchivedObject) as! [Deck]
+        }
+    }
+    
     // Adds a game object to the array and save the array in NSUserDefaults
     func addGame (newGame : Game) {
         listOfGames.append(newGame)
@@ -58,18 +72,24 @@ public class Data {
     // Saves the games array
     func saveGame() {
         let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfGames as NSArray)
-        // Writing in NSUserDefaults
-        NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "List of games")
-        // Sync
-        NSUserDefaults.standardUserDefaults().synchronize()
+//        // Writing in NSUserDefaults
+//        NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "List of games")
+//        // Sync
+//        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        iCloudKeyStore.setObject(archivedObject, forKey: "iCloud list of games")
+        iCloudKeyStore.synchronize()
     }
     
     // Reads the game data and returns a Game object
     func readGameData() -> [Game]? {
-        if let unarchivedObject = NSUserDefaults.standardUserDefaults().objectForKey("List of games") as? NSData {
+        if let iCloudUnarchivedObject = iCloudKeyStore.objectForKey("iCloud list of games") as? NSData {
+            return NSKeyedUnarchiver.unarchiveObjectWithData(iCloudUnarchivedObject) as? [Game]
+        } else if let unarchivedObject = NSUserDefaults.standardUserDefaults().objectForKey("List of games") as? NSData {
             return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Game]
+        } else {
+          return nil
         }
-        return nil
     }
     
     // Prints all the games in the array
@@ -100,20 +120,28 @@ public class Data {
     // Adds the decks list to NSUserDefaults
     func saveDeck () {
         let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfDecks as [Deck])
-        let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        defaults.setObject(archivedObject, forKey: "List of decks")
-        defaults.setObject(deckListForPhone, forKey: "List of decks dictionary")
-        defaults.synchronize()
+//        let defaults = NSUserDefaults(suiteName: "group.Decks")!
+//        defaults.setObject(archivedObject, forKey: "List of decks")
+//        defaults.setObject(deckListForPhone, forKey: "List of decks dictionary")
+//        defaults.synchronize()
         
+        iCloudKeyStore.setObject(archivedObject, forKey: "iCloud list of decks")
+        iCloudKeyStore.setObject(deckListForPhone, forKey: "iCloud List of decks dictionary")
+        iCloudKeyStore.synchronize()
     }
     
     // Reads the deck data and returns a Deck object
     func readDeckData() -> [Deck]? {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        if let unarchivedObject = defaults.objectForKey("List of decks") as? NSData {
+        if let iCloudUnarchivedObject = iCloudKeyStore.objectForKey("iCloud list of decks") as? NSData {
+            print("iCloud decks loaded")
+            return NSKeyedUnarchiver.unarchiveObjectWithData(iCloudUnarchivedObject) as? [Deck]
+        } else if let unarchivedObject = defaults.objectForKey("List of decks") as? NSData {
             return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Deck]
+        } else {
+            return nil
         }
-        return nil
+        
     }
     
     // Prints all the decks in the array
