@@ -30,6 +30,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     @IBOutlet weak var tagsLabel: UILabel!
 
     var tag = ""
+    var iCloudKeyStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -229,10 +230,16 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     
     // Gets the ID for a new Game
     func newGameGetID () -> Int {
-        var matchesCount = NSUserDefaults.standardUserDefaults().integerForKey("Matches Count");
+        var matchesCount = NSUserDefaults.standardUserDefaults().integerForKey("Matches Count")
+        if let _ = iCloudKeyStore.objectForKey("iCloud Matches Count") {
+            matchesCount = iCloudKeyStore.objectForKey("iCloud Matches Count") as! Int
+        }
         matchesCount++
         NSUserDefaults.standardUserDefaults().setInteger(matchesCount, forKey: "Matches Count");
         NSUserDefaults.standardUserDefaults().synchronize()
+        iCloudKeyStore.setObject(matchesCount, forKey: "iCloud Matches Count")
+        iCloudKeyStore.synchronize()
+        
         return matchesCount
     }
     

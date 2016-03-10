@@ -159,13 +159,5 @@ public class Decks: XCTestCase {
         XCUIApplication().alerts["Deck already exists"].staticTexts["Deck name already exists"].exists
         XCUIApplication().alerts["Deck already exists"].collectionViews.buttons["OK"].exists
         XCUIApplication().alerts["Deck already exists"].collectionViews.buttons["OK"].tap()
-
-        
     }
-    
-    func sleep() {
-        NSThread.sleepForTimeInterval(10)
-    }
-    
-    
 }

@@ -26,6 +26,8 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     @IBOutlet var deckNameTxtField: UITextField!
     
     var deckClass:String = ""
+    var iCloudKeyStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
+    var deckID = 0
 
     
     override func viewDidLoad() {
@@ -50,11 +52,10 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
         // Get the atributes from the user
         let deckName:String = deckNameTxtField.text!
         let deckSelected = selectedDeck()
-        // Create unique deck ID
-        var deckID = NSUserDefaults.standardUserDefaults().integerForKey("Deck Count");
+        // Loads and increments the deck ID then saves the new ID
+        readDeckID()
         deckID++
-        NSUserDefaults.standardUserDefaults().setInteger(deckID, forKey: "Deck Count");
-        NSUserDefaults.standardUserDefaults().synchronize()
+        setDeckID()
         // Create a new Deck object and add it to the deck array
         if deckName != "" && deckSelected != "" {
             var deckNameAlreadyExists = false
@@ -106,6 +107,26 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
                 alert.show()
             }
         }
+    }
+    
+    // Reads the saved Deck ID from iCloud or local storage
+    func readDeckID() {
+        if let _ = iCloudKeyStore.objectForKey("iCloud deck ID") {
+            deckID = iCloudKeyStore.objectForKey("iCloud deck ID") as! Int
+        } else if let _ = NSUserDefaults.standardUserDefaults().integerForKey("Deck ID") as Int? {
+            deckID = NSUserDefaults.standardUserDefaults().integerForKey("Deck ID")
+        } else {
+            deckID = 0
+        }
+    }
+    
+    // Saves the Deck ID to iCloud and Local storage
+    func setDeckID() {
+        NSUserDefaults.standardUserDefaults().setInteger(deckID, forKey: "Deck ID")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        iCloudKeyStore.setObject(deckID, forKey: "iCloud deck ID")
+        iCloudKeyStore.synchronize()
     }
     
    

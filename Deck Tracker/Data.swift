@@ -10,7 +10,7 @@
 // This class manipulates the data base structure of games/decks
 import Foundation
 
-public class Data {
+public class Data: NSObject {
     
     // This is to user Data functions easier in other classes
     static let sharedInstance = Data()
@@ -28,7 +28,8 @@ public class Data {
     var iCloudKeyStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
     
     // We initialize the data structure
-    init() {
+    override init() {
+        super.init()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyValueStoreDidChange:", name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudKeyStore)
         iCloudKeyStore.synchronize()
@@ -72,10 +73,10 @@ public class Data {
     // Saves the games array
     func saveGame() {
         let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfGames as NSArray)
-//        // Writing in NSUserDefaults
-//        NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "List of games")
-//        // Sync
-//        NSUserDefaults.standardUserDefaults().synchronize()
+        // Writing in NSUserDefaults
+        NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "List of games")
+        // Sync
+        NSUserDefaults.standardUserDefaults().synchronize()
         
         iCloudKeyStore.setObject(archivedObject, forKey: "iCloud list of games")
         iCloudKeyStore.synchronize()
@@ -120,10 +121,10 @@ public class Data {
     // Adds the decks list to NSUserDefaults
     func saveDeck () {
         let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfDecks as [Deck])
-//        let defaults = NSUserDefaults(suiteName: "group.Decks")!
-//        defaults.setObject(archivedObject, forKey: "List of decks")
-//        defaults.setObject(deckListForPhone, forKey: "List of decks dictionary")
-//        defaults.synchronize()
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
+        defaults.setObject(archivedObject, forKey: "List of decks")
+        defaults.setObject(deckListForPhone, forKey: "List of decks dictionary")
+        defaults.synchronize()
         
         iCloudKeyStore.setObject(archivedObject, forKey: "iCloud list of decks")
         iCloudKeyStore.setObject(deckListForPhone, forKey: "iCloud List of decks dictionary")

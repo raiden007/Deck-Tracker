@@ -15,6 +15,8 @@ class SelectTags: UITableViewController {
 
     var allTags:[String] = []
     var selectedTag:String = ""
+    // Save to iCloud
+    var iCloudKeyStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,13 +64,21 @@ class SelectTags: UITableViewController {
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(selectedTag, forKey: "Selected Tag")
         defaults.synchronize()
+        
+        // Saves to iCloud
+        iCloudKeyStore.setObject(selectedTag, forKey: "iCloud selected tag")
+        iCloudKeyStore.synchronize()
     }
     
     
     func readSelectedTag() -> String {
-        // Reads the selected tag from NSUserDefaults
+        
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let _ = defaults.arrayForKey("Selected Tag") {
+        
+        // Reads from iCloud or local storage
+        if let _ = iCloudKeyStore.arrayForKey("iCloud selected tag") {
+            selectedTag = iCloudKeyStore.stringForKey("iCloud selected tag") as String!
+        } else if let _ = defaults.arrayForKey("Selected Tag") {
             selectedTag = defaults.stringForKey("Selected Tag") as String!
         }
         return selectedTag
@@ -128,11 +138,17 @@ class SelectTags: UITableViewController {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(allTags, forKey: "All Tags")
         defaults.synchronize()
+        
+        // Save to iCloud
+        iCloudKeyStore.setObject(allTags, forKey: "iCloud All Tags")
+        iCloudKeyStore.synchronize()
     }
     
     func readTags() -> [String]{
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        if let _ = defaults.arrayForKey("All Tags") {
+        if let _ = iCloudKeyStore.arrayForKey("All Tags") {
+            allTags = iCloudKeyStore.arrayForKey("iCloud All Tags") as! [String]
+        } else if let _ = defaults.arrayForKey("All Tags") {
             allTags = defaults.arrayForKey("All Tags") as! [String]
         }
         return allTags

@@ -12,6 +12,7 @@ class Settings: UITableViewController {
 
     @IBOutlet weak var resetButton: UIButton!
     
+    var iCloudKeyStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,12 @@ class Settings: UITableViewController {
             // Sync
             NSUserDefaults.standardUserDefaults().synchronize()
             
+            // Remove from iCloud as well
+            self.iCloudKeyStore.removeObjectForKey("iCloud list of decks")
+            self.iCloudKeyStore.removeObjectForKey("iCloud list of games")
+            self.iCloudKeyStore.removeObjectForKey("iCloud All Tags")
+            self.iCloudKeyStore.synchronize()
+            
             NSLog("Reset everything pressed")
         }
         
@@ -58,6 +65,10 @@ class Settings: UITableViewController {
             Data.sharedInstance.listOfGames = []
             // Sync
             NSUserDefaults.standardUserDefaults().synchronize()
+            
+            // Remove from iCloud as well
+            self.iCloudKeyStore.removeObjectForKey("iCloud list of games")
+            self.iCloudKeyStore.synchronize()
             
             NSLog("Reset all games pressed")
             
@@ -74,6 +85,11 @@ class Settings: UITableViewController {
             Data.sharedInstance.listOfDecks = []
             // Sync
             NSUserDefaults.standardUserDefaults().synchronize()
+            
+            // Remove from iCloud as well
+            self.iCloudKeyStore.removeObjectForKey("iCloud list of decks")
+            self.iCloudKeyStore.removeObjectForKey("iCloud list of games")
+            self.iCloudKeyStore.synchronize()
             
             NSLog("Reset all games AND decks pressed")
         }
