@@ -13,7 +13,7 @@ class About: UIViewController {
     @IBOutlet var versionLabel: UILabel!
     @IBOutlet var emailButton: UIButton!
     
-    let version = "2.0"
+    let version = "2.1"
     
     
     override func viewDidLoad() {
