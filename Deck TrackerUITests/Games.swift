@@ -25,5 +25,4 @@ class Games: XCTestCase {
         XCTAssert(addGameButton.exists)
         XCTAssert(gamesListScreenTitle.exists)
     }
-    
 }

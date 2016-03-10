@@ -92,6 +92,7 @@ public class Decks: XCTestCase {
         addDeckButton.tap()
         textField.tap()
         textField.typeText("Pressing cancel")
+        app.buttons["Done"].tap()
         druidButton.tap()
         cancelButton.tap()
         XCTAssert(deckScreenTitle.exists)
@@ -112,6 +113,7 @@ public class Decks: XCTestCase {
         addDeckButton.tap()
         textField.tap()
         textField.typeText("Delete Deck")
+        app.buttons["Done"].tap()
         druidButton.tap()
         saveButton.tap()
         XCTAssert(deckScreenTitle.exists)
@@ -136,8 +138,9 @@ public class Decks: XCTestCase {
         addDeckButton.tap()
         textField.tap()
         textField.typeText(deckTitle)
+        app.buttons["Done"].tap()
         let deckButton = deckClass + "Small"
-        XCUIApplication().buttons[deckButton].tap()
+        app.buttons[deckButton].tap()
         saveButton.tap()
     }
     

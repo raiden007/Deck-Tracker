@@ -24,6 +24,9 @@ class TODO: XCTestCase {
     }
     
     //TODO:
+    
+    // Decklist: check the correct image appears for each deck
+    
     // Games lists elements (date, deck vs opponent image, WIN/LOSS etc)
     // Tags screen elements
     // When no data appears it looks different than with data
@@ -61,6 +64,7 @@ class TODO: XCTestCase {
     // add a game with tag and validate + tags
     // add: tag 1 - 0% win, tag 2 - 50% win, tag 3 - 100% win and validate + tags
     // add 30 games with tags and validate + all tags + each hero tag
+    // add game, delete it and validate it was deleted
     
     // delete deck from new game screen
     // from edit screen
@@ -80,5 +84,7 @@ class TODO: XCTestCase {
     
     // When deleting a deck - choose cancel for alert - check that the recorded games are still there
     // same but choose YES - check the recorded games are deleted
+    
+    // Test iCloud sync somehow
     
 }

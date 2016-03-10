@@ -10,6 +10,8 @@ import XCTest
 
 class Graphs: XCTestCase {
     
+    let app = XCUIApplication()
+    
     let graphsTab = XCUIApplication().tabBars.buttons["Graphs"]
     let graphsTitle = XCUIApplication().navigationBars["Graphs"].staticTexts["Graphs"]
     let sevenDaysButton = XCUIApplication().buttons["Last 7 Days"]
@@ -88,7 +90,7 @@ class Graphs: XCTestCase {
         XCTAssert(shamanCellImage.exists)
         
         while !hunterCellImage.exists {
-            XCUIApplication().swipeUp()
+            app.swipeUp()
         }
         
         XCTAssert(hunterCellTitle.exists)
@@ -98,7 +100,7 @@ class Graphs: XCTestCase {
         XCTAssert(druidCellImage.exists)
         
         while !rogueCellImage.exists {
-            XCUIApplication().swipeUp()
+            app.swipeUp()
         }
         
         XCTAssert(rogueCellTitle.exists)
@@ -108,7 +110,7 @@ class Graphs: XCTestCase {
         XCTAssert(mageCellImage.exists)
         
         while !warlockCellImage.exists {
-            XCUIApplication().swipeUp()
+            app.swipeUp()
         }
         
         XCTAssert(warlockCellTitle.exists)
