@@ -146,7 +146,7 @@ class SelectTags: UITableViewController {
     
     func readTags() -> [String]{
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        if let _ = iCloudKeyStore.arrayForKey("All Tags") {
+        if let _ = iCloudKeyStore.arrayForKey("iCloud All Tags") {
             allTags = iCloudKeyStore.arrayForKey("iCloud All Tags") as! [String]
         } else if let _ = defaults.arrayForKey("All Tags") {
             allTags = defaults.arrayForKey("All Tags") as! [String]
