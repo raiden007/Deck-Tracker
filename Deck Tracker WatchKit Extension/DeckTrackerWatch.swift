@@ -17,7 +17,7 @@ class DeckTrackerWatch: WKInterfaceController {
     @IBOutlet var selectOpponentButton: WKInterfaceButton!
     @IBOutlet var coinSwitch: WKInterfaceSwitch!
     @IBOutlet var winSwitch: WKInterfaceSwitch!
-    @IBOutlet weak var tagsButton: WKInterfaceButton!
+    @IBOutlet var tagsButton: WKInterfaceButton!
     @IBOutlet var saveGameButton: WKInterfaceButton!
     
     var coinSwitchInt:Int = 0
