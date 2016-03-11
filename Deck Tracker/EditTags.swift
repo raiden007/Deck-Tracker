@@ -16,6 +16,8 @@ class EditTags: UITableViewController {
 
     var allTags:[String] = []
     var selectedTag:String = ""
+    // Save to iCloud
+    var iCloudKeyStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
     
     
     override func viewDidLoad() {
@@ -127,11 +129,17 @@ class EditTags: UITableViewController {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(allTags, forKey: "All Tags")
         defaults.synchronize()
+        
+        // Save to iCloud
+        iCloudKeyStore.setObject(allTags, forKey: "iCloud All Tags")
+        iCloudKeyStore.synchronize()
     }
     
     func readTags() -> [String] {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        if let _ = defaults.arrayForKey("All Tags") {
+        if let _ = iCloudKeyStore.arrayForKey("iCloud All Tags") {
+            allTags = iCloudKeyStore.arrayForKey("iCloud All Tags") as! [String]
+        } else if let _ = defaults.arrayForKey("All Tags") {
             allTags = defaults.arrayForKey("All Tags") as! [String]
         }
         return allTags
