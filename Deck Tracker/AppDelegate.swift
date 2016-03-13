@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics()])
         
         // Initialize the data structure and print it to the console at app launch
-        Data.sharedInstance.printGameData()
         Data.sharedInstance.printDeckData()
+        Data.sharedInstance.printGameData() 
         
         // Show page UI for graphs
         let pageControl = UIPageControl.appearance()
