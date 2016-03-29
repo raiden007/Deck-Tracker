@@ -8,9 +8,7 @@
 
 import XCTest
 
-class Graphs: XCTestCase {
-    
-    let app = XCUIApplication()
+class GraphsTests: Utils {
     
     let graphsTab = XCUIApplication().tabBars.buttons["Graphs"]
     let graphsTitle = XCUIApplication().navigationBars["Graphs"].staticTexts["Graphs"]
@@ -19,6 +17,7 @@ class Graphs: XCTestCase {
     let allGamesButton = XCUIApplication().buttons["All Games"]
     let currentDeckButton = XCUIApplication().buttons["Current Deck"]
     let allDecksButton = XCUIApplication().buttons["All Decks"]
+    let tipLabel = XCUIApplication().staticTexts["Tip: Tap a graph for more info"]
     
     let allCellTitle = XCUIApplication().collectionViews.staticTexts["vs. All"]
     let allCellImage = XCUIApplication().collectionViews.images["GenericSmall"]
@@ -66,10 +65,12 @@ class Graphs: XCTestCase {
         super.setUp()
         continueAfterFailure = false
         XCUIApplication().launch()
+        sleep(1.0)
         graphsTab.tap()
     }
     
     func testElements() {
+        
         XCTAssert(graphsTitle.exists)
         XCTAssert(sevenDaysButton.exists)
         XCTAssert(lastMonthButton.exists)
@@ -90,7 +91,7 @@ class Graphs: XCTestCase {
         XCTAssert(shamanCellImage.exists)
         
         while !hunterCellImage.exists {
-            app.swipeUp()
+            shamanCellTitle.swipeUp()
         }
         
         XCTAssert(hunterCellTitle.exists)
@@ -100,7 +101,7 @@ class Graphs: XCTestCase {
         XCTAssert(druidCellImage.exists)
         
         while !rogueCellImage.exists {
-            app.swipeUp()
+            shamanCellImage.swipeUp()
         }
         
         XCTAssert(rogueCellTitle.exists)
@@ -110,7 +111,7 @@ class Graphs: XCTestCase {
         XCTAssert(mageCellImage.exists)
         
         while !warlockCellImage.exists {
-            app.swipeUp()
+            mageCellImage.swipeUp()
         }
         
         XCTAssert(warlockCellTitle.exists)
@@ -119,5 +120,16 @@ class Graphs: XCTestCase {
         XCTAssert(priestCellTitle.exists)
         XCTAssert(priestCellImage.exists)
     }
+    
+    func testTipLabel() {
+        XCTAssert(tipLabel.exists)
+        warriorCellImage.tap()
+        app.navigationBars["Tags Graphs"].buttons["Graphs"].tap()
+        XCTAssertFalse(tipLabel.exists)
+    }
+    
+
+    
+    
     
 }

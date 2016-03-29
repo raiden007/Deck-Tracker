@@ -48,6 +48,7 @@ class TagsGraphsCollectionView: UICollectionViewController {
         getTagName()
         setupGamesFilteredByTag()
         self.collectionView!.reloadData()
+        setTipLabelStatus()
     }
     
     func getDateIndex() {
@@ -205,5 +206,10 @@ class TagsGraphsCollectionView: UICollectionViewController {
         
         return CGSizeMake(cellWidth, cellWidth)
         
+    }
+    
+    func setTipLabelStatus() {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "Tip Label")
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
 }
