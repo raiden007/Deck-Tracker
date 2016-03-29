@@ -160,6 +160,8 @@
 		8B634F681BD924B4003B95E5 /* GraphsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsCollectionCell.swift; sourceTree = "<group>"; };
 		8B8B53981C8182CE0048126E /* Games.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
 		8B8B539A1C81844E0048126E /* AddNewGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewGame.swift; sourceTree = "<group>"; };
+		8B957C031CAAB2DE0014D86B /* Deck Tracker WatchKit Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Deck Tracker WatchKit Extension-Bridging-Header.h"; sourceTree = "<group>"; };
+		8B957C041CAAB2DE0014D86B /* Deck Tracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Deck Tracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		8BC58F671C8842B100BF1CDE /* TODO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TODO.swift; sourceTree = "<group>"; };
 		8BD7B46C1C8474D10017443D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8BD7B46E1C847BE60017443D /* GraphsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsTests.swift; sourceTree = "<group>"; };
@@ -347,6 +349,8 @@
 				6DDD448D1AEF87B700A4B5D2 /* Main.storyboard */,
 				6DDD44901AEF87B700A4B5D2 /* Images.xcassets */,
 				6DDD44921AEF87B700A4B5D2 /* LaunchScreen.xib */,
+				8B957C031CAAB2DE0014D86B /* Deck Tracker WatchKit Extension-Bridging-Header.h */,
+				8B957C041CAAB2DE0014D86B /* Deck Tracker-Bridging-Header.h */,
 				6DDD44851AEF87B700A4B5D2 /* Supporting Files */,
 			);
 			path = "Deck Tracker";
