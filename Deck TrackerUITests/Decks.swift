@@ -45,6 +45,7 @@ public class Decks: XCTestCase {
         super.setUp()
         continueAfterFailure = false
         app.launch()
+        Utils().sleep(1.0)
         decksTab.tap()
     }
     

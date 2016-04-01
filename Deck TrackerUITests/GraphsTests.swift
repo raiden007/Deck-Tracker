@@ -59,12 +59,15 @@ class GraphsTests: Utils {
     let priestCellImage = XCUIApplication().collectionViews.images["PriestSmall"]
     let priestCellWinLabel = XCUIApplication().collectionViews
     
+    let exists = NSPredicate(format: "exists == true")
+    
     
         
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
         XCUIApplication().launch()
+        Settings().resetAll()
         sleep(1.0)
         graphsTab.tap()
     }
@@ -80,45 +83,53 @@ class GraphsTests: Utils {
         
         XCTAssert(allCellTitle.exists)
         XCTAssert(allCellImage.exists)
+        XCTAssert(allCellWinLabel.staticTexts["No Data"].exists)
         
         XCTAssert(warriorTitle.exists)
         XCTAssert(warriorCellImage.exists)
+        XCTAssert(warriorCellWinLabel.staticTexts["No Data"].exists)
         
         XCTAssert(paladinCellTitle.exists)
         XCTAssert(paladinCellImage.exists)
+        XCTAssert(paladinCellWinLabel.staticTexts["No Data"].exists)
         
         XCTAssert(shamanCellTitle.exists)
         XCTAssert(shamanCellImage.exists)
+        XCTAssert(shamanCellWinLabel.staticTexts["No Data"].exists)
         
-        while !hunterCellImage.exists {
-            shamanCellTitle.swipeUp()
+        // To pass on iPhone 4S
+        if !hunterCellTitle.exists {
+            warriorCellImage.swipeUp()
         }
         
         XCTAssert(hunterCellTitle.exists)
         XCTAssert(hunterCellImage.exists)
+        XCTAssert(hunterCellWinLabel.staticTexts["No Data"].exists)
         
         XCTAssert(druidCellTitle.exists)
         XCTAssert(druidCellImage.exists)
+        XCTAssert(druidCellWinLabel.staticTexts["No Data"].exists)
         
-        while !rogueCellImage.exists {
-            shamanCellImage.swipeUp()
+        // To pass on iPhone 6 / 6S
+        if !rogueCellTitle.exists {
+            warriorCellImage.swipeUp()
         }
         
         XCTAssert(rogueCellTitle.exists)
         XCTAssert(rogueCellImage.exists)
+        XCTAssert(rogueCellWinLabel.staticTexts["No Data"].exists)
         
         XCTAssert(mageCellTitle.exists)
         XCTAssert(mageCellImage.exists)
-        
-        while !warlockCellImage.exists {
-            mageCellImage.swipeUp()
-        }
+        XCTAssert(mageCellWinLabel.staticTexts["No Data"].exists)
         
         XCTAssert(warlockCellTitle.exists)
         XCTAssert(warlockCellImage.exists)
+        XCTAssert(warlockCellWinLabel.staticTexts["No Data"].exists)
         
         XCTAssert(priestCellTitle.exists)
         XCTAssert(priestCellImage.exists)
+        XCTAssert(priestCellWinLabel.staticTexts["No Data"].exists)
     }
     
     func testTipLabel() {

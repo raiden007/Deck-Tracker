@@ -31,7 +31,7 @@ class AddNewGame: XCTestCase {
         Games().addGameButton.tap()
     }
     
-    func testElements() {
+    func elementsExists() {
         XCTAssert(cancelButton.exists)
         XCTAssert(newGameTitle.exists)
         XCTAssert(saveButton.exists)
@@ -49,6 +49,7 @@ class AddNewGame: XCTestCase {
     }
     
     func testCancelButton() {
+        elementsExists()
         cancelButton.tap()
         XCTAssert(Games().gamesListScreenTitle.exists)
     }

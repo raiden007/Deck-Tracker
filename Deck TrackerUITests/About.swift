@@ -25,11 +25,12 @@ class About: XCTestCase {
         continueAfterFailure = false
         XCUIApplication().launch()
         let app = XCUIApplication()
+        Utils().sleep(1.0)
         app.navigationBars["Games List"].buttons["More Info"].tap()
         app.tables.staticTexts["About"].tap()
     }
     
-    func testElementsOnScreen() {
+    func elementsOnScreen() {
         XCTAssert(backButton.exists)
         XCTAssert(aboutTitleScreen.exists)
         XCTAssert(hearthstoneImage.exists)
@@ -40,6 +41,7 @@ class About: XCTestCase {
     }
     
     func testPressBackButton() {
+        elementsOnScreen()
         backButton.tap()
         XCTAssert(settingsTitle.exists, "After pressing back from About the screen should be the Settings Screen")
     }
