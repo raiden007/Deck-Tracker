@@ -32,8 +32,8 @@ class TODO: XCTestCase {
     // When no data appears it looks different than with data
     // Add new game screens :
     // Date + back button - DONE
-    // Choose deck + back button
-    // Opponent Class + back button
+    // Choose deck + back button - DONE
+    // Opponent Class + back button - DONE
     // Tags + back button
     // Edit game screen + back button
     // Edit game date + back button

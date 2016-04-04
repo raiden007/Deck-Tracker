@@ -34,6 +34,18 @@ class AddNewGameDeck: Utils {
         
         addDeckButton.tap()
         Decks().elementsNewDeckScreen()
+        
+        Decks().cancelButton.tap()
+        backButton.tap()
+        XCTAssert(AddNewGame().newGameTitle.exists)
+    }
+    
+    func testAddDeck() {
+        Decks().addDeck("From Add Game", deckClass: "Druid")
+        Decks().tapDeck("From Add Game")
+        
+        let deckName = app.cells.elementBoundByIndex(1).staticTexts["Your deck: From Add Game"]
+        XCTAssert(deckName.exists)
     }
     
 }
