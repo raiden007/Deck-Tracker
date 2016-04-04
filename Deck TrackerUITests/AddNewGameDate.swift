@@ -18,7 +18,8 @@ class AddNewGameDate: Utils {
     var longMonth = ""
     
     
-    let dateWheel = XCUIApplication().datePickers
+    let backButton = XCUIApplication().navigationBars["Select Date"].buttons["Add New Game"]
+    let selectDateTitleScreen = XCUIApplication().navigationBars["Select Date"].staticTexts["Select Date"]
         
     override func setUp() {
         super.setUp()
@@ -29,9 +30,14 @@ class AddNewGameDate: Utils {
     }
     
     func testDateWheel() {
+        XCTAssert(backButton.exists)
+        XCTAssert(selectDateTitleScreen.exists)
         XCTAssert(app.datePickers.pickerWheels[String(day)].exists)
         XCTAssert(app.datePickers.pickerWheels[longMonth].exists)
         XCTAssert(app.datePickers.pickerWheels[String(year)].exists)
+        backButton.tap()
+        XCTAssert(AddNewGame().newGameTitle.exists)
+        
     }
     
     func getElementsFromDate() {
