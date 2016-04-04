@@ -39,6 +39,7 @@
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DruidSmall" translatesAutoresizingMaskIntoConstraints="NO" id="en7-U4-1BZ">
                                                     <rect key="frame" x="8" y="0.0" width="43" height="43"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="image"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="43" id="Fv3-ep-H9f"/>
                                                         <constraint firstAttribute="height" constant="43" id="dc5-Xt-pcN"/>

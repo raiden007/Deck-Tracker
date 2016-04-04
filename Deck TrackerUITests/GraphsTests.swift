@@ -66,7 +66,6 @@ class GraphsTests: Utils {
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
-        XCUIApplication().launch()
         Settings().resetAll()
         sleep(1.0)
         graphsTab.tap()

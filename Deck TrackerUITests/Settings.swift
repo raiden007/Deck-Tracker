@@ -23,7 +23,6 @@ class Settings: XCTestCase {
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
-        XCUIApplication().launch()
         app.navigationBars["Games List"].buttons["More Info"].tap()
         Utils().sleep(1.0)
     }

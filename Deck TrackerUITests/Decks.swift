@@ -44,32 +44,15 @@ public class Decks: XCTestCase {
     override public func setUp() {
         super.setUp()
         continueAfterFailure = false
-        app.launch()
         Utils().sleep(1.0)
         decksTab.tap()
     }
     
-    func testElementsOnDecksPage() {
-        XCTAssert(addDeckButton.exists, "Add New Deck button does not exist")
-        XCTAssert(deckScreenTitle.exists, "Deck screen title does not exist")
-    }
+
     
-    func testElementsOnNewDeckPage() {
-        addDeckButton.tap()
-        XCTAssert(cancelButton.exists, "Cancel button does not exist")
-        XCTAssert(addNewDeckScreenTitle.exists)
-        XCTAssert(saveButton.exists)
-        XCTAssert(textField.exists)
-        XCTAssert(selectClassLabel.exists)
-        XCTAssert(warriorButton.exists)
-        XCTAssert(paladinButton.exists)
-        XCTAssert(shamanButton.exists)
-        XCTAssert(hunterButton.exists)
-        XCTAssert(druidButton.exists)
-        XCTAssert(rogueButton.exists)
-        XCTAssert(mageButton.exists)
-        XCTAssert(warlockButton.exists)
-        XCTAssert(priestButton.exists)
+    func testElementsExists() {
+        elementsDeckTab()
+        elementsNewDeckScreen()
     }
     
     func testAddAllDecks() {
@@ -163,5 +146,28 @@ public class Decks: XCTestCase {
         XCUIApplication().alerts["Deck already exists"].staticTexts["Deck name already exists"].exists
         XCUIApplication().alerts["Deck already exists"].collectionViews.buttons["OK"].exists
         XCUIApplication().alerts["Deck already exists"].collectionViews.buttons["OK"].tap()
+    }
+    
+    func elementsDeckTab() {
+        XCTAssert(addDeckButton.exists, "Add New Deck button does not exist")
+        XCTAssert(deckScreenTitle.exists, "Deck screen title does not exist")
+    }
+    
+    func elementsNewDeckScreen() {
+        addDeckButton.tap()
+        XCTAssert(cancelButton.exists, "Cancel button does not exist")
+        XCTAssert(addNewDeckScreenTitle.exists)
+        XCTAssert(saveButton.exists)
+        XCTAssert(textField.exists)
+        XCTAssert(selectClassLabel.exists)
+        XCTAssert(warriorButton.exists)
+        XCTAssert(paladinButton.exists)
+        XCTAssert(shamanButton.exists)
+        XCTAssert(hunterButton.exists)
+        XCTAssert(druidButton.exists)
+        XCTAssert(rogueButton.exists)
+        XCTAssert(mageButton.exists)
+        XCTAssert(warlockButton.exists)
+        XCTAssert(priestButton.exists)
     }
 }

@@ -8,7 +8,9 @@
 
 import XCTest
 
-class AddNewGame: XCTestCase {
+class AddNewGame: Utils {
+    
+    let addNewGameButton = Games().addGameButton
     
     let cancelButton = XCUIApplication().navigationBars["Add New Game"].buttons["Cancel"]
     let newGameTitle = XCUIApplication().navigationBars["Add New Game"]
@@ -26,9 +28,8 @@ class AddNewGame: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        XCUIApplication().launch()
         Settings().resetAll()
-        Games().addGameButton.tap()
+        addNewGameButton.tap()
     }
     
     func elementsExists() {
@@ -54,13 +55,6 @@ class AddNewGame: XCTestCase {
         XCTAssert(Games().gamesListScreenTitle.exists)
     }
     
-    func dateToday() -> String {
-        // Get today's date as a String
-        let now = NSDate()
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        let dateString = formatter.stringFromDate(now)
-        return dateString
-    }
+
     
 }
