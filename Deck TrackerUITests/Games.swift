@@ -8,7 +8,7 @@
 
 import XCTest
 
-class Games: XCTestCase {
+class Games: Utils {
     
     let settingsButton = XCUIApplication().navigationBars["Games List"].buttons["More Info"]
     let addGameButton = XCUIApplication().navigationBars["Games List"].buttons["Add"]
@@ -16,7 +16,7 @@ class Games: XCTestCase {
         
     override func setUp() {
         super.setUp()
-        continueAfterFailure = false
+        app.launch()
     }
     
     func testElements() {

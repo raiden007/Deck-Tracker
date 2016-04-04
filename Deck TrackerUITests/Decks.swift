@@ -8,9 +8,8 @@
 
 import XCTest
 
-public class Decks: XCTestCase {
+ class Decks: Utils {
     
-    let app = XCUIApplication()
     let decksTab = XCUIApplication().tabBars.buttons["Decks"]
     
     let addDeckButton = XCUIApplication().navigationBars["Decks"].buttons["Add"]
@@ -31,24 +30,22 @@ public class Decks: XCTestCase {
     let warlockButton = XCUIApplication().buttons["WarlockSmall"]
     let priestButton = XCUIApplication().buttons["PriestSmall"]
     
-    public let warriorDeck = XCUIApplication().tables.staticTexts["Warrior"]
-    public let paladinDeck = XCUIApplication().tables.staticTexts["Paladin"]
-    public let shamanDeck = XCUIApplication().tables.staticTexts["Shaman"]
-    public let hunterDeck = XCUIApplication().tables.staticTexts["Hunter"]
-    public let rogueDeck = XCUIApplication().tables.staticTexts["Rogue"]
-    public let druidDeck = XCUIApplication().tables.staticTexts["Druid"]
-    public let mageDeck = XCUIApplication().tables.staticTexts["Mage"]
-    public let warlockDeck = XCUIApplication().tables.staticTexts["Warlock"]
-    public let priestDeck = XCUIApplication().tables.staticTexts["Priest"]
+    let warriorDeck = XCUIApplication().tables.staticTexts["Warrior"]
+    let paladinDeck = XCUIApplication().tables.staticTexts["Paladin"]
+    let shamanDeck = XCUIApplication().tables.staticTexts["Shaman"]
+    let hunterDeck = XCUIApplication().tables.staticTexts["Hunter"]
+    let rogueDeck = XCUIApplication().tables.staticTexts["Rogue"]
+    let druidDeck = XCUIApplication().tables.staticTexts["Druid"]
+    let mageDeck = XCUIApplication().tables.staticTexts["Mage"]
+    let warlockDeck = XCUIApplication().tables.staticTexts["Warlock"]
+    let priestDeck = XCUIApplication().tables.staticTexts["Priest"]
         
-    override public func setUp() {
+    override func setUp() {
         super.setUp()
-        continueAfterFailure = false
-        Utils().sleep(1.0)
+        app.launch()
+        sleep(1.0)
         decksTab.tap()
     }
-    
-
     
     func testElementsExists() {
         elementsDeckTab()
@@ -80,7 +77,7 @@ public class Decks: XCTestCase {
         druidButton.tap()
         cancelButton.tap()
         XCTAssert(deckScreenTitle.exists)
-        XCTAssertFalse(XCUIApplication().tables.staticTexts["Pressing cancel"].exists)
+        XCTAssertFalse(app.tables.staticTexts["Pressing cancel"].exists)
     }
     
     func testDeleteDeck() {
@@ -142,10 +139,10 @@ public class Decks: XCTestCase {
         addDeck("Midrange", deckClass: "Druid")
         addDeck("Midrange", deckClass: "Hunter")
         
-        XCUIApplication().alerts["Deck already exists"].staticTexts["Deck already exists"].exists
-        XCUIApplication().alerts["Deck already exists"].staticTexts["Deck name already exists"].exists
-        XCUIApplication().alerts["Deck already exists"].collectionViews.buttons["OK"].exists
-        XCUIApplication().alerts["Deck already exists"].collectionViews.buttons["OK"].tap()
+        app.alerts["Deck already exists"].staticTexts["Deck already exists"].exists
+        app.alerts["Deck already exists"].staticTexts["Deck name already exists"].exists
+        app.alerts["Deck already exists"].collectionViews.buttons["OK"].exists
+        app.alerts["Deck already exists"].collectionViews.buttons["OK"].tap()
     }
     
     func elementsDeckTab() {

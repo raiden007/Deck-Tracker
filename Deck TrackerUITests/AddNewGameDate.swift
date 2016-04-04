@@ -22,7 +22,7 @@ class AddNewGameDate: Utils {
         
     override func setUp() {
         super.setUp()
-        continueAfterFailure = false
+        app.launch()
         addNewGameButton.tap()
         pickDateCell.tap()
         getElementsFromDate()

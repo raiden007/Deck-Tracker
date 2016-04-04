@@ -8,9 +8,8 @@
 
 import XCTest
 
-class Settings: XCTestCase {
+class Settings: Utils {
     
-    let app = XCUIApplication()
     let settingsTitle = XCUIApplication().navigationBars["Settings"]
     let settingsLabel = XCUIApplication().tables.childrenMatchingType(.Other).elementBoundByIndex(0).otherElements["SETTINGS"]
     let resetAllButton = XCUIApplication().buttons["Reset All"]
@@ -22,9 +21,9 @@ class Settings: XCTestCase {
         
     override func setUp() {
         super.setUp()
-        continueAfterFailure = false
+        app.launch()
         app.navigationBars["Games List"].buttons["More Info"].tap()
-        Utils().sleep(1.0)
+        sleep(1.0)
     }
         
     func testAllElementsSettingsPage() {

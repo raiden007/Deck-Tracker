@@ -65,7 +65,7 @@ class GraphsTests: Utils {
         
     override func setUp() {
         super.setUp()
-        continueAfterFailure = false
+        app.launch()
         Settings().resetAll()
         sleep(1.0)
         graphsTab.tap()
@@ -137,9 +137,5 @@ class GraphsTests: Utils {
         app.navigationBars["Tags Graphs"].buttons["Graphs"].tap()
         XCTAssertFalse(tipLabel.exists)
     }
-    
-
-    
-    
     
 }

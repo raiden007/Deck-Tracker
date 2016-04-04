@@ -28,6 +28,7 @@ class AddNewGame: Utils {
     
     override func setUp() {
         super.setUp()
+        app.launch()
         Settings().resetAll()
         addNewGameButton.tap()
     }

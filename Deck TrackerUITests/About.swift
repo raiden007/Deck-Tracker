@@ -8,7 +8,7 @@
 
 import XCTest
 
-class About: XCTestCase {
+class About: Utils {
     
     let backButton = XCUIApplication().navigationBars["About"].buttons["Settings"]
     let aboutTitleScreen = XCUIApplication().navigationBars["About"].staticTexts["About"]
@@ -22,9 +22,8 @@ class About: XCTestCase {
         
     override func setUp() {
         super.setUp()
-        continueAfterFailure = false
-        let app = XCUIApplication()
-        Utils().sleep(1.0)
+        app.launch()
+        sleep(1.0)
         app.navigationBars["Games List"].buttons["More Info"].tap()
         app.tables.staticTexts["About"].tap()
     }
