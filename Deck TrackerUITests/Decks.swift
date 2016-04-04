@@ -49,6 +49,7 @@ import XCTest
     
     func testElementsExists() {
         elementsDeckTab()
+        addDeckButton.tap()
         elementsNewDeckScreen()
     }
     
@@ -151,7 +152,7 @@ import XCTest
     }
     
     func elementsNewDeckScreen() {
-        addDeckButton.tap()
+        
         XCTAssert(cancelButton.exists, "Cancel button does not exist")
         XCTAssert(addNewDeckScreenTitle.exists)
         XCTAssert(saveButton.exists)

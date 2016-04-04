@@ -31,7 +31,7 @@ class TODO: XCTestCase {
     // Tags screen elements
     // When no data appears it looks different than with data
     // Add new game screens :
-    // Date + back button
+    // Date + back button - DONE
     // Choose deck + back button
     // Opponent Class + back button
     // Tags + back button
@@ -44,7 +44,7 @@ class TODO: XCTestCase {
     // FLOWS:
     
 //    1,
-//    add a deck with all classes
+//    add a deck with all classes - DONE
 //    validate this in new game screen
     
     
