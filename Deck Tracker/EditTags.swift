@@ -107,7 +107,13 @@ class EditTags: UITableViewController {
             if tagAlreadyExists == true {
                 let alert = UIAlertView()
                 alert.title = "Tag already exists"
-                alert.message = "Tag already exists"
+                alert.message = "Enter another tag name"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            } else if textField == "" {
+                let alert = UIAlertView()
+                alert.title = "Tag empty"
+                alert.message = "Tag cannot be empty"
                 alert.addButtonWithTitle("OK")
                 alert.show()
             } else {

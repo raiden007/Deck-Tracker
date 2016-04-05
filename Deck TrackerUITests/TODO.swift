@@ -25,11 +25,10 @@ class TODO: XCTestCase {
     
     //TODO:
     
-    // Decklist: check the correct image appears for each deck
+    // Decklist: check the correct image appears for each deck - Very Hard to do atm
     
-    // Games lists elements (date, deck vs opponent image, WIN/LOSS etc)
-    // Tags screen elements
-    // When no data appears it looks different than with data
+    // Games lists elements (date, deck vs opponent image, WIN/LOSS etc) - Will be done after implementing Add new game screens automation
+    // Tags screen elements - With no data
     // Add new game screens :
     // Date + back button - DONE
     // Choose deck + back button - DONE
@@ -86,5 +85,8 @@ class TODO: XCTestCase {
     // same but choose YES - check the recorded games are deleted
     
     // Test iCloud sync somehow
+    
+    // Tags : Add a tag that already exists - in edit game screen
+    // Tags : Add an empty tag - in edit game screen
     
 }

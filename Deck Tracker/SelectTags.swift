@@ -102,12 +102,12 @@ class SelectTags: UITableViewController {
         
         //3. Grab the value from the text field, and adds it to the array when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Finish", style: .Default, handler: { (action) -> Void in
-            let textField = alert.textFields![0]
+            let textField = alert.textFields![0].text
             // Check the tag is not already in the list
             var tagAlreadyExists = false
             
             for tag in self.allTags {
-                if tag.lowercaseString == textField.text?.lowercaseString {
+                if tag.lowercaseString == textField?.lowercaseString {
                     tagAlreadyExists = true
                 }
             }
@@ -115,11 +115,17 @@ class SelectTags: UITableViewController {
             if tagAlreadyExists == true {
                 let alert = UIAlertView()
                 alert.title = "Tag already exists"
-                alert.message = "Tag already exists"
+                alert.message = "Enter another tag name"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            } else if textField == "" {
+                let alert = UIAlertView()
+                alert.title = "Tag empty"
+                alert.message = "Tag cannot be empty"
                 alert.addButtonWithTitle("OK")
                 alert.show()
             } else {
-                self.allTags.append(textField.text!)
+                self.allTags.append(textField!)
                 //let sortedtags = sorted(self.allTags, <)
                 self.allTags.sortInPlace()
                 //self.allTags = sortedtags

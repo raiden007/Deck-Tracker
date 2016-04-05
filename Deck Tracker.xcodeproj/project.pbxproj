@@ -43,6 +43,7 @@
 		6DFFCD9D1B1DAC75005218D8 /* SelectOpponentWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */; };
 		8B10AFCD1B0310A100D33C29 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCB1B0310A100D33C29 /* Fabric.framework */; };
 		8B10AFCE1B0310A100D33C29 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */; };
+		8B2EB1311CB3A9310042E225 /* AddNewGameTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2EB1301CB3A9310042E225 /* AddNewGameTags.swift */; };
 		8B3E9DCA1C5B70F900480479 /* Decks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E9DC91C5B70F900480479 /* Decks.swift */; };
 		8B44AA621BBAC0CD00A8E8B0 /* GraphsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B44AA611BBAC0CD00A8E8B0 /* GraphsCell.swift */; };
 		8B4507C91B88B95500B0D12E /* SelectTagsWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4507C81B88B95500B0D12E /* SelectTagsWatch.swift */; };
@@ -155,6 +156,7 @@
 		6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOpponentWatch.swift; sourceTree = "<group>"; };
 		8B10AFCB1B0310A100D33C29 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		8B2EB1301CB3A9310042E225 /* AddNewGameTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewGameTags.swift; sourceTree = "<group>"; };
 		8B3E9DC91C5B70F900480479 /* Decks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decks.swift; sourceTree = "<group>"; };
 		8B44AA611BBAC0CD00A8E8B0 /* GraphsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsCell.swift; sourceTree = "<group>"; };
 		8B4507C81B88B95500B0D12E /* SelectTagsWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTagsWatch.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				8B878B0D1CB2575900191420 /* AddNewGameDate.swift */,
 				8B8365A91CB2661100CDE69D /* AddNewGameDeck.swift */,
 				8B8365AB1CB28F2400CDE69D /* AddNewGameOpponent.swift */,
+				8B2EB1301CB3A9310042E225 /* AddNewGameTags.swift */,
 			);
 			name = "Add New Game";
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				8BE734481C634A59003253A5 /* Settings.swift in Sources */,
 				8BD7B46F1C847BE60017443D /* GraphsTests.swift in Sources */,
 				8B8B539B1C81844E0048126E /* AddNewGame.swift in Sources */,
+				8B2EB1311CB3A9310042E225 /* AddNewGameTags.swift in Sources */,
 				8BC58F681C8842B100BF1CDE /* TODO.swift in Sources */,
 				8BE7344A1C634D0F003253A5 /* About.swift in Sources */,
 				8B8365AC1CB28F2400CDE69D /* AddNewGameOpponent.swift in Sources */,
