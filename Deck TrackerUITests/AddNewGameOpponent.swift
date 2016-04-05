@@ -29,8 +29,8 @@ class AddNewGameOpponent: Utils {
     override func setUp() {
         super.setUp()
         app.launch()
-        Settings().resetAll()
         sleep(1.0)
+        resetAll()
         addNewGameButton.tap()
         pickOpponentCell.tap()
     }
@@ -74,34 +74,4 @@ class AddNewGameOpponent: Utils {
             XCTAssert(false, "Opponent Class is wrong")
         }
     }
-    
-    func testSelectOpponentClass() {
-        selectOpponent("Warrior")
-        XCTAssert(pickOpponentCell.staticTexts["Opponent's class: Warrior"].exists)
-        pickOpponentCell.tap()
-        selectOpponent("Paladin")
-        XCTAssert(pickOpponentCell.staticTexts["Opponent's class: Paladin"].exists)
-        pickOpponentCell.tap()
-        selectOpponent("Shaman")
-        XCTAssert(pickOpponentCell.staticTexts["Opponent's class: Shaman"].exists)
-        pickOpponentCell.tap()
-        selectOpponent("Hunter")
-        XCTAssert(pickOpponentCell.staticTexts["Opponent's class: Hunter"].exists)
-        pickOpponentCell.tap()
-        selectOpponent("Druid")
-        XCTAssert(pickOpponentCell.staticTexts["Opponent's class: Druid"].exists)
-        pickOpponentCell.tap()
-        selectOpponent("Rogue")
-        XCTAssert(pickOpponentCell.staticTexts["Opponent's class: Rogue"].exists)
-        pickOpponentCell.tap()
-        selectOpponent("Mage")
-        XCTAssert(pickOpponentCell.staticTexts["Opponent's class: Mage"].exists)
-        pickOpponentCell.tap()
-        selectOpponent("Warlock")
-        XCTAssert(pickOpponentCell.staticTexts["Opponent's class: Warlock"].exists)
-        pickOpponentCell.tap()
-        selectOpponent("Priest")
-        XCTAssert(pickOpponentCell.staticTexts["Opponent's class: Priest"].exists)
-    }
-    
 }

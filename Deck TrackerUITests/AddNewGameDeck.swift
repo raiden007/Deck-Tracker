@@ -21,8 +21,8 @@ class AddNewGameDeck: Utils {
     override func setUp() {
         super.setUp()
         XCUIApplication().launch()
-        Settings().resetAll()
         sleep(1.0)
+        resetAll()
         addNewGameButton.tap()
         pickDeckCell.tap()
     }

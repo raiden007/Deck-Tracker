@@ -10,6 +10,7 @@ import XCTest
 
 class Settings: Utils {
     
+    let settignsButton = XCUIApplication().navigationBars["Games List"].buttons["More Info"]
     let settingsTitle = XCUIApplication().navigationBars["Settings"]
     let settingsLabel = XCUIApplication().tables.childrenMatchingType(.Other).elementBoundByIndex(0).otherElements["SETTINGS"]
     let resetAllButton = XCUIApplication().buttons["Reset All"]
@@ -22,8 +23,8 @@ class Settings: Utils {
     override func setUp() {
         super.setUp()
         app.launch()
-        app.navigationBars["Games List"].buttons["More Info"].tap()
         sleep(1.0)
+        settignsButton.tap()
     }
         
     func testAllElementsSettingsPage() {
@@ -35,13 +36,6 @@ class Settings: Utils {
         XCTAssert(aboutButton.exists)
     }
     
-    func resetAll() {
-        XCUIApplication().tabBars.buttons["Stats"].tap()
-        app.navigationBars["Games List"].buttons["More Info"].tap()
-        resetAllButton.tap()
-        resetEverything.tap()
-        backButton.tap()
-        
-    }
+
         
 }

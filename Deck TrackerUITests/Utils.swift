@@ -25,6 +25,19 @@ class Utils: XCTestCase {
         return dateString
     }
     
+    func resetAll() {
+        
+        let resetAllButton = XCUIApplication().buttons["Reset All"]
+        let resetEverything = XCUIApplication().alerts["Full reset"].collectionViews.buttons["Reset everything"]
+        let backButton = XCUIApplication().navigationBars["Settings"].buttons["Games List"]
+        
+        app.tabBars.buttons["Stats"].tap()
+        app.navigationBars["Games List"].buttons["More Info"].tap()
+        resetAllButton.tap()
+        resetEverything.tap()
+        backButton.tap()
+    }
+    
 
     
 }
