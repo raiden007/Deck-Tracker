@@ -10,7 +10,7 @@ import XCTest
 
 class Settings: Utils {
     
-    let settignsButton = XCUIApplication().navigationBars["Games List"].buttons["More Info"]
+    let settingsButton = XCUIApplication().navigationBars["Games List"].buttons["More Info"]
     let settingsTitle = XCUIApplication().navigationBars["Settings"]
     let settingsLabel = XCUIApplication().tables.childrenMatchingType(.Other).elementBoundByIndex(0).otherElements["SETTINGS"]
     let resetAllButton = XCUIApplication().buttons["Reset All"]
@@ -18,13 +18,18 @@ class Settings: Utils {
     let aboutButton = XCUIApplication().tables.staticTexts["About"]
     let backButton = XCUIApplication().navigationBars["Settings"].buttons["Games List"]
     
-    let resetEverything = XCUIApplication().alerts["Full reset"].collectionViews.buttons["Reset everything"]
+    let alertTilte = XCUIApplication().alerts["Full reset"].staticTexts["Full reset"]
+    let alertBody = XCUIApplication().alerts["Full reset"].staticTexts["What do you want to delete ?"]
+    let resetEverythingButton = XCUIApplication().alerts["Full reset"].collectionViews.buttons["Reset everything"]
+    let resetAllGamesButton = XCUIApplication().alerts["Full reset"].collectionViews.buttons["Reset all games"]
+    let resetAllGamesAndDecksButton = XCUIApplication().alerts["Full reset"].collectionViews.buttons["Reset all games AND all decks"]
+    
         
     override func setUp() {
         super.setUp()
         app.launch()
         sleep(1.0)
-        settignsButton.tap()
+        settingsButton.tap()
     }
         
     func testAllElementsSettingsPage() {
@@ -36,6 +41,29 @@ class Settings: Utils {
         XCTAssert(aboutButton.exists)
     }
     
-
+    func testResetElements() {
+        resetAllButton.tap()
+        XCTAssert(alertTilte.exists)
+        XCTAssert(alertBody.exists)
+        XCTAssert(resetEverythingButton.exists)
+        XCTAssert(resetAllGamesButton.exists)
+        XCTAssert(resetAllGamesAndDecksButton.exists)
+    }
+    
+    func resetAllGames() {
+        resetAllButton.tap()
+        resetAllGamesButton.tap()
+        backButton.tap()
+    }
+    
+    func testresetAllGamesAndDecks() {
+        resetAllButton.tap()
+        resetAllGamesAndDecksButton.tap()
+        backButton.tap()
+    }
+    
+    //TODO: Add 3 decks, 3 games & 3 tags and check they exist. Then reset all. Check they don't exist anymore
+    //TODO: Add 3 decks, 3 games & 3 tags and check they exist. Then reset all games. Check the games does not exist anymore
+    //TODO: Add 3 decks, 3 games & 3 tags and check they exist. Then reset all games and decks. Check the games and decks do not exist anymore
         
 }
