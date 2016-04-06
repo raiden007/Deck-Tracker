@@ -21,7 +21,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         refreshData()
         
         // Listens for "Deck Selected" and calls refreshData()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshData", name: "DeckSelected", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DecksList.refreshData), name: "DeckSelected", object: nil)
         
         // Removes the empty rows from view
         decksTable.tableFooterView = UIView(frame: CGRectZero)
@@ -206,7 +206,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         
         // If there is a deck selected get it's index
         let savedUserDefaults = readSelectedDeckID()
-        for var i = 0; i < decksList.count; i++ {
+        for i in 0 ..< decksList.count {
             if savedUserDefaults == decksList[i].getID() {
                 indexOfSelectedDeck = i
                 break

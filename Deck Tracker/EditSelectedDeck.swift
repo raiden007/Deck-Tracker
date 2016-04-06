@@ -25,7 +25,7 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
         
         // If there is a deck selected get it's index
         let savedUserDefaults = readEditedDeckID()
-        for var i = 0; i < decksList.count; i++ {
+        for i in 0 ..< decksList.count {
             if savedUserDefaults == decksList[i].getID() {
                 indexOfSelectedDeck = i
                 break
@@ -130,7 +130,7 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
         
         // If there is a deck selected get it's index
         let savedUserDefaults = readEditedDeckID()
-        for var i = 0; i < decksList.count; i++ {
+        for i in 0 ..< decksList.count {
             if savedUserDefaults == decksList[i].getID() {
                 indexOfSelectedDeck = i
                 break

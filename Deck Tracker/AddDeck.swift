@@ -54,7 +54,7 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
         let deckSelected = selectedDeck()
         // Loads and increments the deck ID then saves the new ID
         readDeckID()
-        deckID++
+        deckID += 1
         setDeckID()
         // Create a new Deck object and add it to the deck array
         if deckName != "" && deckSelected != "" {

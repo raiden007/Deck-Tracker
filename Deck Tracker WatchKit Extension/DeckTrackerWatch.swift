@@ -97,7 +97,7 @@ class DeckTrackerWatch: WKInterfaceController {
                 defaults.setObject(dict, forKey: "Add Game Watch")
                 defaults.synchronize()
                 
-                WKInterfaceController.openParentApplication(["Save New Game" : ""] , reply: { [unowned self](reply, error) -> Void in
+                WKInterfaceController.openParentApplication(["Save New Game" : ""] , reply: { [](reply, error) -> Void in
                     })
             } else {
                 saveGameButton.setTitle("Select a deck!")

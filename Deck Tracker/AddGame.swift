@@ -234,7 +234,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
         if let _ = iCloudKeyStore.objectForKey("iCloud Matches Count") {
             matchesCount = iCloudKeyStore.objectForKey("iCloud Matches Count") as! Int
         }
-        matchesCount++
+        matchesCount += 1
         NSUserDefaults.standardUserDefaults().setInteger(matchesCount, forKey: "Matches Count");
         NSUserDefaults.standardUserDefaults().synchronize()
         iCloudKeyStore.setObject(matchesCount, forKey: "iCloud Matches Count")

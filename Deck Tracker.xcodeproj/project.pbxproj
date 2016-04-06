@@ -36,7 +36,6 @@
 		6DDD448F1AEF87B700A4B5D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DDD448D1AEF87B700A4B5D2 /* Main.storyboard */; };
 		6DDD44911AEF87B700A4B5D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DDD44901AEF87B700A4B5D2 /* Images.xcassets */; };
 		6DDD44941AEF87B700A4B5D2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDD44921AEF87B700A4B5D2 /* LaunchScreen.xib */; };
-		6DDD44A01AEF87B700A4B5D2 /* Deck_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD449F1AEF87B700A4B5D2 /* Deck_TrackerTests.swift */; };
 		6DDD44AA1AEFB1B300A4B5D2 /* AddDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */; };
 		6DE566961B15C2220026FBF5 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE566951B15C2220026FBF5 /* About.swift */; };
 		6DF363001AFB702600A5B507 /* AddGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF362FF1AFB702600A5B507 /* AddGame.swift */; };
@@ -149,7 +148,6 @@
 		6DDD44931AEF87B700A4B5D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		6DDD44991AEF87B700A4B5D2 /* Deck TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Deck TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DDD449E1AEF87B700A4B5D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DDD449F1AEF87B700A4B5D2 /* Deck_TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck_TrackerTests.swift; sourceTree = "<group>"; };
 		6DDD44A91AEFB1B300A4B5D2 /* AddDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeck.swift; sourceTree = "<group>"; };
 		6DE566951B15C2220026FBF5 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		6DF362FF1AFB702600A5B507 /* AddGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGame.swift; sourceTree = "<group>"; };
@@ -375,7 +373,6 @@
 		6DDD449C1AEF87B700A4B5D2 /* Deck TrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				6DDD449F1AEF87B700A4B5D2 /* Deck_TrackerTests.swift */,
 				6DDD449D1AEF87B700A4B5D2 /* Supporting Files */,
 			);
 			path = "Deck TrackerTests";
@@ -703,7 +700,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DDD44A01AEF87B700A4B5D2 /* Deck_TrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

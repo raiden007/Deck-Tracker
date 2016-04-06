@@ -56,7 +56,7 @@ class Settings: Utils {
         backButton.tap()
     }
     
-    func testresetAllGamesAndDecks() {
+    func resetAllGamesAndDecks() {
         resetAllButton.tap()
         resetAllGamesAndDecksButton.tap()
         backButton.tap()

@@ -30,7 +30,7 @@ class GraphsCollectionView: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:",name:"load", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GraphsCollectionView.loadList(_:)),name:"load", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -97,9 +97,9 @@ class GraphsCollectionView: UICollectionViewController {
         
         for game in filteredGames {
             if game.getWin() == true {
-                wonGames++
+                wonGames += 1
             } else {
-                lostGames++
+                lostGames += 1
             }
         }
         

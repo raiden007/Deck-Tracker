@@ -31,7 +31,7 @@ public class Data: NSObject {
     override init() {
         super.init()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyValueStoreDidChange:", name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudKeyStore)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Data.keyValueStoreDidChange(_:)), name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudKeyStore)
         iCloudKeyStore.synchronize()
             
         // Check at first install if the game/deck database is empty
@@ -95,7 +95,7 @@ public class Data: NSObject {
     
     // Prints all the games in the array
     func printGameData() {
-        for (var i=0; i<listOfGames.count; i++) {
+        for i in 0 ..< listOfGames.count {
             print(listOfGames[i].toString())
         }
     }
@@ -112,7 +112,7 @@ public class Data: NSObject {
     func saveDict() {
         deckListForPhone.removeAll(keepCapacity: true)
         // Create an dictionary array so we can read this in the shared app group
-        for var i = 0; i < listOfDecks.count; i++ {
+        for i in 0 ..< listOfDecks.count {
             let dict: NSMutableDictionary = listOfDecks[i].getDict()
             deckListForPhone.append(dict)
         }
@@ -147,7 +147,7 @@ public class Data: NSObject {
     
     // Prints all the decks in the array
     func printDeckData () {
-        for (var i=0; i<listOfDecks.count; i++) {
+        for i in 0 ..< listOfDecks.count {
             print(listOfDecks[i].toString())
         }
     }
@@ -166,7 +166,7 @@ public class Data: NSObject {
     
     // Replaces a game from the array
     func editGame (id:Int, oldGame:Game, newGame:Game) {
-        for var i = 0; i < listOfGames.count; i++ {
+        for i in 0 ..< listOfGames.count {
             if listOfGames[i].getID() == id {
                 listOfGames.removeAtIndex(i)
                 listOfGames.insert(newGame, atIndex: i)
@@ -180,7 +180,7 @@ public class Data: NSObject {
     // Deletes all games associated with a certain deck
     func deleteAllGamesAssociatedWithADeck( deckName: String) {
         
-        for var i = listOfGames.count - 1; i >= 0; i-- {
+        for var i = listOfGames.count - 1; i >= 0; i -= 1 {
             print(listOfGames[i].getPlayerDeckName())
             if listOfGames[i].getPlayerDeckName() == deckName {
                 listOfGames.removeAtIndex(i)
@@ -202,7 +202,7 @@ public class Data: NSObject {
         // If current deck is selected
         if deckName == selectedDeckName {
             filteredGames = []
-            for var i = 0; i < dateArray.count; i++ {
+            for i in 0 ..< dateArray.count {
                 if deckName == dateArray[i].getPlayerDeckName() {
                     filteredGames.append(dateArray[i])
                 }
@@ -212,9 +212,9 @@ public class Data: NSObject {
             filteredGames = dateArray
         }
         
-        for (var i=0; i<filteredGames.count ; i++) {
+        for i in 0 ..< filteredGames.count {
             if (filteredGames[i].win == true) {
-                gamesWon++
+                gamesWon += 1
             }
         }
         
@@ -240,7 +240,7 @@ public class Data: NSObject {
         var dateArray:[Game] = []
         // If date is last 7 days
         if date == 0 {
-            for var i = 0; i < listOfGames.count; i++ {
+            for i in 0 ..< listOfGames.count {
                 let today = NSDate()
                 let lastWeek = today.dateByAddingTimeInterval(-24 * 60 * 60 * 7)
                 if listOfGames[i].getNSDate().compare(lastWeek) == NSComparisonResult.OrderedDescending {
@@ -250,7 +250,7 @@ public class Data: NSObject {
             return dateArray
             // If date is last month
         } else if date == 1 {
-            for var i = 0; i < listOfGames.count; i++ {
+            for i in 0 ..< listOfGames.count {
                 let today = NSDate()
                 let lastMonth = today.dateByAddingTimeInterval(-24 * 60 * 60 * 30)
                 if listOfGames[i].getNSDate().compare(lastMonth) == NSComparisonResult.OrderedDescending {
@@ -281,7 +281,7 @@ public class Data: NSObject {
         
         // If current deck is selected
         if deck == selectedDeckName {
-            for var i = 0; i < filteredGamesByDate.count; i++ {
+            for i in 0 ..< filteredGamesByDate.count {
                 if deck == filteredGamesByDate[i].getPlayerDeckName() {
                     filteredGamesBySelectedDeck.append(filteredGamesByDate[i])
                 }

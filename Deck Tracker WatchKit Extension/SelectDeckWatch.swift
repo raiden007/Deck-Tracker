@@ -48,7 +48,7 @@ class SelectDeckWatch: WKInterfaceController {
     
     func extractDictToArrayOfDecks(dict:[NSDictionary]) {
         // Takes the saved dictionary and transforms it into a Deck array
-        for var i = 0; i < dict.count; i++ {
+        for i in 0 ..< dict.count {
             let deckName: String = dict[i]["deckName"] as! String
             let deckClass: String = dict[i]["deckClass"] as! String
             let deckID: Int = dict[i]["deckID"] as! Int
@@ -65,7 +65,7 @@ class SelectDeckWatch: WKInterfaceController {
         if deckList.count == 0 {
             noDeckLabel.setHidden(false)
         } else {
-            for var i = 0; i < deckList.count; i++ {
+            for i in 0 ..< deckList.count {
                 if let row = deckTable.rowControllerAtIndex(i) as? DeckRow {
                     row.deckLabel.setText(deckList[i].getName())
                     row.deckLabel.setTextColor(UIColor.blackColor())
@@ -106,7 +106,7 @@ class SelectDeckWatch: WKInterfaceController {
         defaults.setObject(selectedDeck.getName(), forKey: "Selected Deck Name")
         defaults.setObject(selectedDeck.getClass(), forKey: "Selected Deck Class")
         defaults.synchronize()
-        WKInterfaceController.openParentApplication(["Save Selected Deck" : ""] , reply: { [unowned self](reply, error) -> Void in
+        WKInterfaceController.openParentApplication(["Save Selected Deck" : ""] , reply: { [](reply, error) -> Void in
             })
         self.popController()
     }

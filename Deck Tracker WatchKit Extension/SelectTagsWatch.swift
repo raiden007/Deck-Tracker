@@ -59,7 +59,7 @@ class SelectTagsWatch: WKInterfaceController {
             noTagsLabel.setHidden(false)
         } else {
             // Sets the labels text
-            for var i = 0; i < tagsList.count; i++ {
+            for i in 0 ..< tagsList.count {
                 if let row = tagsTable.rowControllerAtIndex(i) as? TagsRow {
                     row.tagLabel.setText(tagsList[i])
                 }

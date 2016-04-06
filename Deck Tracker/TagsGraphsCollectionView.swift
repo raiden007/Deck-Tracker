@@ -106,7 +106,7 @@ class TagsGraphsCollectionView: UICollectionViewController {
         gamesWonArray = []
         gamesLostArray = []
         
-        for var i = 0; i < filteredTags.count; i++ {
+        for i in 0 ..< filteredTags.count {
         // Create an array with only the relevant games
             filteredGamesAndTags = []
             
@@ -126,7 +126,7 @@ class TagsGraphsCollectionView: UICollectionViewController {
         var gamesWon = 0
         for game in filteredGamesAndTags {
             if game.win == true {
-                gamesWon++
+                gamesWon += 1
             }
         }
         
