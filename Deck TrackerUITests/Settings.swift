@@ -50,6 +50,11 @@ class Settings: Utils {
         XCTAssert(resetAllGamesAndDecksButton.exists)
     }
     
+    func testResetEverything() {
+        backButton.tap()
+        resetAll()
+    }
+    
     func resetAllGames() {
         resetAllButton.tap()
         resetAllGamesButton.tap()
