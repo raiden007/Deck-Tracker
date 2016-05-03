@@ -30,11 +30,14 @@ class AddNewGame: Utils {
         super.setUp()
         app.launch()
         sleep(1.0)
-        resetAll()
+        //resetAll()
         addNewGameButton.tap()
     }
     
     func elementsExists() {
+        
+        resetAll()
+        
         XCTAssert(cancelButton.exists)
         XCTAssert(newGameTitle.exists)
         XCTAssert(saveButton.exists)
@@ -55,6 +58,22 @@ class AddNewGame: Utils {
         elementsExists()
         cancelButton.tap()
         XCTAssert(Games().gamesListScreenTitle.exists)
+    }
+    
+    func addNewGame(date: String, deck: String, opponent: String, coin: Bool, Win: Bool, tag: String) {
+        // Check to see if selected deck is the same as intended deck
+        print(app.tables.staticTexts["Your deck: " + deck])
+        if app.tables.staticTexts["Your deck: " + deck].exists {
+            print(deck + " is selected")
+        } else {
+            print(deck + " is not selected")
+        }
+    }
+    
+    func testAddNewGame() {
+        addNewGame("", deck: "Testing", opponent: "", coin: true, Win: false, tag: "")
+        sleep(30.0)
+        
     }
     
 

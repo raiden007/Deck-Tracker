@@ -25,4 +25,6 @@ class Games: Utils {
         XCTAssert(addGameButton.exists)
         XCTAssert(gamesListScreenTitle.exists)
     }
+    
+
 }

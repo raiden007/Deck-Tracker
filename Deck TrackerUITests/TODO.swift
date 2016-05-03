@@ -46,7 +46,7 @@ class TODO: XCTestCase {
 //    add a deck with all classes - DONE
     
     //TODO: Reset test all elements - DONE
-    //TODO: Reset everything flow
+    //TODO: Reset everything flow - DONE
     //TODO: Reset all games flow
     //TODO: Reset all games and decks flow
     //TODO: Reset press cancel and check nothing was deleted
