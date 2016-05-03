@@ -110,4 +110,10 @@ class Settings: UITableViewController {
 
     }
     
+    // When selecting the table cell from the first section have reset all button press
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 {
+           resetButtonPressed(self.resetButton)
+        }
+    }
 }

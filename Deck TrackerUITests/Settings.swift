@@ -66,9 +66,4 @@ class Settings: Utils {
         resetAllGamesAndDecksButton.tap()
         backButton.tap()
     }
-    
-    //TODO: Add 3 decks, 3 games & 3 tags and check they exist. Then reset all. Check they don't exist anymore
-    //TODO: Add 3 decks, 3 games & 3 tags and check they exist. Then reset all games. Check the games does not exist anymore
-    //TODO: Add 3 decks, 3 games & 3 tags and check they exist. Then reset all games and decks. Check the games and decks do not exist anymore
-        
 }
