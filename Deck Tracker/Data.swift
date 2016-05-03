@@ -103,6 +103,7 @@ public class Data: NSObject {
     // Adds a deck object to the array
     func addDeck (newDeck: Deck) {
         listOfDecks.append(newDeck)
+        listOfDecks.sortInPlace({ $0.deckID > $1.deckID })
         saveDict()
         saveDeck()
         print("Deck added")
