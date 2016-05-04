@@ -30,13 +30,14 @@ class AddNewGame: Utils {
         super.setUp()
         app.launch()
         sleep(1.0)
-        //resetAll()
         addNewGameButton.tap()
     }
     
     func elementsExists() {
         
+        cancelButton.tap()
         resetAll()
+        addNewGameButton.tap()
         
         XCTAssert(cancelButton.exists)
         XCTAssert(newGameTitle.exists)
@@ -60,19 +61,60 @@ class AddNewGame: Utils {
         XCTAssert(Games().gamesListScreenTitle.exists)
     }
     
-    func addNewGame(date: String, deck: String, opponent: String, coin: Bool, Win: Bool, tag: String) {
+    func addNewGame(date: String, deckName: String, deckClass: String, opponent: String, coin: Bool, win: Bool, tag: String) {
         // Check to see if selected deck is the same as intended deck
-        print(app.tables.staticTexts["Your deck: " + deck])
-        if app.tables.staticTexts["Your deck: " + deck].exists {
-            print(deck + " is selected")
+        print(app.tables.staticTexts["Your deck: " + deckName])
+        if app.tables.staticTexts["Your deck: " + deckName].exists {
+            print(deckName + " is selected")
         } else {
-            print(deck + " is not selected")
+            print(deckName + " is not selected")
+            deckCell.tap()
+            // Check to see if the selected deck appears in the deck list
+            if app.tables.staticTexts[deckName].exists {
+                app.tables.staticTexts[deckName].tap()
+            // If not, create the deck and press it
+            } else {
+                Decks().addDeck(deckName, deckClass: deckClass)
+                app.tables.staticTexts[deckName].tap()
+            }
         }
+        
+        // Select opponent class
+        opponentCell.tap()
+        AddNewGameOpponent().selectOpponent(opponent)
+        
+        // Set coin status
+        if coin == true {
+            coinSwitch.tap()
+        }
+        
+        // Set win status
+        if win == false {
+            winSwitch.tap()
+        }
+        
+        // Set tag
+        if tag == "" {
+            // Do nothing
+        } else {
+            tagCell.tap()
+            // Check to see if the tag is present
+            if app.tables.staticTexts[tag].exists {
+                app.tables.staticTexts[tag].tap()
+            } else {
+                AddNewGameTags().addNewTag(tag)
+                app.tables.staticTexts[tag].tap()
+            }
+        }
+        
+        // Saves the game
+        saveButton.tap()
+
     }
     
     func testAddNewGame() {
-        addNewGame("", deck: "Testing", opponent: "", coin: true, Win: false, tag: "")
-        sleep(30.0)
+        addNewGame("", deckName: "wiejsjs", deckClass: "Paladin",opponent: "Druid", coin: true, win: false, tag: "")
+        sleep(3.0)
         
     }
     

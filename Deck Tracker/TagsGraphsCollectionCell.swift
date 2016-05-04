@@ -42,9 +42,7 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
         layer.borderWidth = 2
         
         let width = self.bounds.width
-        
-        print(width)
-        
+                
         var lineWidth = width / 5.5
         // For iPhone 4S
         if width == 155.0 {
@@ -78,7 +76,6 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
     private func setupFGShapeLayer(shapeLayer: CAShapeLayer) {
         
         let width = bgLayer.bounds.width
-        print(width)
         var radiusFactor: CGFloat = 0.25
         // For iPhone 4S
         if width == 155.0 {
@@ -99,7 +96,6 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
     private func setupBGShapeLayer(shapeLayer: CAShapeLayer) {
         
         let width = bgLayer.bounds.width
-        print(width)
         var radiusFactor: CGFloat = 0.25
         // For iPhone 4S
         if width == 155.0 {

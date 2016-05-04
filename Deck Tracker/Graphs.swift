@@ -20,8 +20,6 @@ class Graphs: UIViewController {
     var deckIndex = -1
     var deckName = ""
     static let sharedInstance = Graphs()
-    var tipLabelSaved = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,14 +57,6 @@ class Graphs: UIViewController {
         
         // Notifies the container that a change occured
         NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
-        
-        // Hides the tip label if user entered tag graphs
-        
-        tipLabelSaved = NSUserDefaults.standardUserDefaults().boolForKey("Tip Label")
-        if tipLabelSaved == true {
-            tipLabel.removeFromSuperview()
-            graphContainerBottomConstraint.constant -= 20
-        }
     }
     
     // Updates when the date button is changed

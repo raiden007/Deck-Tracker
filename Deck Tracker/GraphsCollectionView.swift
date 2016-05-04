@@ -25,8 +25,6 @@ class GraphsCollectionView: UICollectionViewController {
     var gamesFilteredByOpponent:[[Game]] = []
     
 
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()

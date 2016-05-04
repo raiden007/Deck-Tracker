@@ -130,12 +130,4 @@ class GraphsTests: Utils {
         XCTAssert(priestCellImage.exists)
         XCTAssert(priestCellWinLabel.staticTexts["No Data"].exists)
     }
-    
-    func testTipLabel() {
-        XCTAssert(tipLabel.exists)
-        warriorCellImage.tap()
-        app.navigationBars["Tags Graphs"].buttons["Graphs"].tap()
-        XCTAssertFalse(tipLabel.exists)
-    }
-    
 }
