@@ -62,6 +62,8 @@ class AddNewGame: Utils {
     }
     
     func addNewGame(date: String, deckName: String, deckClass: String, opponent: String, coin: Bool, win: Bool, tag: String) {
+        addNewGameButton.tap()
+        
         // Check to see if selected deck is the same as intended deck
         print(app.tables.staticTexts["Your deck: " + deckName])
         if app.tables.staticTexts["Your deck: " + deckName].exists {

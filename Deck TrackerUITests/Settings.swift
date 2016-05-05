@@ -53,6 +53,114 @@ class Settings: Utils {
     func testResetEverything() {
         backButton.tap()
         resetAll()
+        
+        // Add a new deck and check it appears
+        Decks().decksTab.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        Decks().addDeck("Reset", deckClass: "Druid")
+        XCTAssert(app.tables.cells.count == 1)
+        
+        // Add a new game and check it appears
+        Games().gamesTab.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        AddNewGame().addNewGame("", deckName: "Reset", deckClass: "Druid", opponent: "Druid", coin: false, win: true, tag: "")
+        print(app.tables.cells.count)
+        XCTAssert(app.tables.cells.count == 1)
+
+        // Add a new tag and check it appears
+        AddNewGame().addNewGameButton.tap()
+        AddNewGame().tagCell.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        AddNewGameTags().addNewTag("reset stuff")
+        XCTAssert(app.tables.cells.count == 1)
+        AddNewGameTags().backButton.tap()
+        AddNewGame().cancelButton.tap()
+        
+        // Reset all and check data is deleted
+        resetAll()
+        Decks().decksTab.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        Games().gamesTab.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        AddNewGame().addNewGameButton.tap()
+        AddNewGame().tagCell.tap()
+        XCTAssert(app.tables.cells.count == 0)
+    }
+    
+    func testResetAllGames() {
+        backButton.tap()
+        resetAll()
+        
+        // Add a new deck and check it appears
+        Decks().decksTab.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        Decks().addDeck("Reset", deckClass: "Druid")
+        XCTAssert(app.tables.cells.count == 1)
+        
+        // Add a new game and check it appears
+        Games().gamesTab.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        AddNewGame().addNewGame("", deckName: "Reset", deckClass: "Druid", opponent: "Druid", coin: false, win: true, tag: "")
+        print(app.tables.cells.count)
+        XCTAssert(app.tables.cells.count == 1)
+        
+        // Add a new tag and check it appears
+        AddNewGame().addNewGameButton.tap()
+        AddNewGame().tagCell.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        AddNewGameTags().addNewTag("reset stuff")
+        XCTAssert(app.tables.cells.count == 1)
+        AddNewGameTags().backButton.tap()
+        AddNewGame().cancelButton.tap()
+        
+        // Reset all games and check data is deleted
+        settingsButton.tap()
+        resetAllGames()
+        Decks().decksTab.tap()
+        XCTAssert(app.tables.cells.count == 1)
+        Games().gamesTab.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        AddNewGame().addNewGameButton.tap()
+        AddNewGame().tagCell.tap()
+        XCTAssert(app.tables.cells.count == 1)
+    }
+    
+    func testResetAllGamesAndDecks() {
+        backButton.tap()
+        resetAll()
+        
+        // Add a new deck and check it appears
+        Decks().decksTab.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        Decks().addDeck("Reset", deckClass: "Druid")
+        XCTAssert(app.tables.cells.count == 1)
+        
+        // Add a new game and check it appears
+        Games().gamesTab.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        AddNewGame().addNewGame("", deckName: "Reset", deckClass: "Druid", opponent: "Druid", coin: false, win: true, tag: "")
+        print(app.tables.cells.count)
+        XCTAssert(app.tables.cells.count == 1)
+        
+        // Add a new tag and check it appears
+        AddNewGame().addNewGameButton.tap()
+        AddNewGame().tagCell.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        AddNewGameTags().addNewTag("reset stuff")
+        XCTAssert(app.tables.cells.count == 1)
+        AddNewGameTags().backButton.tap()
+        AddNewGame().cancelButton.tap()
+        
+        // Reset all games & decks and check data is deleted
+        settingsButton.tap()
+        resetAllGamesAndDecks()
+        Decks().decksTab.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        Games().gamesTab.tap()
+        XCTAssert(app.tables.cells.count == 0)
+        AddNewGame().addNewGameButton.tap()
+        AddNewGame().tagCell.tap()
+        XCTAssert(app.tables.cells.count == 1)
     }
     
     func resetAllGames() {
