@@ -14,7 +14,7 @@ class SelectDeck: UITableViewController {
     
     var decksList:[Deck] = []
     var indexOfSelectedDeck:Int = -1
-    
+    var iCloudKeyStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,17 +93,22 @@ class SelectDeck: UITableViewController {
         let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(deck.getName(), forKey: "Selected Deck Name")
         defaults.synchronize()
+        
+        iCloudKeyStore.setObject(deck.getName(), forKey: "iCloud Selected Deck Name")
+        iCloudKeyStore.synchronize()
     }
     
     // Reads the saved deck
     func readSelectedDeckName() -> String {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        let name = defaults.stringForKey("Selected Deck Name") as String!
-        if name == nil {
-            return ""
-        } else {
-            return name
+        var name = ""
+        if let _ = iCloudKeyStore.stringForKey("iCloud Selected Deck Name") {
+            name = iCloudKeyStore.stringForKey("iCloud Selected Deck Name")!
+        } else if let _ = defaults.stringForKey("Selected Deck Name") {
+            name = defaults.stringForKey("Selected Deck Name")!
         }
+        
+        return name
     }
     
     // Saves the selected deck class

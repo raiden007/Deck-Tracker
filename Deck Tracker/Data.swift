@@ -196,8 +196,10 @@ public class Data: NSObject {
         var gamesWon = 0
         var dateArray = getDateArray(date)
         var selectedDeckName = ""
-        if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String! {
-            selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
+        if let _ = iCloudKeyStore.stringForKey("iCloud Selected Deck Name") {
+            selectedDeckName = iCloudKeyStore.stringForKey("iCloud Selected Deck Name")!
+        } else if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") {
+            selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name")!
         }
 
         // If current deck is selected
@@ -276,8 +278,10 @@ public class Data: NSObject {
         var filteredGamesBySelectedDeck:[Game] = []
         var filteredGamesByOpponent:[Game] = []
         
-        if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String! {
-            selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
+        if let _ = iCloudKeyStore.stringForKey("iCloud Selected Deck Name") {
+            selectedDeckName = iCloudKeyStore.stringForKey("iCloud Selected Deck Name")!
+        } else if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") {
+            selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name")!
         }
         
         // If current deck is selected

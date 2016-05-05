@@ -115,6 +115,7 @@ class AddNewGame: Utils {
     }
     
     func testAddNewGame() {
+        cancelButton.tap()
         addNewGame("", deckName: "wiejsjs", deckClass: "Paladin",opponent: "Druid", coin: true, win: false, tag: "")
         sleep(3.0)
         

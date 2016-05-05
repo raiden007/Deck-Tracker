@@ -52,6 +52,7 @@ class Settings: UITableViewController {
             self.iCloudKeyStore.removeObjectForKey("iCloud list of decks")
             self.iCloudKeyStore.removeObjectForKey("iCloud list of games")
             self.iCloudKeyStore.removeObjectForKey("iCloud All Tags")
+            self.iCloudKeyStore.removeObjectForKey("iCloud Selected Deck Name")
             self.iCloudKeyStore.synchronize()
             
             NSLog("Reset everything pressed")
@@ -89,6 +90,7 @@ class Settings: UITableViewController {
             // Remove from iCloud as well
             self.iCloudKeyStore.removeObjectForKey("iCloud list of decks")
             self.iCloudKeyStore.removeObjectForKey("iCloud list of games")
+            self.iCloudKeyStore.removeObjectForKey("iCloud Selected Deck Name")
             self.iCloudKeyStore.synchronize()
             
             NSLog("Reset all games AND decks pressed")

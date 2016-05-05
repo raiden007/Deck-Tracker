@@ -15,6 +15,9 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     var decksList:[Deck] = []
     var indexOfSelectedDeck:Int = -1
     
+    // Save to iCloud
+    var iCloudKeyStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -80,11 +83,14 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         return id
     }
     
-    // Saves the selected deck name in NSUserDefaults
+    // Saves the selected deck name in NSUserDefaults and iCloud
     func saveSelectedDeckName(deck: Deck) {
         let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Decks")!
         defaults.setObject(deck.getName(), forKey: "Selected Deck Name")
         defaults.synchronize()
+        
+        iCloudKeyStore.setObject(deck.getName(), forKey: "iCloud Selected Deck Name")
+        iCloudKeyStore.synchronize()
     }
     
     // Saves the selected deck class
@@ -97,13 +103,15 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     // Returns the selected deck name
     func readSelectedDeckName() -> String {
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        let name = defaults.stringForKey("Selected Deck Name") as String!
-        if name == nil {
-            return ""
-        } else {
-            return name
+        var name = ""
+        
+        if let _ = iCloudKeyStore.stringForKey("iCloud Selected Deck Name") {
+            name = iCloudKeyStore.stringForKey("iCloud Selected Deck Name")!
+        } else if let _ = defaults.stringForKey("Selected Deck Name") {
+            name = defaults.stringForKey("Selected Deck Name")!
         }
         
+        return name
     }
     
     // Deselects the row if you select another

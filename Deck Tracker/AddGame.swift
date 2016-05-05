@@ -60,14 +60,16 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     
     
     func readSelectedDeckName() -> String {
-        // Reads the selected deck name from NSUserDefaults
+        // Reads the selected deck name from iCloud or NSUserDefaults
         let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        let name = defaults.stringForKey("Selected Deck Name") as String!
-        if name == nil {
-            return ""
-        } else {
-            return name
+        var name = ""
+        if let _ = iCloudKeyStore.stringForKey("iCloud Selected Deck Name") {
+            name = iCloudKeyStore.stringForKey("iCloud Selected Deck Name")!
+        } else if let _ = defaults.stringForKey("Selected Deck Name") {
+            name = defaults.stringForKey("Selected Deck Name")!
         }
+        
+        return name
     }
     
     
@@ -146,10 +148,15 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
         
         // Gets all the atributes for a new Game
         let newGameID = newGameGetID()
-        //var x = SelectDate()
         let newGameDate = SelectDate().readDate()
-        //var newGameDateString = x.dateToString(newGameDate)
-        let newGamePlayerDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String?
+        
+        // Gets the selected deck name
+        var newGamePlayerDeckName = ""
+        if let _ = iCloudKeyStore.stringForKey("iCloud Selected Deck Name") {
+            newGamePlayerDeckName = iCloudKeyStore.stringForKey("iCloud Selected Deck Name")!
+        } else if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") {
+            newGamePlayerDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name")!
+        }
         let newGamePlayerDeckClass = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Class") as String?
         let newGameOpponentClass = defaults.stringForKey("Opponent Class") as String?
         let newGameCoin = coinCellSwitch.on
@@ -157,10 +164,10 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
         let newGameTag = tag
 
         
-        if newGamePlayerDeckName != nil && newGameOpponentClass != nil {
+        if newGamePlayerDeckName != "" && newGameOpponentClass != nil {
             
             // Adds a new game
-            let newGame = Game(newID: newGameID, newDate: newGameDate, newPlayerDeckName: newGamePlayerDeckName!, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin, newTag: newGameTag)
+            let newGame = Game(newID: newGameID, newDate: newGameDate, newPlayerDeckName: newGamePlayerDeckName, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin, newTag: newGameTag)
             // Add to Data class file
             Data.sharedInstance.addGame(newGame)
             self.dismissViewControllerAnimated(true, completion: {})
@@ -184,7 +191,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
             
             Answers.logCustomEventWithName("New game added",
                 customAttributes: [
-                    "Deck Name": newGamePlayerDeckName!,
+                    "Deck Name": newGamePlayerDeckName,
                     "Deck Class": newGamePlayerDeckClass!,
                     "Opponent Class": newGameOpponentClass!,
                     "Win": winString,
