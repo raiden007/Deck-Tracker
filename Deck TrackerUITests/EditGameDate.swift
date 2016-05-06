@@ -1,16 +1,16 @@
 //
-//  AddNewGameDate.swift
+//  EditGameDate.swift
 //  Deck Tracker
 //
-//  Created by Andrei Joghiu on 04/04/16.
+//  Created by Andrei Joghiu on 06/05/16.
 //  Copyright © 2016 Andrei Joghiu. All rights reserved.
 //
 
 import XCTest
 
-class AddNewGameDate: Utils {
-    
-    let addNewGameButton = Games().addGameButton
+class EditGameDate: Utils {
+        
+    let editedGame = XCUIApplication().cells.elementBoundByIndex(0)
     let pickDateCell = XCUIApplication().cells.elementBoundByIndex(0)
     var year =  -1
     var month = -1
@@ -18,14 +18,16 @@ class AddNewGameDate: Utils {
     var longMonth = ""
     
     
-    let backButton = XCUIApplication().navigationBars["Select Date"].buttons["Add New Game"]
+    let backButton = XCUIApplication().navigationBars["Select Date"].buttons["Edit Game"]
     let selectDateTitleScreen = XCUIApplication().navigationBars["Select Date"].staticTexts["Select Date"]
-        
+    
     override func setUp() {
         super.setUp()
         app.launch()
         sleep(1.0)
-        addNewGameButton.tap()
+        resetAll()
+        AddNewGame().addNewGame("", deckName: "Edit Date", deckClass: "Priest", opponent: "Warlock", coin: false, win: true, tag: "")
+        editedGame.tap()
         pickDateCell.tap()
         getElementsFromDate()
     }
@@ -37,7 +39,7 @@ class AddNewGameDate: Utils {
         XCTAssert(app.datePickers.pickerWheels[longMonth].exists)
         XCTAssert(app.datePickers.pickerWheels[String(year)].exists)
         backButton.tap()
-        XCTAssert(AddNewGame().newGameTitle.exists)
+        XCTAssert(EditGame().editGameTitle.exists)
     }
     
     func getElementsFromDate() {
@@ -54,8 +56,5 @@ class AddNewGameDate: Utils {
         let months = dateFormatter.monthSymbols
         longMonth = months[month-1] // month - from your date components
     }
-    
-    
-    
     
 }

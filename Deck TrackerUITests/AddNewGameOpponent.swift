@@ -30,7 +30,6 @@ class AddNewGameOpponent: Utils {
         super.setUp()
         app.launch()
         sleep(1.0)
-        resetAll()
         addNewGameButton.tap()
         pickOpponentCell.tap()
     }

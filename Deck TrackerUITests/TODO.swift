@@ -33,8 +33,8 @@ class TODO: XCTestCase {
     // Date + back button - DONE
     // Choose deck + back button - DONE
     // Opponent Class + back button - DONE
-    // Tags + back button
-    // Edit game screen + back button
+    // Tags + back button - DONE
+    // Edit game screen + back button - DONE
     // Edit game date + back button
     // deck + back button
     // class + back button

@@ -22,7 +22,6 @@ class AddNewGameDeck: Utils {
         super.setUp()
         XCUIApplication().launch()
         sleep(1.0)
-        resetAll()
         addNewGameButton.tap()
         pickDeckCell.tap()
     }

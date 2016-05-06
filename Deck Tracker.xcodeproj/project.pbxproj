@@ -40,6 +40,8 @@
 		6DE566961B15C2220026FBF5 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE566951B15C2220026FBF5 /* About.swift */; };
 		6DF363001AFB702600A5B507 /* AddGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF362FF1AFB702600A5B507 /* AddGame.swift */; };
 		6DFFCD9D1B1DAC75005218D8 /* SelectOpponentWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */; };
+		8B0B33D01CDC830100062D5E /* EditGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B33CF1CDC830100062D5E /* EditGame.swift */; };
+		8B0B33D31CDC865600062D5E /* EditGameDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B33D21CDC865600062D5E /* EditGameDate.swift */; };
 		8B10AFCD1B0310A100D33C29 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCB1B0310A100D33C29 /* Fabric.framework */; };
 		8B10AFCE1B0310A100D33C29 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */; };
 		8B2EB1311CB3A9310042E225 /* AddNewGameTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2EB1301CB3A9310042E225 /* AddNewGameTags.swift */; };
@@ -152,6 +154,8 @@
 		6DE566951B15C2220026FBF5 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		6DF362FF1AFB702600A5B507 /* AddGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGame.swift; sourceTree = "<group>"; };
 		6DFFCD9C1B1DAC75005218D8 /* SelectOpponentWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOpponentWatch.swift; sourceTree = "<group>"; };
+		8B0B33CF1CDC830100062D5E /* EditGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGame.swift; sourceTree = "<group>"; };
+		8B0B33D21CDC865600062D5E /* EditGameDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGameDate.swift; sourceTree = "<group>"; };
 		8B10AFCB1B0310A100D33C29 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		8B10AFCC1B0310A100D33C29 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		8B2EB1301CB3A9310042E225 /* AddNewGameTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewGameTags.swift; sourceTree = "<group>"; };
@@ -386,10 +390,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8B0B33D11CDC831500062D5E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8BE734471C634A59003253A5 /* Settings.swift */,
+				8BE734491C634D0F003253A5 /* About.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		8B8365AD1CB28F3900CDE69D /* Add New Game */ = {
 			isa = PBXGroup;
 			children = (
-				8B8B53981C8182CE0048126E /* Games.swift */,
 				8B8B539A1C81844E0048126E /* AddNewGame.swift */,
 				8B878B0D1CB2575900191420 /* AddNewGameDate.swift */,
 				8B8365A91CB2661100CDE69D /* AddNewGameDeck.swift */,
@@ -397,6 +409,15 @@
 				8B2EB1301CB3A9310042E225 /* AddNewGameTags.swift */,
 			);
 			name = "Add New Game";
+			sourceTree = "<group>";
+		};
+		8BD3E59B1CDC82D700FDEDC8 /* Edit Game */ = {
+			isa = PBXGroup;
+			children = (
+				8B0B33CF1CDC830100062D5E /* EditGame.swift */,
+				8B0B33D21CDC865600062D5E /* EditGameDate.swift */,
+			);
+			name = "Edit Game";
 			sourceTree = "<group>";
 		};
 		8BEDCD4F1BA61C400026AEFD /* Settings */ = {
@@ -411,11 +432,12 @@
 		8BFEA6EE1BE0F091005DBC04 /* Deck TrackerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				8B8365AD1CB28F3900CDE69D /* Add New Game */,
 				8B3E9DC91C5B70F900480479 /* Decks.swift */,
+				8B8B53981C8182CE0048126E /* Games.swift */,
 				8BD7B46E1C847BE60017443D /* GraphsTests.swift */,
-				8BE734471C634A59003253A5 /* Settings.swift */,
-				8BE734491C634D0F003253A5 /* About.swift */,
+				8B8365AD1CB28F3900CDE69D /* Add New Game */,
+				8BD3E59B1CDC82D700FDEDC8 /* Edit Game */,
+				8B0B33D11CDC831500062D5E /* Settings */,
 				8BD7B46C1C8474D10017443D /* Utils.swift */,
 				8BC58F671C8842B100BF1CDE /* TODO.swift */,
 				8BFEA6F11BE0F091005DBC04 /* Info.plist */,
@@ -716,9 +738,11 @@
 				8B8365AC1CB28F2400CDE69D /* AddNewGameOpponent.swift in Sources */,
 				8B8365AA1CB2661100CDE69D /* AddNewGameDeck.swift in Sources */,
 				8B878B0E1CB2575900191420 /* AddNewGameDate.swift in Sources */,
+				8B0B33D01CDC830100062D5E /* EditGame.swift in Sources */,
 				8B3E9DCA1C5B70F900480479 /* Decks.swift in Sources */,
 				8B8B53991C8182CE0048126E /* Games.swift in Sources */,
 				8BD7B46D1C8474D10017443D /* Utils.swift in Sources */,
+				8B0B33D31CDC865600062D5E /* EditGameDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
