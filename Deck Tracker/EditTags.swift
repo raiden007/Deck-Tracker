@@ -41,11 +41,11 @@ class EditTags: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Configures the cells
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
         cell.textLabel?.text = allTags[indexPath.row]
-        let cellLabel = cell.textLabel?.text as String!
+        let cellLabel = cell.textLabel?.text
         if cellLabel == selectedTag {
-            cell.accessoryType = UITableViewCellAccessoryType.checkmark
+            cell.accessoryType = UITableViewCell.AccessoryType.checkmark
         
         }
         return cell
@@ -54,7 +54,7 @@ class EditTags: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Selects the row and saves the info so we can add a checkmark
         let cell = tableView.cellForRow(at: indexPath)
-        let cellLabel = cell?.textLabel?.text as String!
+        let cellLabel = cell?.textLabel?.text
         saveSelectedTag(cellLabel!)
         navigationController?.popViewController(animated: true)
     }
@@ -70,7 +70,7 @@ class EditTags: UITableViewController {
         // Reads the selected tag from NSUserDefaults
         let defaults = UserDefaults.standard
         if let _ = defaults.string(forKey: "Edited Selected Tag") {
-            selectedTag = defaults.string(forKey: "Edited Selected Tag") as String!
+            selectedTag = defaults.string(forKey: "Edited Selected Tag")!
         } else {
             selectedTag = ""
         }
@@ -150,14 +150,14 @@ class EditTags: UITableViewController {
         return allTags
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // Deletes the row
-        if editingStyle == UITableViewCellEditingStyle.delete {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
             let index = indexPath.row
             allTags.remove(at: index)
             saveAllTags()
             readData()
-            self.tagsTable.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+            self.tagsTable.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
         }
     }
     

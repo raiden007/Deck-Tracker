@@ -56,7 +56,7 @@ open class Data: NSObject {
         }
     }
     
-    func keyValueStoreDidChange(_ notification: Notification) {
+    @objc func keyValueStoreDidChange(_ notification: Notification) {
         if let iCloudUnarchivedObject = iCloudKeyStore.object(forKey: "iCloud list of decks") as? Foundation.Data {
             print("iCloud decks loaded")
             listOfDecks = NSKeyedUnarchiver.unarchiveObject(with: iCloudUnarchivedObject) as! [Deck]

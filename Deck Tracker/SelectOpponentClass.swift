@@ -38,7 +38,7 @@ class SelectOpponentClass: UITableViewController {
     
     // Populates the table with data
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
         cell.textLabel?.text = classes[indexPath.row]
         return cell
     }
@@ -47,7 +47,7 @@ class SelectOpponentClass: UITableViewController {
     // Selects the row and saves the info so we can add a checkmark
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+        cell?.accessoryType = UITableViewCell.AccessoryType.checkmark
         let selectedClass = classes[indexPath.row]
         saveSelectedOpponentClass(selectedClass)
         navigationController?.popViewController(animated: true)
@@ -57,7 +57,7 @@ class SelectOpponentClass: UITableViewController {
     // Deselects the row if you select another
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.none
+        cell?.accessoryType = UITableViewCell.AccessoryType.none
     }
     
     // Saves the selected opponent class in NSUserDefaults
@@ -70,7 +70,7 @@ class SelectOpponentClass: UITableViewController {
     // Reads the selected deck ID from NSUserDefaults
     func readSelectedOpponentClass() -> String {
         let defaults = UserDefaults.standard
-        let name:String = defaults.string(forKey: "Opponent Class") as String!
+        let name:String = defaults.string(forKey: "Opponent Class")!
         return name
     }
 }

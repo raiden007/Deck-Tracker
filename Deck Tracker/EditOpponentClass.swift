@@ -38,7 +38,7 @@ class EditOpponentClass: UITableViewController {
 
     // Populates the table with the classes array
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
         cell.textLabel?.text = classes[indexPath.row]
         return cell
     }
@@ -46,7 +46,7 @@ class EditOpponentClass: UITableViewController {
     // Selects the row and saves the info so we can add a checkmark
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+        cell?.accessoryType = UITableViewCell.AccessoryType.checkmark
         let selectedClass = classes[indexPath.row]
         saveEditedOpponentClass(selectedClass)
         //readEditedOpponentClass()
@@ -56,7 +56,7 @@ class EditOpponentClass: UITableViewController {
     // Deselects the row if you select another
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.none
+        cell?.accessoryType = UITableViewCell.AccessoryType.none
     }
     
     // Saves the edited opponent class in NSUserDefaults
@@ -69,7 +69,7 @@ class EditOpponentClass: UITableViewController {
     // Reads the selected deck ID from NSUserDefaults
     func readEditedOpponentClass() -> String {
         let defaults = UserDefaults.standard
-        let name:String = defaults.string(forKey: "Edited Opponent Class") as String!
+        let name:String = defaults.string(forKey: "Edited Opponent Class")!
         return name
     }
 }

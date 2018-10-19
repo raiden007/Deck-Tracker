@@ -34,7 +34,7 @@ class Settings: UITableViewController {
         let alertController = UIAlertController(title: "Full reset", message: "What do you want to delete ?", preferredStyle: .alert)
         
         // Create the actions
-        let resetAllAction = UIAlertAction(title: "Reset everything", style: UIAlertActionStyle.destructive) {
+        let resetAllAction = UIAlertAction(title: "Reset everything", style: UIAlertAction.Style.destructive) {
             UIAlertAction in
             
             // Delete from NSUserDefaults
@@ -58,7 +58,7 @@ class Settings: UITableViewController {
             NSLog("Reset everything pressed")
         }
         
-        let resetGamesAction = UIAlertAction(title: "Reset all games", style: UIAlertActionStyle.destructive) {
+        let resetGamesAction = UIAlertAction(title: "Reset all games", style: UIAlertAction.Style.destructive) {
             UIAlertAction in
             
             // Delete from NSUserDefaults
@@ -75,7 +75,7 @@ class Settings: UITableViewController {
             
         }
         
-        let resetGamesAndDecksAction = UIAlertAction(title: "Reset all games AND all decks", style: UIAlertActionStyle.destructive) {
+        let resetGamesAndDecksAction = UIAlertAction(title: "Reset all games AND all decks", style: UIAlertAction.Style.destructive) {
             UIAlertAction in
             
             // Delete from NSUserDefaults
@@ -96,7 +96,7 @@ class Settings: UITableViewController {
             NSLog("Reset all games AND decks pressed")
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
             UIAlertAction in
             NSLog("Cancel Pressed")
         }

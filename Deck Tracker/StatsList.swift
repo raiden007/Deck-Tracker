@@ -126,18 +126,18 @@ class StatsList: UIViewController, UINavigationBarDelegate, UITableViewDelegate 
         refreshData()
     }
 
-    func refreshData() {
+    @objc func refreshData() {
         readData()
         statsTable.reloadData()
     }
     
     // Deletes the row
-    func tableView(_ tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
+    func tableView(_ tableView: UITableView, commitEditingStyle editingStyle: UITableViewCell.EditingStyle, forRowAtIndexPath indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
             let index = indexPath.row
             Data.sharedInstance.deleteGame(index)
             readData()
-            self.statsTable.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+            self.statsTable.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
         }
     }
 

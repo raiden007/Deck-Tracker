@@ -41,8 +41,8 @@ class Graphs: UIViewController {
         dateIndex = dateSegment.selectedSegmentIndex
         deckIndex = deckSegment.selectedSegmentIndex
         if deckIndex == 0 {
-            if let _ = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") as String! {
-                deckName = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") as String!
+            if let _ = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") {
+                deckName = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name")!
             } else {
                 deckName = ""
             }
@@ -87,8 +87,8 @@ class Graphs: UIViewController {
         switch deckSegment.selectedSegmentIndex {
         // Selected deck
         case 0:
-            if let _ = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") as String! {
-                deckName = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") as String!
+            if let _ = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") {
+                deckName = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name")!
             } else {
                 deckName = ""
             }

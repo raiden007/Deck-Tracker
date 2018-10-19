@@ -43,7 +43,7 @@ class SelectDeck: UITableViewController {
     
     // Populates the table with data
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
         //let cell:CustomCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! CustomCell
         cell.textLabel?.text = decksList[indexPath.row].getName()
         let image = decksList[indexPath.row].getClass()
@@ -52,9 +52,9 @@ class SelectDeck: UITableViewController {
         //cell.accessoryType = UITableViewCellAccessoryType.None
         // If there is a selected deck put a checkmark on it
         if indexPath.row == indexOfSelectedDeck {
-            cell.accessoryType = UITableViewCellAccessoryType.checkmark
+            cell.accessoryType = UITableViewCell.AccessoryType.checkmark
         } else {
-            cell.accessoryType = UITableViewCellAccessoryType.none
+            cell.accessoryType = UITableViewCell.AccessoryType.none
         }
         return cell
     }
@@ -62,7 +62,7 @@ class SelectDeck: UITableViewController {
     // Selects the row and saves the info so we can add a checkmark
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+        cell?.accessoryType = UITableViewCell.AccessoryType.checkmark
         let selectedDeck = decksList[indexPath.row]
         saveSelectedDeckID(selectedDeck)
         saveSelectedDeckName(selectedDeck)
@@ -119,7 +119,7 @@ class SelectDeck: UITableViewController {
     // Deselects the row if you select another
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.none
+        cell?.accessoryType = UITableViewCell.AccessoryType.none
     }
     
     // Refreshes the view after adding a deck
@@ -139,12 +139,12 @@ class SelectDeck: UITableViewController {
     }
     
     // Deletes the row
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
             let index = indexPath.row
             Data.sharedInstance.deleteDeck(index)
             readData()
-            self.decksTable.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+            self.decksTable.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
         }
     }
     

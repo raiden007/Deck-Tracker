@@ -49,9 +49,9 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         cell.customImage.image = UIImage(named: imageName)
         // If there is a selected deck put a checkmark on it
         if indexPath.row == indexOfSelectedDeck {
-            cell.accessoryType = UITableViewCellAccessoryType.checkmark
+            cell.accessoryType = UITableViewCell.AccessoryType.checkmark
         } else {
-            cell.accessoryType = UITableViewCellAccessoryType.none
+            cell.accessoryType = UITableViewCell.AccessoryType.none
         }
         return cell
     }
@@ -59,7 +59,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     // Selects the row and saves the info so we can add a checkmark
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+        cell?.accessoryType = UITableViewCell.AccessoryType.checkmark
         let selectedDeck = decksList[indexPath.row]
         saveSelectedDeckID(selectedDeck)
         saveSelectedDeckName(selectedDeck)
@@ -117,7 +117,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     // Deselects the row if you select another
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.none
+        cell?.accessoryType = UITableViewCell.AccessoryType.none
     }
     
     // Refreshes the view after adding a deck
@@ -136,8 +136,8 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
     }
     
     // Deletes the row
-    func tableView(_ tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
+    func tableView(_ tableView: UITableView, commitEditingStyle editingStyle: UITableViewCell.EditingStyle, forRowAtIndexPath indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
             
             let index = indexPath.row
             
@@ -148,7 +148,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
             let alertController = UIAlertController(title: "Delete games?", message: "Do you want also to delete all the games recorded with this deck ?", preferredStyle: .alert)
             
             // Create the actions
-            let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive) {
+            let okAction = UIAlertAction(title: "Yes", style: UIAlertAction.Style.destructive) {
                 UIAlertAction in
                 NSLog("Yes Pressed")
                 
@@ -159,16 +159,16 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
                 // Delete the deck
                 Data.sharedInstance.deleteDeck(index)
                 self.readData()
-                self.decksTable.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                self.decksTable.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
                 
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
                 UIAlertAction in
                 NSLog("Cancel Pressed")
                 // Delete the deck
                 Data.sharedInstance.deleteDeck(index)
                 self.readData()
-                self.decksTable.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                self.decksTable.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
             }
             
             // Add the actions
@@ -208,7 +208,7 @@ class DecksList: UIViewController, UITableViewDelegate, UINavigationBarDelegate 
         }
     }
     
-    func refreshData() {
+    @objc func refreshData() {
         readData()
         decksTable.reloadData()
         
