@@ -10,7 +10,7 @@
 // This class manipulates the data base structure of games/decks
 import Foundation
 
-public class Data: NSObject {
+open class Data: NSObject {
     
     // This is to user Data functions easier in other classes
     static let sharedInstance = Data()
@@ -31,7 +31,7 @@ public class Data: NSObject {
     override init() {
         super.init()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Data.keyValueStoreDidChange(_:)), name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: iCloudKeyStore)
+        NotificationCenter.default.addObserver(self, selector: #selector(Data.keyValueStoreDidChange(_:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: iCloudKeyStore)
         iCloudKeyStore.synchronize()
             
         // Check at first install if the game/deck database is empty
@@ -56,38 +56,38 @@ public class Data: NSObject {
         }
     }
     
-    func keyValueStoreDidChange(notification: NSNotification) {
-        if let iCloudUnarchivedObject = iCloudKeyStore.objectForKey("iCloud list of decks") as? NSData {
+    func keyValueStoreDidChange(_ notification: Notification) {
+        if let iCloudUnarchivedObject = iCloudKeyStore.object(forKey: "iCloud list of decks") as? Foundation.Data {
             print("iCloud decks loaded")
-            listOfDecks = NSKeyedUnarchiver.unarchiveObjectWithData(iCloudUnarchivedObject) as! [Deck]
+            listOfDecks = NSKeyedUnarchiver.unarchiveObject(with: iCloudUnarchivedObject) as! [Deck]
         }
     }
     
     // Adds a game object to the array and save the array in NSUserDefaults
-    func addGame (newGame : Game) {
+    func addGame (_ newGame : Game) {
         listOfGames.append(newGame)
-        listOfGames.sortInPlace({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
+        listOfGames.sort(by: { $0.date.compare($1.date as Date) == ComparisonResult.orderedDescending })
         saveGame()
     }
     
     // Saves the games array
     func saveGame() {
-        let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfGames as NSArray)
+        let archivedObject = NSKeyedArchiver.archivedData(withRootObject: listOfGames as NSArray)
         // Writing in NSUserDefaults
-        NSUserDefaults.standardUserDefaults().setObject(archivedObject, forKey: "List of games")
+        UserDefaults.standard.set(archivedObject, forKey: "List of games")
         // Sync
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.synchronize()
         
-        iCloudKeyStore.setObject(archivedObject, forKey: "iCloud list of games")
+        iCloudKeyStore.set(archivedObject, forKey: "iCloud list of games")
         iCloudKeyStore.synchronize()
     }
     
     // Reads the game data and returns a Game object
     func readGameData() -> [Game]? {
-        if let iCloudUnarchivedObject = iCloudKeyStore.objectForKey("iCloud list of games") as? NSData {
-            return NSKeyedUnarchiver.unarchiveObjectWithData(iCloudUnarchivedObject) as? [Game]
-        } else if let unarchivedObject = NSUserDefaults.standardUserDefaults().objectForKey("List of games") as? NSData {
-            return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Game]
+        if let iCloudUnarchivedObject = iCloudKeyStore.object(forKey: "iCloud list of games") as? Foundation.Data {
+            return NSKeyedUnarchiver.unarchiveObject(with: iCloudUnarchivedObject) as? [Game]
+        } else if let unarchivedObject = UserDefaults.standard.object(forKey: "List of games") as? Foundation.Data {
+            return NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject) as? [Game]
         } else {
           return nil
         }
@@ -101,9 +101,9 @@ public class Data: NSObject {
     }
     
     // Adds a deck object to the array
-    func addDeck (newDeck: Deck) {
+    func addDeck (_ newDeck: Deck) {
         listOfDecks.append(newDeck)
-        listOfDecks.sortInPlace({ $0.deckID > $1.deckID })
+        listOfDecks.sort(by: { $0.deckID > $1.deckID })
         saveDict()
         saveDeck()
         print("Deck added")
@@ -111,7 +111,7 @@ public class Data: NSObject {
     
     // Creates a new dict to use with phone
     func saveDict() {
-        deckListForPhone.removeAll(keepCapacity: true)
+        deckListForPhone.removeAll(keepingCapacity: true)
         // Create an dictionary array so we can read this in the shared app group
         for i in 0 ..< listOfDecks.count {
             let dict: NSMutableDictionary = listOfDecks[i].getDict()
@@ -121,25 +121,25 @@ public class Data: NSObject {
     
     // Adds the decks list to NSUserDefaults
     func saveDeck () {
-        let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(listOfDecks as [Deck])
-        let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        defaults.setObject(archivedObject, forKey: "List of decks")
-        defaults.setObject(deckListForPhone, forKey: "List of decks dictionary")
+        let archivedObject = NSKeyedArchiver.archivedData(withRootObject: listOfDecks as [Deck])
+        let defaults = UserDefaults(suiteName: "group.Decks")!
+        defaults.set(archivedObject, forKey: "List of decks")
+        defaults.set(deckListForPhone, forKey: "List of decks dictionary")
         defaults.synchronize()
         
-        iCloudKeyStore.setObject(archivedObject, forKey: "iCloud list of decks")
-        iCloudKeyStore.setObject(deckListForPhone, forKey: "iCloud List of decks dictionary")
+        iCloudKeyStore.set(archivedObject, forKey: "iCloud list of decks")
+        iCloudKeyStore.set(deckListForPhone, forKey: "iCloud List of decks dictionary")
         iCloudKeyStore.synchronize()
     }
     
     // Reads the deck data and returns a Deck object
     func readDeckData() -> [Deck]? {
-        let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        if let iCloudUnarchivedObject = iCloudKeyStore.objectForKey("iCloud list of decks") as? NSData {
+        let defaults = UserDefaults(suiteName: "group.Decks")!
+        if let iCloudUnarchivedObject = iCloudKeyStore.object(forKey: "iCloud list of decks") as? Foundation.Data {
             print("iCloud decks loaded")
-            return NSKeyedUnarchiver.unarchiveObjectWithData(iCloudUnarchivedObject) as? [Deck]
-        } else if let unarchivedObject = defaults.objectForKey("List of decks") as? NSData {
-            return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Deck]
+            return NSKeyedUnarchiver.unarchiveObject(with: iCloudUnarchivedObject) as? [Deck]
+        } else if let unarchivedObject = defaults.object(forKey: "List of decks") as? Foundation.Data {
+            return NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject) as? [Deck]
         } else {
             return nil
         }
@@ -154,24 +154,24 @@ public class Data: NSObject {
     }
     
     // Deletes a deck from the array and updates the array
-    func deleteDeck(id:Int) {
-        listOfDecks.removeAtIndex(id)
+    func deleteDeck(_ id:Int) {
+        listOfDecks.remove(at: id)
         saveDeck()
     }
     
     // Deletes a game from the array and updates the array
-    func deleteGame(id:Int) {
-        listOfGames.removeAtIndex(id)
+    func deleteGame(_ id:Int) {
+        listOfGames.remove(at: id)
         saveGame()
     }
     
     // Replaces a game from the array
-    func editGame (id:Int, oldGame:Game, newGame:Game) {
+    func editGame (_ id:Int, oldGame:Game, newGame:Game) {
         for i in 0 ..< listOfGames.count {
             if listOfGames[i].getID() == id {
-                listOfGames.removeAtIndex(i)
-                listOfGames.insert(newGame, atIndex: i)
-                listOfGames.sortInPlace({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
+                listOfGames.remove(at: i)
+                listOfGames.insert(newGame, at: i)
+                listOfGames.sort(by: { $0.date.compare($1.date as Date) == ComparisonResult.orderedDescending })
                 saveGame()
             }
         }
@@ -179,27 +179,27 @@ public class Data: NSObject {
     }
     
     // Deletes all games associated with a certain deck
-    func deleteAllGamesAssociatedWithADeck( deckName: String) {
+    func deleteAllGamesAssociatedWithADeck( _ deckName: String) {
         
-        for var i = listOfGames.count - 1; i >= 0; i -= 1 {
+        for i in 0..<listOfGames.count - 1 {
             print(listOfGames[i].getPlayerDeckName())
             if listOfGames[i].getPlayerDeckName() == deckName {
-                listOfGames.removeAtIndex(i)
+                listOfGames.remove(at: i)
             }
         }
         saveGame()
     }
     
     // Calculates the general win rate of the user (all games)
-    func generalWinRate(date:Int, deckName:String) -> Double {
+    func generalWinRate(_ date:Int, deckName:String) -> Double {
         
         var gamesWon = 0
         var dateArray = getDateArray(date)
         var selectedDeckName = ""
-        if let _ = iCloudKeyStore.stringForKey("iCloud Selected Deck Name") {
-            selectedDeckName = iCloudKeyStore.stringForKey("iCloud Selected Deck Name")!
-        } else if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") {
-            selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name")!
+        if let _ = iCloudKeyStore.string(forKey: "iCloud Selected Deck Name") {
+            selectedDeckName = iCloudKeyStore.string(forKey: "iCloud Selected Deck Name")!
+        } else if let _ = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") {
+            selectedDeckName = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name")!
         }
 
         // If current deck is selected
@@ -238,15 +238,15 @@ public class Data: NSObject {
     
     
     // Filters the gamesList array based on the date the user selected
-    func getDateArray (date:Int) -> [Game] {
+    func getDateArray (_ date:Int) -> [Game] {
         
         var dateArray:[Game] = []
         // If date is last 7 days
         if date == 0 {
             for i in 0 ..< listOfGames.count {
-                let today = NSDate()
-                let lastWeek = today.dateByAddingTimeInterval(-24 * 60 * 60 * 7)
-                if listOfGames[i].getNSDate().compare(lastWeek) == NSComparisonResult.OrderedDescending {
+                let today = Date()
+                let lastWeek = today.addingTimeInterval(-24 * 60 * 60 * 7)
+                if listOfGames[i].getNSDate().compare(lastWeek) == ComparisonResult.orderedDescending {
                     dateArray.append(listOfGames[i])
                 }
             }
@@ -254,9 +254,9 @@ public class Data: NSObject {
             // If date is last month
         } else if date == 1 {
             for i in 0 ..< listOfGames.count {
-                let today = NSDate()
-                let lastMonth = today.dateByAddingTimeInterval(-24 * 60 * 60 * 30)
-                if listOfGames[i].getNSDate().compare(lastMonth) == NSComparisonResult.OrderedDescending {
+                let today = Date()
+                let lastMonth = today.addingTimeInterval(-24 * 60 * 60 * 30)
+                if listOfGames[i].getNSDate().compare(lastMonth) == ComparisonResult.orderedDescending {
                     dateArray.append(listOfGames[i])
                 }
             }
@@ -272,16 +272,16 @@ public class Data: NSObject {
     }
     
     
-    func getStatisticsGamesTotal(date:Int, deck:String, opponent:String) -> [Game] {
+    func getStatisticsGamesTotal(_ date:Int, deck:String, opponent:String) -> [Game] {
         var filteredGamesByDate = getDateArray(date)
         var selectedDeckName = ""
         var filteredGamesBySelectedDeck:[Game] = []
         var filteredGamesByOpponent:[Game] = []
         
-        if let _ = iCloudKeyStore.stringForKey("iCloud Selected Deck Name") {
-            selectedDeckName = iCloudKeyStore.stringForKey("iCloud Selected Deck Name")!
-        } else if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") {
-            selectedDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name")!
+        if let _ = iCloudKeyStore.string(forKey: "iCloud Selected Deck Name") {
+            selectedDeckName = iCloudKeyStore.string(forKey: "iCloud Selected Deck Name")!
+        } else if let _ = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") {
+            selectedDeckName = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name")!
         }
         
         // If current deck is selected

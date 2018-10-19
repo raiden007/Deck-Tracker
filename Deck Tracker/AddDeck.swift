@@ -43,11 +43,11 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     
     
     // Cancel button is pressed
-    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: {})
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: {})
     }
     
-    @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         
         // Get the atributes from the user
         let deckName:String = deckNameTxtField.text!
@@ -62,7 +62,7 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
             let deckList = Data.sharedInstance.listOfDecks
             
             for deck in deckList {
-                if deck.deckName.lowercaseString == deckName.lowercaseString {
+                if deck.deckName.lowercased() == deckName.lowercased() {
                     deckNameAlreadyExists = true
                 }
             }
@@ -71,15 +71,15 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
                 let alert = UIAlertView()
                 alert.title = "Deck already exists"
                 alert.message = "Deck name already exists"
-                alert.addButtonWithTitle("OK")
+                alert.addButton(withTitle: "OK")
                 alert.show()
             } else {
                 let newDeck = Deck(newDeckID: deckID, newDeckName: deckName, newDeckClass: deckSelected)
                 //println("Added: " + newDeck.toString())
                 Data.sharedInstance.addDeck(newDeck)
-                self.dismissViewControllerAnimated(true, completion: {})
+                self.dismiss(animated: true, completion: {})
                 
-                Answers.logCustomEventWithName("New deck added",
+                Answers.logCustomEvent(withName: "New deck added",
                     customAttributes: [
                         "Deck Name": deckName,
                         "Deck Class": deckSelected
@@ -91,19 +91,19 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
                 let alert = UIAlertView()
                 alert.title = "Error"
                 alert.message = "Please enter a name and select a class"
-                alert.addButtonWithTitle("OK")
+                alert.addButton(withTitle: "OK")
                 alert.show()
             } else if deckSelected == "" {
                 let alert = UIAlertView()
                 alert.title = "Error"
                 alert.message = "No Deck Selected"
-                alert.addButtonWithTitle("OK")
+                alert.addButton(withTitle: "OK")
                 alert.show()
             } else if deckName == "" {
                 let alert = UIAlertView()
                 alert.title = "Error"
                 alert.message = "Please enter a name"
-                alert.addButtonWithTitle("OK")
+                alert.addButton(withTitle: "OK")
                 alert.show()
             }
         }
@@ -111,10 +111,10 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     
     // Reads the saved Deck ID from iCloud or local storage
     func readDeckID() {
-        if let _ = iCloudKeyStore.objectForKey("iCloud deck ID") {
-            deckID = iCloudKeyStore.objectForKey("iCloud deck ID") as! Int
-        } else if let _ = NSUserDefaults.standardUserDefaults().integerForKey("Deck ID") as Int? {
-            deckID = NSUserDefaults.standardUserDefaults().integerForKey("Deck ID")
+        if let _ = iCloudKeyStore.object(forKey: "iCloud deck ID") {
+            deckID = iCloudKeyStore.object(forKey: "iCloud deck ID") as! Int
+        } else if let _ = UserDefaults.standard.integer(forKey: "Deck ID") as Int? {
+            deckID = UserDefaults.standard.integer(forKey: "Deck ID")
         } else {
             deckID = 0
         }
@@ -122,93 +122,93 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     
     // Saves the Deck ID to iCloud and Local storage
     func setDeckID() {
-        NSUserDefaults.standardUserDefaults().setInteger(deckID, forKey: "Deck ID")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.set(deckID, forKey: "Deck ID")
+        UserDefaults.standard.synchronize()
         
-        iCloudKeyStore.setObject(deckID, forKey: "iCloud deck ID")
+        iCloudKeyStore.set(deckID, forKey: "iCloud deck ID")
         iCloudKeyStore.synchronize()
     }
     
    
-    @IBAction func deck1Pressed(sender: UIButton) {
+    @IBAction func deck1Pressed(_ sender: UIButton) {
         self.deselectAll()
-        deck1.selected = true
+        deck1.isSelected = true
     }
     
     
-    @IBAction func deck2Pressed(sender: UIButton) {
+    @IBAction func deck2Pressed(_ sender: UIButton) {
         self.deselectAll()
-        deck2.selected = true
+        deck2.isSelected = true
     }
     
-    @IBAction func deck3Pressed(sender: UIButton) {
+    @IBAction func deck3Pressed(_ sender: UIButton) {
         self.deselectAll()
-        deck3.selected = true
+        deck3.isSelected = true
     }
     
-    @IBAction func deck4Pressed(sender: UIButton) {
+    @IBAction func deck4Pressed(_ sender: UIButton) {
         self.deselectAll()
-        deck4.selected = true
+        deck4.isSelected = true
     }
     
-    @IBAction func deck5Pressed(sender: UIButton) {
+    @IBAction func deck5Pressed(_ sender: UIButton) {
         self.deselectAll()
-        deck5.selected = true
+        deck5.isSelected = true
     }
     
-    @IBAction func deck6Pressed(sender: UIButton) {
+    @IBAction func deck6Pressed(_ sender: UIButton) {
         self.deselectAll()
-        deck6.selected = true
+        deck6.isSelected = true
     }
     
-    @IBAction func deck7Pressed(sender: UIButton) {
+    @IBAction func deck7Pressed(_ sender: UIButton) {
         self.deselectAll()
-        deck7.selected = true
+        deck7.isSelected = true
     }
     
-    @IBAction func deck8Pressed(sender: UIButton) {
+    @IBAction func deck8Pressed(_ sender: UIButton) {
         self.deselectAll()
-        deck8.selected = true
+        deck8.isSelected = true
     }
     
-    @IBAction func deck9Pressed(sender: UIButton) {
+    @IBAction func deck9Pressed(_ sender: UIButton) {
         self.deselectAll()
-        deck9.selected = true
+        deck9.isSelected = true
     }
     
     // Deselects all decks
     func deselectAll () {
-        deck1.selected = false
-        deck2.selected = false
-        deck3.selected = false
-        deck4.selected = false
-        deck5.selected = false
-        deck6.selected = false
-        deck7.selected = false
-        deck8.selected = false
-        deck9.selected = false
+        deck1.isSelected = false
+        deck2.isSelected = false
+        deck3.isSelected = false
+        deck4.isSelected = false
+        deck5.isSelected = false
+        deck6.isSelected = false
+        deck7.isSelected = false
+        deck8.isSelected = false
+        deck9.isSelected = false
         
     }
     
     // Returns the selected deck class
     func selectedDeck() -> String {
-        if deck1.selected == true {
+        if deck1.isSelected == true {
             return "Warrior"
-        } else if deck2.selected == true {
+        } else if deck2.isSelected == true {
             return "Paladin"
-        } else if deck3.selected == true {
+        } else if deck3.isSelected == true {
             return "Shaman"
-        } else if deck4.selected == true {
+        } else if deck4.isSelected == true {
             return "Hunter"
-        } else if deck5.selected == true {
+        } else if deck5.isSelected == true {
             return "Druid"
-        } else if deck6.selected == true {
+        } else if deck6.isSelected == true {
             return "Rogue"
-        } else if deck7.selected == true {
+        } else if deck7.isSelected == true {
             return "Mage"
-        } else if deck8.selected == true {
+        } else if deck8.isSelected == true {
             return "Warlock"
-        } else if deck9.selected == true {
+        } else if deck9.isSelected == true {
             return "Priest"
         } else {
             return ""
@@ -217,7 +217,7 @@ class AddDeck: UIViewController, UITextFieldDelegate, UINavigationBarDelegate {
     
     
     // Hide keyboard on return
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }

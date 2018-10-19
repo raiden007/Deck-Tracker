@@ -28,14 +28,14 @@ class GraphsCollectionView: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GraphsCollectionView.loadList(_:)),name:"load", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GraphsCollectionView.loadList(_:)),name:NSNotification.Name(rawValue: "load"), object: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         loadData()
     }
     
-    func loadList(notification: NSNotification){
+    func loadList(_ notification: Notification){
         //Gets info on rows and reloads the table view
         loadData()
     }
@@ -49,13 +49,13 @@ class GraphsCollectionView: UICollectionViewController {
     }
     
     func getDateIndex() {
-        dateIndex = NSUserDefaults.standardUserDefaults().integerForKey("Date Index")
+        dateIndex = UserDefaults.standard.integer(forKey: "Date Index")
         //print("Date Index is: " + String(dateIndex))
     }
     
     func getDeckName() {
-        if let _ =  NSUserDefaults.standardUserDefaults().stringForKey("Deck Name") as String! {
-            deckName = NSUserDefaults.standardUserDefaults().stringForKey("Deck Name") as String!
+        if let _ =  UserDefaults.standard.string(forKey: "Deck Name") as String! {
+            deckName = UserDefaults.standard.string(forKey: "Deck Name") as String!
         } else {
             deckName = ""
         }
@@ -81,7 +81,7 @@ class GraphsCollectionView: UICollectionViewController {
         //NSUserDefaults.standardUserDefaults().synchronize()
     }
     
-    func getStatisticsVs(opponent:String) {
+    func getStatisticsVs(_ opponent:String) {
         var filteredGames:[Game] = []
         var totalGames = 0
         var wonGames = 0
@@ -131,20 +131,20 @@ class GraphsCollectionView: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return 10
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! GraphsCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! GraphsCollectionCell
         
         // Configure the cell
         
@@ -162,7 +162,7 @@ class GraphsCollectionView: UICollectionViewController {
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
         let width = collectionView.bounds.size.width
         var cellWidth = (width / 2) - 5
@@ -172,15 +172,15 @@ class GraphsCollectionView: UICollectionViewController {
             cellWidth = 200
         }
         
-        return CGSizeMake(cellWidth, cellWidth)
+        return CGSize(width: cellWidth, height: cellWidth)
             
     }
     
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         //Save the index of the selected graph
         let indexOfSelectedGraph = indexPath.row
         //print(indexOfSelectedGraph)
-        NSUserDefaults.standardUserDefaults().setInteger(indexOfSelectedGraph, forKey: "Index Of Selected Graph")
+        UserDefaults.standard.set(indexOfSelectedGraph, forKey: "Index Of Selected Graph")
         return true
     }
 }

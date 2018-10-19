@@ -16,16 +16,16 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
     @IBOutlet weak var winInfoLabel: UILabel!
     
     let bgLayer = CAShapeLayer()
-    var bgColor: UIColor = UIColor.redColor()
+    var bgColor: UIColor = UIColor.red
     
     let fgLayer = CAShapeLayer()
-    var fgColor: UIColor = UIColor.greenColor()
+    var fgColor: UIColor = UIColor.green
     
-    let π = CGFloat(M_PI)
+    let π = CGFloat(Double.pi)
     // This updates the graph every time it's changed
     var per : CGFloat = 0 {
         didSet {
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            DispatchQueue.main.async { () -> Void in
                 self.setup()
                 self.setNeedsLayout()
             }
@@ -63,8 +63,8 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
     }
     
     func configure() {
-        bgLayer.strokeColor = UIColorFromRGB(0xC40233).CGColor
-        fgLayer.strokeColor = UIColorFromRGB(0x009F6B).CGColor
+        bgLayer.strokeColor = UIColorFromRGB(0xC40233).cgColor
+        fgLayer.strokeColor = UIColorFromRGB(0x009F6B).cgColor
     }
     
     override func layoutSubviews() {
@@ -73,7 +73,7 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
         setupFGShapeLayer(fgLayer)
     }
     
-    private func setupFGShapeLayer(shapeLayer: CAShapeLayer) {
+    fileprivate func setupFGShapeLayer(_ shapeLayer: CAShapeLayer) {
         
         let width = bgLayer.bounds.width
         var radiusFactor: CGFloat = 0.25
@@ -88,12 +88,12 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
         let calculatedEndAngle = getAngleFromWinRate()
         let endAngle = DegreesToRadians(calculatedEndAngle)
         let center = label.center
-        let radius = CGRectGetWidth(self.bounds) * radiusFactor
+        let radius = self.bounds.width * radiusFactor
         let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        shapeLayer.path = path.CGPath
+        shapeLayer.path = path.cgPath
     }
     
-    private func setupBGShapeLayer(shapeLayer: CAShapeLayer) {
+    fileprivate func setupBGShapeLayer(_ shapeLayer: CAShapeLayer) {
         
         let width = bgLayer.bounds.width
         var radiusFactor: CGFloat = 0.25
@@ -111,21 +111,21 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
         }
         let endAngle = DegreesToRadians(90.0)
         let center = label.center
-        let radius = CGRectGetWidth(self.bounds) * radiusFactor
+        let radius = self.bounds.width * radiusFactor
         let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        shapeLayer.path = path.CGPath
+        shapeLayer.path = path.cgPath
     }
     
-    private func getAngleFromWinRate() -> CGFloat {
+    fileprivate func getAngleFromWinRate() -> CGFloat {
         let angle = (per * 3.6) + 90
         return angle
     }
     
-    func DegreesToRadians (value:CGFloat) -> CGFloat {
+    func DegreesToRadians (_ value:CGFloat) -> CGFloat {
         return value * π / 180.0
     }
     
-    func RadiansToDegrees (value:CGFloat) -> CGFloat {
+    func RadiansToDegrees (_ value:CGFloat) -> CGFloat {
         return value * 180.0 / π
     }
     
@@ -141,15 +141,15 @@ class TagsGraphsCollectionCell: UICollectionViewCell {
         // 2
         animation.duration = CFTimeInterval(1000000)
         // 3
-        fgLayer.removeAnimationForKey("stroke")
-        fgLayer.addAnimation(animation, forKey: "stroke")
+        fgLayer.removeAnimation(forKey: "stroke")
+        fgLayer.add(animation, forKey: "stroke")
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         fgLayer.strokeEnd = toValue
         CATransaction.commit()
     }
     
-    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+    func UIColorFromRGB(_ rgbValue: UInt) -> UIColor {
         // Transforms RGB colors to UI Color
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,

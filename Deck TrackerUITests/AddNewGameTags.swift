@@ -11,7 +11,7 @@ import XCTest
 class AddNewGameTags: Utils {
     
     let addNewGameButton = Games().addGameButton
-    let tagCell = XCUIApplication().cells.elementBoundByIndex(5)
+    let tagCell = XCUIApplication().cells.element(boundBy: 5)
     
     let backButton = XCUIApplication().navigationBars["Add Tags"].buttons["Add New Game"]
     let selectTagTitleScreen = XCUIApplication().navigationBars["Add Tags"].staticTexts["Add Tags"]
@@ -51,7 +51,7 @@ class AddNewGameTags: Utils {
         XCTAssert(alertFinishButton.exists)
     }
     
-    func addNewTag(tagName: String) {
+    func addNewTag(_ tagName: String) {
         addTagButton.tap()
         sleep(1.0)
         alertTextField.tap()

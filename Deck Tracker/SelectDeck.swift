@@ -37,13 +37,13 @@ class SelectDeck: UITableViewController {
     }
     
     // Gets the number of rows to be displayed in the table
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return decksList.count
     }
     
     // Populates the table with data
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         //let cell:CustomCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! CustomCell
         cell.textLabel?.text = decksList[indexPath.row].getName()
         let image = decksList[indexPath.row].getClass()
@@ -52,80 +52,78 @@ class SelectDeck: UITableViewController {
         //cell.accessoryType = UITableViewCellAccessoryType.None
         // If there is a selected deck put a checkmark on it
         if indexPath.row == indexOfSelectedDeck {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            cell.accessoryType = UITableViewCellAccessoryType.checkmark
         } else {
-            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell.accessoryType = UITableViewCellAccessoryType.none
         }
         return cell
     }
     
     // Selects the row and saves the info so we can add a checkmark
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.checkmark
         let selectedDeck = decksList[indexPath.row]
         saveSelectedDeckID(selectedDeck)
-        readSelectedDeckID()
         saveSelectedDeckName(selectedDeck)
-        readSelectedDeckName()
         saveSelectedDeckClass(selectedDeck)
         indexOfSelectedDeck = indexPath.row
         tableView.reloadData()
-        navigationController?.popToRootViewControllerAnimated(true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     // Saves the selected deck ID in NSUserDefaults
-    func saveSelectedDeckID(deck : Deck) {
-        let defaults = NSUserDefaults(suiteName: "group.Decks")!
-        defaults.setInteger(deck.getID(), forKey: "Selected Deck ID")
+    func saveSelectedDeckID(_ deck : Deck) {
+        let defaults = UserDefaults(suiteName: "group.Decks")!
+        defaults.set(deck.getID(), forKey: "Selected Deck ID")
         defaults.synchronize()
     }
     
     // Reads the selected deck ID from NSUserDefaults
     func readSelectedDeckID() -> Int {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let id:Int = defaults.integerForKey("Selected Deck ID")
+        let defaults = UserDefaults.standard
+        let id:Int = defaults.integer(forKey: "Selected Deck ID")
         return id
     }
     
     // Saves the selected deck name in NSUserDefaults
-    func saveSelectedDeckName(deck: Deck) {
-        let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Decks")!
-        defaults.setObject(deck.getName(), forKey: "Selected Deck Name")
+    func saveSelectedDeckName(_ deck: Deck) {
+        let defaults: UserDefaults = UserDefaults(suiteName: "group.Decks")!
+        defaults.set(deck.getName(), forKey: "Selected Deck Name")
         defaults.synchronize()
         
-        iCloudKeyStore.setObject(deck.getName(), forKey: "iCloud Selected Deck Name")
+        iCloudKeyStore.set(deck.getName(), forKey: "iCloud Selected Deck Name")
         iCloudKeyStore.synchronize()
     }
     
     // Reads the saved deck
     func readSelectedDeckName() -> String {
-        let defaults = NSUserDefaults(suiteName: "group.Decks")!
+        let defaults = UserDefaults(suiteName: "group.Decks")!
         var name = ""
-        if let _ = iCloudKeyStore.stringForKey("iCloud Selected Deck Name") {
-            name = iCloudKeyStore.stringForKey("iCloud Selected Deck Name")!
-        } else if let _ = defaults.stringForKey("Selected Deck Name") {
-            name = defaults.stringForKey("Selected Deck Name")!
+        if let _ = iCloudKeyStore.string(forKey: "iCloud Selected Deck Name") {
+            name = iCloudKeyStore.string(forKey: "iCloud Selected Deck Name")!
+        } else if let _ = defaults.string(forKey: "Selected Deck Name") {
+            name = defaults.string(forKey: "Selected Deck Name")!
         }
         
         return name
     }
     
     // Saves the selected deck class
-    func saveSelectedDeckClass( deck: Deck) {
-        let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Decks")!
-        defaults.setObject(deck.getClass(), forKey: "Selected Deck Class")
+    func saveSelectedDeckClass( _ deck: Deck) {
+        let defaults: UserDefaults = UserDefaults(suiteName: "group.Decks")!
+        defaults.set(deck.getClass(), forKey: "Selected Deck Class")
         defaults.synchronize()
     }
     
     // Deselects the row if you select another
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.None
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.none
     }
     
     // Refreshes the view after adding a deck
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         readData()
         decksTable.reloadData()
@@ -141,17 +139,17 @@ class SelectDeck: UITableViewController {
     }
     
     // Deletes the row
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
             let index = indexPath.row
             Data.sharedInstance.deleteDeck(index)
             readData()
-            self.decksTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            self.decksTable.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
         }
     }
     
     // Returns the image depeding on the deck class
-    func getImage (str:String) -> String {
+    func getImage (_ str:String) -> String {
         
         if str == "Warrior" {
             return "WarriorSmall"

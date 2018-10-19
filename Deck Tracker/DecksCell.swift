@@ -20,14 +20,14 @@ class CustomCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
     // Creates the cell
-    func setCell(labelText:String, imageName:String) {
+    func setCell(_ labelText:String, imageName:String) {
         self.customLabel.text = labelText
         self.customImage.image = UIImage(named: imageName)
     }
