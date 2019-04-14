@@ -54,9 +54,9 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
         //cell.accessoryType = UITableViewCellAccessoryType.None
         // If there is a selected deck put a checkmark on it
         if indexPath.row == indexOfSelectedDeck {
-            cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+            cell.accessoryType = UITableViewCellAccessoryType.checkmark
         } else {
-            cell.accessoryType = UITableViewCell.AccessoryType.none
+            cell.accessoryType = UITableViewCellAccessoryType.none
         }
         return cell
     }
@@ -64,7 +64,7 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
     // Selects the row and saves the info so we can add a checkmark
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCell.AccessoryType.checkmark
+        cell?.accessoryType = UITableViewCellAccessoryType.checkmark
         let selectedDeck = decksList[indexPath.row]
         saveEditedDeckID(selectedDeck)
         saveEditedDeckName(selectedDeck)
@@ -105,7 +105,7 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
     // Reads the edited deck name
     func readEditedDeckName() -> String {
         let defaults = UserDefaults(suiteName: "group.Decks")!
-        let name = defaults.string(forKey: "Edited Deck Name")
+        let name = defaults.string(forKey: "Edited Deck Name") as String!
         if name == nil {
             return ""
         } else {
@@ -117,7 +117,7 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
     // Deselects the row if you select another
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCell.AccessoryType.none
+        cell?.accessoryType = UITableViewCellAccessoryType.none
     }
     
     // Refreshes the view after adding a deck
@@ -146,12 +146,12 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
     }
     
     // Deletes the row
-    func tableView(_ tableView: UITableView, commitEditingStyle editingStyle: UITableViewCell.EditingStyle, forRowAtIndexPath indexPath: IndexPath) {
-        if editingStyle == UITableViewCell.EditingStyle.delete {
+    func tableView(_ tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
             let index = indexPath.row
             Data.sharedInstance.deleteDeck(index)
             readData()
-            self.decksTable.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+            self.decksTable.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
         }
     }
     

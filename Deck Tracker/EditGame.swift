@@ -34,7 +34,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectedGameArray = StatsList.sharedInstance.readSelectedGame()!
+        selectedGameArray = StatsList.sharedInstance.readSelectedGame() as [Game]!
         selectedGame = selectedGameArray[0]
 
         // Populates the screen with data
@@ -75,7 +75,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
     
     // Puts selected deck on label
     func putSavedPlayerDeckOnLabel() {
-        let editedDeckName = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Edited Deck Name")
+        let editedDeckName = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Edited Deck Name") as String!
         if editedDeckName != nil {
             playerDeckLabel.text = "Your deck: " + editedDeckName!
         } else {
@@ -87,7 +87,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
     
     // Puts opponent class on label
     func putSavedOpponentClassOnLabel() {
-        let editedOpponentClass = defaults.string(forKey: "Edited Opponent Class")
+        let editedOpponentClass = defaults.string(forKey: "Edited Opponent Class") as String!
         if editedOpponentClass != nil {
             opponentDeckLabel.text = "Opponent's Class: " + editedOpponentClass!
         } else {
@@ -115,7 +115,7 @@ class EditGame: UITableViewController, UINavigationBarDelegate {
         selectedTag = selectedGame.getTag()
         //print("Selected Tag Edit Screen with default tags: " + String(stringInterpolationSegment: selectedTags))
         if let _ = defaults.string(forKey: "Edited Selected Tag") {
-            selectedTag = defaults.string(forKey: "Edited Selected Tag")!
+            selectedTag = defaults.string(forKey: "Edited Selected Tag") as String!
         }
         defaults.set(selectedTag, forKey: "Edited Selected Tag")
         defaults.synchronize()

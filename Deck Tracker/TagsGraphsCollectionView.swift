@@ -56,8 +56,8 @@ class TagsGraphsCollectionView: UICollectionViewController {
     }
     
     func getDeckName() {
-        if let _ =  UserDefaults.standard.string(forKey: "Deck Name") {
-            deckName = UserDefaults.standard.string(forKey: "Deck Name")!
+        if let _ =  UserDefaults.standard.string(forKey: "Deck Name") as String! {
+            deckName = UserDefaults.standard.string(forKey: "Deck Name") as String!
         } else {
             deckName = ""
         }

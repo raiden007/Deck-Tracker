@@ -98,7 +98,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     func readSelectedOpponentClass() -> String {
         // Reads the selected opponent's class from NSUserDefaults
         let defaults = UserDefaults.standard
-        if let name:String = defaults.string(forKey: "Opponent Class") {
+        if let name:String = defaults.string(forKey: "Opponent Class") as String! {
             return name
         } else {
             return ""
@@ -254,7 +254,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     func putTagLabel() {
         let defaults = UserDefaults.standard
         if let _ = defaults.string(forKey: "Selected Tag") {
-            tag = defaults.string(forKey: "Selected Tag")!
+            tag = defaults.string(forKey: "Selected Tag") as String!
         }
         if tag.isEmpty {
             tagsLabel.text = "Add Tags"

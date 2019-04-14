@@ -35,7 +35,7 @@ class GraphsCollectionView: UICollectionViewController {
         loadData()
     }
     
-    @objc func loadList(_ notification: Notification){
+    func loadList(_ notification: Notification){
         //Gets info on rows and reloads the table view
         loadData()
     }
@@ -54,8 +54,8 @@ class GraphsCollectionView: UICollectionViewController {
     }
     
     func getDeckName() {
-        if let _ =  UserDefaults.standard.string(forKey: "Deck Name") {
-            deckName = UserDefaults.standard.string(forKey: "Deck Name")!
+        if let _ =  UserDefaults.standard.string(forKey: "Deck Name") as String! {
+            deckName = UserDefaults.standard.string(forKey: "Deck Name") as String!
         } else {
             deckName = ""
         }
