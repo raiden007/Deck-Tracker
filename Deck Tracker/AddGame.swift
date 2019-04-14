@@ -41,7 +41,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         // Populates the rows with data
         putSelectedDateOnLabel()
@@ -61,12 +61,12 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     
     func readSelectedDeckName() -> String {
         // Reads the selected deck name from iCloud or NSUserDefaults
-        let defaults = UserDefaults(suiteName: "group.Decks")!
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
         var name = ""
-        if let _ = iCloudKeyStore.string(forKey: "iCloud Selected Deck Name") {
-            name = iCloudKeyStore.string(forKey: "iCloud Selected Deck Name")!
-        } else if let _ = defaults.string(forKey: "Selected Deck Name") {
-            name = defaults.string(forKey: "Selected Deck Name")!
+        if let _ = iCloudKeyStore.stringForKey("iCloud Selected Deck Name") {
+            name = iCloudKeyStore.stringForKey("iCloud Selected Deck Name")!
+        } else if let _ = defaults.stringForKey("Selected Deck Name") {
+            name = defaults.stringForKey("Selected Deck Name")!
         }
         
         return name
@@ -97,8 +97,8 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     
     func readSelectedOpponentClass() -> String {
         // Reads the selected opponent's class from NSUserDefaults
-        let defaults = UserDefaults.standard
-        if let name:String = defaults.string(forKey: "Opponent Class") as String! {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let name:String = defaults.stringForKey("Opponent Class") as String! {
             return name
         } else {
             return ""
@@ -114,36 +114,36 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     // You need to crtl+drag the nav bar to the view controller in storyboard to create a delegate
     // Then add "UINavigationBarDelegate" to the class on top
     // And move the nav bar 20 points down
-    func position(for bar: UIBarPositioning) -> UIBarPosition  {
-        return UIBarPosition.topAttached
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition  {
+        return UIBarPosition.TopAttached
     }
     
     
-    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
         // Remove the selected date and selected opponent class from NSUserDefaults and dismissed the screen
-        let defaults: UserDefaults = UserDefaults.standard
-        defaults.removeObject(forKey: "Saved Date")
-        defaults.removeObject(forKey: "Opponent Class")
-        defaults.removeObject(forKey: "Selected Tag")
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.removeObjectForKey("Saved Date")
+        defaults.removeObjectForKey("Opponent Class")
+        defaults.removeObjectForKey("Selected Tag")
         defaults.synchronize()
-        self.dismiss(animated: true, completion: {})
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     
     
     
     func dateToday() -> String {
         // Get today's date as a String
-        let now = Date()
-        let formatter = DateFormatter()
-        formatter.dateStyle = DateFormatter.Style.short
-        let dateString = formatter.string(from: now)
+        let now = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        let dateString = formatter.stringFromDate(now)
         return dateString
     }
     
     
-    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         // Removes the selected date, opponent class and selected tag from NSUserDefaults and sends all the info to the Game List
-        let defaults: UserDefaults = UserDefaults.standard
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
 
         
         // Gets all the atributes for a new Game
@@ -152,15 +152,15 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
         
         // Gets the selected deck name
         var newGamePlayerDeckName = ""
-        if let _ = iCloudKeyStore.string(forKey: "iCloud Selected Deck Name") {
-            newGamePlayerDeckName = iCloudKeyStore.string(forKey: "iCloud Selected Deck Name")!
-        } else if let _ = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") {
-            newGamePlayerDeckName = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name")!
+        if let _ = iCloudKeyStore.stringForKey("iCloud Selected Deck Name") {
+            newGamePlayerDeckName = iCloudKeyStore.stringForKey("iCloud Selected Deck Name")!
+        } else if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") {
+            newGamePlayerDeckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name")!
         }
-        let newGamePlayerDeckClass = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Class") as String?
-        let newGameOpponentClass = defaults.string(forKey: "Opponent Class") as String?
-        let newGameCoin = coinCellSwitch.isOn
-        let newGameWin = winCellSwitch.isOn
+        let newGamePlayerDeckClass = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Class") as String?
+        let newGameOpponentClass = defaults.stringForKey("Opponent Class") as String?
+        let newGameCoin = coinCellSwitch.on
+        let newGameWin = winCellSwitch.on
         let newGameTag = tag
 
         
@@ -170,7 +170,7 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
             let newGame = Game(newID: newGameID, newDate: newGameDate, newPlayerDeckName: newGamePlayerDeckName, newPlayerDeckClass:newGamePlayerDeckClass! , newOpponentDeck: newGameOpponentClass!, newCoin: newGameCoin, newWin: newGameWin, newTag: newGameTag)
             // Add to Data class file
             Data.sharedInstance.addGame(newGame)
-            self.dismiss(animated: true, completion: {})
+            self.dismissViewControllerAnimated(true, completion: {})
             
             // Crashlytics custom events
             var winString = ""
@@ -187,9 +187,9 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
                 tagString = newGameTag
             }
             
-            let device = UIDevice.current.model
+            let device = UIDevice.currentDevice().model
             
-            Answers.logCustomEvent(withName: "New game added",
+            Answers.logCustomEventWithName("New game added",
                 customAttributes: [
                     "Deck Name": newGamePlayerDeckName,
                     "Deck Class": newGamePlayerDeckClass!,
@@ -204,47 +204,47 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
                 let alert = UIAlertView()
                 alert.title = "Missing Info"
                 alert.message = "You need to enter all required info"
-                alert.addButton(withTitle: "OK")
+                alert.addButtonWithTitle("OK")
                 alert.show()
             } else if newGamePlayerDeckName == "" {
                 let alert = UIAlertView()
                 alert.title = "Missing Info"
                 alert.message = "You need to select a deck"
-                alert.addButton(withTitle: "OK")
+                alert.addButtonWithTitle("OK")
                 alert.show()
             } else if newGameOpponentClass == nil {
                 let alert = UIAlertView()
                 alert.title = "Missing Info"
                 alert.message = "You need to select your opponent's class"
-                alert.addButton(withTitle: "OK")
+                alert.addButtonWithTitle("OK")
                 alert.show()
             } else {
                 let alert = UIAlertView()
                 alert.title = "Missing Info"
                 alert.message = "You need to enter all required info"
-                alert.addButton(withTitle: "OK")
+                alert.addButtonWithTitle("OK")
                 alert.show()
             }
 
         }
         
         // Deletes the date, opponent class and selected tag so the user needs to select again
-        defaults.removeObject(forKey: "Saved Date")
-        defaults.removeObject(forKey: "Opponent Class")
-        defaults.removeObject(forKey: "Selected Tag")
+        defaults.removeObjectForKey("Saved Date")
+        defaults.removeObjectForKey("Opponent Class")
+        defaults.removeObjectForKey("Selected Tag")
         defaults.synchronize()
     }
     
     // Gets the ID for a new Game
     func newGameGetID () -> Int {
-        var matchesCount = UserDefaults.standard.integer(forKey: "Matches Count")
-        if let _ = iCloudKeyStore.object(forKey: "iCloud Matches Count") {
-            matchesCount = iCloudKeyStore.object(forKey: "iCloud Matches Count") as! Int
+        var matchesCount = NSUserDefaults.standardUserDefaults().integerForKey("Matches Count")
+        if let _ = iCloudKeyStore.objectForKey("iCloud Matches Count") {
+            matchesCount = iCloudKeyStore.objectForKey("iCloud Matches Count") as! Int
         }
         matchesCount += 1
-        UserDefaults.standard.set(matchesCount, forKey: "Matches Count");
-        UserDefaults.standard.synchronize()
-        iCloudKeyStore.set(matchesCount, forKey: "iCloud Matches Count")
+        NSUserDefaults.standardUserDefaults().setInteger(matchesCount, forKey: "Matches Count");
+        NSUserDefaults.standardUserDefaults().synchronize()
+        iCloudKeyStore.setObject(matchesCount, forKey: "iCloud Matches Count")
         iCloudKeyStore.synchronize()
         
         return matchesCount
@@ -252,9 +252,9 @@ class AddGame: UITableViewController, UINavigationBarDelegate  {
     
     // Puts the tags on the Tags Label
     func putTagLabel() {
-        let defaults = UserDefaults.standard
-        if let _ = defaults.string(forKey: "Selected Tag") {
-            tag = defaults.string(forKey: "Selected Tag") as String!
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let _ = defaults.stringForKey("Selected Tag") {
+            tag = defaults.stringForKey("Selected Tag") as String!
         }
         if tag.isEmpty {
             tagsLabel.text = "Add Tags"

@@ -51,13 +51,13 @@ class TagsGraphsCollectionView: UICollectionViewController {
     }
     
     func getDateIndex() {
-        dateIndex = UserDefaults.standard.integer(forKey: "Date Index")
+        dateIndex = NSUserDefaults.standardUserDefaults().integerForKey("Date Index")
         //print("Date Index is: " + String(dateIndex))
     }
     
     func getDeckName() {
-        if let _ =  UserDefaults.standard.string(forKey: "Deck Name") as String! {
-            deckName = UserDefaults.standard.string(forKey: "Deck Name") as String!
+        if let _ =  NSUserDefaults.standardUserDefaults().stringForKey("Deck Name") as String! {
+            deckName = NSUserDefaults.standardUserDefaults().stringForKey("Deck Name") as String!
         } else {
             deckName = ""
         }
@@ -65,8 +65,8 @@ class TagsGraphsCollectionView: UICollectionViewController {
     }
     
     func getGraphsClicked() {
-        if let _ = UserDefaults.standard.integer(forKey: "Index Of Selected Graph") as Int! {
-            indexOfSelectedGraph = UserDefaults.standard.integer(forKey: "Index Of Selected Graph")
+        if let _ = NSUserDefaults.standardUserDefaults().integerForKey("Index Of Selected Graph") as Int! {
+            indexOfSelectedGraph = NSUserDefaults.standardUserDefaults().integerForKey("Index Of Selected Graph")
         }
         
         let opponentSelected = data[indexOfSelectedGraph]
@@ -94,7 +94,7 @@ class TagsGraphsCollectionView: UICollectionViewController {
         
         
         filteredTags = Array(Set(allTags))
-        filteredTags.sort()
+        filteredTags.sortInPlace()
         
         //print(filteredTags)
     }
@@ -160,12 +160,12 @@ class TagsGraphsCollectionView: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
 
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if filteredTags.count == 0 {
             return 1
         } else {
@@ -174,14 +174,14 @@ class TagsGraphsCollectionView: UICollectionViewController {
         
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TagsGraphsCollectionCell
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TagsGraphsCollectionCell
         
         // Configure the cell
         if filteredTags.count == 0 {
-            cell.tagLabel.isHidden = true
+            cell.tagLabel.hidden = true
             cell.label.text = "No data"
-            cell.winInfoLabel.isHidden = true
+            cell.winInfoLabel.hidden = true
             cell.layer.borderWidth = 2
         } else {
             cell.tagLabel.text = "Tag: " + String(filteredTags[indexPath.row])
@@ -193,7 +193,7 @@ class TagsGraphsCollectionView: UICollectionViewController {
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         let width = collectionView.bounds.size.width
         var cellWidth = (width / 2) - 5
@@ -203,7 +203,7 @@ class TagsGraphsCollectionView: UICollectionViewController {
             cellWidth = 200
         }
         
-        return CGSize(width: cellWidth, height: cellWidth)
+        return CGSizeMake(cellWidth, cellWidth)
         
     }
 }

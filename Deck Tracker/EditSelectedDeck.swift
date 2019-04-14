@@ -39,14 +39,14 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
     }
     
     // Gets the number of rows to be displayed in the table
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return decksList.count
     }
     
     // Populates the table with data
-    private func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        let cell:CustomCell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CustomCell
+        let cell:CustomCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! CustomCell
         cell.customLabel.text = decksList[indexPath.row].getName()
         let image = decksList[indexPath.row].getClass()
         let imageName = getImage(image)
@@ -54,74 +54,76 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
         //cell.accessoryType = UITableViewCellAccessoryType.None
         // If there is a selected deck put a checkmark on it
         if indexPath.row == indexOfSelectedDeck {
-            cell.accessoryType = UITableViewCellAccessoryType.checkmark
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
-            cell.accessoryType = UITableViewCellAccessoryType.none
+            cell.accessoryType = UITableViewCellAccessoryType.None
         }
         return cell
     }
     
     // Selects the row and saves the info so we can add a checkmark
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         let selectedDeck = decksList[indexPath.row]
         saveEditedDeckID(selectedDeck)
+        readEditedDeckID()
         saveEditedDeckName(selectedDeck)
+        readEditedDeckName()
         saveEditedDeckClass(selectedDeck)
         indexOfSelectedDeck = indexPath.row
         tableView.reloadData()
-        navigationController?.popViewController(animated: true)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     // Saves the selected deck ID in NSUserDefaults
-    func saveEditedDeckID(_ deck : Deck) {
-        let defaults: UserDefaults = UserDefaults.standard
-        defaults.set(deck.getID(), forKey: "Edited Deck ID")
+    func saveEditedDeckID(deck : Deck) {
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setInteger(deck.getID(), forKey: "Edited Deck ID")
         defaults.synchronize()
     }
     
     // Reads the selected deck ID from NSUserDefaults
     func readEditedDeckID() -> Int {
-        let defaults = UserDefaults.standard
-        let id:Int = defaults.integer(forKey: "Edited Deck ID")
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let id:Int = defaults.integerForKey("Edited Deck ID")
         return id
     }
     
     // Saves the selected deck name in NSUserDefaults
-    func saveEditedDeckName(_ deck: Deck) {
-        let defaults: UserDefaults = UserDefaults(suiteName: "group.Decks")!
-        defaults.set(deck.getName(), forKey: "Edited Deck Name")
+    func saveEditedDeckName(deck: Deck) {
+        let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Decks")!
+        defaults.setObject(deck.getName(), forKey: "Edited Deck Name")
         defaults.synchronize()
     }
     
     // Saves the selected deck class
-    func saveEditedDeckClass(_ deck: Deck) {
-        let defaults: UserDefaults = UserDefaults(suiteName: "group.Decks")!
-        defaults.set(deck.getClass(), forKey: "Edited Deck Class")
+    func saveEditedDeckClass(deck: Deck) {
+        let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Decks")!
+        defaults.setObject(deck.getClass(), forKey: "Edited Deck Class")
         defaults.synchronize()
     }
     
     // Reads the edited deck name
     func readEditedDeckName() -> String {
-        let defaults = UserDefaults(suiteName: "group.Decks")!
-        let name = defaults.string(forKey: "Edited Deck Name") as String!
+        let defaults = NSUserDefaults(suiteName: "group.Decks")!
+        let name = defaults.stringForKey("Edited Deck Name") as String!
         if name == nil {
             return ""
         } else {
-            return name!
+            return name
         }
         
     }
     
     // Deselects the row if you select another
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.none
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.None
     }
     
     // Refreshes the view after adding a deck
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         readData()
         decksTable.reloadData()
@@ -146,17 +148,17 @@ class EditSelectedDeck: UIViewController, UITableViewDelegate, UINavigationBarDe
     }
     
     // Deletes the row
-    func tableView(_ tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
             let index = indexPath.row
             Data.sharedInstance.deleteDeck(index)
             readData()
-            self.decksTable.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+            self.decksTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         }
     }
     
     // Returns the image depeding on the deck class
-    func getImage (_ str:String) -> String {
+    func getImage (str:String) -> String {
         
         if str == "Warrior" {
             return "WarriorSmall"

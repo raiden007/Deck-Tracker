@@ -116,7 +116,7 @@ import XCTest
         
     }
     
-    func addDeck(_ deckTitle: String, deckClass: String) {
+    func addDeck(deckTitle: String, deckClass: String) {
         addDeckButton.tap()
         textField.tap()
         textField.typeText(deckTitle)
@@ -126,7 +126,7 @@ import XCTest
         saveButton.tap()
     }
     
-    func tapDeck(_ deckTitle: String) {
+    func tapDeck(deckTitle: String) {
         XCTAssert(deckScreenTitle.exists)
         let deckCell = XCUIApplication().tables.staticTexts[deckTitle]
         XCTAssert(deckCell.exists)

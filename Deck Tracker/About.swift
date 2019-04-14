@@ -29,10 +29,10 @@ class About: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func emailButtonPressed(_ sender: UIButton) {
+    @IBAction func emailButtonPressed(sender: UIButton) {
         let email = "raiden007@gmail.com"
-        let url = URL(string: "mailto:\(email)")
-        UIApplication.shared.openURL(url!)
+        let url = NSURL(string: "mailto:\(email)")
+        UIApplication.sharedApplication().openURL(url!)
     }
     
     

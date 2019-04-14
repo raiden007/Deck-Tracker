@@ -25,23 +25,25 @@ class EditDate: UIViewController {
     }
     
     // Saves edited date
-    @IBAction func dateChanged(_ sender: UIDatePicker) {
+    @IBAction func dateChanged(sender: UIDatePicker) {
         let newDate = datePicker.date
         print(newDate)
+        dateToString(newDate)
         saveEditedDate(newDate)
+        readDate()
     }
     
     // Saves to NSUserDefaults
-    func saveEditedDate(_ date:Date) {
-        let defaults: UserDefaults = UserDefaults.standard
-        defaults.set(date, forKey: "Saved Edited Date")
+    func saveEditedDate(date:NSDate) {
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(date, forKey: "Saved Edited Date")
         defaults.synchronize()
     }
     
     // Reads the edited date
-    func readDate() -> Date? {
-        let defaults = UserDefaults.standard
-        let date:Date! = defaults.object(forKey: "Saved Edited Date") as? Date
+    func readDate() -> NSDate? {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let date:NSDate! = defaults.objectForKey("Saved Edited Date") as? NSDate
         //println("Date retrieved")
         if date != nil {
           return date
@@ -51,10 +53,10 @@ class EditDate: UIViewController {
     }
     
     // Returns the edited date to String
-    func dateToString(_ date:Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = DateFormatter.Style.short
-        let dateString = formatter.string(from: date)
+    func dateToString(date:NSDate) -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        let dateString = formatter.stringFromDate(date)
         return dateString
     }
 }

@@ -29,74 +29,74 @@ class Settings: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func resetButtonPressed(_ sender: UIButton) {
+    @IBAction func resetButtonPressed(sender: UIButton) {
         // Create the alert controller
-        let alertController = UIAlertController(title: "Full reset", message: "What do you want to delete ?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Full reset", message: "What do you want to delete ?", preferredStyle: .Alert)
         
         // Create the actions
-        let resetAllAction = UIAlertAction(title: "Reset everything", style: UIAlertActionStyle.destructive) {
+        let resetAllAction = UIAlertAction(title: "Reset everything", style: UIAlertActionStyle.Destructive) {
             UIAlertAction in
             
             // Delete from NSUserDefaults
-            UserDefaults.standard.removeObject(forKey: "List of games")
-            UserDefaults(suiteName: "group.Decks")!.removeObject(forKey: "List of decks")
-            UserDefaults(suiteName: "group.Decks")!.removeObject(forKey: "Selected Deck Name")
-            UserDefaults(suiteName: "group.Decks")!.removeObject(forKey: "All Tags")
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("List of games")
+            NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("List of decks")
+            NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("Selected Deck Name")
+            NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("All Tags")
             Data.sharedInstance.listOfGames = []
             Data.sharedInstance.listOfDecks = []
             
             // Sync
-            UserDefaults.standard.synchronize()
+            NSUserDefaults.standardUserDefaults().synchronize()
             
             // Remove from iCloud as well
-            self.iCloudKeyStore.removeObject(forKey: "iCloud list of decks")
-            self.iCloudKeyStore.removeObject(forKey: "iCloud list of games")
-            self.iCloudKeyStore.removeObject(forKey: "iCloud All Tags")
-            self.iCloudKeyStore.removeObject(forKey: "iCloud Selected Deck Name")
+            self.iCloudKeyStore.removeObjectForKey("iCloud list of decks")
+            self.iCloudKeyStore.removeObjectForKey("iCloud list of games")
+            self.iCloudKeyStore.removeObjectForKey("iCloud All Tags")
+            self.iCloudKeyStore.removeObjectForKey("iCloud Selected Deck Name")
             self.iCloudKeyStore.synchronize()
             
             NSLog("Reset everything pressed")
         }
         
-        let resetGamesAction = UIAlertAction(title: "Reset all games", style: UIAlertActionStyle.destructive) {
+        let resetGamesAction = UIAlertAction(title: "Reset all games", style: UIAlertActionStyle.Destructive) {
             UIAlertAction in
             
             // Delete from NSUserDefaults
-            UserDefaults.standard.removeObject(forKey: "List of games")
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("List of games")
             Data.sharedInstance.listOfGames = []
             // Sync
-            UserDefaults.standard.synchronize()
+            NSUserDefaults.standardUserDefaults().synchronize()
             
             // Remove from iCloud as well
-            self.iCloudKeyStore.removeObject(forKey: "iCloud list of games")
+            self.iCloudKeyStore.removeObjectForKey("iCloud list of games")
             self.iCloudKeyStore.synchronize()
             
             NSLog("Reset all games pressed")
             
         }
         
-        let resetGamesAndDecksAction = UIAlertAction(title: "Reset all games AND all decks", style: UIAlertActionStyle.destructive) {
+        let resetGamesAndDecksAction = UIAlertAction(title: "Reset all games AND all decks", style: UIAlertActionStyle.Destructive) {
             UIAlertAction in
             
             // Delete from NSUserDefaults
-            UserDefaults.standard.removeObject(forKey: "List of games")
-            UserDefaults(suiteName: "group.Decks")!.removeObject(forKey: "List of decks")
-            UserDefaults(suiteName: "group.Decks")!.removeObject(forKey: "Selected Deck Name")
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("List of games")
+            NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("List of decks")
+            NSUserDefaults(suiteName: "group.Decks")!.removeObjectForKey("Selected Deck Name")
             Data.sharedInstance.listOfGames = []
             Data.sharedInstance.listOfDecks = []
             // Sync
-            UserDefaults.standard.synchronize()
+            NSUserDefaults.standardUserDefaults().synchronize()
             
             // Remove from iCloud as well
-            self.iCloudKeyStore.removeObject(forKey: "iCloud list of decks")
-            self.iCloudKeyStore.removeObject(forKey: "iCloud list of games")
-            self.iCloudKeyStore.removeObject(forKey: "iCloud Selected Deck Name")
+            self.iCloudKeyStore.removeObjectForKey("iCloud list of decks")
+            self.iCloudKeyStore.removeObjectForKey("iCloud list of games")
+            self.iCloudKeyStore.removeObjectForKey("iCloud Selected Deck Name")
             self.iCloudKeyStore.synchronize()
             
             NSLog("Reset all games AND decks pressed")
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
             UIAlertAction in
             NSLog("Cancel Pressed")
         }
@@ -108,12 +108,12 @@ class Settings: UITableViewController {
         alertController.addAction(cancelAction)
         
         // Present the controller
-        self.present(alertController, animated: true, completion: nil)
+        self.presentViewController(alertController, animated: true, completion: nil)
 
     }
     
     // When selecting the table cell from the first section have reset all button press
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
            resetButtonPressed(self.resetButton)
         }

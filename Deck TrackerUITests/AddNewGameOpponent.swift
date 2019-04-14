@@ -11,7 +11,7 @@ import XCTest
 class AddNewGameOpponent: Utils {
     
     let addNewGameButton = Games().addGameButton
-    let pickOpponentCell = XCUIApplication().cells.element(boundBy: 2)
+    let pickOpponentCell = XCUIApplication().cells.elementBoundByIndex(2)
     
     let backButton = XCUIApplication().navigationBars["Select Opponent Class"].buttons["Add New Game"]
     let selectDeckTitleScreen = XCUIApplication().navigationBars["Select Opponent Class"].staticTexts["Select Opponent Class"]
@@ -50,7 +50,7 @@ class AddNewGameOpponent: Utils {
         XCTAssert(AddNewGame().newGameTitle.exists)
     }
     
-    func selectOpponent(_ opponent: String) {
+    func selectOpponent(opponent: String) {
         if opponent == "Warrior" {
             warriorCell.tap()
         } else if opponent == "Paladin" {

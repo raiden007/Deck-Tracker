@@ -16,14 +16,14 @@ class AddNewGame: Utils {
     let newGameTitle = XCUIApplication().navigationBars["Add New Game"]
     let saveButton = XCUIApplication().navigationBars["Add New Game"].buttons["Save"]
     
-    let dateCell = XCUIApplication().cells.element(boundBy: 0)
-    let deckCell = XCUIApplication().cells.element(boundBy: 1)
-    let opponentCell = XCUIApplication().cells.element(boundBy: 2)
+    let dateCell = XCUIApplication().cells.elementBoundByIndex(0)
+    let deckCell = XCUIApplication().cells.elementBoundByIndex(1)
+    let opponentCell = XCUIApplication().cells.elementBoundByIndex(2)
     let coinLabel = XCUIApplication().tables.staticTexts["Started with coin"]
     let coinSwitch = XCUIApplication().tables.switches["Started with coin"]
     let winLabel = XCUIApplication().tables.staticTexts["Did you win ?"]
     let winSwitch = XCUIApplication().tables.switches["Did you win ?"]
-    let tagCell = XCUIApplication().cells.element(boundBy: 5)
+    let tagCell = XCUIApplication().cells.elementBoundByIndex(5)
 
     
     override func setUp() {
@@ -61,7 +61,7 @@ class AddNewGame: Utils {
         XCTAssert(Games().gamesListScreenTitle.exists)
     }
     
-    func addNewGame(_ date: String, deckName: String, deckClass: String, opponent: String, coin: Bool, win: Bool, tag: String) {
+    func addNewGame(date: String, deckName: String, deckClass: String, opponent: String, coin: Bool, win: Bool, tag: String) {
         addNewGameButton.tap()
         
         // Check to see if selected deck is the same as intended deck

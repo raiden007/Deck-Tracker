@@ -24,16 +24,16 @@ class Deck : NSObject, NSCoding {
     
     // Encode and decode so we can store this object in NSUserDefaults
     required init?(coder aDecoder: NSCoder) {
-        deckName = aDecoder.decodeObject(forKey: "deckName") as! String
-        deckClass = aDecoder.decodeObject(forKey: "deckClass") as! String
-        deckID = aDecoder.decodeObject(forKey: "deckID") as! Int
+        deckName = aDecoder.decodeObjectForKey("deckName") as! String
+        deckClass = aDecoder.decodeObjectForKey("deckClass") as! String
+        deckID = aDecoder.decodeObjectForKey("deckID") as! Int
     }
     
     
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(deckName, forKey: "deckName")
-        aCoder.encode(deckClass, forKey: "deckClass")
-        aCoder.encode(deckID, forKey: "deckID")
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(deckName, forKey: "deckName")
+        aCoder.encodeObject(deckClass, forKey: "deckClass")
+        aCoder.encodeObject(deckID, forKey: "deckID")
     }
     
     // Returns deck name

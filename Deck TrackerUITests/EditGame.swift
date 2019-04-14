@@ -10,20 +10,20 @@ import XCTest
 
 class EditGame: Utils {
     
-    let editedGame = XCUIApplication().cells.element(boundBy: 0)
+    let editedGame = XCUIApplication().cells.elementBoundByIndex(0)
     
     let cancelButton = XCUIApplication().navigationBars["Edit Game"].buttons["Cancel"]
     let editGameTitle = XCUIApplication().navigationBars["Edit Game"]
     let saveButton = XCUIApplication().navigationBars["Edit Game"].buttons["Save"]
     
-    let dateCell = XCUIApplication().cells.element(boundBy: 0)
-    let deckCell = XCUIApplication().cells.element(boundBy: 1)
-    let opponentCell = XCUIApplication().cells.element(boundBy: 2)
+    let dateCell = XCUIApplication().cells.elementBoundByIndex(0)
+    let deckCell = XCUIApplication().cells.elementBoundByIndex(1)
+    let opponentCell = XCUIApplication().cells.elementBoundByIndex(2)
     let coinLabel = XCUIApplication().tables.staticTexts["Started with coin"]
     let coinSwitch = XCUIApplication().tables.switches["Started with coin"]
     let winLabel = XCUIApplication().tables.staticTexts["Did you win ?"]
     let winSwitch = XCUIApplication().tables.switches["Did you win ?"]
-    let tagCell = XCUIApplication().cells.element(boundBy: 5)
+    let tagCell = XCUIApplication().cells.elementBoundByIndex(5)
     
     let deckName = "Edit Game"
     let opponentClass = "Hunter"

@@ -27,7 +27,7 @@ class Graphs: UIViewController {
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         getInitialStatus()
     }
@@ -41,8 +41,8 @@ class Graphs: UIViewController {
         dateIndex = dateSegment.selectedSegmentIndex
         deckIndex = deckSegment.selectedSegmentIndex
         if deckIndex == 0 {
-            if let _ = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") as String! {
-                deckName = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") as String!
+            if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String! {
+                deckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
             } else {
                 deckName = ""
             }
@@ -50,17 +50,17 @@ class Graphs: UIViewController {
             deckName = "All"
         }
         
-        UserDefaults.standard.set(dateIndex, forKey: "Date Index")
-        UserDefaults.standard.set(deckIndex, forKey: "Deck Index")
-        UserDefaults.standard.set(deckName, forKey: "Deck Name")
-        UserDefaults.standard.synchronize()
+        NSUserDefaults.standardUserDefaults().setInteger(dateIndex, forKey: "Date Index")
+        NSUserDefaults.standardUserDefaults().setInteger(deckIndex, forKey: "Deck Index")
+        NSUserDefaults.standardUserDefaults().setObject(deckName, forKey: "Deck Name")
+        NSUserDefaults.standardUserDefaults().synchronize()
         
         // Notifies the container that a change occured
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "load"), object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
     }
     
     // Updates when the date button is changed
-    @IBAction func dateChanged(_ sender: UISegmentedControl) {
+    @IBAction func dateChanged(sender: UISegmentedControl) {
         switch dateSegment.selectedSegmentIndex {
         case 0:
             // Last 7 days
@@ -75,20 +75,20 @@ class Graphs: UIViewController {
             break
         }
         
-        UserDefaults.standard.set(dateIndex, forKey: "Date Index")
-        UserDefaults.standard.synchronize()
+        NSUserDefaults.standardUserDefaults().setInteger(dateIndex, forKey: "Date Index")
+        NSUserDefaults.standardUserDefaults().synchronize()
         //Notifies the container that a change occured
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "load"), object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
 
     }
     
     // Updates when the deck button is changed
-    @IBAction func deckChanged(_ sender: UISegmentedControl) {
+    @IBAction func deckChanged(sender: UISegmentedControl) {
         switch deckSegment.selectedSegmentIndex {
         // Selected deck
         case 0:
-            if let _ = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") as String! {
-                deckName = UserDefaults(suiteName: "group.Decks")!.string(forKey: "Selected Deck Name") as String!
+            if let _ = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String! {
+                deckName = NSUserDefaults(suiteName: "group.Decks")!.stringForKey("Selected Deck Name") as String!
             } else {
                 deckName = ""
             }
@@ -99,10 +99,10 @@ class Graphs: UIViewController {
             break
         }
         
-        UserDefaults.standard.set(deckName, forKey: "Deck Name")
-        UserDefaults.standard.synchronize()
+        NSUserDefaults.standardUserDefaults().setObject(deckName, forKey: "Deck Name")
+        NSUserDefaults.standardUserDefaults().synchronize()
         //Notifies the container that a change occured
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "load"), object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
         
     }
     

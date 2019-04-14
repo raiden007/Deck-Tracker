@@ -32,45 +32,46 @@ class SelectOpponentClass: UITableViewController {
     }
     
     // Gets the number of rows to be displayed in the table
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return classes.count
     }
     
     // Populates the table with data
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = classes[indexPath.row]
         return cell
     }
 
 
     // Selects the row and saves the info so we can add a checkmark
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         let selectedClass = classes[indexPath.row]
         saveSelectedOpponentClass(selectedClass)
-        navigationController?.popViewController(animated: true)
+        readSelectedOpponentClass()
+        navigationController?.popViewControllerAnimated(true)
         //navigationController?.popToRootViewControllerAnimated(true)
     }
     
     // Deselects the row if you select another
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.none
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.None
     }
     
     // Saves the selected opponent class in NSUserDefaults
-    func saveSelectedOpponentClass(_ opponentClass: String) {
-        let defaults: UserDefaults = UserDefaults.standard
-        defaults.set(opponentClass, forKey: "Opponent Class")
+    func saveSelectedOpponentClass(opponentClass: String) {
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(opponentClass, forKey: "Opponent Class")
         defaults.synchronize()
     }
     
     // Reads the selected deck ID from NSUserDefaults
     func readSelectedOpponentClass() -> String {
-        let defaults = UserDefaults.standard
-        let name:String = defaults.string(forKey: "Opponent Class") as String!
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let name:String = defaults.stringForKey("Opponent Class") as String!
         return name
     }
 }
